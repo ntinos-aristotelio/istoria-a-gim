@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Η Εποχή του Λίθου</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6efe4;
+      margin: 0;
+      color: #2b2118;
+      overflow-x: hidden;
+    }
+    .slide {
+      min-height: calc(100vh - 90px);
+      padding: 24px 16px 110px;
+      display: none;
+    }
+    .active { display: block; }
+    .card {
+      background: #fffaf2;
+      border: 3px solid #d6a85d;
+      border-radius: 20px;
+      padding: 22px;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    h1 {
+      font-size: clamp(34px, 9vw, 56px);
+      color: #8b4513;
+      margin: 0 0 12px;
+    }
+    h2 {
+      font-size: clamp(28px, 7vw, 42px);
+      color: #5b3416;
+      margin-top: 0;
+    }
+    p, li {
+      font-size: clamp(20px, 5vw, 28px);
+      line-height: 1.45;
+    }
+    button {
+      font-size: 20px;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 14px;
+      background: #8b4513;
+      color: white;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #f6efe4;
+      border-top: 2px solid #d6a85d;
+      padding: 12px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .nav button {
+      width: 46%;
+      max-width: 260px;
+    }
+    .answer {
+      display: block;
+      background: #fff;
+      color: #2b2118;
+      border: 2px solid #d6a85d;
+      width: 100%;
+      text-align: left;
+      margin: 10px 0;
+    }
+    #feedback {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 18px;
+    }
+    .counter {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 12px;
+      color: #6b4b2a;
+    }
+  </style>
+</head>
+<body>
+
+<section class="slide active">
+  <div class="card">
+    <h1>Η Εποχή του Λίθου</h1>
+    <p>Παλαιολιθική και Νεολιθική Εποχή</p>
+    <p><strong>Ερώτηση εκκίνησης:</strong> Πώς θα ζούσες χωρίς σπίτι, ρεύμα και σούπερ μάρκετ;</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="card">
+    <h2>Παλαιολιθική Εποχή</h2>
+    <ul>
+      <li>Οι άνθρωποι κυνηγούν.</li>
+      <li>Μαζεύουν καρπούς.</li>
+      <li>Μετακινούνται συχνά.</li>
+      <li>Χρησιμοποιούν λίθινα εργαλεία.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="card">
+    <h2>Η φωτιά</h2>
+    <p>Η φωτιά βοήθησε τους ανθρώπους να ζεσταίνονται, να μαγειρεύουν και να προστατεύονται.</p>
+    <p><strong>Συζήτηση:</strong> Ποιο από αυτά ήταν το πιο σημαντικό;</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="card">
+    <h2>Νεολιθική Εποχή</h2>
+    <ul>
+      <li>Οι άνθρωποι καλλιεργούν τη γη.</li>
+      <li>Εξημερώνουν ζώα.</li>
+      <li>Χτίζουν σπίτια.</li>
+      <li>Ζουν σε μόνιμους οικισμούς.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="card">
+    <h2>Η μεγάλη αλλαγή</h2>
+    <p><strong>Πριν:</strong> οι άνθρωποι έψαχναν την τροφή τους.</p>
+    <p><strong>Μετά:</strong> οι άνθρωποι άρχισαν να παράγουν την τροφή τους.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="card">
+    <h2>Μικρό κουίζ</h2>
+    <p>Τι χαρακτηρίζει τη Νεολιθική Εποχή;</p>
+    <button class="answer" onclick="check(false)">Το συνεχές κυνήγι και η μετακίνηση</button>
+    <button class="answer" onclick="check(true)">Η γεωργία και η μόνιμη εγκατάσταση</button>
+    <button class="answer" onclick="check(false)">Τα αυτοκίνητα και οι πόλεις</button>
+    <div id="feedback"></div>
+  </div>
+</section>
+
+<div class="counter" id="counter">1 / 6</div>
+
+<div class="nav">
+  <button id="prevBtn" type="button">⬅ Πίσω</button>
+  <button id="nextBtn" type="button">Επόμενο ➡</button>
+</div>
+
+<script>
+  var current = 0;
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('counter');
+
+  function showSlide(index) {
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].classList.remove('active');
+    }
+    slides[index].classList.add('active');
+    counter.textContent = (index + 1) + ' / ' + slides.length;
+    window.scrollTo(0, 0);
+  }
+
+  function nextSlide() {
+    if (current < slides.length - 1) {
+      current++;
+      showSlide(current);
+    }
+  }
+
+  function prevSlide() {
+    if (current > 0) {
+      current--;
+      showSlide(current);
+    }
+  }
+
+  function check(correct) {
+    var feedback = document.getElementById('feedback');
+    feedback.textContent = correct ? 'Σωστά! Μπράβο!' : 'Όχι ακριβώς. Ξαναδοκίμασε.';
+    feedback.style.color = correct ? 'green' : 'red';
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', nextSlide);
+  document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+</script>
+
+</body>
+</html>
