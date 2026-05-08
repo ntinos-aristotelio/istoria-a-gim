@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Κεφάλαιο 2</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4e6cf;margin:0;color:#2b2118}
+.wrap{max-width:1000px;margin:auto;padding:30px}
+.box{background:#fff8ec;padding:30px;border-radius:25px;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+h1{font-size:55px;color:#7b421f}
+h2{color:#246b63}
+p,li{font-size:22px;line-height:1.5}
+button{
+background:#7b421f;color:white;border:0;padding:12px 18px;
+border-radius:12px;font-size:18px;cursor:pointer;margin-top:10px;
+}
+.answer{display:block;width:100%;text-align:left;margin:10px 0;background:white;color:#222;border:2px solid #d6b98c}
+.correct{background:#dff5e5!important}
+.wrong{background:#f8dddd!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="box">
+<h1>🛶 Η Εποχή του Χαλκού</h1>
+
+<h2>Οι πολιτισμοί του Αιγαίου</h2>
+<p>Στην Εποχή του Χαλκού αναπτύσσονται σημαντικοί πολιτισμοί στον ελληνικό χώρο.</p>
+
+<ul>
+<li>Κυκλαδικός πολιτισμός</li>
+<li>Μινωικός πολιτισμός</li>
+<li>Μυκηναϊκός πολιτισμός</li>
+</ul>
+
+<h2>Το Αιγαίο</h2>
+<p>Η θάλασσα βοηθά το εμπόριο, τα ταξίδια και την επικοινωνία.</p>
+
+<div style="background:#f0ddbe;padding:20px;border-radius:18px">
+<strong>Θυμήσου:</strong> το Αιγαίο ενώνει τους πολιτισμούς.
+</div>
+
+<h2>🎯 Μικρό κουίζ</h2>
+
+<p><strong>Ποιος πολιτισμός αναπτύχθηκε στην Κρήτη;</strong></p>
+
+<button class="answer" onclick="check(this,false)">Κυκλαδικός</button>
+<button class="answer" onclick="check(this,true)">Μινωικός</button>
+<button class="answer" onclick="check(this,false)">Ρωμαϊκός</button>
+
+<p id="msg"></p>
+
+<a href="index.html">⬅ Επιστροφή</a>
+</div>
+</div>
+
+<script>
+function check(btn,ok){
+document.querySelectorAll('.answer').forEach(b=>{
+b.classList.remove('correct','wrong');
+});
+btn.classList.add(ok?'correct':'wrong');
+document.getElementById('msg').innerHTML = ok
+? '✅ Σωστά!'
+: '❌ Δοκίμασε ξανά!';
+}
+</script>
+</body>
+</html>
