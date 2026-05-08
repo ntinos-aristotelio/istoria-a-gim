@@ -3,87 +3,365 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ιστορία Α Γυμνασίου</title>
+<title>Ιστορία Α΄ Γυμνασίου - Διαδραστική Εφαρμογή</title>
+
 <style>
-body{
-font-family:Arial,sans-serif;
-margin:0;
-background:linear-gradient(135deg,#f8efdf,#ead1aa);
-color:#2b2118;
+:root{
+  --paper:#fff8ec;
+  --ink:#2b2118;
+  --brown:#7b421f;
+  --brown2:#a7652d;
+  --green:#246b63;
+  --gold:#d8a24b;
+  --blue:#3b8fb0;
+  --line:#dec199;
+  --shadow:0 18px 42px rgba(70,40,18,.18);
 }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,"Segoe UI",sans-serif;
+  background:linear-gradient(135deg,#f8efdf,#ead1aa);
+  color:var(--ink);
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(255,248,236,.96);
+  border-bottom:1px solid rgba(123,66,31,.18);
+}
+.bar{
+  max-width:1180px;
+  margin:auto;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.logo{
+  font-weight:900;
+  color:var(--brown);
+  font-size:19px;
+}
+.nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+a,button{
+  border:0;
+  background:var(--brown);
+  color:white;
+  padding:12px 17px;
+  border-radius:15px;
+  font-weight:800;
+  cursor:pointer;
+  font-size:15px;
+  text-decoration:none;
+  display:inline-block;
+}
+a.secondary,button.secondary{background:var(--green)}
+a.gold,button.gold{background:var(--gold);color:#2b2118}
+a.blue,button.blue{background:var(--blue)}
 .wrap{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
+  max-width:1180px;
+  margin:auto;
+  padding:28px 18px 70px;
+}
+.panel{
+  background:rgba(255,248,236,.98);
+  border:1px solid rgba(123,66,31,.16);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
 }
 .hero{
-background:#fff8ec;
-padding:40px;
-border-radius:30px;
-box-shadow:0 10px 30px rgba(0,0,0,.12);
-margin-bottom:30px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  align-items:center;
+  min-height:78vh;
+}
+.text{padding:42px}
+.eyebrow{
+  color:var(--green);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:12px;
 }
 h1{
-font-size:60px;
-color:#7b421f;
-margin:0 0 10px;
+  font-size:clamp(42px,7vw,76px);
+  line-height:.96;
+  color:var(--brown);
+  margin:0 0 18px;
 }
-p{
-font-size:24px;
-line-height:1.5;
+h2{
+  font-size:clamp(34px,5vw,56px);
+  line-height:1.03;
+  color:#613517;
+  margin:0 0 18px;
+}
+h3{
+  font-size:26px;
+  margin:0 0 10px;
+  color:#613517;
+}
+p,li{
+  font-size:clamp(19px,2.4vw,26px);
+  line-height:1.45;
+}
+.drawing{
+  min-height:460px;
+  background:#f2dfc2;
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+.drawing svg{
+  width:100%;
+  max-width:560px;
+  height:auto;
+}
+.box{
+  background:#f0ddbe;
+  border-left:8px solid var(--gold);
+  border-radius:16px;
+  padding:17px;
+  margin-top:18px;
+  font-weight:900;
 }
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:18px;
+  margin-top:24px;
 }
 .card{
-background:#fff8ec;
-padding:25px;
-border-radius:25px;
-box-shadow:0 8px 22px rgba(0,0,0,.1);
+  background:var(--paper);
+  border:1px solid rgba(123,66,31,.16);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 8px 22px rgba(70,40,18,.10);
+  min-height:245px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
-a{
-display:inline-block;
-margin-top:20px;
-background:#7b421f;
-color:white;
-padding:14px 20px;
-border-radius:14px;
-text-decoration:none;
-font-weight:bold;
-}
+.card:hover{transform:translateY(-3px)}
+.icon{font-size:54px;margin-bottom:8px}
 .tag{
-display:inline-block;
-padding:6px 12px;
-border-radius:999px;
-background:#e5f0ec;
-margin-top:10px;
+  display:inline-block;
+  background:#e6f2ed;
+  color:#1f5b54;
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:14px;
+  font-weight:900;
+  margin:5px 4px 0 0;
+}
+.section-title{
+  margin-top:34px;
+}
+.notice{
+  background:#fff;
+  border:2px dashed var(--gold);
+  border-radius:24px;
+  padding:22px;
+  margin-top:24px;
+}
+footer{
+  text-align:center;
+  padding:30px;
+  color:#6d5a48;
+}
+@media(max-width:850px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero .drawing{order:-1;min-height:320px}
+  .text{padding:28px}
 }
 </style>
 </head>
+
 <body>
+
+<header>
+  <div class="bar">
+    <div class="logo">🏛️ Ιστορία Α΄ Γυμνασίου</div>
+    <div class="nav">
+      <a href="#chapters">Κεφάλαια</a>
+      <a class="secondary" href="revision.html">Γενική επανάληψη</a>
+    </div>
+  </div>
+</header>
+
 <div class="wrap">
-<div class="hero">
-<h1>Ψηφιακή Ιστορία Α΄ Γυμνασίου</h1>
-<p>Διαδραστικά κεφάλαια, δραστηριότητες και κουίζ για το μάθημα της Ιστορίας.</p>
+
+  <section class="hero">
+    <div class="panel text">
+      <div class="eyebrow">Διαδραστική εφαρμογή μαθήματος</div>
+      <h1>Ιστορία Α΄ Γυμνασίου</h1>
+      <p>Καλώς ήρθες στη διαδραστική εφαρμογή του μαθήματος. Διάλεξε κεφάλαιο, διάβασε το μάθημα, κάνε δραστηριότητες και στο τέλος δοκίμασε τη μεγάλη επανάληψη.</p>
+      <div class="box">
+        Η διαδρομή μας ξεκινά από την Προϊστορία και φτάνει μέχρι τη Ρωμαϊκή αυτοκρατορία.
+      </div>
+      <p>
+        <a href="#chapters">Άνοιγμα κεφαλαίων</a>
+        <a class="gold" href="revision.html">Μεγάλη επανάληψη</a>
+      </p>
+    </div>
+
+    <div class="panel drawing">
+      <svg viewBox="0 0 900 620">
+        <rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+        <circle cx="745" cy="95" r="65" fill="#ffd56d"/>
+        <path d="M0 500 C220 420 420 520 900 435 L900 620 L0 620Z" fill="#8abc69"/>
+        <rect x="105" y="370" width="95" height="115" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+        <rect x="270" y="335" width="95" height="150" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+        <rect x="435" y="370" width="95" height="115" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+        <path d="M75 370 L320 230 L565 370Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+        <circle cx="670" cy="390" r="75" fill="#b9422f" stroke="#5b351c" stroke-width="9"/>
+        <path d="M670 325 v130 M605 390 h130" stroke="#ffd56d" stroke-width="11"/>
+        <path d="M160 215 C300 140 505 150 710 225" fill="none" stroke="#246b63" stroke-width="12" stroke-dasharray="20 16" stroke-linecap="round"/>
+        <text x="60" y="90" font-size="50" font-weight="900" fill="#7b421f">Μαθαίνω Ιστορία</text>
+        <text x="62" y="138" font-size="28" fill="#246b63">με βήματα • σχέδια • ασκήσεις • παιχνίδια</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="chapters" class="panel text section-title">
+    <div class="eyebrow">Περιεχόμενα</div>
+    <h2>Διάλεξε κεφάλαιο</h2>
+    <p>Κάθε κεφάλαιο ανοίγει σε ξεχωριστή εφαρμογή, ώστε να μη μπερδεύονται μεταξύ τους.</p>
+
+    <div class="cards">
+
+      <div class="card">
+        <div>
+          <div class="icon">🏺</div>
+          <h3>Κεφάλαιο 1</h3>
+          <p>Η Εποχή του Λίθου</p>
+          <span class="tag">Προϊστορία</span>
+        </div>
+        <a href="chapter1.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">🛶</div>
+          <h3>Κεφάλαιο 2</h3>
+          <p>Η Εποχή του Χαλκού</p>
+          <span class="tag">Αιγαίο</span>
+        </div>
+        <a href="chapter2.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">📜</div>
+          <h3>Κεφάλαιο 3</h3>
+          <p>Ο ελληνικός κόσμος 1100-800 π.Χ.</p>
+          <span class="tag">Μετάβαση</span>
+        </div>
+        <a href="chapter3.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">🏛️</div>
+          <h3>Κεφάλαιο 4</h3>
+          <p>Αρχαϊκή εποχή</p>
+          <span class="tag">Πόλη-κράτος</span>
+        </div>
+        <a href="chapter4.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">🗳️</div>
+          <h3>Κεφάλαιο 5</h3>
+          <p>Η ηγεμονία της Αθήνας</p>
+          <span class="tag">Δημοκρατία</span>
+        </div>
+        <a href="chapter5.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">⚔️</div>
+          <h3>Κεφάλαιο 6</h3>
+          <p>Ο Πελοποννησιακός πόλεμος</p>
+          <span class="tag">Πόλεμος</span>
+        </div>
+        <a href="chapter6.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">🦁</div>
+          <h3>Κεφάλαιο 7</h3>
+          <p>Η Μακεδονία και ο Μέγας Αλέξανδρος</p>
+          <span class="tag">Εκστρατεία</span>
+        </div>
+        <a href="chapter7.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">🌍</div>
+          <h3>Κεφάλαιο 8</h3>
+          <p>Τα ελληνιστικά χρόνια</p>
+          <span class="tag">Πολιτισμοί</span>
+        </div>
+        <a href="chapter8.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">🛡️</div>
+          <h3>Κεφάλαιο 9</h3>
+          <p>Η Ρώμη και ο ελληνικός κόσμος</p>
+          <span class="tag">Ρώμη</span>
+        </div>
+        <a href="chapter9.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="icon">🏟️</div>
+          <h3>Κεφάλαιο 10</h3>
+          <p>Η Ρωμαϊκή αυτοκρατορία</p>
+          <span class="tag">Αυτοκρατορία</span>
+        </div>
+        <a href="chapter10.html">Άνοιγμα</a>
+      </div>
+
+      <div class="card" style="border:3px solid var(--gold);">
+        <div>
+          <div class="icon">🏆</div>
+          <h3>Γενική Επανάληψη</h3>
+          <p>Όλα τα κεφάλαια σε ένα μεγάλο παιχνίδι επανάληψης.</p>
+          <span class="tag">Mega Quiz</span>
+          <span class="tag">Timeline</span>
+        </div>
+        <a class="gold" href="revision.html">Άνοιγμα</a>
+      </div>
+
+    </div>
+
+    <div class="notice">
+      <h3>📌 Οδηγία για το GitHub</h3>
+      <p>Ανεβάζετε όλα τα αρχεία στον ίδιο φάκελο: <strong>index.html</strong>, <strong>chapter1.html</strong> έως <strong>chapter10.html</strong> και <strong>revision.html</strong>.</p>
+    </div>
+  </section>
+
 </div>
 
-<div class="cards">
-<div class="card">
-<h2>🏺 Κεφάλαιο 1</h2>
-<p>Η Εποχή του Λίθου</p>
-<div class="tag">διαθέσιμο</div><br>
-<a href="chapter1.html">Άνοιγμα</a>
-</div>
+<footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
 
-<div class="card">
-<h2>🛶 Κεφάλαιο 2</h2>
-<p>Η Εποχή του Χαλκού</p>
-<div class="tag">διαθέσιμο</div><br>
-<a href="chapter2.html">Άνοιγμα</a>
-</div>
-</div>
-</div>
 </body>
 </html>

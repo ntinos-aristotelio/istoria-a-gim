@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Κεφάλαιο 10 - Η Ρωμαϊκή αυτοκρατορία</title>
+
+<style>
+:root{
+  --paper:#fff8ec; --ink:#2b2118; --brown:#7b421f; --brown2:#a7652d;
+  --green:#246b63; --gold:#d8a24b; --line:#dec199; --ok:#2d8a4d;
+  --bad:#b13f3f; --shadow:0 18px 42px rgba(70,40,18,.18);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Segoe UI",sans-serif;background:linear-gradient(135deg,#f8efdf,#ead1aa);color:var(--ink)}
+header{position:sticky;top:0;z-index:20;background:rgba(255,248,236,.96);border-bottom:1px solid rgba(123,66,31,.18)}
+.bar{max-width:1180px;margin:auto;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;color:var(--brown);font-size:19px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+button,a.btn{border:0;background:var(--brown);color:white;padding:12px 17px;border-radius:15px;font-weight:800;cursor:pointer;font-size:15px;text-decoration:none;display:inline-block}
+button.secondary{background:var(--green)} button.gold{background:var(--gold);color:#2b2118}
+.page{display:none}.page.active{display:block}
+.wrap{max-width:1180px;margin:auto;padding:28px 18px 70px}
+.panel{background:rgba(255,248,236,.98);border:1px solid rgba(123,66,31,.16);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;min-height:80vh}
+.text{padding:42px}
+.eyebrow{color:var(--green);font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(42px,7vw,76px);line-height:.96;color:var(--brown);margin:0 0 18px}
+h2{font-size:clamp(34px,5vw,56px);line-height:1.03;color:#613517;margin:0 0 18px}
+h3{font-size:28px;margin:0 0 10px;color:#613517}
+p,li{font-size:clamp(19px,2.4vw,27px);line-height:1.45}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:24px}
+.card{background:var(--paper);border:1px solid rgba(123,66,31,.16);border-radius:24px;padding:22px;box-shadow:0 8px 22px rgba(70,40,18,.10);cursor:pointer;min-height:220px}
+.card:hover{transform:translateY(-3px)}
+.tag{display:inline-block;background:#e6f2ed;color:#1f5b54;border-radius:999px;padding:7px 12px;font-size:14px;font-weight:900;margin:5px 4px 0 0}
+.icon{font-size:54px;margin-bottom:8px}
+.drawing{min-height:460px;background:#f2dfc2;display:grid;place-items:center;padding:20px}
+.drawing svg{width:100%;max-width:560px;height:auto}
+.lesson-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.progress-wrap{flex:1;height:12px;min-width:170px;background:#e7d2b0;border-radius:999px;overflow:hidden}
+.progress{height:100%;width:0%;background:linear-gradient(90deg,var(--brown2),var(--gold));transition:.25s}
+.lesson-slide{display:none;grid-template-columns:1fr 1fr;min-height:610px}
+.lesson-slide.active{display:grid}
+.box{background:#f0ddbe;border-left:8px solid var(--gold);border-radius:16px;padding:17px;margin-top:18px;font-weight:900}
+.note{background:#e5f0ec;border-left:8px solid var(--green);border-radius:16px;padding:16px;margin-top:18px}
+.lesson-nav{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mini{background:white;border:1px solid var(--line);border-radius:20px;padding:18px}
+.quiz-card{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:16px}
+.answer{display:block;width:100%;margin:10px 0;background:white;color:var(--ink);border:2px solid var(--line);text-align:left;font-size:clamp(18px,2.4vw,24px)}
+.answer.selected{border-color:var(--gold);background:#fff1d6}
+.correct{background:#ddf6e5!important;border-color:var(--ok)!important}
+.wrong{background:#fde2df!important;border-color:var(--bad)!important}
+.score{background:#fff;border:2px dashed var(--gold);border-radius:22px;padding:20px;font-size:28px;font-weight:900;color:var(--brown);margin-top:18px}
+.concept-map{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:22px}
+.bubble{background:#fff;border:3px solid var(--gold);border-radius:999px;padding:18px 22px;font-size:22px;font-weight:900;cursor:pointer}
+.bubble.main{background:var(--brown);color:white;border-color:var(--brown)}
+.checklist label{display:block;background:white;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;font-size:22px}
+.badge{font-size:34px;background:#fff;border:3px dashed var(--gold);border-radius:24px;padding:24px;text-align:center;margin-top:20px}
+footer{text-align:center;padding:30px;color:#6d5a48}
+@media(max-width:850px){.hero{grid-template-columns:1fr;min-height:auto}.hero .drawing{order:-1;min-height:320px}.lesson-slide.active{grid-template-columns:1fr}.lesson-slide>.drawing{order:-1;min-height:300px}.text{padding:28px}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="bar">
+    <div class="logo">🏟️ Κεφάλαιο 10: Η Ρωμαϊκή αυτοκρατορία</div>
+    <div class="nav">
+      <button onclick="showPage('home')">Αρχή</button>
+      <button onclick="openLesson()">Μάθημα</button>
+      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+      <button onclick="showPage('review')">Επανάληψη</button>
+      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
+    </div>
+  </div>
+</header>
+
+<template id="draw-empire">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
+<path d="M0 505 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
+<rect x="150" y="355" width="90" height="130" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="310" y="320" width="90" height="165" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="470" y="355" width="90" height="130" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M120 355 L355 230 L590 355Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<circle cx="690" cy="375" r="82" fill="#b9422f" stroke="#5b351c" stroke-width="10"/>
+<text x="642" y="398" font-size="58" font-weight="900" fill="#ffd56d">SPQR</text>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ρωμαϊκή αυτοκρατορία</text>
+<text x="62" y="138" font-size="28" fill="#246b63">εξουσία, ειρήνη, πόλεις και δρόμοι</text>
+</svg>
+</template>
+
+<template id="draw-augustus">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
+<circle cx="450" cy="230" r="68" fill="#c3834b"/>
+<path d="M385 175 q68-90 140 0" fill="#3b2a1b"/>
+<path d="M365 150 h170 l-40 -55 l-45 45 l-45 -45z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="375" y="310" width="150" height="185" rx="32" fill="#7b421f"/>
+<path d="M280 420 H620" stroke="#d8a24b" stroke-width="14" stroke-linecap="round"/>
+<path d="M315 385 h270" stroke="#246b63" stroke-width="12" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ο Αύγουστος</text>
+<text x="62" y="138" font-size="28" fill="#246b63">η αρχή της αυτοκρατορικής εποχής</text>
+</svg>
+</template>
+
+<template id="draw-pax">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<circle cx="750" cy="95" r="65" fill="#ffd56d"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
+<path d="M175 390 C310 315 570 315 725 390" fill="none" stroke="#7b421f" stroke-width="16" stroke-linecap="round"/>
+<path d="M205 450 C330 385 555 385 695 450" fill="none" stroke="#a7652d" stroke-width="14" stroke-linecap="round"/>
+<circle cx="450" cy="300" r="80" fill="#fff8ec" stroke="#246b63" stroke-width="9"/>
+<path d="M405 300 h90 M450 255 v90" stroke="#d8a24b" stroke-width="10" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Pax Romana</text>
+<text x="62" y="138" font-size="28" fill="#246b63">ρωμαϊκή ειρήνη, ασφάλεια και ανάπτυξη</text>
+</svg>
+</template>
+
+<template id="draw-roads">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
+<path d="M105 540 C255 430 315 350 450 300 C585 250 650 190 795 120" fill="none" stroke="#7b421f" stroke-width="48" stroke-linecap="round"/>
+<path d="M105 540 C255 430 315 350 450 300 C585 250 650 190 795 120" fill="none" stroke="#fff8ec" stroke-width="9" stroke-dasharray="22 22"/>
+<rect x="170" y="300" width="90" height="80" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
+<rect x="580" y="210" width="90" height="80" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ρωμαϊκοί δρόμοι</text>
+<text x="62" y="138" font-size="28" fill="#246b63">οι δρόμοι ενώνουν την αυτοκρατορία</text>
+</svg>
+</template>
+
+<template id="draw-city">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<rect x="140" y="360" width="110" height="125" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="310" y="325" width="110" height="160" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
+<rect x="480" y="360" width="110" height="125" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M105 360 L365 220 L625 360Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<path d="M675 470 C710 360 790 360 825 470" fill="none" stroke="#7b421f" stroke-width="16" stroke-linecap="round"/>
+<path d="M695 470 C720 410 775 410 805 470" fill="none" stroke="#a7652d" stroke-width="12" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ρωμαϊκές πόλεις</text>
+<text x="62" y="138" font-size="28" fill="#246b63">αγορά, λουτρά, θέατρα και υδραγωγεία</text>
+</svg>
+</template>
+
+<template id="draw-citizenship">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
+<rect x="160" y="160" width="580" height="350" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<circle cx="300" cy="320" r="45" fill="#c3834b"/><rect x="260" y="370" width="80" height="95" rx="25" fill="#246b63"/>
+<circle cx="450" cy="285" r="45" fill="#c3834b"/><rect x="410" y="335" width="80" height="130" rx="25" fill="#7b421f"/>
+<circle cx="600" cy="320" r="45" fill="#c3834b"/><rect x="560" y="370" width="80" height="95" rx="25" fill="#a7652d"/>
+<path d="M220 485 H680" stroke="#d8a24b" stroke-width="12" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ρωμαίος πολίτης</text>
+<text x="62" y="138" font-size="28" fill="#246b63">δικαιώματα, νόμοι και κοινή ταυτότητα</text>
+</svg>
+</template>
+
+<template id="draw-trade">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
+<path d="M0 520 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"/>
+<circle cx="230" cy="310" r="80" fill="#d8a24b" stroke="#7b421f" stroke-width="9"/>
+<text x="190" y="335" font-size="65" font-weight="900" fill="#7b421f">₯</text>
+<path d="M480 420 q110 65 220 0 l-45 70 h-130z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
+<path d="M590 420 L590 270" stroke="#7b421f" stroke-width="8"/>
+<path d="M590 275 q90 50 0 105Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
+<path d="M295 390 C390 320 475 315 590 305" fill="none" stroke="#fff8ec" stroke-width="12" stroke-dasharray="18 15" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Εμπόριο</text>
+<text x="62" y="138" font-size="28" fill="#246b63">προϊόντα ταξιδεύουν σε όλη τη Μεσόγειο</text>
+</svg>
+</template>
+
+<template id="draw-culture">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
+<circle cx="260" cy="300" r="95" fill="#dff3ff" stroke="#246b63" stroke-width="10"/>
+<text x="205" y="315" font-size="42" font-weight="900" fill="#246b63">Ελλάδα</text>
+<circle cx="635" cy="300" r="95" fill="#ffe2c2" stroke="#7b421f" stroke-width="10"/>
+<text x="590" y="315" font-size="42" font-weight="900" fill="#7b421f">Ρώμη</text>
+<path d="M360 300 H535" stroke="#a7652d" stroke-width="16" stroke-linecap="round"/>
+<path d="M530 300 l-50 -30 v60z" fill="#a7652d"/>
+<path d="M365 300 l50 -30 v60z" fill="#a7652d"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ελληνορωμαϊκός κόσμος</text>
+<text x="62" y="138" font-size="28" fill="#246b63">ρωμαϊκή εξουσία και ελληνικός πολιτισμός</text>
+</svg>
+</template>
+
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel text">
+        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+        <h1>Κεφάλαιο 10<br>Η Ρωμαϊκή αυτοκρατορία</h1>
+        <p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς η Ρώμη οργανώνει μια τεράστια αυτοκρατορία και πώς ζουν οι άνθρωποι μέσα σε αυτή.</p>
+        <div class="box">Κεντρική ιδέα: η ρωμαϊκή αυτοκρατορία ενώνει πολλούς λαούς με διοίκηση, δρόμους, νόμους, στρατό και πολιτισμό.</div>
+        <p>
+          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+        </p>
+      </div>
+      <div class="panel drawing" data-draw="draw-empire"></div>
+    </div>
+  </div>
+</section>
+
+<section id="chapter10" class="page">
+  <div class="wrap">
+    <div class="lesson-top">
+      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+      <div id="counter">1 / 10</div>
+    </div>
+
+    <div class="panel">
+
+      <div class="lesson-slide active">
+        <div class="text">
+          <div class="eyebrow">1. Εισαγωγή</div>
+          <h2>Από τη Δημοκρατία στην Αυτοκρατορία</h2>
+          <p>Μετά από μεγάλες συγκρούσεις, η Ρώμη περνά σε νέα μορφή εξουσίας: την αυτοκρατορία.</p>
+          <div class="box">Βασική ιδέα: η τεράστια ρωμαϊκή επικράτεια χρειάζεται ισχυρή κεντρική διοίκηση.</div>
+        </div>
+        <div class="drawing" data-draw="draw-empire"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">2. Ο Αύγουστος</div>
+          <h2>Ο πρώτος αυτοκράτορας</h2>
+          <p>Ο Οκταβιανός Αύγουστος συγκεντρώνει μεγάλη εξουσία και παρουσιάζεται ως εγγυητής της ειρήνης και της σταθερότητας.</p>
+          <ul>
+            <li>ισχυρή προσωπική εξουσία</li>
+            <li>διοικητική οργάνωση</li>
+            <li>στρατιωτικός έλεγχος</li>
+            <li>σταθερότητα μετά τις εμφύλιες συγκρούσεις</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί οι άνθρωποι μπορεί να προτιμούν τη σταθερότητα μετά από αναταραχές;</div>
+        </div>
+        <div class="drawing" data-draw="draw-augustus"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">3. Pax Romana</div>
+          <h2>Η ρωμαϊκή ειρήνη</h2>
+          <p>Για μεγάλο διάστημα η αυτοκρατορία γνωρίζει σχετική ειρήνη, ασφάλεια και οικονομική ανάπτυξη.</p>
+          <ul>
+            <li>λιγότερες εσωτερικές συγκρούσεις</li>
+            <li>ασφαλέστεροι δρόμοι</li>
+            <li>ανάπτυξη εμπορίου</li>
+            <li>άνθηση πόλεων</li>
+          </ul>
+          <div class="box">Κλειδί: η ειρήνη βοηθά το εμπόριο, τις πόλεις και την καθημερινή ζωή.</div>
+        </div>
+        <div class="drawing" data-draw="draw-pax"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">4. Διοίκηση της αυτοκρατορίας</div>
+          <h2>Πώς διοικείται τόσο μεγάλος χώρος;</h2>
+          <p>Η Ρώμη οργανώνει επαρχίες, αξιωματούχους, φόρους και στρατιωτική προστασία.</p>
+          <ul>
+            <li>επαρχίες</li>
+            <li>διοικητές</li>
+            <li>φόροι</li>
+            <li>ρωμαϊκός στρατός στα σύνορα</li>
+          </ul>
+          <div class="box">Ερώτηση: τι δυσκολίες έχει η διοίκηση μιας τεράστιας αυτοκρατορίας;</div>
+        </div>
+        <div class="drawing" data-draw="draw-empire"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">5. Ρωμαϊκοί δρόμοι</div>
+          <h2>Οι δρόμοι ενώνουν</h2>
+          <p>Οι Ρωμαίοι κατασκευάζουν δρόμους που συνδέουν πόλεις, στρατόπεδα και επαρχίες.</p>
+          <ul>
+            <li>γρήγορη μετακίνηση στρατού</li>
+            <li>εμπόριο</li>
+            <li>επικοινωνία</li>
+            <li>διοίκηση</li>
+          </ul>
+          <div class="box">Κλειδί: οι δρόμοι είναι σαν το “δίκτυο” της αυτοκρατορίας.</div>
+        </div>
+        <div class="drawing" data-draw="draw-roads"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">6. Ρωμαϊκές πόλεις</div>
+          <h2>Η καθημερινή ζωή στην πόλη</h2>
+          <p>Οι πόλεις της αυτοκρατορίας έχουν αγορές, λουτρά, θέατρα, ναούς, υδραγωγεία και δημόσιους χώρους.</p>
+          <ul>
+            <li>φόρουμ</li>
+            <li>λουτρά</li>
+            <li>θέατρα και αμφιθέατρα</li>
+            <li>υδραγωγεία</li>
+          </ul>
+          <div class="box">Ερώτηση: ποιος δημόσιος χώρος είναι πιο χρήσιμος για μια πόλη;</div>
+        </div>
+        <div class="drawing" data-draw="draw-city"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">7. Ρωμαϊκό δίκαιο και πολίτες</div>
+          <h2>Νόμοι και δικαιώματα</h2>
+          <p>Το ρωμαϊκό δίκαιο βοηθά την οργάνωση της ζωής. Η ιδιότητα του Ρωμαίου πολίτη αποκτά μεγάλη αξία.</p>
+          <ul>
+            <li>νόμοι</li>
+            <li>δικαιώματα</li>
+            <li>υποχρεώσεις</li>
+            <li>κοινή πολιτική ταυτότητα</li>
+          </ul>
+          <div class="box">Κλειδί: οι κοινοί νόμοι βοηθούν να λειτουργεί μια μεγάλη κοινωνία.</div>
+        </div>
+        <div class="drawing" data-draw="draw-citizenship"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">8. Οικονομία και εμπόριο</div>
+          <h2>Προϊόντα σε όλη τη Μεσόγειο</h2>
+          <p>Η ειρήνη, οι δρόμοι και τα λιμάνια βοηθούν τη μεταφορά προϊόντων και την οικονομική ανάπτυξη.</p>
+          <ul>
+            <li>σιτάρι</li>
+            <li>λάδι και κρασί</li>
+            <li>κεραμικά και μέταλλα</li>
+            <li>λιμάνια και αγορές</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί το εμπόριο κάνει τις πόλεις πλουσιότερες;</div>
+        </div>
+        <div class="drawing" data-draw="draw-trade"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">9. Πολιτισμός</div>
+          <h2>Ελληνορωμαϊκός κόσμος</h2>
+          <p>Στην αυτοκρατορία συνυπάρχουν ρωμαϊκή διοίκηση και ελληνικός πολιτισμός, ιδιαίτερα στην ανατολική Μεσόγειο.</p>
+          <ul>
+            <li>ελληνική γλώσσα και παιδεία</li>
+            <li>ρωμαϊκοί θεσμοί</li>
+            <li>τέχνη και αρχιτεκτονική</li>
+            <li>πολιτισμικές ανταλλαγές</li>
+          </ul>
+          <div class="box">Κλειδί: η αυτοκρατορία δεν είναι ένας μόνο λαός· είναι πολλοί λαοί σε κοινό πλαίσιο εξουσίας.</div>
+        </div>
+        <div class="drawing" data-draw="draw-culture"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
+          <h2>Σύνοψη Κεφαλαίου 10</h2>
+          <ul>
+            <li>Η Ρώμη περνά από τη Δημοκρατία στην Αυτοκρατορία.</li>
+            <li>Ο Αύγουστος συνδέεται με την αρχή της αυτοκρατορικής εποχής.</li>
+            <li>Η Pax Romana φέρνει ειρήνη, ασφάλεια και ανάπτυξη.</li>
+            <li>Δρόμοι, επαρχίες, νόμοι και στρατός ενώνουν την αυτοκρατορία.</li>
+            <li>Ο ελληνορωμαϊκός πολιτισμός συνδυάζει ρωμαϊκή εξουσία και ελληνική παιδεία.</li>
+          </ul>
+          <p>
+            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+          </p>
+        </div>
+        <div class="drawing" data-draw="draw-empire"></div>
+      </div>
+
+    </div>
+
+    <div class="lesson-nav">
+      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+      <button onclick="nextSlide()">Επόμενο ➡</button>
+    </div>
+  </div>
+</section>
+
+<section id="extras" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Extra για τα παιδιά</div>
+      <h2>Δραστηριότητες Κεφαλαίου 10</h2>
+      <p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε πώς λειτουργούσε η Ρωμαϊκή αυτοκρατορία.</p>
+
+      <div class="cards">
+        <div class="card" onclick="showPage('missions')">
+          <div><div class="icon">🎯</div><h3>Αποστολή αυτοκρατορίας</h3><p>Βρες τι ενώνει μια τεράστια αυτοκρατορία.</p></div>
+          <span class="tag">δραστηριότητα</span>
+        </div>
+        <div class="card" onclick="showPage('detective')">
+          <div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
+          <span class="tag">παιχνίδι σκέψης</span>
+        </div>
+        <div class="card" onclick="showPage('concepts')">
+          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+          <span class="tag">επανάληψη</span>
+        </div>
+        <div class="card" onclick="showPage('today')">
+          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+          <span class="tag">ολοκλήρωση</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="missions" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🎯 Αποστολή αυτοκρατορίας</div>
+      <h2>Τι κρατά ενωμένη μια αυτοκρατορία;</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Δρόμοι</h3><p>Γράψε γιατί οι δρόμοι ήταν σημαντικοί.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Νόμοι</h3><p>Γράψε γιατί οι κοινοί νόμοι βοηθούν τους ανθρώπους.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Πόλεις</h3><p>Γράψε έναν δημόσιο χώρο μιας ρωμαϊκής πόλης.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Πολιτισμός</h3><p>Γράψε τι σημαίνει ελληνορωμαϊκός κόσμος.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+      </div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
+</section>
+
+<section id="detective" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🕵️ Βρες την έννοια</div>
+      <h2>Στοιχείο: περίοδος σχετικής ειρήνης, ασφάλειας και ανάπτυξης στη Ρωμαϊκή αυτοκρατορία</h2>
+      <p>Ποια έννοια περιγράφει;</p>
+      <button class="answer detect-answer" onclick="selectDetect(true,this)">Pax Romana</button>
+      <button class="answer detect-answer" onclick="selectDetect(false,this)">Μακεδονική φάλαγγα</button>
+      <button class="answer detect-answer" onclick="selectDetect(false,this)">Β΄ Αποικισμός</button>
+      <div id="detectResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+      <p>
+        <button onclick="checkDetect()">Έλεγχος</button>
+        <button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
+        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="concepts" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
+      <h2>Πώς συνδέονται οι λέξεις;</h2>
+      <div class="concept-map">
+        <div class="bubble main" onclick="concept('Η Ρωμαϊκή αυτοκρατορία διοικεί τεράστιο χώρο με κεντρική εξουσία.')">Αυτοκρατορία</div>
+        <div class="bubble" onclick="concept('Ο Αύγουστος συνδέεται με την αρχή της αυτοκρατορικής εποχής.')">Αύγουστος</div>
+        <div class="bubble" onclick="concept('Η Pax Romana φέρνει ασφάλεια, ειρήνη και ανάπτυξη.')">Pax Romana</div>
+        <div class="bubble" onclick="concept('Οι δρόμοι βοηθούν στρατό, εμπόριο και επικοινωνία.')">δρόμοι</div>
+        <div class="bubble" onclick="concept('Το ρωμαϊκό δίκαιο οργανώνει τη ζωή και τα δικαιώματα.')">δίκαιο</div>
+        <div class="bubble" onclick="concept('Ο ελληνορωμαϊκός κόσμος συνδυάζει ελληνική παιδεία και ρωμαϊκή διοίκηση.')">πολιτισμός</div>
+      </div>
+      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
+</section>
+
+<section id="today" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+      <h2>Checklist Κεφαλαίου 10</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Έμαθα πώς η Ρώμη έγινε αυτοκρατορία.</label>
+        <label><input type="checkbox"> Κατάλαβα τον ρόλο του Αυγούστου.</label>
+        <label><input type="checkbox"> Ξέρω τι σημαίνει Pax Romana.</label>
+        <label><input type="checkbox"> Θυμάμαι τη σημασία δρόμων, πόλεων και νόμων.</label>
+        <label><input type="checkbox"> Κατάλαβα τι είναι ο ελληνορωμαϊκός κόσμος.</label>
+      </div>
+      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+      <div id="badgeBox"></div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
+</section>
+
+<section id="review" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Επανάληψη</div>
+      <h2>Ασκήσεις για το Κεφάλαιο 10</h2>
+      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+      <div id="quizArea"></div>
+      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+      <div id="scoreBox"></div>
+    </div>
+  </div>
+</section>
+
+<section id="glossary" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Μικρό λεξικό</div>
+      <h2>Λέξεις που πρέπει να ξέρω</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Αυτοκρατορία</h3><p>Τεράστιο κράτος που διοικείται από κεντρική εξουσία και περιλαμβάνει πολλούς λαούς.</p></div>
+        <div class="mini"><h3>Αύγουστος</h3><p>Ο πρώτος Ρωμαίος αυτοκράτορας, που συνδέεται με τη σταθερότητα της Ρώμης.</p></div>
+        <div class="mini"><h3>Pax Romana</h3><p>Η περίοδος σχετικής ειρήνης και ασφάλειας στη Ρωμαϊκή αυτοκρατορία.</p></div>
+        <div class="mini"><h3>Επαρχία</h3><p>Περιοχή της αυτοκρατορίας που διοικείται από τη Ρώμη.</p></div>
+        <div class="mini"><h3>Ρωμαϊκό δίκαιο</h3><p>Σύστημα νόμων που βοήθησε την οργάνωση της ρωμαϊκής κοινωνίας.</p></div>
+        <div class="mini"><h3>Ελληνορωμαϊκός κόσμος</h3><p>Κόσμος όπου συνυπάρχουν ρωμαϊκή διοίκηση και ελληνική παιδεία/πολιτισμός.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Κεφάλαιο 10 — Η Ρωμαϊκή αυτοκρατορία</footer>
+
+<script>
+document.querySelectorAll('[data-draw]').forEach(function(el){
+  const id = el.getAttribute('data-draw');
+  el.innerHTML = document.getElementById(id).innerHTML;
+});
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function openLesson(){
+  showPage('chapter10');
+  slide = 0;
+  showSlide();
+}
+
+let slide = 0;
+const slides = document.querySelectorAll('.lesson-slide');
+
+function showSlide(){
+  slides.forEach(s => s.classList.remove('active'));
+  slides[slide].classList.add('active');
+  document.getElementById('counter').textContent = (slide + 1) + ' / ' + slides.length;
+  document.getElementById('progress').style.width = ((slide + 1) / slides.length * 100) + '%';
+  window.scrollTo(0,0);
+}
+
+function nextSlide(){
+  if(slide < slides.length - 1){
+    slide++;
+    showSlide();
+  }
+}
+
+function prevSlide(){
+  if(slide > 0){
+    slide--;
+    showSlide();
+  }
+}
+
+function doneMsg(btn){
+  btn.textContent = '✅ Ολοκληρώθηκε';
+  btn.style.background = '#2d8a4d';
+}
+
+let detectChoice = null;
+let detectButton = null;
+
+function selectDetect(correct, btn){
+  detectChoice = correct;
+  detectButton = btn;
+  document.querySelectorAll('.detect-answer').forEach(b => {
+    b.classList.remove('selected','correct','wrong');
+  });
+  btn.classList.add('selected');
+  document.getElementById('detectResult').textContent = 'Επέλεξες απάντηση. Πάτησε «Έλεγχος» ή άλλαξε επιλογή.';
+}
+
+function checkDetect(){
+  if(detectChoice === null){
+    document.getElementById('detectResult').textContent = 'Πρώτα διάλεξε μία απάντηση.';
+    return;
+  }
+  document.querySelectorAll('.detect-answer').forEach(b => b.classList.remove('correct','wrong'));
+  detectButton.classList.add(detectChoice ? 'correct' : 'wrong');
+  document.getElementById('detectResult').textContent = detectChoice
+    ? 'Σωστά! Αυτή είναι η Pax Romana.'
+    : 'Όχι ακριβώς. Η σωστή απάντηση είναι Pax Romana.';
+}
+
+function resetDetect(){
+  detectChoice = null;
+  detectButton = null;
+  document.querySelectorAll('.detect-answer').forEach(b => {
+    b.classList.remove('selected','correct','wrong');
+  });
+  document.getElementById('detectResult').textContent = 'Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.';
+}
+
+function concept(t){
+  document.getElementById('conceptResult').textContent = t;
+}
+
+function badge(){
+  document.getElementById('badgeBox').innerHTML = '<div class="badge">🏆 Ολοκλήρωσες το Κεφάλαιο 10!</div>';
+}
+
+const questions = [
+  {
+    q:"Ποιος συνδέεται με την αρχή της Ρωμαϊκής αυτοκρατορίας;",
+    options:["Ο Αύγουστος","Ο Περικλής","Ο Όμηρος"],
+    a:0
+  },
+  {
+    q:"Τι σημαίνει Pax Romana;",
+    options:["Περίοδος σχετικής ειρήνης και ασφάλειας","Μακεδονική στρατιωτική παράταξη","Νεολιθικός οικισμός"],
+    a:0
+  },
+  {
+    q:"Τι βοηθούσαν οι ρωμαϊκοί δρόμοι;",
+    options:["Στρατό, εμπόριο και επικοινωνία","Μόνο τη ζωγραφική","Μόνο το κυνήγι"],
+    a:0
+  },
+  {
+    q:"Τι ήταν οι επαρχίες;",
+    options:["Περιοχές της αυτοκρατορίας που διοικούνταν από τη Ρώμη","Ανεξάρτητες νεολιθικές φυλές","Μόνο ελληνικές αποικίες"],
+    a:0
+  },
+  {
+    q:"Τι βοήθησε την οργάνωση της ρωμαϊκής κοινωνίας;",
+    options:["Το ρωμαϊκό δίκαιο","Οι σπηλαιογραφίες","Τα κυκλαδικά ειδώλια"],
+    a:0
+  },
+  {
+    q:"Τι είναι ο ελληνορωμαϊκός κόσμος;",
+    options:["Συνύπαρξη ρωμαϊκής διοίκησης και ελληνικού πολιτισμού","Μόνο η παλιά Σπάρτη","Η Παλαιολιθική εποχή"],
+    a:0
+  }
+];
+
+function renderQuiz(){
+  const area = document.getElementById('quizArea');
+  area.innerHTML = '';
+  questions.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-card';
+    div.innerHTML = '<h3>'+(index+1)+'. '+item.q+'</h3>';
+    item.options.forEach((opt, i) => {
+      div.innerHTML += '<label style="display:block;font-size:22px;margin:10px 0;"><input type="radio" name="q'+index+'" value="'+i+'"> '+opt+'</label>';
+    });
+    area.appendChild(div);
+  });
+}
+
+function gradeQuiz(){
+  let score = 0;
+  questions.forEach((item, index) => {
+    const chosen = document.querySelector('input[name="q'+index+'"]:checked');
+    if(chosen && Number(chosen.value) === item.a) score++;
+  });
+  const box = document.getElementById('scoreBox');
+  box.className = 'score';
+  box.textContent = 'Σκορ: ' + score + ' / ' + questions.length;
+}
+
+function resetReview(){
+  renderQuiz();
+  document.getElementById('scoreBox').className = '';
+  document.getElementById('scoreBox').textContent = '';
+}
+
+renderQuiz();
+showSlide();
+</script>
+
+</body>
+</html>

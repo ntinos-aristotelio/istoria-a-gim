@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Κεφάλαιο 9 - Η Ρώμη και ο ελληνικός κόσμος</title>
+
+<style>
+:root{
+  --paper:#fff8ec; --ink:#2b2118; --brown:#7b421f; --brown2:#a7652d;
+  --green:#246b63; --gold:#d8a24b; --line:#dec199; --ok:#2d8a4d;
+  --bad:#b13f3f; --shadow:0 18px 42px rgba(70,40,18,.18);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Segoe UI",sans-serif;background:linear-gradient(135deg,#f8efdf,#ead1aa);color:var(--ink)}
+header{position:sticky;top:0;z-index:20;background:rgba(255,248,236,.96);border-bottom:1px solid rgba(123,66,31,.18)}
+.bar{max-width:1180px;margin:auto;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;color:var(--brown);font-size:19px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+button,a.btn{border:0;background:var(--brown);color:white;padding:12px 17px;border-radius:15px;font-weight:800;cursor:pointer;font-size:15px;text-decoration:none;display:inline-block}
+button.secondary{background:var(--green)} button.gold{background:var(--gold);color:#2b2118}
+.page{display:none}.page.active{display:block}
+.wrap{max-width:1180px;margin:auto;padding:28px 18px 70px}
+.panel{background:rgba(255,248,236,.98);border:1px solid rgba(123,66,31,.16);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;min-height:80vh}
+.text{padding:42px}
+.eyebrow{color:var(--green);font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(42px,7vw,76px);line-height:.96;color:var(--brown);margin:0 0 18px}
+h2{font-size:clamp(34px,5vw,56px);line-height:1.03;color:#613517;margin:0 0 18px}
+h3{font-size:28px;margin:0 0 10px;color:#613517}
+p,li{font-size:clamp(19px,2.4vw,27px);line-height:1.45}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:24px}
+.card{background:var(--paper);border:1px solid rgba(123,66,31,.16);border-radius:24px;padding:22px;box-shadow:0 8px 22px rgba(70,40,18,.10);cursor:pointer;min-height:220px}
+.card:hover{transform:translateY(-3px)}
+.tag{display:inline-block;background:#e6f2ed;color:#1f5b54;border-radius:999px;padding:7px 12px;font-size:14px;font-weight:900;margin:5px 4px 0 0}
+.icon{font-size:54px;margin-bottom:8px}
+.drawing{min-height:460px;background:#f2dfc2;display:grid;place-items:center;padding:20px}
+.drawing svg{width:100%;max-width:560px;height:auto}
+.lesson-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.progress-wrap{flex:1;height:12px;min-width:170px;background:#e7d2b0;border-radius:999px;overflow:hidden}
+.progress{height:100%;width:0%;background:linear-gradient(90deg,var(--brown2),var(--gold));transition:.25s}
+.lesson-slide{display:none;grid-template-columns:1fr 1fr;min-height:610px}
+.lesson-slide.active{display:grid}
+.box{background:#f0ddbe;border-left:8px solid var(--gold);border-radius:16px;padding:17px;margin-top:18px;font-weight:900}
+.note{background:#e5f0ec;border-left:8px solid var(--green);border-radius:16px;padding:16px;margin-top:18px}
+.lesson-nav{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mini{background:white;border:1px solid var(--line);border-radius:20px;padding:18px}
+.quiz-card{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:16px}
+.answer{display:block;width:100%;margin:10px 0;background:white;color:var(--ink);border:2px solid var(--line);text-align:left;font-size:clamp(18px,2.4vw,24px)}
+.answer.selected{border-color:var(--gold);background:#fff1d6}
+.correct{background:#ddf6e5!important;border-color:var(--ok)!important}
+.wrong{background:#fde2df!important;border-color:var(--bad)!important}
+.score{background:#fff;border:2px dashed var(--gold);border-radius:22px;padding:20px;font-size:28px;font-weight:900;color:var(--brown);margin-top:18px}
+.concept-map{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:22px}
+.bubble{background:#fff;border:3px solid var(--gold);border-radius:999px;padding:18px 22px;font-size:22px;font-weight:900;cursor:pointer}
+.bubble.main{background:var(--brown);color:white;border-color:var(--brown)}
+.checklist label{display:block;background:white;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;font-size:22px}
+.badge{font-size:34px;background:#fff;border:3px dashed var(--gold);border-radius:24px;padding:24px;text-align:center;margin-top:20px}
+footer{text-align:center;padding:30px;color:#6d5a48}
+@media(max-width:850px){.hero{grid-template-columns:1fr;min-height:auto}.hero .drawing{order:-1;min-height:320px}.lesson-slide.active{grid-template-columns:1fr}.lesson-slide>.drawing{order:-1;min-height:300px}.text{padding:28px}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="bar">
+    <div class="logo">🛡️ Κεφάλαιο 9: Η Ρώμη και ο ελληνικός κόσμος</div>
+    <div class="nav">
+      <button onclick="showPage('home')">Αρχή</button>
+      <button onclick="openLesson()">Μάθημα</button>
+      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+      <button onclick="showPage('review')">Επανάληψη</button>
+      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
+    </div>
+  </div>
+</header>
+
+<template id="draw-rome">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
+<rect x="160" y="345" width="90" height="135" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="310" y="315" width="90" height="165" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="460" y="345" width="90" height="135" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M130 345 L355 225 L580 345Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<circle cx="680" cy="380" r="82" fill="#b9422f" stroke="#5b351c" stroke-width="10"/>
+<path d="M680 305 v150 M610 380 h140" stroke="#ffd56d" stroke-width="12"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Η Ρώμη</text>
+<text x="62" y="138" font-size="28" fill="#246b63">μια νέα δύναμη στη Μεσόγειο</text>
+</svg>
+</template>
+
+<template id="draw-italy">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
+<path d="M420 160 C470 230 455 300 515 370 C555 420 535 470 480 500 C455 430 380 390 395 320 C405 270 355 220 420 160Z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
+<circle cx="430" cy="225" r="18" fill="#b9422f"/>
+<path d="M470 390 q60-55 120 0 q-60 40-120 0z" fill="#d6bd8b" stroke="#7b421f" stroke-width="8"/>
+<path d="M250 390 q80-70 160 0 q-80 50-160 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Η Ιταλία</text>
+<text x="62" y="138" font-size="28" fill="#246b63">η Ρώμη ξεκινά από την ιταλική χερσόνησο</text>
+</svg>
+</template>
+
+<template id="draw-republic">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<rect x="150" y="170" width="600" height="330" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<circle cx="270" cy="310" r="45" fill="#c3834b"/><rect x="230" y="360" width="80" height="100" rx="25" fill="#7b421f"/>
+<circle cx="450" cy="280" r="45" fill="#c3834b"/><rect x="410" y="330" width="80" height="130" rx="25" fill="#246b63"/>
+<circle cx="630" cy="310" r="45" fill="#c3834b"/><rect x="590" y="360" width="80" height="100" rx="25" fill="#a7652d"/>
+<path d="M210 470 H690" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ρωμαϊκή πολιτεία</text>
+<text x="62" y="138" font-size="28" fill="#246b63">άρχοντες, Σύγκλητος και λαϊκές συνελεύσεις</text>
+</svg>
+</template>
+
+<template id="draw-legion">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8eef5"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"/>
+<circle cx="250" cy="320" r="34" fill="#c3834b"/><rect x="220" y="355" width="60" height="95" rx="22" fill="#7b421f"/>
+<circle cx="380" cy="320" r="34" fill="#c3834b"/><rect x="350" y="355" width="60" height="95" rx="22" fill="#7b421f"/>
+<circle cx="510" cy="320" r="34" fill="#c3834b"/><rect x="480" y="355" width="60" height="95" rx="22" fill="#7b421f"/>
+<circle cx="640" cy="320" r="34" fill="#c3834b"/><rect x="610" y="355" width="60" height="95" rx="22" fill="#7b421f"/>
+<circle cx="250" cy="420" r="48" fill="#b9422f" stroke="#5b351c" stroke-width="8"/>
+<circle cx="380" cy="420" r="48" fill="#b9422f" stroke="#5b351c" stroke-width="8"/>
+<circle cx="510" cy="420" r="48" fill="#b9422f" stroke="#5b351c" stroke-width="8"/>
+<circle cx="640" cy="420" r="48" fill="#b9422f" stroke="#5b351c" stroke-width="8"/>
+<path d="M725 180 L780 180 L765 470 L705 470Z" fill="#6a6a66" stroke="#333" stroke-width="8"/>
+<path d="M695 180 L790 180 L760 120Z" fill="#4d4d49" stroke="#333" stroke-width="8"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ρωμαϊκός στρατός</text>
+<text x="62" y="138" font-size="28" fill="#246b63">πειθαρχία, λεγεώνες και οργάνωση</text>
+</svg>
+</template>
+
+<template id="draw-mediterranean">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
+<path d="M100 270 q120-95 240 0 q-120 70-240 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
+<path d="M520 330 q120-95 240 0 q-120 70-240 0z" fill="#d6bd8b" stroke="#7b421f" stroke-width="8"/>
+<path d="M350 420 q100 60 200 0 l-45 70 h-110z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
+<path d="M450 420 L450 275" stroke="#7b421f" stroke-width="8"/>
+<path d="M450 280 q90 50 0 105Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Μεσόγειος</text>
+<text x="62" y="138" font-size="28" fill="#246b63">εμπόριο, συγκρούσεις και επέκταση</text>
+</svg>
+</template>
+
+<template id="draw-greece">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
+<rect x="150" y="350" width="80" height="130" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="300" y="320" width="80" height="160" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="450" y="350" width="80" height="130" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M120 350 L340 230 L560 350Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<path d="M650 210 L705 210 L690 485 L630 485Z" fill="#6a6a66" stroke="#333" stroke-width="8"/>
+<path d="M620 210 L715 210 L685 155Z" fill="#4d4d49" stroke="#333" stroke-width="8"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Η Ελλάδα και η Ρώμη</text>
+<text x="62" y="138" font-size="28" fill="#246b63">σύγκρουση αλλά και πολιτισμική επίδραση</text>
+</svg>
+</template>
+
+<template id="draw-province">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<rect x="155" y="170" width="590" height="330" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<path d="M220 240 h180 M220 300 h240 M220 360 h150 M220 420 h260" stroke="#246b63" stroke-width="10" stroke-linecap="round"/>
+<circle cx="620" cy="310" r="75" fill="#d8a24b" stroke="#7b421f" stroke-width="9"/>
+<text x="575" y="335" font-size="65" font-weight="900" fill="#7b421f">SPQR</text>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ρωμαϊκή επαρχία</text>
+<text x="62" y="138" font-size="28" fill="#246b63">νέα διοίκηση, φόροι και ρωμαϊκή εξουσία</text>
+</svg>
+</template>
+
+<template id="draw-culture">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
+<circle cx="260" cy="300" r="95" fill="#dff3ff" stroke="#246b63" stroke-width="10"/>
+<text x="205" y="315" font-size="42" font-weight="900" fill="#246b63">Ελλάδα</text>
+<circle cx="635" cy="300" r="95" fill="#ffe2c2" stroke="#7b421f" stroke-width="10"/>
+<text x="590" y="315" font-size="42" font-weight="900" fill="#7b421f">Ρώμη</text>
+<path d="M360 300 H535" stroke="#a7652d" stroke-width="16" stroke-linecap="round"/>
+<path d="M530 300 l-50 -30 v60z" fill="#a7652d"/>
+<path d="M365 300 l50 -30 v60z" fill="#a7652d"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Πολιτισμική επίδραση</text>
+<text x="62" y="138" font-size="28" fill="#246b63">οι Ρωμαίοι θαυμάζουν τον ελληνικό πολιτισμό</text>
+</svg>
+</template>
+
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel text">
+        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+        <h1>Κεφάλαιο 9<br>Η Ρώμη και ο ελληνικός κόσμος</h1>
+        <p>Στόχος του κεφαλαίου είναι να γνωρίσουμε την άνοδο της Ρώμης και τη σχέση της με τον ελληνικό κόσμο.</p>
+        <div class="box">Κεντρική ιδέα: η Ρώμη κατακτά, αλλά ταυτόχρονα επηρεάζεται βαθιά από τον ελληνικό πολιτισμό.</div>
+        <p>
+          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+        </p>
+      </div>
+      <div class="panel drawing" data-draw="draw-rome"></div>
+    </div>
+  </div>
+</section>
+
+<section id="chapter9" class="page">
+  <div class="wrap">
+    <div class="lesson-top">
+      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+      <div id="counter">1 / 10</div>
+    </div>
+
+    <div class="panel">
+
+      <div class="lesson-slide active">
+        <div class="text">
+          <div class="eyebrow">1. Εισαγωγή</div>
+          <h2>Η άνοδος της Ρώμης</h2>
+          <p>Η Ρώμη από μικρή πόλη της Ιταλίας εξελίσσεται σταδιακά σε μεγάλη δύναμη της Μεσογείου.</p>
+          <div class="box">Βασική ιδέα: η ρωμαϊκή οργάνωση, ο στρατός και η πολιτική ευελιξία βοηθούν τη Ρώμη να επεκταθεί.</div>
+        </div>
+        <div class="drawing" data-draw="draw-rome"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">2. Η Ρώμη στην Ιταλία</div>
+          <h2>Από πόλη σε δύναμη</h2>
+          <p>Η Ρώμη κυριαρχεί πρώτα στην ιταλική χερσόνησο, άλλοτε με πολέμους και άλλοτε με συμμαχίες.</p>
+          <ul>
+            <li>επέκταση στην Ιταλία</li>
+            <li>συμμαχίες</li>
+            <li>ρωμαϊκή διοίκηση</li>
+            <li>ισχυρός στρατός</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί μια πόλη θέλει συμμάχους όταν μεγαλώνει;</div>
+        </div>
+        <div class="drawing" data-draw="draw-italy"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">3. Η ρωμαϊκή πολιτεία</div>
+          <h2>Πώς κυβερνιέται η Ρώμη;</h2>
+          <p>Η Ρώμη οργανώνεται με θεσμούς, άρχοντες, Σύγκλητο και λαϊκές συνελεύσεις.</p>
+          <ul>
+            <li>ύπατοι</li>
+            <li>Σύγκλητος</li>
+            <li>λαϊκές συνελεύσεις</li>
+            <li>νόμοι και καθήκοντα</li>
+          </ul>
+          <div class="box">Κλειδί: η πολιτική οργάνωση βοηθά τη Ρώμη να διοικεί μεγάλο χώρο.</div>
+        </div>
+        <div class="drawing" data-draw="draw-republic"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">4. Ο ρωμαϊκός στρατός</div>
+          <h2>Η δύναμη των λεγεώνων</h2>
+          <p>Ο ρωμαϊκός στρατός είναι πειθαρχημένος και καλά οργανωμένος. Οι λεγεώνες γίνονται βασικό όργανο επέκτασης.</p>
+          <ul>
+            <li>πειθαρχία</li>
+            <li>εκπαίδευση</li>
+            <li>οργάνωση σε λεγεώνες</li>
+            <li>ικανότητα προσαρμογής</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί η οργάνωση είναι τόσο σημαντική σε έναν στρατό;</div>
+        </div>
+        <div class="drawing" data-draw="draw-legion"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">5. Η Ρώμη στη Μεσόγειο</div>
+          <h2>Νέες συγκρούσεις</h2>
+          <p>Καθώς η Ρώμη επεκτείνεται, έρχεται σε σύγκρουση με άλλες δυνάμεις της Μεσογείου.</p>
+          <ul>
+            <li>έλεγχος θαλάσσιων δρόμων</li>
+            <li>εμπόριο</li>
+            <li>συγκρούσεις για δύναμη</li>
+            <li>επέκταση πέρα από την Ιταλία</li>
+          </ul>
+          <div class="box">Κλειδί: η Μεσόγειος γίνεται χώρος ανταγωνισμού.</div>
+        </div>
+        <div class="drawing" data-draw="draw-mediterranean"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">6. Η Ρώμη και οι ελληνιστικοί κόσμοι</div>
+          <h2>Σύγκρουση με ελληνικά κράτη</h2>
+          <p>Η Ρώμη εμπλέκεται σταδιακά στις υποθέσεις του ελληνικού κόσμου και συγκρούεται με ελληνιστικά βασίλεια και πόλεις.</p>
+          <ul>
+            <li>ελληνιστικά βασίλεια</li>
+            <li>συμμαχίες και συγκρούσεις</li>
+            <li>ρωμαϊκή παρέμβαση</li>
+            <li>αλλαγή ισορροπιών</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί μια νέα δύναμη παρεμβαίνει σε περιοχές άλλων λαών;</div>
+        </div>
+        <div class="drawing" data-draw="draw-greece"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">7. Η κατάκτηση της Ελλάδας</div>
+          <h2>Νέα πολιτική πραγματικότητα</h2>
+          <p>Μετά από συγκρούσεις, η Ελλάδα περνά κάτω από ρωμαϊκό έλεγχο. Οι ελληνικές πόλεις χάνουν την πολιτική τους ανεξαρτησία.</p>
+          <ul>
+            <li>ρωμαϊκή κυριαρχία</li>
+            <li>νέα διοίκηση</li>
+            <li>φόροι και έλεγχος</li>
+            <li>μείωση πολιτικής αυτονομίας</li>
+          </ul>
+          <div class="box">Κλειδί: η κατάκτηση αλλάζει την εξουσία, όχι όμως αμέσως τον πολιτισμό.</div>
+        </div>
+        <div class="drawing" data-draw="draw-province"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">8. Οι Ρωμαίοι και ο ελληνικός πολιτισμός</div>
+          <h2>Κατάκτηση και θαυμασμός</h2>
+          <p>Οι Ρωμαίοι κατακτούν τον ελληνικό κόσμο, αλλά θαυμάζουν την ελληνική παιδεία, τέχνη, φιλοσοφία και λογοτεχνία.</p>
+          <ul>
+            <li>ελληνική παιδεία</li>
+            <li>τέχνη και γλυπτική</li>
+            <li>φιλοσοφία</li>
+            <li>ελληνική γλώσσα</li>
+          </ul>
+          <div class="box">Ερώτηση: πώς μπορεί ο κατακτητής να επηρεαστεί από τον κατακτημένο;</div>
+        </div>
+        <div class="drawing" data-draw="draw-culture"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">9. Ένας ελληνορωμαϊκός κόσμος</div>
+          <h2>Συνδυασμός στοιχείων</h2>
+          <p>Με τον χρόνο δημιουργείται ένας κόσμος όπου ρωμαϊκή εξουσία και ελληνικός πολιτισμός συνυπάρχουν.</p>
+          <ul>
+            <li>ρωμαϊκή διοίκηση</li>
+            <li>ελληνική παιδεία</li>
+            <li>πόλεις και εμπόριο</li>
+            <li>πολιτισμική συνέχεια</li>
+          </ul>
+          <div class="box">Κλειδί: η ιστορία δεν είναι μόνο πόλεμοι· είναι και ανταλλαγές πολιτισμού.</div>
+        </div>
+        <div class="drawing" data-draw="draw-culture"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
+          <h2>Σύνοψη Κεφαλαίου 9</h2>
+          <ul>
+            <li>Η Ρώμη από πόλη της Ιταλίας γίνεται μεγάλη μεσογειακή δύναμη.</li>
+            <li>Η πολιτική οργάνωση και ο στρατός βοηθούν την επέκτασή της.</li>
+            <li>Η Ρώμη συγκρούεται με ελληνιστικά κράτη και κυριαρχεί στον ελληνικό χώρο.</li>
+            <li>Οι Έλληνες χάνουν την πολιτική αυτονομία τους.</li>
+            <li>Ο ελληνικός πολιτισμός επηρεάζει βαθιά τους Ρωμαίους.</li>
+          </ul>
+          <p>
+            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+          </p>
+        </div>
+        <div class="drawing" data-draw="draw-rome"></div>
+      </div>
+
+    </div>
+
+    <div class="lesson-nav">
+      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+      <button onclick="nextSlide()">Επόμενο ➡</button>
+    </div>
+  </div>
+</section>
+
+<section id="extras" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Extra για τα παιδιά</div>
+      <h2>Δραστηριότητες Κεφαλαίου 9</h2>
+      <p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε την άνοδο της Ρώμης και τη σχέση της με τους Έλληνες.</p>
+
+      <div class="cards">
+        <div class="card" onclick="showPage('missions')">
+          <div><div class="icon">🎯</div><h3>Αποστολή σύγκρισης</h3><p>Σύγκρινε ελληνικό και ρωμαϊκό κόσμο.</p></div>
+          <span class="tag">δραστηριότητα</span>
+        </div>
+        <div class="card" onclick="showPage('detective')">
+          <div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
+          <span class="tag">παιχνίδι σκέψης</span>
+        </div>
+        <div class="card" onclick="showPage('concepts')">
+          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+          <span class="tag">επανάληψη</span>
+        </div>
+        <div class="card" onclick="showPage('today')">
+          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+          <span class="tag">ολοκλήρωση</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="missions" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🎯 Αποστολή σύγκρισης</div>
+      <h2>Ρώμη και Ελλάδα</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Ρώμη</h3><p>Γράψε 2 στοιχεία που έκαναν τη Ρώμη ισχυρή.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Ελλάδα</h3><p>Γράψε 2 στοιχεία του ελληνικού πολιτισμού που θαύμαζαν οι Ρωμαίοι.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Κατάκτηση</h3><p>Γράψε τι αλλάζει όταν μια περιοχή γίνεται ρωμαϊκή επαρχία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Πολιτισμός</h3><p>Γράψε πώς μπορεί ένας πολιτισμός να επηρεάσει έναν άλλο.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+      </div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
+</section>
+
+<section id="detective" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🕵️ Βρες την έννοια</div>
+      <h2>Στοιχείο: ρωμαϊκή διοίκηση, φόροι και έλεγχος μιας κατακτημένης περιοχής</h2>
+      <p>Ποια έννοια περιγράφει;</p>
+      <button class="answer detect-answer" onclick="selectDetect(true,this)">Ρωμαϊκή επαρχία</button>
+      <button class="answer detect-answer" onclick="selectDetect(false,this)">Μακεδονική φάλαγγα</button>
+      <button class="answer detect-answer" onclick="selectDetect(false,this)">Κοινή ελληνιστική</button>
+      <div id="detectResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+      <p>
+        <button onclick="checkDetect()">Έλεγχος</button>
+        <button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
+        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="concepts" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
+      <h2>Πώς συνδέονται οι λέξεις;</h2>
+      <div class="concept-map">
+        <div class="bubble main" onclick="concept('Η Ρώμη από πόλη της Ιταλίας γίνεται μεγάλη μεσογειακή δύναμη.')">Ρώμη</div>
+        <div class="bubble" onclick="concept('Η οργάνωση της πολιτείας βοηθά τη Ρώμη να διοικεί και να επεκτείνεται.')">πολιτεία</div>
+        <div class="bubble" onclick="concept('Οι λεγεώνες αποτελούν βασικό μέσο της ρωμαϊκής επέκτασης.')">στρατός</div>
+        <div class="bubble" onclick="concept('Η Ελλάδα περνά κάτω από ρωμαϊκό έλεγχο και γίνεται μέρος του ρωμαϊκού κόσμου.')">Ελλάδα</div>
+        <div class="bubble" onclick="concept('Η επαρχία είναι περιοχή που διοικείται από τη Ρώμη.')">επαρχία</div>
+        <div class="bubble" onclick="concept('Ο ελληνικός πολιτισμός επηρεάζει βαθιά τη ρωμαϊκή ζωή.')">πολιτισμός</div>
+      </div>
+      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
+</section>
+
+<section id="today" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+      <h2>Checklist Κεφαλαίου 9</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Έμαθα πώς η Ρώμη έγινε μεγάλη δύναμη.</label>
+        <label><input type="checkbox"> Κατάλαβα τη σημασία της ρωμαϊκής πολιτείας και του στρατού.</label>
+        <label><input type="checkbox"> Ξέρω ότι η Ρώμη επεκτάθηκε στη Μεσόγειο.</label>
+        <label><input type="checkbox"> Θυμάμαι ότι η Ελλάδα πέρασε σε ρωμαϊκό έλεγχο.</label>
+        <label><input type="checkbox"> Κατάλαβα ότι ο ελληνικός πολιτισμός επηρέασε τους Ρωμαίους.</label>
+      </div>
+      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+      <div id="badgeBox"></div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
+</section>
+
+<section id="review" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Επανάληψη</div>
+      <h2>Ασκήσεις για το Κεφάλαιο 9</h2>
+      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+      <div id="quizArea"></div>
+      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+      <div id="scoreBox"></div>
+    </div>
+  </div>
+</section>
+
+<section id="glossary" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Μικρό λεξικό</div>
+      <h2>Λέξεις που πρέπει να ξέρω</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Ρώμη</h3><p>Πόλη της Ιταλίας που εξελίχθηκε σε μεγάλη δύναμη της Μεσογείου.</p></div>
+        <div class="mini"><h3>Σύγκλητος</h3><p>Σημαντικό πολιτικό σώμα της Ρώμης, με μεγάλη επιρροή στη διοίκηση.</p></div>
+        <div class="mini"><h3>Λεγεώνα</h3><p>Βασική στρατιωτική μονάδα του ρωμαϊκού στρατού.</p></div>
+        <div class="mini"><h3>Ρωμαϊκή επαρχία</h3><p>Περιοχή που βρίσκεται κάτω από ρωμαϊκή διοίκηση.</p></div>
+        <div class="mini"><h3>Ρωμαϊκή κυριαρχία</h3><p>Η εξουσία και ο έλεγχος της Ρώμης πάνω σε άλλες περιοχές.</p></div>
+        <div class="mini"><h3>Ελληνορωμαϊκός πολιτισμός</h3><p>Πολιτισμός που συνδυάζει ρωμαϊκά και ελληνικά στοιχεία.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Κεφάλαιο 9 — Η Ρώμη και ο ελληνικός κόσμος</footer>
+
+<script>
+document.querySelectorAll('[data-draw]').forEach(function(el){
+  const id = el.getAttribute('data-draw');
+  el.innerHTML = document.getElementById(id).innerHTML;
+});
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function openLesson(){
+  showPage('chapter9');
+  slide = 0;
+  showSlide();
+}
+
+let slide = 0;
+const slides = document.querySelectorAll('.lesson-slide');
+
+function showSlide(){
+  slides.forEach(s => s.classList.remove('active'));
+  slides[slide].classList.add('active');
+  document.getElementById('counter').textContent = (slide + 1) + ' / ' + slides.length;
+  document.getElementById('progress').style.width = ((slide + 1) / slides.length * 100) + '%';
+  window.scrollTo(0,0);
+}
+
+function nextSlide(){
+  if(slide < slides.length - 1){
+    slide++;
+    showSlide();
+  }
+}
+
+function prevSlide(){
+  if(slide > 0){
+    slide--;
+    showSlide();
+  }
+}
+
+function doneMsg(btn){
+  btn.textContent = '✅ Ολοκληρώθηκε';
+  btn.style.background = '#2d8a4d';
+}
+
+let detectChoice = null;
+let detectButton = null;
+
+function selectDetect(correct, btn){
+  detectChoice = correct;
+  detectButton = btn;
+  document.querySelectorAll('.detect-answer').forEach(b => {
+    b.classList.remove('selected','correct','wrong');
+  });
+  btn.classList.add('selected');
+  document.getElementById('detectResult').textContent = 'Επέλεξες απάντηση. Πάτησε «Έλεγχος» ή άλλαξε επιλογή.';
+}
+
+function checkDetect(){
+  if(detectChoice === null){
+    document.getElementById('detectResult').textContent = 'Πρώτα διάλεξε μία απάντηση.';
+    return;
+  }
+  document.querySelectorAll('.detect-answer').forEach(b => b.classList.remove('correct','wrong'));
+  detectButton.classList.add(detectChoice ? 'correct' : 'wrong');
+  document.getElementById('detectResult').textContent = detectChoice
+    ? 'Σωστά! Αυτή είναι η ρωμαϊκή επαρχία.'
+    : 'Όχι ακριβώς. Η σωστή απάντηση είναι ρωμαϊκή επαρχία.';
+}
+
+function resetDetect(){
+  detectChoice = null;
+  detectButton = null;
+  document.querySelectorAll('.detect-answer').forEach(b => {
+    b.classList.remove('selected','correct','wrong');
+  });
+  document.getElementById('detectResult').textContent = 'Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.';
+}
+
+function concept(t){
+  document.getElementById('conceptResult').textContent = t;
+}
+
+function badge(){
+  document.getElementById('badgeBox').innerHTML = '<div class="badge">🏆 Ολοκλήρωσες το Κεφάλαιο 9!</div>';
+}
+
+const questions = [
+  {
+    q:"Από πού ξεκίνησε η άνοδος της Ρώμης;",
+    options:["Από την ιταλική χερσόνησο","Από την Κρήτη","Από τη Νεολιθική Ανατολή"],
+    a:0
+  },
+  {
+    q:"Ποιο πολιτικό σώμα είχε μεγάλη επιρροή στη Ρώμη;",
+    options:["Η Σύγκλητος","Η Εκκλησία του Δήμου της Αθήνας","Η Γραμμική Β"],
+    a:0
+  },
+  {
+    q:"Ποια ήταν βασική στρατιωτική μονάδα της Ρώμης;",
+    options:["Η λεγεώνα","Η μακεδονική σάρισα","Το κυκλαδικό ειδώλιο"],
+    a:0
+  },
+  {
+    q:"Τι συνέβη στον ελληνικό χώρο μετά τη ρωμαϊκή επέκταση;",
+    options:["Πέρασε σε ρωμαϊκό έλεγχο","Έγινε ξανά μυκηναϊκό ανάκτορο","Έμεινε εντελώς ανεπηρέαστος"],
+    a:0
+  },
+  {
+    q:"Τι θαύμαζαν οι Ρωμαίοι στον ελληνικό κόσμο;",
+    options:["Την παιδεία, την τέχνη και τη φιλοσοφία","Μόνο τα τείχη της Σπάρτης","Μόνο τη γεωργία της Νεολιθικής εποχής"],
+    a:0
+  },
+  {
+    q:"Τι σημαίνει ελληνορωμαϊκός πολιτισμός;",
+    options:["Συνδυασμός ελληνικών και ρωμαϊκών στοιχείων","Πολιτισμός μόνο της Παλαιολιθικής εποχής","Μόνο μία στρατιωτική συμμαχία"],
+    a:0
+  }
+];
+
+function renderQuiz(){
+  const area = document.getElementById('quizArea');
+  area.innerHTML = '';
+  questions.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-card';
+    div.innerHTML = '<h3>'+(index+1)+'. '+item.q+'</h3>';
+    item.options.forEach((opt, i) => {
+      div.innerHTML += '<label style="display:block;font-size:22px;margin:10px 0;"><input type="radio" name="q'+index+'" value="'+i+'"> '+opt+'</label>';
+    });
+    area.appendChild(div);
+  });
+}
+
+function gradeQuiz(){
+  let score = 0;
+  questions.forEach((item, index) => {
+    const chosen = document.querySelector('input[name="q'+index+'"]:checked');
+    if(chosen && Number(chosen.value) === item.a) score++;
+  });
+  const box = document.getElementById('scoreBox');
+  box.className = 'score';
+  box.textContent = 'Σκορ: ' + score + ' / ' + questions.length;
+}
+
+function resetReview(){
+  renderQuiz();
+  document.getElementById('scoreBox').className = '';
+  document.getElementById('scoreBox').textContent = '';
+}
+
+renderQuiz();
+showSlide();
+</script>
+
+</body>
+</html>

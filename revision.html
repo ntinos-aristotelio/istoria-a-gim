@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Γενική Επανάληψη Ιστορίας Α΄ Γυμνασίου</title>
+
+<style>
+:root{
+  --paper:#fff8ec;
+  --ink:#2b2118;
+  --brown:#7b421f;
+  --brown2:#a7652d;
+  --green:#246b63;
+  --gold:#d8a24b;
+  --line:#dec199;
+  --ok:#2d8a4d;
+  --bad:#b13f3f;
+  --blue:#3b8fb0;
+  --shadow:0 18px 42px rgba(70,40,18,.18);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,"Segoe UI",sans-serif;
+  background:linear-gradient(135deg,#f8efdf,#ead1aa);
+  color:var(--ink);
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(255,248,236,.96);
+  border-bottom:1px solid rgba(123,66,31,.18);
+}
+.bar{
+  max-width:1180px;
+  margin:auto;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.logo{
+  font-weight:900;
+  color:var(--brown);
+  font-size:19px;
+}
+.nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+button,a.btn{
+  border:0;
+  background:var(--brown);
+  color:white;
+  padding:12px 17px;
+  border-radius:15px;
+  font-weight:800;
+  cursor:pointer;
+  font-size:15px;
+  text-decoration:none;
+  display:inline-block;
+}
+button.secondary{background:var(--green)}
+button.gold{background:var(--gold);color:#2b2118}
+button.blue{background:var(--blue)}
+.page{display:none}
+.page.active{display:block}
+.wrap{
+  max-width:1180px;
+  margin:auto;
+  padding:28px 18px 70px;
+}
+.panel{
+  background:rgba(255,248,236,.98);
+  border:1px solid rgba(123,66,31,.16);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  align-items:center;
+  min-height:78vh;
+}
+.text{padding:42px}
+.eyebrow{
+  color:var(--green);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+h1{
+  font-size:clamp(42px,7vw,76px);
+  line-height:.96;
+  color:var(--brown);
+  margin:0 0 18px;
+}
+h2{
+  font-size:clamp(34px,5vw,56px);
+  line-height:1.03;
+  color:#613517;
+  margin:0 0 18px;
+}
+h3{
+  font-size:26px;
+  margin:0 0 10px;
+  color:#613517;
+}
+p,li{
+  font-size:clamp(19px,2.4vw,26px);
+  line-height:1.45;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:18px;
+  margin-top:24px;
+}
+.card{
+  background:var(--paper);
+  border:1px solid rgba(123,66,31,.16);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 8px 22px rgba(70,40,18,.10);
+  cursor:pointer;
+  min-height:220px;
+}
+.card:hover{transform:translateY(-3px)}
+.tag{
+  display:inline-block;
+  background:#e6f2ed;
+  color:#1f5b54;
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:14px;
+  font-weight:900;
+  margin:5px 4px 0 0;
+}
+.icon{font-size:54px;margin-bottom:8px}
+.drawing{
+  min-height:460px;
+  background:#f2dfc2;
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+.drawing svg{
+  width:100%;
+  max-width:560px;
+  height:auto;
+}
+.box{
+  background:#f0ddbe;
+  border-left:8px solid var(--gold);
+  border-radius:16px;
+  padding:17px;
+  margin-top:18px;
+  font-weight:900;
+}
+.note{
+  background:#e5f0ec;
+  border-left:8px solid var(--green);
+  border-radius:16px;
+  padding:16px;
+  margin-top:18px;
+}
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.grid3{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+.mini{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+}
+.timeline{
+  display:grid;
+  gap:14px;
+  margin-top:20px;
+}
+.timeitem{
+  background:white;
+  border:2px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  cursor:pointer;
+}
+.timeitem:hover{border-color:var(--gold)}
+.answer{
+  display:block;
+  width:100%;
+  margin:10px 0;
+  background:white;
+  color:var(--ink);
+  border:2px solid var(--line);
+  text-align:left;
+  font-size:clamp(18px,2.4vw,24px);
+}
+.answer.selected{
+  border-color:var(--gold);
+  background:#fff1d6;
+}
+.correct{background:#ddf6e5!important;border-color:var(--ok)!important}
+.wrong{background:#fde2df!important;border-color:var(--bad)!important}
+.quiz-card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:22px;
+  margin-bottom:16px;
+}
+.score{
+  background:#fff;
+  border:2px dashed var(--gold);
+  border-radius:22px;
+  padding:20px;
+  font-size:28px;
+  font-weight:900;
+  color:var(--brown);
+  margin-top:18px;
+}
+.badge{
+  font-size:34px;
+  background:#fff;
+  border:3px dashed var(--gold);
+  border-radius:24px;
+  padding:24px;
+  text-align:center;
+  margin-top:20px;
+}
+.concept-map{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  justify-content:center;
+  margin-top:22px;
+}
+.bubble{
+  background:#fff;
+  border:3px solid var(--gold);
+  border-radius:999px;
+  padding:18px 22px;
+  font-size:22px;
+  font-weight:900;
+  cursor:pointer;
+}
+.bubble.main{
+  background:var(--brown);
+  color:white;
+  border-color:var(--brown);
+}
+.checklist label{
+  display:block;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:14px;
+  margin:10px 0;
+  font-size:22px;
+}
+.challenge-box{
+  background:white;
+  border:2px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  margin-top:18px;
+}
+footer{
+  text-align:center;
+  padding:30px;
+  color:#6d5a48;
+}
+@media(max-width:850px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero .drawing{order:-1;min-height:320px}
+  .text{padding:28px}
+  .grid2{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="bar">
+    <div class="logo">🏛️ Γενική Επανάληψη Ιστορίας Α΄ Γυμνασίου</div>
+    <div class="nav">
+      <button onclick="showPage('home')">Αρχή</button>
+      <button onclick="showPage('map')">Χάρτης</button>
+      <button class="secondary" onclick="showPage('timeline')">Χρονογραμμή</button>
+      <button onclick="showPage('games')">Παιχνίδια</button>
+      <button class="gold" onclick="showPage('megaquiz')">Mega Quiz</button>
+    </div>
+  </div>
+</header>
+
+<template id="draw-cover">
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<circle cx="750" cy="95" r="65" fill="#ffd56d"/>
+<path d="M0 500 C220 420 420 520 900 435 L900 620 L0 620Z" fill="#8abc69"/>
+<rect x="120" y="365" width="95" height="120" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="285" y="330" width="95" height="155" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="450" y="365" width="95" height="120" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M90 365 L330 230 L580 365Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<circle cx="685" cy="385" r="76" fill="#b9422f" stroke="#5b351c" stroke-width="9"/>
+<path d="M685 320 v130 M620 385 h130" stroke="#ffd56d" stroke-width="11"/>
+<path d="M180 210 C300 145 500 145 690 220" fill="none" stroke="#246b63" stroke-width="12" stroke-dasharray="20 16" stroke-linecap="round"/>
+<text x="60" y="90" font-size="50" font-weight="900" fill="#7b421f">Μεγάλη Επανάληψη</text>
+<text x="62" y="138" font-size="28" fill="#246b63">από την Προϊστορία ως τη Ρωμαϊκή αυτοκρατορία</text>
+</svg>
+</template>
+
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel text">
+        <div class="eyebrow">Τελική επανάληψη</div>
+        <h1>Μεγάλο παιχνίδι Ιστορίας</h1>
+        <p>Μια ξεχωριστή εφαρμογή για να κάνουν τα παιδιά επανάληψη σε όλα τα κεφάλαια με χάρτες, παιχνίδια, κουίζ και τελικό badge.</p>
+        <div class="box">Στόχος: να θυμηθούμε τη μεγάλη διαδρομή της Ιστορίας — από την Εποχή του Λίθου μέχρι τη Ρωμαϊκή αυτοκρατορία.</div>
+        <p>
+          <button onclick="showPage('map')">Ξεκίνα από τον χάρτη</button>
+          <button class="secondary" onclick="showPage('games')">Πήγαινε στα παιχνίδια</button>
+          <button class="gold" onclick="showPage('megaquiz')">Mega Quiz</button>
+        </p>
+      </div>
+      <div class="panel drawing" data-draw="draw-cover"></div>
+    </div>
+  </div>
+</section>
+
+<section id="map" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Χάρτης κεφαλαίων</div>
+      <h2>Τι πρέπει να θυμάμαι από κάθε κεφάλαιο;</h2>
+      <div class="cards">
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 1: Η Εποχή του Λίθου — Παλαιολιθική, φωτιά, εργαλεία, Νεολιθική, γεωργία, οικισμοί.')">
+          <div class="icon">🏺</div><h3>1. Εποχή του Λίθου</h3><p>Από το κυνήγι στη γεωργία.</p><span class="tag">Προϊστορία</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 2: Η Εποχή του Χαλκού — Εγγύς Ανατολή, Κυκλαδικός, Μινωικός και Μυκηναϊκός πολιτισμός.')">
+          <div class="icon">🛶</div><h3>2. Εποχή του Χαλκού</h3><p>Πρώτοι μεγάλοι πολιτισμοί στο Αιγαίο.</p><span class="tag">Αιγαίο</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 3: Ο ελληνικός κόσμος 1100-800 π.Χ. — μετακινήσεις, σίδηρος, αλφάβητο, Όμηρος, γεωμετρική τέχνη.')">
+          <div class="icon">📜</div><h3>3. 1100-800 π.Χ.</h3><p>Μετά τους Μυκηναίους, νέα αρχή.</p><span class="tag">Μετάβαση</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 4: Αρχαϊκή εποχή — πόλη-κράτος, αποικισμός, Σπάρτη, Αθήνα, νόμοι, τέχνη.')">
+          <div class="icon">🏛️</div><h3>4. Αρχαϊκή εποχή</h3><p>Πόλη-κράτος και αποικισμός.</p><span class="tag">Θεσμοί</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 5: Η ηγεμονία της Αθήνας — Αθηναϊκή Συμμαχία, στόλος, Περικλής, δημοκρατία, Ακρόπολη, πολιτισμός.')">
+          <div class="icon">🗳️</div><h3>5. Αθήνα</h3><p>Δημοκρατία, συμμαχία και πολιτισμός.</p><span class="tag">Κλασική Αθήνα</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 6: Πελοποννησιακός πόλεμος — Αθήνα εναντίον Σπάρτης, λοιμός, Σικελική εκστρατεία, ήττα Αθήνας.')">
+          <div class="icon">⚔️</div><h3>6. Πελοποννησιακός πόλεμος</h3><p>Η σύγκρουση αποδυναμώνει τον ελληνικό κόσμο.</p><span class="tag">Πόλεμος</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 7: Μακεδονία και Μέγας Αλέξανδρος — Φίλιππος, φάλαγγα, εκστρατεία, Αλεξάνδρειες, ελληνιστικός κόσμος.')">
+          <div class="icon">🦁</div><h3>7. Μακεδονία</h3><p>Φίλιππος και Μέγας Αλέξανδρος.</p><span class="tag">Εκστρατεία</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 8: Ελληνιστικά χρόνια — Διάδοχοι, βασίλεια, κοινή ελληνιστική, Αλεξάνδρεια, Βιβλιοθήκη, επιστήμες.')">
+          <div class="icon">🌍</div><h3>8. Ελληνιστικά χρόνια</h3><p>Συνάντηση ελληνικού και ανατολικών πολιτισμών.</p><span class="tag">Πολιτισμοί</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 9: Η Ρώμη και ο ελληνικός κόσμος — άνοδος Ρώμης, λεγεώνες, κατάκτηση Ελλάδας, ελληνορωμαϊκός πολιτισμός.')">
+          <div class="icon">🛡️</div><h3>9. Ρώμη και Έλληνες</h3><p>Κατάκτηση αλλά και πολιτισμική επίδραση.</p><span class="tag">Ρώμη</span>
+        </div>
+        <div class="card" onclick="chapterInfo('Κεφάλαιο 10: Ρωμαϊκή αυτοκρατορία — Αύγουστος, Pax Romana, δρόμοι, πόλεις, δίκαιο, ελληνορωμαϊκός κόσμος.')">
+          <div class="icon">🏟️</div><h3>10. Ρωμαϊκή αυτοκρατορία</h3><p>Εξουσία, δρόμοι, νόμοι και ειρήνη.</p><span class="tag">Αυτοκρατορία</span>
+        </div>
+      </div>
+      <div id="chapterBox" class="box">Πάτησε ένα κεφάλαιο για να δεις τι πρέπει να θυμάσαι.</div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Χρονογραμμή</div>
+      <h2>Η μεγάλη διαδρομή</h2>
+      <p>Πάτησε κάθε σταθμό και θύμισε στα παιδιά την ιστορική συνέχεια.</p>
+      <div class="timeline">
+        <div class="timeitem" onclick="timeInfo('Εποχή του Λίθου: εργαλεία, φωτιά, κυνήγι, Νεολιθική γεωργία και μόνιμοι οικισμοί.')"><h3>1. Εποχή του Λίθου</h3><p>Ο άνθρωπος αλλάζει τρόπο ζωής.</p></div>
+        <div class="timeitem" onclick="timeInfo('Εποχή του Χαλκού: Κυκλαδικός, Μινωικός και Μυκηναϊκός πολιτισμός.')"><h3>2. Εποχή του Χαλκού</h3><p>Οι πρώτοι μεγάλοι πολιτισμοί του Αιγαίου.</p></div>
+        <div class="timeitem" onclick="timeInfo('1100-800 π.Χ.: μετακινήσεις, σίδηρος, αλφάβητο, Όμηρος και γεωμετρική τέχνη.')"><h3>3. 1100-800 π.Χ.</h3><p>Μεταβατική περίοδος και νέα αρχή.</p></div>
+        <div class="timeitem" onclick="timeInfo('Αρχαϊκή εποχή: πόλη-κράτος, αποικισμός, Σπάρτη, Αθήνα, νόμοι και τέχνη.')"><h3>4. Αρχαϊκή εποχή</h3><p>Η πόλη-κράτος γίνεται βασική οργάνωση.</p></div>
+        <div class="timeitem" onclick="timeInfo('Κλασική Αθήνα: δημοκρατία, Περικλής, Ακρόπολη, θέατρο και πολιτισμός.')"><h3>5. Κλασική Αθήνα</h3><p>Η Αθήνα στην ακμή της.</p></div>
+        <div class="timeitem" onclick="timeInfo('Πελοποννησιακός πόλεμος: Αθήνα και Σπάρτη συγκρούονται και ο ελληνικός κόσμος αποδυναμώνεται.')"><h3>6. Πελοποννησιακός πόλεμος</h3><p>Ο πόλεμος φέρνει εξάντληση.</p></div>
+        <div class="timeitem" onclick="timeInfo('Μακεδονία: Φίλιππος, Αλέξανδρος, εκστρατεία και ελληνιστικός κόσμος.')"><h3>7. Μακεδονία και Αλέξανδρος</h3><p>Ο ελληνικός κόσμος απλώνεται στην Ανατολή.</p></div>
+        <div class="timeitem" onclick="timeInfo('Ελληνιστικά χρόνια: βασίλεια, Αλεξάνδρεια, κοινή ελληνιστική, επιστήμες και τέχνη.')"><h3>8. Ελληνιστικά χρόνια</h3><p>Συνάντηση πολιτισμών.</p></div>
+        <div class="timeitem" onclick="timeInfo('Ρώμη: η νέα δύναμη της Μεσογείου κατακτά, αλλά επηρεάζεται από τον ελληνικό πολιτισμό.')"><h3>9. Ρώμη και ελληνικός κόσμος</h3><p>Κατάκτηση και πολιτισμική επίδραση.</p></div>
+        <div class="timeitem" onclick="timeInfo('Ρωμαϊκή αυτοκρατορία: Αύγουστος, Pax Romana, δρόμοι, πόλεις, δίκαιο και ελληνορωμαϊκός κόσμος.')"><h3>10. Ρωμαϊκή αυτοκρατορία</h3><p>Ένας τεράστιος ενωμένος κόσμος.</p></div>
+      </div>
+      <div id="timeBox" class="box">Πάτησε έναν σταθμό.</div>
+    </div>
+  </div>
+</section>
+
+<section id="games" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Παιχνίδια επανάληψης</div>
+      <h2>Διάλεξε παιχνίδι</h2>
+      <div class="cards">
+        <div class="card" onclick="showPage('whoami')">
+          <div class="icon">🎭</div><h3>Ποιος είμαι;</h3><p>Διάβασε το στοιχείο και βρες το πρόσωπο ή την έννοια.</p><span class="tag">παιχνίδι</span>
+        </div>
+        <div class="card" onclick="showPage('truefalse')">
+          <div class="icon">✅</div><h3>Σωστό ή λάθος;</h3><p>Γρήγορη επανάληψη με προτάσεις.</p><span class="tag">έλεγχος</span>
+        </div>
+        <div class="card" onclick="showPage('concepts')">
+          <div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε λέξεις-κλειδιά και δες τις συνδέσεις.</p><span class="tag">σύνοψη</span>
+        </div>
+        <div class="card" onclick="showPage('final')">
+          <div class="icon">🏆</div><h3>Τελικό challenge</h3><p>Checklist και badge γενικής επανάληψης.</p><span class="tag">ολοκλήρωση</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="whoami" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🎭 Ποιος είμαι;</div>
+      <h2 id="whoQuestion">Πατώντας το κουμπί, θα εμφανιστεί στοιχείο.</h2>
+      <div id="whoOptions"></div>
+      <div id="whoResult" class="box">Πάτησε «Νέα ερώτηση».</div>
+      <p>
+        <button onclick="newWho()">Νέα ερώτηση</button>
+        <button class="secondary" onclick="showPage('games')">← Πίσω στα παιχνίδια</button>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="truefalse" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">✅ Σωστό ή λάθος;</div>
+      <h2 id="tfQuestion">Πάτησε «Νέα πρόταση».</h2>
+      <button class="answer" onclick="checkTF(true,this)">Σωστό</button>
+      <button class="answer" onclick="checkTF(false,this)">Λάθος</button>
+      <div id="tfResult" class="box">Πάτησε «Νέα πρόταση» για να ξεκινήσεις.</div>
+      <p>
+        <button onclick="newTF()">Νέα πρόταση</button>
+        <button class="secondary" onclick="showPage('games')">← Πίσω στα παιχνίδια</button>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="concepts" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
+      <h2>Λέξεις-κλειδιά όλης της χρονιάς</h2>
+      <div class="concept-map">
+        <div class="bubble main" onclick="concept('Η Ιστορία που είδαμε ξεκινά από την Προϊστορία και φτάνει ως τη Ρωμαϊκή αυτοκρατορία.')">Ιστορία</div>
+        <div class="bubble" onclick="concept('Η γεωργία και οι μόνιμοι οικισμοί αλλάζουν τη ζωή του ανθρώπου στη Νεολιθική εποχή.')">γεωργία</div>
+        <div class="bubble" onclick="concept('Το Αιγαίο ενώνει Κυκλαδίτες, Μινωίτες και Μυκηναίους με εμπόριο και επαφές.')">Αιγαίο</div>
+        <div class="bubble" onclick="concept('Η πόλη-κράτος είναι η βασική πολιτική οργάνωση των Ελλήνων στην Αρχαϊκή εποχή.')">πόλη-κράτος</div>
+        <div class="bubble" onclick="concept('Η δημοκρατία της Αθήνας βασίζεται στη συμμετοχή των πολιτών.')">δημοκρατία</div>
+        <div class="bubble" onclick="concept('Ο πόλεμος Αθήνας και Σπάρτης αποδυναμώνει τις ελληνικές πόλεις.')">πόλεμος</div>
+        <div class="bubble" onclick="concept('Ο Αλέξανδρος δημιουργεί έναν κόσμο επαφών ανάμεσα σε Έλληνες και Ανατολή.')">Αλέξανδρος</div>
+        <div class="bubble" onclick="concept('Η κοινή ελληνιστική βοηθά την επικοινωνία στον ελληνιστικό κόσμο.')">κοινή ελληνιστική</div>
+        <div class="bubble" onclick="concept('Η Ρώμη κατακτά, διοικεί και επηρεάζεται από τον ελληνικό πολιτισμό.')">Ρώμη</div>
+        <div class="bubble" onclick="concept('Η Pax Romana είναι περίοδος σχετικής ειρήνης, ασφάλειας και ανάπτυξης.')">Pax Romana</div>
+      </div>
+      <div id="conceptBox" class="box">Πάτησε μια έννοια.</div>
+      <p><button class="secondary" onclick="showPage('games')">← Πίσω στα παιχνίδια</button></p>
+    </div>
+  </div>
+</section>
+
+<section id="megaquiz" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Mega Quiz</div>
+      <h2>20 ερωτήσεις από όλα τα κεφάλαια</h2>
+      <p>Οι μαθητές μπορούν να αλλάζουν απαντήσεις μέχρι να πατήσουν «Έλεγχος απαντήσεων».</p>
+      <div id="quizArea"></div>
+      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button class="secondary" onclick="resetQuiz()">Ξανά από την αρχή</button>
+      <div id="scoreBox"></div>
+    </div>
+  </div>
+</section>
+
+<section id="final" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🏆 Τελικό challenge</div>
+      <h2>Ολοκλήρωση γενικής επανάληψης</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Θυμάμαι τη διαφορά Παλαιολιθικής και Νεολιθικής εποχής.</label>
+        <label><input type="checkbox"> Ξεχωρίζω Κυκλαδικό, Μινωικό και Μυκηναϊκό πολιτισμό.</label>
+        <label><input type="checkbox"> Ξέρω τι είναι πόλη-κράτος και αποικισμός.</label>
+        <label><input type="checkbox"> Θυμάμαι την Αθήνα, τον Περικλή και τη δημοκρατία.</label>
+        <label><input type="checkbox"> Κατάλαβα τις συνέπειες του Πελοποννησιακού πολέμου.</label>
+        <label><input type="checkbox"> Θυμάμαι Μακεδονία, Αλέξανδρο και ελληνιστικό κόσμο.</label>
+        <label><input type="checkbox"> Ξέρω πώς η Ρώμη έγινε μεγάλη δύναμη.</label>
+        <label><input type="checkbox"> Κατάλαβα τι είναι η Ρωμαϊκή αυτοκρατορία και η Pax Romana.</label>
+      </div>
+      <button onclick="finalBadge()">Ολοκλήρωσα τη μεγάλη επανάληψη</button>
+      <div id="finalBadgeBox"></div>
+    </div>
+  </div>
+</section>
+
+<footer>Γενική επανάληψη — Ιστορία Α΄ Γυμνασίου</footer>
+
+<script>
+document.querySelectorAll('[data-draw]').forEach(function(el){
+  const id = el.getAttribute('data-draw');
+  el.innerHTML = document.getElementById(id).innerHTML;
+});
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function chapterInfo(text){
+  document.getElementById('chapterBox').textContent = text;
+}
+
+function timeInfo(text){
+  document.getElementById('timeBox').textContent = text;
+}
+
+function concept(text){
+  document.getElementById('conceptBox').textContent = text;
+}
+
+const whoItems = [
+  {q:'Οργάνωσα τη Μακεδονία και δημιούργησα ισχυρό στρατό. Ποιος είμαι;', options:['Φίλιππος Β΄','Περικλής','Αύγουστος'], a:0},
+  {q:'Συνδέομαι με την ακμή της δημοκρατικής Αθήνας. Ποιος είμαι;', options:['Περικλής','Όμηρος','Δαρείος'], a:0},
+  {q:'Είμαι περίοδος σχετικής ειρήνης στη Ρωμαϊκή αυτοκρατορία. Τι είμαι;', options:['Pax Romana','Νεολιθική εποχή','Σικελική εκστρατεία'], a:0},
+  {q:'Είμαι η ελληνική γλώσσα επικοινωνίας στον ελληνιστικό κόσμο. Τι είμαι;', options:['Κοινή ελληνιστική','Γραμμική Β','Λατινική'], a:0},
+  {q:'Είμαι οργανωμένος στρατιωτικός σχηματισμός με σάρισες. Τι είμαι;', options:['Μακεδονική φάλαγγα','Ρωμαϊκή Σύγκλητος','Κυκλαδικό ειδώλιο'], a:0},
+  {q:'Είμαι μεγάλη πόλη της Αιγύπτου με φάρο και βιβλιοθήκη. Ποια είμαι;', options:['Αλεξάνδρεια','Σπάρτη','Μυκήνες'], a:0}
+];
+
+let currentWho = null;
+
+function newWho(){
+  currentWho = whoItems[Math.floor(Math.random()*whoItems.length)];
+  document.getElementById('whoQuestion').textContent = currentWho.q;
+  const area = document.getElementById('whoOptions');
+  area.innerHTML = '';
+  currentWho.options.forEach((opt, i) => {
+    const b = document.createElement('button');
+    b.className = 'answer';
+    b.textContent = opt;
+    b.onclick = function(){ checkWho(i,b); };
+    area.appendChild(b);
+  });
+  document.getElementById('whoResult').textContent = 'Διάλεξε απάντηση.';
+}
+
+function checkWho(i, btn){
+  document.querySelectorAll('#whoOptions .answer').forEach(b => b.classList.remove('correct','wrong','selected'));
+  btn.classList.add(i === currentWho.a ? 'correct' : 'wrong');
+  document.getElementById('whoResult').textContent = i === currentWho.a ? 'Σωστά!' : 'Όχι ακριβώς. Δοκίμασε νέα ερώτηση ή ξανασκέψου.';
+}
+
+const tfItems = [
+  {q:'Στη Νεολιθική εποχή εμφανίζονται γεωργία και μόνιμοι οικισμοί.', a:true},
+  {q:'Ο Μινωικός πολιτισμός αναπτύχθηκε κυρίως στην ηπειρωτική Ελλάδα.', a:false},
+  {q:'Η Γραμμική Β αποδίδει ελληνική γλώσσα.', a:true},
+  {q:'Η πόλη-κράτος ήταν ανεξάρτητη κοινότητα πολιτών με νόμους.', a:true},
+  {q:'Η Σπάρτη φημιζόταν κυρίως για τη ναυτική δημοκρατία της.', a:false},
+  {q:'Ο Πελοποννησιακός πόλεμος αποδυνάμωσε τον ελληνικό κόσμο.', a:true},
+  {q:'Ο Αλέξανδρος εκστράτευσε εναντίον των Περσών.', a:true},
+  {q:'Η Βιβλιοθήκη της Αλεξάνδρειας ήταν κέντρο γνώσης.', a:true},
+  {q:'Οι Ρωμαίοι δεν επηρεάστηκαν καθόλου από τον ελληνικό πολιτισμό.', a:false},
+  {q:'Η Pax Romana συνδέεται με σχετική ειρήνη και ανάπτυξη.', a:true}
+];
+
+let currentTF = null;
+
+function newTF(){
+  currentTF = tfItems[Math.floor(Math.random()*tfItems.length)];
+  document.getElementById('tfQuestion').textContent = currentTF.q;
+  document.querySelectorAll('#truefalse .answer').forEach(b => b.classList.remove('correct','wrong'));
+  document.getElementById('tfResult').textContent = 'Διάλεξε Σωστό ή Λάθος.';
+}
+
+function checkTF(value, btn){
+  if(!currentTF){
+    document.getElementById('tfResult').textContent = 'Πάτησε πρώτα «Νέα πρόταση».';
+    return;
+  }
+  document.querySelectorAll('#truefalse .answer').forEach(b => b.classList.remove('correct','wrong'));
+  btn.classList.add(value === currentTF.a ? 'correct' : 'wrong');
+  document.getElementById('tfResult').textContent = value === currentTF.a ? 'Σωστά!' : 'Λάθος απάντηση. Ξανασκέψου την πρόταση.';
+}
+
+const questions = [
+  {q:'Τι χαρακτηρίζει τη Νεολιθική εποχή;', options:['Γεωργία και μόνιμοι οικισμοί','Μόνο κυνήγι','Ρωμαϊκοί δρόμοι'], a:0},
+  {q:'Ποιος πολιτισμός αναπτύχθηκε κυρίως στην Κρήτη;', options:['Μινωικός','Κυκλαδικός','Ρωμαϊκός'], a:0},
+  {q:'Ποιος πολιτισμός συνδέεται με κυκλώπεια τείχη;', options:['Μυκηναϊκός','Μινωικός','Κυκλαδικός'], a:0},
+  {q:'Ποια περίοδος συνδέεται με σίδηρο, αλφάβητο και Όμηρο;', options:['1100-800 π.Χ.','Παλαιολιθική','Ρωμαϊκή αυτοκρατορία'], a:0},
+  {q:'Τι είναι πόλη-κράτος;', options:['Ανεξάρτητη κοινότητα πολιτών με νόμους','Μεγάλη βιβλιοθήκη','Στρατιωτικό όπλο'], a:0},
+  {q:'Τι ήταν ο Β΄ ελληνικός αποικισμός;', options:['Ίδρυση νέων πόλεων από Έλληνες','Κατάκτηση της Ελλάδας από Ρώμη','Εκστρατεία στη Σικελία'], a:0},
+  {q:'Ποια πόλη συνδέεται με στρατιωτική αγωγή;', options:['Σπάρτη','Αθήνα','Αλεξάνδρεια'], a:0},
+  {q:'Ποιος συνδέεται με την ακμή της Αθήνας;', options:['Περικλής','Αύγουστος','Φίλιππος Β΄'], a:0},
+  {q:'Τι ήταν η Α΄ Αθηναϊκή Συμμαχία;', options:['Συμμαχία πόλεων με ηγετική Αθήνα','Ρωμαϊκή επαρχία','Μακεδονική φάλαγγα'], a:0},
+  {q:'Τι συνέβη στον Πελοποννησιακό πόλεμο;', options:['Συγκρούστηκαν Αθήνα και Σπάρτη','Οι Ρωμαίοι ίδρυσαν τη Ρώμη','Οι Κυκλάδες ανακάλυψαν τη γεωργία'], a:0},
+  {q:'Ποια εκστρατεία ήταν μεγάλη αποτυχία της Αθήνας;', options:['Σικελική εκστρατεία','Εκστρατεία του Αλεξάνδρου','Β΄ αποικισμός'], a:0},
+  {q:'Ποιος οργάνωσε τη Μακεδονία σε ισχυρό κράτος;', options:['Φίλιππος Β΄','Όμηρος','Σόλων'], a:0},
+  {q:'Τι ήταν η μακεδονική φάλαγγα;', options:['Στρατιωτικός σχηματισμός με σάρισες','Πολίτευμα της Αθήνας','Ρωμαϊκός δρόμος'], a:0},
+  {q:'Εναντίον ποιας δύναμης εκστράτευσε ο Αλέξανδρος;', options:['Περσών','Ρωμαίων','Κυκλαδιτών'], a:0},
+  {q:'Τι είναι ο ελληνιστικός κόσμος;', options:['Κόσμος επαφών ελληνικού και ανατολικών πολιτισμών','Μόνο η Αθήνα','Η Νεολιθική εποχή'], a:0},
+  {q:'Ποια πόλη έγινε κέντρο γνώσης στα ελληνιστικά χρόνια;', options:['Αλεξάνδρεια','Σπάρτη','Μυκήνες'], a:0},
+  {q:'Τι ήταν η κοινή ελληνιστική;', options:['Γλώσσα επικοινωνίας','Σπαρτιατικό όπλο','Ρωμαϊκή λεγεώνα'], a:0},
+  {q:'Ποια ήταν βασική στρατιωτική μονάδα της Ρώμης;', options:['Λεγεώνα','Φάλαγγα με σάρισες','Κυκλαδικό ειδώλιο'], a:0},
+  {q:'Τι θαύμαζαν οι Ρωμαίοι στον ελληνικό κόσμο;', options:['Παιδεία, τέχνη και φιλοσοφία','Μόνο τη φωτιά','Μόνο το κυνήγι'], a:0},
+  {q:'Τι σημαίνει Pax Romana;', options:['Περίοδος σχετικής ειρήνης και ανάπτυξης','Ελληνιστική γλώσσα','Μινωικό ανάκτορο'], a:0}
+];
+
+function renderQuiz(){
+  const area = document.getElementById('quizArea');
+  area.innerHTML = '';
+  questions.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-card';
+    div.innerHTML = '<h3>'+(index+1)+'. '+item.q+'</h3>';
+    item.options.forEach((opt, i) => {
+      div.innerHTML += '<label style="display:block;font-size:22px;margin:10px 0;"><input type="radio" name="q'+index+'" value="'+i+'"> '+opt+'</label>';
+    });
+    area.appendChild(div);
+  });
+}
+
+function gradeQuiz(){
+  let score = 0;
+  questions.forEach((item, index) => {
+    const chosen = document.querySelector('input[name="q'+index+'"]:checked');
+    if(chosen && Number(chosen.value) === item.a) score++;
+  });
+  const box = document.getElementById('scoreBox');
+  box.className = 'score';
+  let message = 'Σκορ: ' + score + ' / ' + questions.length;
+  if(score >= 18){ message += ' 🏆 Εξαιρετικά!'; }
+  else if(score >= 14){ message += ' ✅ Πολύ καλή προσπάθεια!'; }
+  else if(score >= 10){ message += ' 👍 Καλή αρχή, θέλει λίγη επανάληψη.'; }
+  else { message += ' 📚 Πάμε ξανά με τον χάρτη κεφαλαίων.'; }
+  box.textContent = message;
+}
+
+function resetQuiz(){
+  renderQuiz();
+  document.getElementById('scoreBox').className = '';
+  document.getElementById('scoreBox').textContent = '';
+}
+
+function finalBadge(){
+  document.getElementById('finalBadgeBox').innerHTML = '<div class="badge">🏆 Ολοκλήρωσες τη Μεγάλη Επανάληψη Ιστορίας Α΄ Γυμνασίου!</div>';
+}
+
+renderQuiz();
+</script>
+
+</body>
+</html>
