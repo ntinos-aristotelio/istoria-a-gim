@@ -1,295 +1,559 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Η Εποχή του Λίθου</title>
-
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#efe4d2;
-  color:#2f2418;
-}
-.slide{
-  min-height:100vh;
-  display:none;
-  padding:20px 20px 120px;
-}
-.active{display:flex;align-items:center;justify-content:center}
-.card{
-  width:100%;
-  max-width:1100px;
-  background:#fff8ef;
-  border-radius:28px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.18);
-}
-.top{
-  background:#7b4b2a;
-  color:white;
-  padding:14px 22px;
-  font-weight:bold;
-  font-size:18px;
-}
-.content{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-}
-.text{
-  padding:40px;
-}
-.image{
-  min-height:420px;
-  background-size:cover;
-  background-position:center;
-}
-
-h1{
-  font-size:60px;
-  margin:0 0 10px;
-  color:#9b5c26;
-}
-h2{
-  font-size:44px;
-  margin-top:0;
-  color:#7b4b2a;
-}
-p,li{
-  font-size:26px;
-  line-height:1.5;
-}
-.question{
-  background:#f0ddbf;
-  padding:18px;
-  border-left:8px solid #d39a3c;
-  border-radius:14px;
-  margin-top:25px;
-  font-weight:bold;
-}
-button{
-  border:none;
-  background:#9b5c26;
-  color:white;
-  padding:15px 20px;
-  border-radius:16px;
-  font-size:20px;
-  cursor:pointer;
-}
-.nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#fff8ef;
-  border-top:2px solid #d8b88c;
-  padding:12px;
-  display:flex;
-  justify-content:center;
-  gap:10px;
-}
-.answer{
-  display:block;
-  width:100%;
-  margin:10px 0;
-  background:white;
-  color:#2f2418;
-  border:2px solid #d8b88c;
-  text-align:left;
-}
-.correct{background:#dff6e7!important}
-.wrong{background:#fde2e2!important}
-
-.hero{
-background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Cave_painting_of_a_bull.jpg/1280px-Cave_painting_of_a_bull.jpg');
-}
-
-.hunt{
-background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Hunting_scene.jpg/1280px-Hunting_scene.jpg');
-}
-
-.fire{
-background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Campfire.jpg/1280px-Campfire.jpg');
-}
-
-.village{
-background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Catalhoyuk_replica.jpg/1280px-Catalhoyuk_replica.jpg');
-}
-
-.quiz{
-background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Stone_tools.jpg/1280px-Stone_tools.jpg');
-}
-
-@media(max-width:850px){
-  .content{grid-template-columns:1fr}
-  .image{min-height:260px}
-  h1{font-size:42px}
-  h2{font-size:34px}
-  p,li{font-size:22px}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ψηφιακή Ιστορία Α΄ Γυμνασίου</title>
+  <style>
+    :root{
+      --bg:#f4eadb;
+      --paper:#fff8ed;
+      --ink:#2d2117;
+      --muted:#715f4d;
+      --brown:#86512a;
+      --brown-dark:#5a351d;
+      --gold:#d6a04a;
+      --green:#2f6f68;
+      --red:#a33a34;
+      --line:#dec39a;
+      --shadow:0 18px 45px rgba(70,43,20,.20);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left,rgba(214,160,74,.28),transparent 35%),
+        linear-gradient(135deg,#f8efe1,#ead7bd);
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,248,237,.94);
+      border-bottom:1px solid rgba(134,81,42,.22);
+      backdrop-filter:blur(10px);
+    }
+    .bar{
+      max-width:1150px;
+      margin:auto;
+      padding:12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .logo{
+      font-weight:900;
+      color:var(--brown);
+      font-size:17px;
+    }
+    nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav button,.btn{
+      border:0;
+      background:var(--brown);
+      color:white;
+      padding:11px 15px;
+      border-radius:14px;
+      font-weight:800;
+      cursor:pointer;
+      font-size:15px;
+      box-shadow:0 7px 16px rgba(134,81,42,.18);
+    }
+    nav button.secondary,.btn.secondary{background:var(--green)}
+    .page{display:none}
+    .page.active{display:block}
+    .wrap{
+      max-width:1150px;
+      margin:auto;
+      padding:26px 16px 60px;
+    }
+    .hero{
+      min-height:calc(100vh - 80px);
+      display:grid;
+      align-items:center;
+      grid-template-columns:1.05fr .95fr;
+      gap:24px;
+    }
+    .panel{
+      background:rgba(255,248,237,.95);
+      border:1px solid rgba(134,81,42,.22);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero-text{padding:42px}
+    .eyebrow{
+      color:var(--green);
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    h1{
+      font-size:clamp(42px,7vw,78px);
+      line-height:.95;
+      margin:0 0 18px;
+      color:var(--brown);
+    }
+    h2{
+      font-size:clamp(32px,5vw,54px);
+      line-height:1;
+      margin:0 0 18px;
+      color:var(--brown-dark);
+    }
+    h3{
+      font-size:clamp(23px,3vw,32px);
+      margin:0 0 10px;
+      color:var(--brown-dark);
+    }
+    p,li{
+      font-size:clamp(19px,2.5vw,27px);
+      line-height:1.45;
+    }
+    .hero-img{
+      min-height:520px;
+      background:
+        linear-gradient(rgba(38,25,15,.05),rgba(38,25,15,.36)),
+        url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Cave_painting_of_a_bull.jpg/1280px-Cave_painting_of_a_bull.jpg");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:end;
+      padding:24px;
+    }
+    .label{
+      background:rgba(255,248,237,.93);
+      padding:12px 16px;
+      border-radius:999px;
+      font-weight:900;
+      color:var(--brown-dark);
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+    .chapter-card{
+      background:var(--paper);
+      border:1px solid rgba(134,81,42,.22);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 8px 24px rgba(70,43,20,.10);
+      cursor:pointer;
+      transition:.18s;
+      min-height:210px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .chapter-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .tag{
+      display:inline-block;
+      background:#e6f1ed;
+      color:#225b55;
+      border-radius:999px;
+      padding:7px 11px;
+      font-weight:900;
+      font-size:14px;
+      margin:4px 4px 0 0;
+    }
+    .locked{opacity:.55;cursor:not-allowed}
+    .locked:hover{transform:none;box-shadow:0 8px 24px rgba(70,43,20,.10)}
+    .intro-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+    .mini{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+    }
+    .lesson-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:16px;
+      flex-wrap:wrap;
+    }
+    .progress-wrap{
+      flex:1;
+      min-width:200px;
+      height:12px;
+      background:#e5d2b5;
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .progress{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--brown),var(--gold));
+      transition:.25s;
+    }
+    .lesson-slide{display:none}
+    .lesson-slide.active{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      min-height:560px;
+    }
+    .lesson-text{padding:40px}
+    .lesson-img{
+      min-height:420px;
+      background-size:cover;
+      background-position:center;
+    }
+    .img-cave{background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Cave_painting_of_a_bull.jpg/1280px-Cave_painting_of_a_bull.jpg")}
+    .img-tools{background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Stone_tools.jpg/1280px-Stone_tools.jpg")}
+    .img-fire{background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Campfire.jpg/1280px-Campfire.jpg")}
+    .img-village{background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Catalhoyuk_replica.jpg/1280px-Catalhoyuk_replica.jpg")}
+    .question-box{
+      background:#f0ddbf;
+      border-left:8px solid var(--gold);
+      padding:18px;
+      border-radius:16px;
+      margin-top:20px;
+      font-weight:900;
+    }
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+    .compare div{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+    .answer{
+      display:block;
+      width:100%;
+      border:2px solid var(--line);
+      background:white;
+      color:var(--ink);
+      text-align:left;
+      padding:15px;
+      border-radius:16px;
+      margin:10px 0;
+      font-size:clamp(18px,2.4vw,24px);
+      cursor:pointer;
+    }
+    .correct{background:#e1f5e8!important;border-color:#2f8f55!important}
+    .wrong{background:#fde2df!important;border-color:var(--red)!important}
+    .lesson-nav{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .small{
+      font-size:16px;
+      color:var(--muted);
+    }
+    footer{
+      padding:30px;
+      text-align:center;
+      color:var(--muted);
+    }
+    @media(max-width:850px){
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero-img{min-height:260px;order:-1}
+      .hero-text{padding:28px}
+      .lesson-slide.active{grid-template-columns:1fr}
+      .lesson-img{min-height:240px;order:-1}
+      .lesson-text{padding:26px}
+      .compare{grid-template-columns:1fr}
+      nav button{font-size:14px;padding:9px 11px}
+    }
+  </style>
 </head>
-
 <body>
 
-<section class="slide active">
-<div class="card">
-<div class="top">Ιστορία Α΄ Γυμνασίου</div>
-<div class="content">
-<div class="text">
-<h1>Η Εποχή του Λίθου</h1>
-<p>Παλαιολιθική και Νεολιθική εποχή</p>
+<header>
+  <div class="bar">
+    <div class="logo">Ψηφιακή Ιστορία Α΄ Γυμνασίου</div>
+    <nav>
+      <button onclick="showPage('home')">Αρχική</button>
+      <button onclick="showPage('contents')" class="secondary">Περιεχόμενα</button>
+      <button onclick="openChapter1()">Κεφάλαιο 1</button>
+    </nav>
+  </div>
+</header>
 
-<div class="question">
-Πώς θα ζούσες χωρίς σπίτια, ρεύμα και σούπερ μάρκετ;
-</div>
-</div>
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel hero-text">
+        <div class="eyebrow">Online μάθημα για την τάξη</div>
+        <h1>Ένα ταξίδι στην Αρχαία Ιστορία</h1>
+        <p>Μαθαίνουμε την Ιστορία με εικόνες, ερωτήσεις, αποστολές και μικρά κουίζ.</p>
+        <p>Το υλικό είναι φτιαγμένο για χρήση σε υπολογιστή, tablet, κινητό, προβολέα ή OneNote.</p>
+        <button class="btn" onclick="showPage('contents')">Ξεκίνα από τα περιεχόμενα</button>
+      </div>
+      <div class="panel hero-img">
+        <span class="label">Από την Προϊστορία μέχρι τον αρχαίο κόσμο</span>
+      </div>
+    </div>
 
-<div class="image hero"></div>
-</div>
-</div>
+    <div class="intro-grid">
+      <div class="mini">
+        <h3>Για μαθητές</h3>
+        <p>Λίγα λόγια, καθαρές εικόνες και ερωτήσεις για σκέψη.</p>
+      </div>
+      <div class="mini">
+        <h3>Για την τάξη</h3>
+        <p>Μπορεί να προβληθεί στον πίνακα και να συζητηθεί προφορικά.</p>
+      </div>
+      <div class="mini">
+        <h3>Για επανάληψη</h3>
+        <p>Στο τέλος κάθε κεφαλαίου υπάρχει μικρό κουίζ.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="slide">
-<div class="card">
-<div class="top">Παλαιολιθική Εποχή</div>
-<div class="content">
-<div class="text">
-<h2>Η ζωή των πρώτων ανθρώπων</h2>
+<section id="contents" class="page">
+  <div class="wrap">
+    <div class="panel hero-text">
+      <div class="eyebrow">Περιεχόμενα</div>
+      <h2>Διάλεξε κεφάλαιο</h2>
+      <p>Ξεκινάμε με την Προϊστορία και σταδιακά θα προσθέτουμε όλο το βιβλίο.</p>
+    </div>
 
-<ul>
-<li>κυνήγι</li>
-<li>συλλογή καρπών</li>
-<li>μετακίνηση</li>
-<li>σπήλαια</li>
-</ul>
+    <div class="cards">
+      <div class="chapter-card" onclick="openChapter1()">
+        <div>
+          <h3>🏺 Κεφάλαιο 1<br>Η Εποχή του Λίθου</h3>
+          <p>Παλαιολιθική και Νεολιθική εποχή.</p>
+        </div>
+        <div>
+          <span class="tag">διαθέσιμο</span>
+          <span class="tag">κουίζ</span>
+        </div>
+      </div>
 
-<div class="question">
-Γιατί μετακινούνταν συνεχώς;
-</div>
-</div>
+      <div class="chapter-card locked">
+        <div>
+          <h3>🛶 Κεφάλαιο 2<br>Η Εποχή του Χαλκού</h3>
+          <p>Κυκλαδικός, Μινωικός και Μυκηναϊκός πολιτισμός.</p>
+        </div>
+        <span class="tag">έρχεται σύντομα</span>
+      </div>
 
-<div class="image hunt"></div>
-</div>
-</div>
+      <div class="chapter-card locked">
+        <div>
+          <h3>🏛️ Κεφάλαιο 3<br>Ιστορικοί χρόνοι</h3>
+          <p>Μεταβατικοί χρόνοι, αλφάβητο και γεωμετρική τέχνη.</p>
+        </div>
+        <span class="tag">έρχεται σύντομα</span>
+      </div>
+
+      <div class="chapter-card locked">
+        <div>
+          <h3>⚓ Κεφάλαιο 4<br>Αρχαϊκή εποχή</h3>
+          <p>Πόλη-κράτος, αποικισμός, Σπάρτη και Αθήνα.</p>
+        </div>
+        <span class="tag">έρχεται σύντομα</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="slide">
-<div class="card">
-<div class="top">Η Φωτιά</div>
-<div class="content">
-<div class="text">
-<h2>Η μεγάλη ανακάλυψη</h2>
+<section id="chapter1" class="page">
+  <div class="wrap">
+    <div class="lesson-top">
+      <button class="btn secondary" onclick="showPage('contents')">← Περιεχόμενα</button>
+      <div class="progress-wrap"><div class="progress" id="lessonProgress"></div></div>
+      <div class="small" id="lessonCounter">1 / 7</div>
+    </div>
 
-<p>Η φωτιά βοήθησε τους ανθρώπους:</p>
+    <div class="panel">
+      <div class="lesson-slide active">
+        <div class="lesson-text">
+          <div class="eyebrow">Κεφάλαιο 1</div>
+          <h2>Η Εποχή του Λίθου</h2>
+          <p>Σήμερα θα δούμε πώς ζούσαν οι πρώτοι άνθρωποι και πώς άλλαξε η ζωή τους όταν έμαθαν να παράγουν τροφή.</p>
+          <div class="question-box">Ερώτηση εκκίνησης: Πώς θα ζούσες χωρίς σπίτι, ρεύμα και σούπερ μάρκετ;</div>
+        </div>
+        <div class="lesson-img img-cave"></div>
+      </div>
 
-<ul>
-<li>να ζεσταίνονται</li>
-<li>να μαγειρεύουν</li>
-<li>να προστατεύονται</li>
-</ul>
+      <div class="lesson-slide">
+        <div class="lesson-text">
+          <div class="eyebrow">Παλαιολιθική εποχή</div>
+          <h2>Ζωή σε κίνηση</h2>
+          <ul>
+            <li>κυνήγι</li>
+            <li>συλλογή καρπών</li>
+            <li>μετακίνηση</li>
+            <li>σπήλαια και πρόχειρα καταλύματα</li>
+          </ul>
+          <div class="question-box">Γιατί οι άνθρωποι μετακινούνταν συχνά;</div>
+        </div>
+        <div class="lesson-img img-tools"></div>
+      </div>
 
-<div class="question">
-Ποια χρήση της φωτιάς ήταν πιο σημαντική;
-</div>
-</div>
+      <div class="lesson-slide">
+        <div class="lesson-text">
+          <div class="eyebrow">Ανακάλυψη</div>
+          <h2>Η φωτιά</h2>
+          <p>Η φωτιά βοήθησε τον άνθρωπο να ζεσταίνεται, να μαγειρεύει, να βλέπει στο σκοτάδι και να προστατεύεται.</p>
+          <div class="question-box">Ποια χρήση της φωτιάς ήταν πιο σημαντική για την επιβίωση;</div>
+        </div>
+        <div class="lesson-img img-fire"></div>
+      </div>
 
-<div class="image fire"></div>
-</div>
-</div>
+      <div class="lesson-slide">
+        <div class="lesson-text">
+          <div class="eyebrow">Νεολιθική εποχή</div>
+          <h2>Η ζωή αλλάζει</h2>
+          <ul>
+            <li>γεωργία</li>
+            <li>κτηνοτροφία</li>
+            <li>σπίτια</li>
+            <li>μόνιμοι οικισμοί</li>
+          </ul>
+          <div class="question-box">Τώρα οι άνθρωποι δεν ψάχνουν απλώς τροφή. Την παράγουν.</div>
+        </div>
+        <div class="lesson-img img-village"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="lesson-text">
+          <div class="eyebrow">Σύγκριση</div>
+          <h2>Πριν και μετά</h2>
+          <div class="compare">
+            <div>
+              <h3>Παλαιολιθική</h3>
+              <ul>
+                <li>μετακίνηση</li>
+                <li>κυνήγι</li>
+                <li>τροφοσυλλογή</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Νεολιθική</h3>
+              <ul>
+                <li>μόνιμη εγκατάσταση</li>
+                <li>γεωργία</li>
+                <li>κτηνοτροφία</li>
+              </ul>
+            </div>
+          </div>
+          <div class="question-box">Ποια αλλαγή θεωρείς πιο σημαντική;</div>
+        </div>
+        <div class="lesson-img img-village"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="lesson-text">
+          <div class="eyebrow">Αποστολή μαθητή</div>
+          <h2>Γίνε αρχαιολόγος</h2>
+          <p>Βρήκες έναν νεολιθικό οικισμό. Ποια 3 στοιχεία θα έδειχναν ότι οι άνθρωποι ζούσαν μόνιμα;</p>
+          <div>
+            <span class="tag">σπίτια</span>
+            <span class="tag">αγγεία</span>
+            <span class="tag">εργαλεία</span>
+            <span class="tag">σπόροι</span>
+            <span class="tag">ζώα</span>
+          </div>
+        </div>
+        <div class="lesson-img img-tools"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="lesson-text">
+          <div class="eyebrow">Κουίζ</div>
+          <h2>Τι θυμάσαι;</h2>
+          <p id="quizQuestion">Τι χαρακτηρίζει τη Νεολιθική εποχή;</p>
+          <button class="answer" onclick="answer(false,this)">Το συνεχές κυνήγι και η μετακίνηση</button>
+          <button class="answer" onclick="answer(true,this)">Η γεωργία και οι μόνιμοι οικισμοί</button>
+          <button class="answer" onclick="answer(false,this)">Τα αυτοκίνητα και οι μεγάλες πόλεις</button>
+          <p id="feedback"></p>
+        </div>
+        <div class="lesson-img img-cave"></div>
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn secondary" onclick="prevLesson()">← Πίσω</button>
+      <button class="btn" onclick="nextLesson()">Επόμενο →</button>
+    </div>
+  </div>
 </section>
 
-<section class="slide">
-<div class="card">
-<div class="top">Νεολιθική Εποχή</div>
-<div class="content">
-<div class="text">
-<h2>Η ζωή αλλάζει</h2>
-
-<ul>
-<li>γεωργία</li>
-<li>κτηνοτροφία</li>
-<li>σπίτια</li>
-<li>μόνιμοι οικισμοί</li>
-</ul>
-
-<div class="question">
-Οι άνθρωποι πλέον παράγουν την τροφή τους.
-</div>
-</div>
-
-<div class="image village"></div>
-</div>
-</div>
-</section>
-
-<section class="slide">
-<div class="card">
-<div class="top">Κουίζ</div>
-<div class="content">
-<div class="text">
-<h2>Τι θυμάσαι;</h2>
-
-<p>Τι χαρακτηρίζει τη Νεολιθική εποχή;</p>
-
-<button class="answer" onclick="check(false,this)">Το συνεχές κυνήγι</button>
-<button class="answer" onclick="check(true,this)">Η γεωργία και οι οικισμοί</button>
-<button class="answer" onclick="check(false,this)">Τα αυτοκίνητα</button>
-
-<p id="feedback"></p>
-</div>
-
-<div class="image quiz"></div>
-</div>
-</div>
-</section>
-
-<div class="nav">
-<button onclick="prevSlide()">⬅ Πίσω</button>
-<button onclick="nextSlide()">Επόμενο ➡</button>
-</div>
+<footer>
+  Ψηφιακό υλικό Ιστορίας Α΄ Γυμνασίου
+</footer>
 
 <script>
-let current=0;
-const slides=document.querySelectorAll(".slide");
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0,0);
+  }
 
-function showSlide(i){
-slides.forEach(s=>s.classList.remove("active"));
-slides[i].classList.add("active");
-window.scrollTo(0,0);
-}
+  function openChapter1(){
+    showPage('chapter1');
+    lessonIndex=0;
+    showLesson();
+  }
 
-function nextSlide(){
-if(current<slides.length-1){
-current++;
-showSlide(current);
-}
-}
+  let lessonIndex=0;
+  const lessonSlides=document.querySelectorAll('.lesson-slide');
 
-function prevSlide(){
-if(current>0){
-current--;
-showSlide(current);
-}
-}
+  function showLesson(){
+    lessonSlides.forEach(s=>s.classList.remove('active'));
+    lessonSlides[lessonIndex].classList.add('active');
+    document.getElementById('lessonCounter').textContent=(lessonIndex+1)+' / '+lessonSlides.length;
+    document.getElementById('lessonProgress').style.width=((lessonIndex+1)/lessonSlides.length*100)+'%';
+    window.scrollTo(0,0);
+  }
 
-function check(correct,btn){
-document.querySelectorAll(".answer").forEach(b=>{
-b.disabled=true;
-});
+  function nextLesson(){
+    if(lessonIndex<lessonSlides.length-1){
+      lessonIndex++;
+      showLesson();
+    }
+  }
 
-if(correct){
-btn.classList.add("correct");
-document.getElementById("feedback").innerHTML="✅ Σωστά!";
-document.getElementById("feedback").style.color="green";
-}else{
-btn.classList.add("wrong");
-document.getElementById("feedback").innerHTML="❌ Ξαναδοκίμασε!";
-document.getElementById("feedback").style.color="red";
-}
-}
+  function prevLesson(){
+    if(lessonIndex>0){
+      lessonIndex--;
+      showLesson();
+    }
+  }
+
+  function answer(correct,btn){
+    document.querySelectorAll('.answer').forEach(b=>b.disabled=true);
+    if(correct){
+      btn.classList.add('correct');
+      document.getElementById('feedback').textContent='✅ Σωστά! Μπράβο!';
+      document.getElementById('feedback').style.color='green';
+    } else {
+      btn.classList.add('wrong');
+      document.getElementById('feedback').textContent='❌ Όχι ακριβώς. Η σωστή απάντηση είναι η γεωργία και οι μόνιμοι οικισμοί.';
+      document.getElementById('feedback').style.color='#a33a34';
+    }
+  }
+
+  showLesson();
 </script>
 
 </body>
