@@ -4,610 +4,377 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ψηφιακή Ιστορία Α΄ Γυμνασίου</title>
-
 <style>
 :root{
---bg:#f3e6d4;
---paper:#fff9f0;
---ink:#2f2418;
---brown:#875127;
---gold:#d7a34d;
---green:#2d6d67;
---line:#e1c49b;
---shadow:0 18px 40px rgba(70,40,20,.18);
+  --paper:#fff7ea; --ink:#2f2418; --brown:#7b421f; --brown2:#a7652d;
+  --green:#246b63; --gold:#d8a24b; --sand:#efd8b6; --sky:#dff3ff;
+  --line:#dec199; --shadow:0 18px 42px rgba(70,40,18,.18);
 }
-
 *{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#f7efdf,#ecd8bc);
-color:var(--ink);
-}
-
-header{
-position:sticky;
-top:0;
-z-index:100;
-background:rgba(255,249,240,.95);
-backdrop-filter:blur(8px);
-border-bottom:1px solid rgba(135,81,39,.2);
-}
-
-.bar{
-max-width:1200px;
-margin:auto;
-padding:14px 18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.logo{
-font-size:20px;
-font-weight:900;
-color:var(--brown);
-}
-
-nav{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-
-button{
-border:none;
-background:var(--brown);
-color:white;
-padding:12px 18px;
-border-radius:16px;
-font-weight:bold;
-cursor:pointer;
-font-size:15px;
-}
-
-button.secondary{
-background:var(--green);
-}
-
-.page{display:none}
-.page.active{display:block}
-
-.wrap{
-max-width:1200px;
-margin:auto;
-padding:28px 18px 60px;
-}
-
-.hero{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:24px;
-align-items:center;
-min-height:80vh;
-}
-
-.panel{
-background:rgba(255,249,240,.96);
-border-radius:28px;
-overflow:hidden;
-box-shadow:var(--shadow);
-border:1px solid rgba(135,81,39,.15);
-}
-
-.hero-text{
-padding:46px;
-}
-
-.eyebrow{
-font-size:14px;
-font-weight:900;
-letter-spacing:.08em;
-color:var(--green);
-text-transform:uppercase;
-margin-bottom:14px;
-}
-
-h1{
-font-size:clamp(46px,7vw,84px);
-line-height:.95;
-margin:0 0 16px;
-color:var(--brown);
-}
-
-h2{
-font-size:clamp(34px,5vw,58px);
-margin:0 0 16px;
-color:#603718;
-}
-
-h3{
-font-size:28px;
-margin-top:0;
-}
-
-p,li{
-font-size:clamp(20px,2.4vw,28px);
-line-height:1.5;
-}
-
-.hero-image{
-min-height:560px;
-background:
-linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.25)),
-url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?auto=format&fit=crop&w=1200&q=80');
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:end;
-padding:24px;
-}
-
-.label{
-background:rgba(255,255,255,.9);
-padding:12px 16px;
-border-radius:999px;
-font-weight:bold;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:18px;
-margin-top:24px;
-}
-
-.chapter{
-background:var(--paper);
-border-radius:24px;
-overflow:hidden;
-box-shadow:0 8px 24px rgba(0,0,0,.08);
-cursor:pointer;
-transition:.2s;
-border:1px solid rgba(135,81,39,.12);
-}
-
-.chapter:hover{
-transform:translateY(-4px);
-}
-
-.chapter-image{
-height:190px;
-background-size:cover;
-background-position:center;
-}
-
-.c1{
-background-image:url('https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80');
-}
-
-.c2{
-background-image:url('https://images.unsplash.com/photo-1518544866330-95a2f0c37bb2?auto=format&fit=crop&w=1200&q=80');
-}
-
-.c3{
-background-image:url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80');
-}
-
-.chapter-body{
-padding:22px;
-}
-
-.tag{
-display:inline-block;
-background:#e6f3ef;
-color:#245c55;
-padding:7px 12px;
-border-radius:999px;
-font-size:14px;
-font-weight:bold;
-margin-top:10px;
-}
-
-.lesson-top{
-display:flex;
-align-items:center;
-gap:14px;
-margin-bottom:16px;
-flex-wrap:wrap;
-}
-
-.progress-wrap{
-flex:1;
-height:12px;
-background:#ead7bb;
-border-radius:999px;
-overflow:hidden;
-min-width:180px;
-}
-
-.progress{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,var(--brown),var(--gold));
-transition:.3s;
-}
-
-.lesson-slide{
-display:none;
-grid-template-columns:1fr 1fr;
-min-height:600px;
-}
-
-.lesson-slide.active{
-display:grid;
-}
-
-.lesson-text{
-padding:42px;
-}
-
-.lesson-image{
-min-height:340px;
-background-size:cover;
-background-position:center;
-}
-
-.img1{
-background-image:url('https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80');
-}
-
-.img2{
-background-image:url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80');
-}
-
-.img3{
-background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
-}
-
-.img4{
-background-image:url('https://images.unsplash.com/photo-1465447142348-e9952c393450?auto=format&fit=crop&w=1200&q=80');
-}
-
-.question{
-background:#f2e0c4;
-border-left:8px solid var(--gold);
-padding:18px;
-border-radius:16px;
-font-weight:bold;
-margin-top:20px;
-}
-
-.answer{
-display:block;
-width:100%;
-margin:10px 0;
-background:white;
-color:var(--ink);
-border:2px solid var(--line);
-text-align:left;
-}
-
-.correct{
-background:#dff7e5!important;
-border-color:green!important;
-}
-
-.wrong{
-background:#fde3e3!important;
-border-color:#b13f3f!important;
-}
-
-.lesson-nav{
-display:flex;
-justify-content:center;
-gap:10px;
-margin-top:18px;
-flex-wrap:wrap;
-}
-
-footer{
-padding:30px;
-text-align:center;
-color:#6b5b4a;
-}
-
+body{margin:0;font-family:Arial,"Segoe UI",sans-serif;background:linear-gradient(135deg,#f7eddb,#ead3ad);color:var(--ink)}
+header{position:sticky;top:0;z-index:20;background:rgba(255,247,234,.96);border-bottom:1px solid rgba(123,66,31,.18)}
+.bar{max-width:1180px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;color:var(--brown);font-size:19px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+button{border:0;background:var(--brown);color:white;padding:12px 17px;border-radius:15px;font-weight:800;cursor:pointer;font-size:15px}
+button.secondary{background:var(--green)}
+.page{display:none}.page.active{display:block}
+.wrap{max-width:1180px;margin:auto;padding:28px 18px 70px}
+.panel{background:rgba(255,247,234,.98);border:1px solid rgba(123,66,31,.16);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;min-height:80vh}
+.text{padding:42px}
+.eyebrow{color:var(--green);font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(42px,7vw,76px);line-height:.96;color:var(--brown);margin:0 0 18px}
+h2{font-size:clamp(34px,5vw,56px);line-height:1.03;color:#613517;margin:0 0 18px}
+h3{font-size:28px;margin:0 0 10px;color:#613517}
+p,li{font-size:clamp(20px,2.5vw,28px);line-height:1.45}
+.illustration{min-height:460px;background:#e8d4b4;display:grid;place-items:center;padding:18px}
+.illustration svg{width:100%;max-width:560px;height:auto}
+.label{display:inline-block;background:#efe0c6;border-left:8px solid var(--gold);border-radius:14px;padding:15px 18px;font-weight:900;margin-top:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:24px}
+.card{background:var(--paper);border:1px solid rgba(123,66,31,.16);border-radius:24px;overflow:hidden;box-shadow:0 8px 22px rgba(70,40,18,.10);cursor:pointer}
+.card .illustration{min-height:220px}
+.card-body{padding:22px}
+.tag{display:inline-block;background:#e6f2ed;color:#1f5b54;border-radius:999px;padding:7px 12px;font-size:14px;font-weight:900;margin:5px 4px 0 0}
+.lesson-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.progress-wrap{flex:1;height:12px;min-width:170px;background:#e7d2b0;border-radius:999px;overflow:hidden}
+.progress{height:100%;width:0%;background:linear-gradient(90deg,var(--brown2),var(--gold));transition:.25s}
+.lesson-slide{display:none;grid-template-columns:1fr 1fr;min-height:610px}
+.lesson-slide.active{display:grid}
+.question{background:#f0ddbe;border-left:8px solid var(--gold);border-radius:16px;padding:17px;margin-top:18px;font-weight:900}
+.note{background:#e5f0ec;border-left:8px solid var(--green);border-radius:16px;padding:16px;margin-top:18px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare div{background:white;border:1px solid var(--line);border-radius:18px;padding:17px}
+.answer{display:block;width:100%;margin:10px 0;background:white;color:var(--ink);border:2px solid var(--line);text-align:left;font-size:clamp(18px,2.4vw,24px)}
+.correct{background:#ddf6e5!important;border-color:green!important}.wrong{background:#fde2df!important;border-color:#b13f3f!important}
+.lesson-nav{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+footer{text-align:center;padding:30px;color:#6d5a48}
 @media(max-width:850px){
-.hero{
-grid-template-columns:1fr;
-min-height:auto;
-}
-.hero-image{
-min-height:280px;
-}
-.lesson-slide.active{
-grid-template-columns:1fr;
-}
-.lesson-image{
-min-height:250px;
-order:-1;
-}
-.hero-text,.lesson-text{
-padding:28px;
-}
+  .hero{grid-template-columns:1fr;min-height:auto}.hero .illustration{order:-1;min-height:330px}
+  .lesson-slide.active{grid-template-columns:1fr}.lesson-slide>.illustration{order:-1;min-height:310px}
+  .text{padding:28px}.compare{grid-template-columns:1fr}
 }
 </style>
 </head>
-
 <body>
 
 <header>
-<div class="bar">
-<div class="logo">📚 Ψηφιακή Ιστορία Α΄ Γυμνασίου</div>
-
-<nav>
-<button onclick="showPage('home')">Αρχική</button>
-<button class="secondary" onclick="showPage('contents')">Περιεχόμενα</button>
-<button onclick="openLesson()">Κεφάλαιο 1</button>
-</nav>
-</div>
+  <div class="bar">
+    <div class="logo">📚 Ψηφιακή Ιστορία Α΄ Γυμνασίου</div>
+    <div class="nav">
+      <button onclick="showPage('home')">Αρχική</button>
+      <button class="secondary" onclick="showPage('contents')">Περιεχόμενα</button>
+      <button onclick="openLesson()">Κεφάλαιο 1</button>
+    </div>
+  </div>
 </header>
 
+<!-- SVG σχέδια -->
+<template id="svg-cover">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="620" fill="#dff3ff"/><circle cx="720" cy="105" r="70" fill="#ffd978"/>
+<path d="M0 450 C180 380 350 430 520 365 C660 315 760 350 900 300 L900 620 L0 620Z" fill="#87b66b"/>
+<path d="M0 510 C180 465 400 500 610 435 C740 395 820 415 900 385 L900 620 L0 620Z" fill="#5d9a59"/>
+<path d="M105 410 l55-130 l55 130 z" fill="#8d6b4d"/><path d="M122 410 l38-95 l38 95 z" fill="#efd8b6"/>
+<rect x="130" y="410" width="62" height="58" fill="#8d6b4d"/><circle cx="180" cy="360" r="7" fill="#2f2418"/>
+<path d="M555 390 q55-95 120 0" fill="#7b421f"/><rect x="570" y="390" width="90" height="74" rx="8" fill="#8d5b36"/>
+<path d="M558 392 h115 l-56-80 z" fill="#c08a4c"/>
+<circle cx="330" cy="360" r="32" fill="#c3834b"/><rect x="305" y="390" width="50" height="80" rx="20" fill="#8a4b2a"/>
+<path d="M298 330 q32-45 74 0" fill="#3b2a1b"/><line x1="355" y1="410" x2="430" y2="365" stroke="#6b3d1f" stroke-width="12" stroke-linecap="round"/>
+<circle cx="462" cy="350" r="28" fill="#ff8c32"/><path d="M462 300 q35 50 0 92 q-35-42 0-92" fill="#ffb13b"/>
+<text x="70" y="105" font-size="54" font-weight="900" fill="#7b421f">Η Εποχή του Λίθου</text>
+<text x="72" y="155" font-size="28" fill="#246b63">ένα ταξίδι στην προϊστορία</text>
+</svg>
+</template>
+
+<template id="svg-tools">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="620" fill="#f4e2c6"/><path d="M0 500 C240 445 430 530 900 455 L900 620 L0 620Z" fill="#d0b083"/>
+<ellipse cx="230" cy="320" rx="85" ry="145" fill="#6c6c68" transform="rotate(-25 230 320)"/>
+<path d="M190 175 L255 470 L185 405 L150 280Z" fill="#8f8f88" opacity=".55"/>
+<path d="M455 145 L530 145 L505 500 L430 500Z" fill="#6f4b31"/><path d="M424 140 L538 140 L500 80Z" fill="#3e3e3b"/>
+<path d="M660 125 C740 180 750 290 690 430 C642 335 615 215 660 125Z" fill="#4d4d49"/>
+<path d="M677 160 C710 240 708 320 682 397" fill="none" stroke="#8c8c85" stroke-width="8"/>
+<text x="70" y="90" font-size="45" font-weight="900" fill="#7b421f">Λίθινα εργαλεία</text>
+<text x="72" y="135" font-size="27" fill="#246b63">ο άνθρωπος φτιάχνει ό,τι χρειάζεται</text>
+</svg>
+</template>
+
+<template id="svg-paleo">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="620" fill="#dff3ff"/><path d="M0 330 C180 250 260 350 420 270 C600 185 700 260 900 180 L900 620 L0 620Z" fill="#86a66b"/>
+<path d="M0 440 C180 370 380 430 580 355 C710 305 815 330 900 300 L900 620 L0 620Z" fill="#5d8f54"/>
+<path d="M115 430 l75-160 l75 160 z" fill="#9a6a41"/><path d="M140 430 l50-105 l50 105 z" fill="#f2d8b7"/>
+<circle cx="365" cy="375" r="33" fill="#c3834b"/><path d="M335 345 q35-55 80 0" fill="#3b2a1b"/><rect x="338" y="405" width="58" height="92" rx="22" fill="#7b421f"/>
+<line x1="395" y1="430" x2="500" y2="330" stroke="#6b3d1f" stroke-width="10" stroke-linecap="round"/><path d="M500 330 l70 20 l-65 18z" fill="#4c4c47"/>
+<path d="M650 390 q55-70 115 0" fill="none" stroke="#6b3d1f" stroke-width="12"/><ellipse cx="765" cy="390" rx="70" ry="35" fill="#a4784c"/>
+<text x="70" y="90" font-size="43" font-weight="900" fill="#7b421f">Κυνήγι και μετακίνηση</text>
+<text x="72" y="135" font-size="27" fill="#246b63">οι άνθρωποι ακολουθούν την τροφή</text>
+</svg>
+</template>
+
+<template id="svg-cave">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="620" fill="#b88b5d"/><path d="M0 0 C130 65 190 20 320 75 C480 140 580 20 900 90 L900 620 L0 620Z" fill="#8a6040"/>
+<path d="M70 440 C210 280 330 315 450 400 C555 475 675 350 825 415" fill="none" stroke="#5c2f1c" stroke-width="20" stroke-linecap="round"/>
+<path d="M210 365 q60-95 180 0 q-75 45-180 0z" fill="#6b321f"/><circle cx="355" cy="355" r="10" fill="#2d2117"/>
+<path d="M565 370 q95-85 185 0 q-120 55-185 0z" fill="#6b321f"/><path d="M620 345 l-45-38 M690 345 l42-40" stroke="#6b321f" stroke-width="10" stroke-linecap="round"/>
+<circle cx="250" cy="190" r="20" fill="#f0c06d" opacity=".55"/><circle cx="620" cy="190" r="18" fill="#f0c06d" opacity=".55"/>
+<text x="70" y="95" font-size="46" font-weight="900" fill="#fff2dc">Σπηλαιογραφίες</text>
+<text x="72" y="140" font-size="27" fill="#ffe1b0">ζώα, σύμβολα και τέχνη</text>
+</svg>
+</template>
+
+<template id="svg-neolithic">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="620" fill="#dff3ff"/><circle cx="760" cy="105" r="65" fill="#ffd978"/>
+<path d="M0 430 C180 350 350 420 520 350 C690 275 770 325 900 280 L900 620 L0 620Z" fill="#8fbd68"/>
+<path d="M0 505 C230 455 480 505 900 440 L900 620 L0 620Z" fill="#6aa052"/>
+<rect x="120" y="340" width="150" height="115" fill="#9b6b3f"/><path d="M100 342 l95-110 l95 110 z" fill="#c08a4c"/>
+<rect x="350" y="330" width="160" height="125" fill="#a8794d"/><path d="M330 332 l100-120 l100 120 z" fill="#d09a55"/>
+<path d="M625 420 c30-45 90-45 120 0 c-30 28-90 28-120 0z" fill="#fff7ea" stroke="#5b3b23" stroke-width="8"/>
+<path d="M115 505 C220 460 305 530 410 480 C525 425 600 500 760 455" fill="none" stroke="#d7a34a" stroke-width="16"/>
+<text x="70" y="90" font-size="43" font-weight="900" fill="#7b421f">Νεολιθική εποχή</text>
+<text x="72" y="135" font-size="27" fill="#246b63">γεωργία, ζώα, σπίτια και χωριά</text>
+</svg>
+</template>
+
+<template id="svg-village">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="620" fill="#dff3ff"/><path d="M0 410 C130 360 260 390 380 340 C520 285 650 330 900 260 L900 620 L0 620Z" fill="#89b86b"/>
+<path d="M0 520 C200 450 380 500 900 430 L900 620 L0 620Z" fill="#639b55"/>
+<g>
+<rect x="90" y="330" width="120" height="95" fill="#9b6b3f"/><path d="M75 332 l75-80 l75 80z" fill="#c08a4c"/>
+<rect x="275" y="300" width="140" height="125" fill="#8f6040"/><path d="M250 303 l95-105 l95 105z" fill="#d09a55"/>
+<rect x="500" y="335" width="130" height="90" fill="#9b6b3f"/><path d="M480 337 l85-82 l85 82z" fill="#c08a4c"/>
+</g>
+<path d="M160 480 q210-130 520 0" fill="none" stroke="#c9984d" stroke-width="18" stroke-linecap="round"/>
+<circle cx="720" cy="395" r="28" fill="#c3834b"/><rect x="697" y="422" width="46" height="60" rx="18" fill="#7b421f"/>
+<text x="70" y="90" font-size="43" font-weight="900" fill="#7b421f">Μόνιμοι οικισμοί</text>
+<text x="72" y="135" font-size="27" fill="#246b63">οι άνθρωποι οργανώνονται σε κοινότητες</text>
+</svg>
+</template>
+
+<template id="svg-pottery">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="620" fill="#f4e2c6"/><circle cx="250" cy="345" r="120" fill="#b6753e"/>
+<path d="M155 300 q95 60 190 0" fill="none" stroke="#3b2a1b" stroke-width="14"/>
+<path d="M170 380 q80-55 160 0" fill="none" stroke="#fff2dc" stroke-width="12"/>
+<path d="M190 260 q60-35 120 0" fill="none" stroke="#fff2dc" stroke-width="10"/>
+<path d="M250 220 C185 250 180 430 250 485 C320 430 315 250 250 220Z" fill="none" stroke="#3b2a1b" stroke-width="12"/>
+<circle cx="570" cy="330" r="70" fill="#d6ad7a"/><rect x="540" y="400" width="60" height="70" fill="#d6ad7a"/>
+<path d="M510 325 q60-130 120 0" fill="none" stroke="#7b421f" stroke-width="14"/>
+<path d="M545 315 q25 18 50 0" fill="none" stroke="#7b421f" stroke-width="8"/>
+<text x="70" y="90" font-size="43" font-weight="900" fill="#7b421f">Αγγεία και ειδώλια</text>
+<text x="72" y="135" font-size="27" fill="#246b63">η τέχνη της Νεολιθικής εποχής</text>
+</svg>
+</template>
+
 <section id="home" class="page active">
-<div class="wrap">
-<div class="hero">
-
-<div class="panel hero-text">
-<div class="eyebrow">Διαδραστικό μάθημα ιστορίας</div>
-
-<h1>Ένα ταξίδι στον αρχαίο κόσμο</h1>
-
-<p>
-Μαθαίνουμε Ιστορία με εικόνες, ερωτήσεις, αποστολές και μικρά κουίζ.
-</p>
-
-<p>
-Το υλικό είναι φτιαγμένο για projector, OneNote, tablet και κινητό.
-</p>
-
-<button onclick="showPage('contents')">
-Ξεκίνα το ταξίδι
-</button>
-</div>
-
-<div class="panel hero-image">
-<div class="label">Από την Προϊστορία στους πρώτους πολιτισμούς</div>
-</div>
-
-</div>
-</div>
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel text">
+        <div class="eyebrow">Με βάση το σχολικό βιβλίο</div>
+        <h1>Αρχαία Ιστορία Α΄ Γυμνασίου</h1>
+        <p>Ψηφιακό μάθημα με καθαρά ζωγραφιστά σχέδια, φτιαγμένα ειδικά για το μάθημα.</p>
+        <div class="label">Κεφάλαιο Α΄: Η Εποχή του Λίθου</div>
+        <p><button onclick="showPage('contents')">Ξεκίνα το ταξίδι</button></p>
+      </div>
+      <div class="panel illustration" data-svg="svg-cover"></div>
+    </div>
+  </div>
 </section>
 
 <section id="contents" class="page">
-<div class="wrap">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Περιεχόμενα</div>
+      <h2>Διάλεξε ενότητα</h2>
+      <p>Τα σχέδια δεν είναι από internet. Είναι ενσωματωμένα μέσα στο αρχείο.</p>
+    </div>
 
-<div class="panel hero-text">
-<div class="eyebrow">Περιεχόμενα</div>
-<h2>Κεφάλαια</h2>
-<p>Διάλεξε ένα κεφάλαιο για να ξεκινήσεις.</p>
-</div>
-
-<div class="cards">
-
-<div class="chapter" onclick="openLesson()">
-<div class="chapter-image c1"></div>
-<div class="chapter-body">
-<h3>🏺 Η Εποχή του Λίθου</h3>
-<p>Παλαιολιθική και Νεολιθική εποχή.</p>
-<div class="tag">διαθέσιμο</div>
-</div>
-</div>
-
-<div class="chapter">
-<div class="chapter-image c2"></div>
-<div class="chapter-body">
-<h3>🛶 Η Εποχή του Χαλκού</h3>
-<p>Μινωικός και Μυκηναϊκός πολιτισμός.</p>
-<div class="tag">σύντομα</div>
-</div>
-</div>
-
-<div class="chapter">
-<div class="chapter-image c3"></div>
-<div class="chapter-body">
-<h3>🏛️ Αρχαϊκή εποχή</h3>
-<p>Πόλεις-κράτη και αρχαία Ελλάδα.</p>
-<div class="tag">σύντομα</div>
-</div>
-</div>
-
-</div>
-</div>
+    <div class="cards">
+      <div class="card" onclick="openLesson()">
+        <div class="illustration" data-svg="svg-paleo"></div>
+        <div class="card-body">
+          <h3>🏺 Η Εποχή του Λίθου</h3>
+          <p>Παλαιολιθική, Μεσολιθική και Νεολιθική εποχή.</p>
+          <span class="tag">διαθέσιμο</span>
+          <span class="tag">με σχέδια</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="illustration" data-svg="svg-neolithic"></div>
+        <div class="card-body">
+          <h3>🌾 Νεολιθική ζωή</h3>
+          <p>Γεωργία, κτηνοτροφία, σπίτια και οικισμοί.</p>
+          <span class="tag">στο κεφάλαιο 1</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="illustration" data-svg="svg-pottery"></div>
+        <div class="card-body">
+          <h3>🏺 Τέχνη και αντικείμενα</h3>
+          <p>Αγγεία και ειδώλια της Νεολιθικής εποχής.</p>
+          <span class="tag">στο κεφάλαιο 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="lesson" class="page">
-<div class="wrap">
+  <div class="wrap">
+    <div class="lesson-top">
+      <button class="secondary" onclick="showPage('contents')">← Περιεχόμενα</button>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+      <div id="counter">1 / 8</div>
+    </div>
 
-<div class="lesson-top">
-<button class="secondary" onclick="showPage('contents')">← Περιεχόμενα</button>
+    <div class="panel">
+      <div class="lesson-slide active">
+        <div class="text">
+          <div class="eyebrow">Κεφάλαιο Α΄</div>
+          <h2>Η Εποχή του Λίθου</h2>
+          <p>Η Προϊστορία είναι η περίοδος πριν από τις πρώτες γραπτές πηγές.</p>
+          <div class="question">Τι σημαίνει «πριν από την Ιστορία»;</div>
+        </div>
+        <div class="illustration" data-svg="svg-cover"></div>
+      </div>
 
-<div class="progress-wrap">
-<div class="progress" id="progress"></div>
-</div>
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">Παλαιολιθική εποχή</div>
+          <h2>Τα εργαλεία</h2>
+          <p>Ο άνθρωπος κατεργάζεται τον λίθο και χρησιμοποιεί εργαλεία για να επιβιώσει.</p>
+          <ul><li>λίθινα εργαλεία</li><li>αιχμές</li><li>λεπίδες</li><li>οστέινα εργαλεία</li></ul>
+          <div class="question">Τι μας δείχνουν τα εργαλεία για τις ανάγκες του ανθρώπου;</div>
+        </div>
+        <div class="illustration" data-svg="svg-tools"></div>
+      </div>
 
-<div id="counter">1 / 5</div>
-</div>
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">Καθημερινή ζωή</div>
+          <h2>Κυνήγι και μετακίνηση</h2>
+          <p>Ο άνθρωπος είναι κυνηγός και τροφοσυλλέκτης. Μετακινείται για να βρει τροφή και νερό.</p>
+          <ul><li>κυνήγι</li><li>συλλογή καρπών</li><li>πρόχειρα καταλύματα</li><li>ομαδική ζωή</li></ul>
+          <div class="question">Περιγράψτε μία ημέρα ενός παλαιολιθικού ανθρώπου.</div>
+        </div>
+        <div class="illustration" data-svg="svg-paleo"></div>
+      </div>
 
-<div class="panel">
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">Τέχνη</div>
+          <h2>Σπηλαιογραφίες</h2>
+          <p>Στα τέλη της Παλαιολιθικής εποχής εμφανίζονται ζωγραφικές παραστάσεις σε σπήλαια.</p>
+          <div class="note">Συχνά εικονίζονται ζώα. Οι παραστάσεις μπορεί να είχαν συμβολική ή μαγική σημασία.</div>
+          <div class="question">Γιατί πιστεύετε ότι ζωγράφιζαν ζώα;</div>
+        </div>
+        <div class="illustration" data-svg="svg-cave"></div>
+      </div>
 
-<div class="lesson-slide active">
-<div class="lesson-text">
-<div class="eyebrow">Κεφάλαιο 1</div>
-<h2>Η Εποχή του Λίθου</h2>
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">Νεολιθική εποχή</div>
+          <h2>Η μεγάλη αλλαγή</h2>
+          <p>Ο άνθρωπος γίνεται γεωργός και κτηνοτρόφος. Αρχίζει να παράγει την τροφή του.</p>
+          <ul><li>γεωργία</li><li>κτηνοτροφία</li><li>εργαλεία καλλιέργειας</li><li>κεραμική</li></ul>
+          <div class="question">Γιατί η παραγωγή τροφής άλλαξε τη ζωή των ανθρώπων;</div>
+        </div>
+        <div class="illustration" data-svg="svg-neolithic"></div>
+      </div>
 
-<p>
-Οι πρώτοι άνθρωποι ζούσαν διαφορετικά από εμάς.
-</p>
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">Νεολιθική καθημερινότητα</div>
+          <h2>Σπίτια και χωριά</h2>
+          <p>Οι άνθρωποι εγκαθίστανται μόνιμα και δημιουργούν τους πρώτους οικισμούς.</p>
+          <ul><li>μόνιμη κατοικία</li><li>καλλιέργεια</li><li>ζώα</li><li>εργασία στην κοινότητα</li></ul>
+          <div class="question">Τι άλλαξε σε σχέση με την παλαιολιθική ζωή;</div>
+        </div>
+        <div class="illustration" data-svg="svg-village"></div>
+      </div>
 
-<div class="question">
-Πώς θα ζούσες χωρίς σπίτια, ηλεκτρισμό και σούπερ μάρκετ;
-</div>
-</div>
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">Τέχνη της Νεολιθικής εποχής</div>
+          <h2>Αγγεία και ειδώλια</h2>
+          <p>Οι άνθρωποι κατασκευάζουν πήλινα αγγεία και ειδώλια. Τα αγγεία βοηθούν στην αποθήκευση και το μαγείρεμα.</p>
+          <div class="question">Γιατί τα αγγεία ταιριάζουν περισσότερο σε μόνιμους οικισμούς;</div>
+        </div>
+        <div class="illustration" data-svg="svg-pottery"></div>
+      </div>
 
-<div class="lesson-image img1"></div>
-</div>
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">Κουίζ</div>
+          <h2>Τι θυμάσαι;</h2>
+          <p>Τι χαρακτηρίζει κυρίως τη Νεολιθική εποχή;</p>
+          <button class="answer" onclick="check(false,this)">Το συνεχές κυνήγι και η μετακίνηση</button>
+          <button class="answer" onclick="check(true,this)">Η γεωργία, η κτηνοτροφία και οι μόνιμοι οικισμοί</button>
+          <button class="answer" onclick="check(false,this)">Τα αυτοκίνητα και οι μεγάλες πόλεις</button>
+          <p id="feedback"></p>
+        </div>
+        <div class="illustration" data-svg="svg-village"></div>
+      </div>
+    </div>
 
-<div class="lesson-slide">
-<div class="lesson-text">
-<div class="eyebrow">Παλαιολιθική εποχή</div>
-<h2>Η ζωή των πρώτων ανθρώπων</h2>
-
-<ul>
-<li>κυνήγι</li>
-<li>συλλογή καρπών</li>
-<li>σπήλαια</li>
-<li>μετακίνηση</li>
-</ul>
-
-<div class="question">
-Γιατί μετακινούνταν συνεχώς;
-</div>
-</div>
-
-<div class="lesson-image img2"></div>
-</div>
-
-<div class="lesson-slide">
-<div class="lesson-text">
-<div class="eyebrow">Η μεγάλη αλλαγή</div>
-<h2>Νεολιθική εποχή</h2>
-
-<ul>
-<li>γεωργία</li>
-<li>κτηνοτροφία</li>
-<li>μόνιμοι οικισμοί</li>
-<li>σπίτια</li>
-</ul>
-
-<div class="question">
-Οι άνθρωποι πλέον παράγουν την τροφή τους.
-</div>
-</div>
-
-<div class="lesson-image img4"></div>
-</div>
-
-<div class="lesson-slide">
-<div class="lesson-text">
-<div class="eyebrow">Κουίζ</div>
-<h2>Τι θυμάσαι;</h2>
-
-<p>Τι χαρακτηρίζει τη Νεολιθική εποχή;</p>
-
-<button class="answer" onclick="check(false,this)">
-Το συνεχές κυνήγι
-</button>
-
-<button class="answer" onclick="check(true,this)">
-Η γεωργία και οι οικισμοί
-</button>
-
-<button class="answer" onclick="check(false,this)">
-Τα αυτοκίνητα
-</button>
-
-<p id="feedback"></p>
-</div>
-
-<div class="lesson-image img3"></div>
-</div>
-
-<div class="lesson-slide">
-<div class="lesson-text">
-<div class="eyebrow">Τέλος</div>
-<h2>Τι μάθαμε;</h2>
-
-<ul>
-<li>Οι πρώτοι άνθρωποι κυνηγούσαν και μετακινούνταν.</li>
-<li>Η φωτιά άλλαξε τη ζωή τους.</li>
-<li>Η γεωργία δημιούργησε μόνιμους οικισμούς.</li>
-</ul>
-
-<div class="question">
-Από την επιβίωση στην οργάνωση.
-</div>
-</div>
-
-<div class="lesson-image img1"></div>
-</div>
-
-</div>
-
-<div class="lesson-nav">
-<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-<button onclick="nextSlide()">Επόμενο ➡</button>
-</div>
-
-</div>
+    <div class="lesson-nav">
+      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+      <button onclick="nextSlide()">Επόμενο ➡</button>
+    </div>
+  </div>
 </section>
 
-<footer>
-Ψηφιακή Ιστορία Α΄ Γυμνασίου
-</footer>
+<footer>Ψηφιακή Ιστορία Α΄ Γυμνασίου — έκδοση με σχέδια</footer>
 
 <script>
-function showPage(id){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-window.scrollTo(0,0);
-}
-
-function openLesson(){
-showPage('lesson');
-slide=0;
-showSlide();
-}
-
-let slide=0;
-const slides=document.querySelectorAll('.lesson-slide');
-
-function showSlide(){
-slides.forEach(s=>s.classList.remove('active'));
-slides[slide].classList.add('active');
-
-document.getElementById('counter').innerHTML=(slide+1)+' / '+slides.length;
-
-document.getElementById('progress').style.width=((slide+1)/slides.length*100)+'%';
-
-window.scrollTo(0,0);
-}
-
-function nextSlide(){
-if(slide<slides.length-1){
-slide++;
-showSlide();
-}
-}
-
-function prevSlide(){
-if(slide>0){
-slide--;
-showSlide();
-}
-}
-
-function check(correct,btn){
-
-document.querySelectorAll('.answer').forEach(b=>{
-b.disabled=true;
+document.querySelectorAll('[data-svg]').forEach(function(el){
+  const id = el.getAttribute('data-svg');
+  el.innerHTML = document.getElementById(id).innerHTML;
 });
 
-if(correct){
-btn.classList.add('correct');
-document.getElementById('feedback').innerHTML='✅ Σωστά!';
-document.getElementById('feedback').style.color='green';
-}else{
-btn.classList.add('wrong');
-document.getElementById('feedback').innerHTML='❌ Ξαναδοκίμασε!';
-document.getElementById('feedback').style.color='#b13f3f';
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
 }
+function openLesson(){
+  showPage('lesson');
+  slide = 0;
+  resetQuiz();
+  showSlide();
 }
-
+let slide = 0;
+const slides = document.querySelectorAll('.lesson-slide');
+function showSlide(){
+  slides.forEach(s => s.classList.remove('active'));
+  slides[slide].classList.add('active');
+  document.getElementById('counter').textContent = (slide + 1) + ' / ' + slides.length;
+  document.getElementById('progress').style.width = ((slide + 1) / slides.length * 100) + '%';
+  window.scrollTo(0,0);
+}
+function nextSlide(){ if(slide < slides.length - 1){ slide++; showSlide(); } }
+function prevSlide(){ if(slide > 0){ slide--; showSlide(); } }
+function resetQuiz(){
+  document.querySelectorAll('.answer').forEach(b => { b.disabled=false; b.classList.remove('correct','wrong'); });
+  const f=document.getElementById('feedback'); if(f) f.textContent='';
+}
+function check(correct, btn){
+  document.querySelectorAll('.answer').forEach(b => b.disabled=true);
+  if(correct){
+    btn.classList.add('correct');
+    document.getElementById('feedback').textContent='✅ Σωστά!';
+    document.getElementById('feedback').style.color='green';
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('feedback').textContent='❌ Όχι ακριβώς. Η σωστή απάντηση είναι η γεωργία, η κτηνοτροφία και οι μόνιμοι οικισμοί.';
+    document.getElementById('feedback').style.color='#b13f3f';
+  }
+}
 showSlide();
 </script>
-
 </body>
 </html>
