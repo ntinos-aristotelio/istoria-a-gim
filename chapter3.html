@@ -301,6 +301,20 @@ footer{
   .text{padding:28px}
   .grid2{grid-template-columns:1fr}
 }
+
+.progress-card{
+  background:#fff;
+  border:2px dashed var(--gold);
+  border-radius:24px;
+  padding:20px;
+  margin:22px 0;
+}
+.progress-line{height:14px;background:#ead8ba;border-radius:999px;overflow:hidden;margin:12px 0;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--gold));transition:.35s;}
+.progress-small{font-size:18px;line-height:1.45;font-weight:800;}
+.progress-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+.progress-badge-chip{background:#e6f2ed;color:#1f5b54;border:1px solid rgba(36,107,99,.20);border-radius:999px;padding:9px 13px;font-size:16px;font-weight:900;}
+
 </style>
 </head>
 
@@ -443,6 +457,17 @@ footer{
     </div>
   </div>
 </section>
+
+  <section class="wrap">
+    <div class="panel text progress-card">
+      <div class="eyebrow">Η πρόοδός μου</div>
+      <h2>Πρόοδος κεφαλαίου</h2>
+      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
+      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
+      <div id="chapterBadgeList" class="progress-badges"></div>
+    </div>
+  </section>
+
 
 <section id="chapter3" class="page">
   <div class="wrap">
@@ -823,7 +848,41 @@ function concept(t){
   document.getElementById('conceptResult').textContent = t;
 }
 
+
+const APP_PROGRESS_KEY = 'istoriaAGymnasiouProgress';
+const CHAPTER_ID = 3;
+const CHAPTER_TITLE = "📜 Κεφάλαιο 3: Ο ελληνικός κόσμος 1100-800 π.Χ.";
+
+function loadAppProgress(){
+  try{ return JSON.parse(localStorage.getItem(APP_PROGRESS_KEY)) || {chapters:{}}; }catch(e){ return {chapters:{}}; }
+}
+function saveAppProgress(progress){ localStorage.setItem(APP_PROGRESS_KEY, JSON.stringify(progress)); }
+function saveChapterProgress(update){
+  const progress = loadAppProgress();
+  progress.chapters = progress.chapters || {};
+  const previous = progress.chapters[CHAPTER_ID] || {};
+  progress.chapters[CHAPTER_ID] = Object.assign({}, previous, update, {title:CHAPTER_TITLE, updatedAt:new Date().toISOString()});
+  saveAppProgress(progress);
+  renderChapterProgress();
+}
+function renderChapterProgress(){
+  const progress = loadAppProgress();
+  const chapter = (progress.chapters || {})[CHAPTER_ID] || {};
+  const fill = document.getElementById('chapterProgressFill');
+  const text = document.getElementById('chapterProgressText');
+  const badges = document.getElementById('chapterBadgeList');
+  if(!fill || !text || !badges) return;
+  let percent = 0;
+  if(typeof chapter.score === 'number' && chapter.total) percent = Math.round((chapter.score / chapter.total) * 70);
+  if(chapter.completed) percent = 100;
+  fill.style.width = percent + '%';
+  const scoreText = chapter.total ? ('Τελευταίο σκορ quiz: ' + chapter.score + ' / ' + chapter.total + '.') : 'Δεν έχει γίνει ακόμη quiz.';
+  text.textContent = chapter.completed ? ('✅ Το κεφάλαιο ολοκληρώθηκε! ' + scoreText) : ('Πρόοδος: ' + percent + '%. ' + scoreText);
+  badges.innerHTML = chapter.completed ? '<span class="progress-badge-chip">🏆 Badge κεφαλαίου</span><span class="progress-badge-chip">✅ Ολοκληρώθηκε</span>' : '<span class="progress-badge-chip">🎯 Στόχος: κάνε το quiz</span><span class="progress-badge-chip">🏁 Πάτησε ολοκλήρωση</span>';
+}
+
 function badge(){
+  saveChapterProgress({completed:true});
   document.getElementById('badgeBox').innerHTML = '<div class="badge">🏆 Ολοκλήρωσες το Κεφάλαιο 3!</div>';
 }
 
@@ -883,6 +942,7 @@ function gradeQuiz(){
   const box = document.getElementById('scoreBox');
   box.className = 'score';
   box.textContent = 'Σκορ: ' + score + ' / ' + questions.length;
+  saveChapterProgress({score:score,total:questions.length});
 }
 
 function resetReview(){
@@ -891,6 +951,7 @@ function resetReview(){
   document.getElementById('scoreBox').textContent = '';
 }
 
+renderChapterProgress();
 renderQuiz();
 showSlide();
 </script>

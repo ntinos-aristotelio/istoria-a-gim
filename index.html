@@ -184,6 +184,20 @@ footer{
   .hero .drawing{order:-1;min-height:320px}
   .text{padding:28px}
 }
+
+.progress-card{
+  background:#fff;
+  border:2px dashed var(--gold);
+  border-radius:24px;
+  padding:20px;
+  margin:22px 0;
+}
+.progress-line{height:14px;background:#ead8ba;border-radius:999px;overflow:hidden;margin:12px 0;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--gold));transition:.35s;}
+.progress-small{font-size:18px;line-height:1.45;font-weight:800;}
+.progress-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+.progress-badge-chip{background:#e6f2ed;color:#1f5b54;border:1px solid rgba(36,107,99,.20);border-radius:999px;padding:9px 13px;font-size:16px;font-weight:900;}
+
 </style>
 </head>
 
@@ -231,6 +245,16 @@ footer{
         <text x="62" y="138" font-size="28" fill="#246b63">με βήματα • σχέδια • ασκήσεις • παιχνίδια</text>
       </svg>
     </div>
+  </section>
+
+
+  <section class="panel text progress-card" id="progressDashboard">
+    <div class="eyebrow">Πίνακας προόδου</div>
+    <h2>Η πορεία μου στην Ιστορία</h2>
+    <div class="progress-line"><div id="overallProgressFill" class="progress-fill"></div></div>
+    <div id="overallProgressText" class="progress-small">Φόρτωση προόδου...</div>
+    <div id="overallBadges" class="progress-badges"></div>
+    <p><button class="secondary" onclick="resetAllProgress()">Μηδενισμός προόδου</button></p>
   </section>
 
   <section id="chapters" class="panel text section-title">
@@ -358,6 +382,26 @@ footer{
 </div>
 
 <footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
+
+
+<script>
+const APP_PROGRESS_KEY = 'istoriaAGymnasiouProgress';
+function loadAppProgress(){try{return JSON.parse(localStorage.getItem(APP_PROGRESS_KEY)) || {chapters:{}};}catch(e){return {chapters:{}};}}
+function renderOverallProgress(){
+  const progress = loadAppProgress();
+  const chapters = progress.chapters || {};
+  const completed = Object.values(chapters).filter(ch => ch.completed).length;
+  const percent = Math.round((completed / 10) * 100);
+  const fill = document.getElementById('overallProgressFill');
+  const text = document.getElementById('overallProgressText');
+  const badges = document.getElementById('overallBadges');
+  if(fill) fill.style.width = percent + '%';
+  if(text) text.textContent = 'Ολοκληρώθηκαν ' + completed + ' από τα 10 κεφάλαια (' + percent + '%).';
+  if(badges){badges.innerHTML=''; for(let i=1;i<=10;i++){const ch=chapters[i]||{}; const chip=document.createElement('span'); chip.className='progress-badge-chip'; chip.textContent=ch.completed?('✅ Κεφ. '+i):('○ Κεφ. '+i); badges.appendChild(chip);}}
+}
+function resetAllProgress(){if(confirm('Θέλεις σίγουρα να μηδενιστεί η πρόοδος;')){localStorage.removeItem(APP_PROGRESS_KEY);renderOverallProgress();}}
+renderOverallProgress();
+</script>
 
 </body>
 </html>

@@ -59,6 +59,20 @@ p,li{font-size:clamp(19px,2.4vw,27px);line-height:1.45}
 .badge{font-size:34px;background:#fff;border:3px dashed var(--gold);border-radius:24px;padding:24px;text-align:center;margin-top:20px}
 footer{text-align:center;padding:30px;color:#6d5a48}
 @media(max-width:850px){.hero{grid-template-columns:1fr;min-height:auto}.hero .drawing{order:-1;min-height:320px}.lesson-slide.active{grid-template-columns:1fr}.lesson-slide>.drawing{order:-1;min-height:300px}.text{padding:28px}.grid2{grid-template-columns:1fr}}
+
+.progress-card{
+  background:#fff;
+  border:2px dashed var(--gold);
+  border-radius:24px;
+  padding:20px;
+  margin:22px 0;
+}
+.progress-line{height:14px;background:#ead8ba;border-radius:999px;overflow:hidden;margin:12px 0;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--gold));transition:.35s;}
+.progress-small{font-size:18px;line-height:1.45;font-weight:800;}
+.progress-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+.progress-badge-chip{background:#e6f2ed;color:#1f5b54;border:1px solid rgba(36,107,99,.20);border-radius:999px;padding:9px 13px;font-size:16px;font-weight:900;}
+
 </style>
 </head>
 
@@ -211,6 +225,17 @@ footer{text-align:center;padding:30px;color:#6d5a48}
     </div>
   </div>
 </section>
+
+  <section class="wrap">
+    <div class="panel text progress-card">
+      <div class="eyebrow">Η πρόοδός μου</div>
+      <h2>Πρόοδος κεφαλαίου</h2>
+      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
+      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
+      <div id="chapterBadgeList" class="progress-badges"></div>
+    </div>
+  </section>
+
 
 <section id="chapter8" class="page">
   <div class="wrap">
@@ -609,7 +634,41 @@ function concept(t){
   document.getElementById('conceptResult').textContent = t;
 }
 
+
+const APP_PROGRESS_KEY = 'istoriaAGymnasiouProgress';
+const CHAPTER_ID = 8;
+const CHAPTER_TITLE = "🌍 Κεφάλαιο 8: Τα ελληνιστικά χρόνια";
+
+function loadAppProgress(){
+  try{ return JSON.parse(localStorage.getItem(APP_PROGRESS_KEY)) || {chapters:{}}; }catch(e){ return {chapters:{}}; }
+}
+function saveAppProgress(progress){ localStorage.setItem(APP_PROGRESS_KEY, JSON.stringify(progress)); }
+function saveChapterProgress(update){
+  const progress = loadAppProgress();
+  progress.chapters = progress.chapters || {};
+  const previous = progress.chapters[CHAPTER_ID] || {};
+  progress.chapters[CHAPTER_ID] = Object.assign({}, previous, update, {title:CHAPTER_TITLE, updatedAt:new Date().toISOString()});
+  saveAppProgress(progress);
+  renderChapterProgress();
+}
+function renderChapterProgress(){
+  const progress = loadAppProgress();
+  const chapter = (progress.chapters || {})[CHAPTER_ID] || {};
+  const fill = document.getElementById('chapterProgressFill');
+  const text = document.getElementById('chapterProgressText');
+  const badges = document.getElementById('chapterBadgeList');
+  if(!fill || !text || !badges) return;
+  let percent = 0;
+  if(typeof chapter.score === 'number' && chapter.total) percent = Math.round((chapter.score / chapter.total) * 70);
+  if(chapter.completed) percent = 100;
+  fill.style.width = percent + '%';
+  const scoreText = chapter.total ? ('Τελευταίο σκορ quiz: ' + chapter.score + ' / ' + chapter.total + '.') : 'Δεν έχει γίνει ακόμη quiz.';
+  text.textContent = chapter.completed ? ('✅ Το κεφάλαιο ολοκληρώθηκε! ' + scoreText) : ('Πρόοδος: ' + percent + '%. ' + scoreText);
+  badges.innerHTML = chapter.completed ? '<span class="progress-badge-chip">🏆 Badge κεφαλαίου</span><span class="progress-badge-chip">✅ Ολοκληρώθηκε</span>' : '<span class="progress-badge-chip">🎯 Στόχος: κάνε το quiz</span><span class="progress-badge-chip">🏁 Πάτησε ολοκλήρωση</span>';
+}
+
 function badge(){
+  saveChapterProgress({completed:true});
   document.getElementById('badgeBox').innerHTML = '<div class="badge">🏆 Ολοκλήρωσες το Κεφάλαιο 8!</div>';
 }
 
@@ -669,6 +728,7 @@ function gradeQuiz(){
   const box = document.getElementById('scoreBox');
   box.className = 'score';
   box.textContent = 'Σκορ: ' + score + ' / ' + questions.length;
+  saveChapterProgress({score:score,total:questions.length});
 }
 
 function resetReview(){
@@ -677,6 +737,7 @@ function resetReview(){
   document.getElementById('scoreBox').textContent = '';
 }
 
+renderChapterProgress();
 renderQuiz();
 showSlide();
 </script>
