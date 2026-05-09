@@ -410,6 +410,30 @@ footer{
 .achievement-card p{font-size:18px;margin:0;}
 .sound-toggle{background:#3b8fb0!important;}
 
+
+.weak-panel{
+  background:white;
+  border:2px dashed var(--gold);
+  border-radius:26px;
+  padding:22px;
+  margin-top:22px;
+}
+.weak-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+  margin-top:14px;
+}
+.weak-card{
+  background:var(--paper);
+  border:2px solid var(--line);
+  border-radius:20px;
+  padding:16px;
+  font-weight:900;
+}
+.weak-card.urgent{background:#fde2df;border-color:var(--bad)}
+.weak-card.ok{background:#ddf6e5;border-color:var(--ok)}
+
 </style>
 </head>
 
@@ -655,6 +679,13 @@ footer{
     </div>
   </div>
 </section>
+
+
+  <section class="weak-panel" id="smart-revision-v6">
+    <h2>🧠 Smart Revision V6</h2>
+    <p>Εδώ εμφανίζονται αυτόματα τα κεφάλαια που χρειάζονται επανάληψη, με βάση τα καλύτερα σκορ σου.</p>
+    <div class="weak-list" id="weakTopicsList"></div>
+  </section>
 
 <footer>Γενική επανάληψη — Ιστορία Α΄ Γυμνασίου</footer>
 
@@ -981,6 +1012,43 @@ function renderMissionProgress(){
   if(badges){badges.innerHTML=''; for(let i=1;i<=10;i++){const chip=document.createElement('span'); chip.className='progress-badge-chip'; chip.textContent=(chapters[i]&&chapters[i].completed)?('✅ Κεφ. '+i):('🔒 Κεφ. '+i); badges.appendChild(chip);}}
 }
 renderMissionProgress();
+</script>
+
+
+<script>
+(function(){
+  const chapters = [
+    ['chapter1','Κεφ. 1: Εποχή του Λίθου','chapter1.html'],
+    ['chapter2','Κεφ. 2: Εποχή του Χαλκού','chapter2.html'],
+    ['chapter3','Κεφ. 3: 1100-800 π.Χ.','chapter3.html'],
+    ['chapter4','Κεφ. 4: Αρχαϊκή εποχή','chapter4.html'],
+    ['chapter5','Κεφ. 5: Ηγεμονία Αθήνας','chapter5.html'],
+    ['chapter6','Κεφ. 6: Πελοποννησιακός πόλεμος','chapter6.html'],
+    ['chapter7','Κεφ. 7: Μακεδονία - Αλέξανδρος','chapter7.html'],
+    ['chapter8','Κεφ. 8: Τέχνες / Ελληνιστικά','chapter8.html'],
+    ['chapter9','Κεφ. 9: Ρώμη και ελληνικός κόσμος','chapter9.html'],
+    ['chapter10','Κεφ. 10: Από τη Ρώμη στο Βυζάντιο','chapter10.html']
+  ];
+  function data(){try{return JSON.parse(localStorage.getItem('istoriaProgress')||'{}')}catch(e){return{}}}
+  function renderWeak(){
+    const box=document.getElementById('weakTopicsList');
+    if(!box) return;
+    const p=data();
+    box.innerHTML='';
+    let any=false;
+    chapters.forEach(function(ch){
+      const item=p[ch[0]]||{};
+      const score=typeof item.bestScore==='number'?item.bestScore:null;
+      const needs=score===null || score<70 || !item.completed;
+      if(needs){any=true;}
+      const div=document.createElement('div');
+      div.className='weak-card '+(needs?'urgent':'ok');
+      div.innerHTML='<div>'+ch[1]+'</div><div>'+(score===null?'Δεν υπάρχει σκορ':('Καλύτερο σκορ: '+score+'%'))+'</div><a class="btn secondary" style="margin-top:10px" href="'+ch[2]+'">'+(needs?'Κάνε επανάληψη':'Άνοιγμα')+'</a>';
+      box.appendChild(div);
+    });
+  }
+  renderWeak();
+})();
 </script>
 
 </body>

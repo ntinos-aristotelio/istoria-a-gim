@@ -244,6 +244,41 @@ footer{
 @media(max-width:850px){.timeline-road{grid-template-columns:repeat(5,1fr)}.next-mission{align-items:flex-start}.next-mission a{width:100%;text-align:center}}
 @media(max-width:520px){.timeline-road{grid-template-columns:repeat(2,1fr)}}
 
+
+.smart-timeline{
+  margin-top:24px;
+  background:#fff;
+  border:2px dashed var(--gold);
+  border-radius:26px;
+  padding:22px;
+}
+.smart-track{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:12px;
+  margin-top:16px;
+}
+.smart-era{
+  background:var(--paper);
+  border:2px solid var(--line);
+  border-radius:20px;
+  padding:14px;
+  text-align:center;
+  font-weight:900;
+  cursor:pointer;
+}
+.smart-era:hover{border-color:var(--gold);transform:translateY(-2px)}
+.smart-era.done{background:#ddf6e5;border-color:#2d8a4d}
+.smart-era.weak{background:#fde2df;border-color:#b13f3f}
+.smart-note{
+  margin-top:16px;
+  background:#e5f0ec;
+  border-left:8px solid var(--green);
+  border-radius:16px;
+  padding:16px;
+  font-weight:800;
+}
+
 </style>
 </head>
 
@@ -461,6 +496,17 @@ footer{
 
 </div>
 
+
+  <section class="smart-timeline" id="smart-timeline-v6">
+    <h2>🗺️ Smart Timeline V6</h2>
+    <p>Η εφαρμογή κρατά την πρόοδό σου και σου προτείνει επανάληψη στα κεφάλαια που χρειάζονται περισσότερη δουλειά.</p>
+    <div class="smart-track" id="smartTimelineTrack"></div>
+    <div class="smart-note" id="smartTimelineNote">Άνοιξε ένα κεφάλαιο ή τη Γενική Επανάληψη για να ξεκινήσει η καταγραφή προόδου.</div>
+    <div style="margin-top:16px">
+      <a class="secondary" href="revision.html">Άνοιγμα Smart Revision</a>
+    </div>
+  </section>
+
 <footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
 
 
@@ -620,6 +666,44 @@ document.addEventListener('click', function(e){
   if(target && !target.classList.contains('sound-toggle')) playUISound('click');
 });
 
+</script>
+
+
+<script>
+(function(){
+  const eras = [
+    ['chapter1.html','Προϊστορία'],['chapter2.html','Χαλκός'],['chapter3.html','1100-800'],
+    ['chapter4.html','Αρχαϊκή'],['chapter5.html','Αθήνα'],['chapter6.html','Πόλεμος'],
+    ['chapter7.html','Μακεδονία'],['chapter8.html','Κλασική/Ελληνιστική'],
+    ['chapter9.html','Ρώμη'],['chapter10.html','Βυζάντιο']
+  ];
+  function getProgress(){
+    try{return JSON.parse(localStorage.getItem('istoriaProgress')||'{}')}catch(e){return{}}
+  }
+  function renderSmartTimeline(){
+    const box=document.getElementById('smartTimelineTrack');
+    if(!box) return;
+    const data=getProgress();
+    box.innerHTML='';
+    let weak=[];
+    eras.forEach(function(e,i){
+      const key='chapter'+(i+1);
+      const item=data[key]||{};
+      const el=document.createElement('a');
+      el.href=e[0];
+      el.className='smart-era';
+      if(item.completed) el.classList.add('done');
+      if(typeof item.bestScore==='number' && item.bestScore<70){el.classList.add('weak'); weak.push(e[1]);}
+      el.innerHTML='<div>'+(i+1)+'</div><div>'+e[1]+'</div><small>'+(item.bestScore!=null?item.bestScore+'%':'νέο')+'</small>';
+      box.appendChild(el);
+    });
+    const note=document.getElementById('smartTimelineNote');
+    if(note){
+      note.textContent = weak.length ? 'Πρόταση επανάληψης: '+weak.join(', ') : 'Καλή πορεία! Συνέχισε τα quiz για πιο ακριβείς προτάσεις.';
+    }
+  }
+  renderSmartTimeline();
+})();
 </script>
 
 </body>
