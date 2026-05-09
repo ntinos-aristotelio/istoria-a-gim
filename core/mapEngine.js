@@ -3,6 +3,7 @@
   const byId = (id)=>document.getElementById(id);
   const BOUNDS = {lonMin:-10, lonMax:45, latMin:20, latMax:48};
   let state = {data:null, activeLayer:'all', selected:null, unlocked:{}};
+  const MAJOR_HOTSPOTS = new Set(['athens','macedonia','rome','constantinople','egypt','miletus','carthage']);
 
   function geo(lon,lat){
     const x = ((lon-BOUNDS.lonMin)/(BOUNDS.lonMax-BOUNDS.lonMin))*1000;
@@ -11,7 +12,7 @@
   }
   function pointOf(h){return geo(h.lon, h.lat)}
   function coords(id){const h=state.data.hotspots.find(x=>x.id===id);return h?pointOf(h):null}
-  function visible(h){return state.activeLayer==='all' || h.layer===state.activeLayer}
+  function visible(h){return state.activeLayer==='all' ? MAJOR_HOTSPOTS.has(h.id) : h.layer===state.activeLayer}
   function loadProgress(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return {}}}
   function saveProgress(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({unlocked:state.unlocked,last:state.selected?.id||null}))}catch(e){}}
   function isUnlocked(){return true}
@@ -41,7 +42,7 @@
         <div class="eyebrow">V10 Phase 10 — Interactive Historical Atlas</div>
         <h1>🌍 Ιστορικός Άτλαντας Μεσογείου</h1>
         <p class="atlas-intro">Ο χάρτης είναι πλέον πραγματικός γεωγραφικός άτλαντας της Μεσογείου, όχι αφηρημένο game-board. Βλέπεις καθαρές ακτογραμμές, χώρες, θάλασσες και σημεία ιστορικών γεγονότων σε σωστές θέσεις.</p>
-        <div class="atlas-note">Στόχος: ο μαθητής να συνδέει την Ιστορία με τον πραγματικό χώρο — Ελλάδα, Αιγαίο, Μικρά Ασία, Αίγυπτο, Ρώμη και Ανατολή.</div>
+        <div class="atlas-note">Στόχος: ο μαθητής να συνδέει την Ιστορία με τον πραγματικό χώρο — πρώτα βλέπει τα βασικά σημεία και μετά ανοίγει κάθε ιστορικό επίπεδο ξεχωριστά.</div>
         <div class="map-toolbar" id="mapToolbar"></div>
         <div class="region-jump" id="regionJump"></div>
         <div class="map-layout">
@@ -88,7 +89,7 @@
     const el=byId('hotspots');
     el.innerHTML=state.data.hotspots.filter(visible).map(h=>{
       const p=pointOf(h);
-      return `<button class="hotspot ${h.layer} ${state.selected&&state.selected.id===h.id?'active':''} ${isUnlocked(h)?'':'locked'}" style="left:${(p.x/10).toFixed(2)}%;top:${(p.y/6).toFixed(2)}%" data-id="${h.id}" title="${h.name}"><span>${h.icon}</span><b>${h.name}</b></button>`;
+      return `<button class="hotspot ${h.layer} ${MAJOR_HOTSPOTS.has(h.id)?'major':''} ${state.selected&&state.selected.id===h.id?'active':''} ${isUnlocked(h)?'':'locked'}" style="left:${(p.x/10).toFixed(2)}%;top:${(p.y/6).toFixed(2)}%" data-id="${h.id}" title="${h.name}"><span>${h.icon}</span><b>${h.name}</b></button>`;
     }).join('');
     el.querySelectorAll('.hotspot').forEach(btn=>btn.addEventListener('click',()=>{
       state.selected=state.data.hotspots.find(h=>h.id===btn.dataset.id); state.unlocked[state.selected.id]=true; saveProgress(); renderHotspots(); renderSide();
@@ -97,7 +98,7 @@
 
   function renderRoutes(){
     const svg=byId('routeSvg'); if(!svg) return;
-    const routes=state.data.routes.filter(r=>state.activeLayer==='all'||r.layer===state.activeLayer);
+    const routes=state.activeLayer==='all' ? [] : state.data.routes.filter(r=>r.layer===state.activeLayer);
     svg.innerHTML=routes.map(r=>{
       const pts=r.points.map(coords).filter(Boolean);
       if(pts.length<2) return '';
@@ -110,7 +111,7 @@
     const h=state.selected, side=byId('mapSide'); if(!h||!side) return;
     const routeList=state.data.routes.map(r=>`<div class="route-item ${r.points.includes(h.id)?'active':''}" data-route="${r.id}">🧭 ${r.title}</div>`).join('');
     side.innerHTML=`
-      <div style="font-size:46px">${h.icon}</div>
+      <div class="map-side-icon">${h.icon}</div>
       <h2>${h.name}</h2>
       <div class="map-meta"><span class="map-chip">${h.chapter}</span><span class="map-chip">${h.mission}</span><span class="map-chip">${h.region}</span></div>
       <p>${h.text}</p>

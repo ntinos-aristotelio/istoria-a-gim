@@ -7,3 +7,97 @@
 .map-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 18px;align-items:center}.map-filter{border:0;border-radius:999px;padding:11px 15px;font-weight:900;background:#f0ddbe;color:#2b2118;cursor:pointer}.map-filter.active{background:#246b63;color:#fff}.map-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(300px,.72fr);gap:18px;align-items:start}.map-canvas{position:relative;aspect-ratio:5/3;min-height:560px;border-radius:24px;overflow:hidden;border:2px solid #dec199;background:#b9dce9;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}.atlas-map-img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block;z-index:1}.route-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible}.route-path{fill:none;stroke:#7b421f;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:14 11;animation:mapDash 8s linear infinite;filter:drop-shadow(0 2px 1px rgba(255,255,255,.95))}.route-path.alexander{stroke:#b9422f}.route-path.persian{stroke:#246b63}.route-path.rome{stroke:#a7652d}.route-path.colonies{stroke:#3b8fb0}@keyframes mapDash{to{stroke-dashoffset:-220}}
 .hotspot{position:absolute;transform:translate(-50%,-50%);border:3px solid #fff;background:#7b421f;color:#fff;border-radius:999px;min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:18px;cursor:pointer;box-shadow:0 7px 18px rgba(43,33,24,.32);z-index:6;transition:.18s;padding:0 9px}.hotspot b{display:block;position:absolute;left:50%;top:100%;transform:translateX(-50%);white-space:nowrap;margin-top:4px;background:rgba(43,33,24,.86);color:#fff;font-size:12px;border-radius:999px;padding:4px 8px;opacity:.92}.hotspot:hover,.hotspot.active{transform:translate(-50%,-50%) scale(1.12);background:#246b63}.hotspot.locked{filter:grayscale(.55);opacity:.55}.hotspot.persian{background:#b13f3f}.hotspot.alexander{background:#7b421f}.hotspot.rome{background:#a7652d}.hotspot.prehistory{background:#246b63}.hotspot.colonies{background:#3b8fb0}.map-legend{position:absolute;left:14px;bottom:14px;background:rgba(255,248,236,.94);border:1px solid #dec199;border-radius:18px;padding:12px 14px;z-index:7;box-shadow:0 8px 20px rgba(70,40,18,.14);font-size:14px;font-weight:900}.map-legend div{margin:5px 0}.legend-dot{display:inline-flex;width:13px;height:13px;border-radius:50%;margin-right:7px;vertical-align:-1px}.dot-prehistory{background:#246b63}.dot-persian{background:#b13f3f}.dot-alexander{background:#7b421f}.dot-rome{background:#a7652d}.dot-colonies{background:#3b8fb0}.atlas-scale{position:absolute;right:14px;bottom:14px;z-index:7;background:rgba(255,248,236,.94);border:1px solid #dec199;border-radius:14px;padding:8px 12px;font-size:13px;font-weight:900}.atlas-scale span{display:block;width:120px;border-top:4px solid #2b2118;margin-bottom:4px}.map-side{background:#fff;border:2px solid #dec199;border-radius:24px;padding:18px;min-height:560px;color:#2b2118}.map-side h2{font-size:30px;margin:0 0 10px;color:#613517}.map-side p{font-size:18px;line-height:1.5}.map-meta{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.map-chip{background:#e6f2ed;color:#1f5b54;border:1px solid rgba(36,107,99,.2);border-radius:999px;padding:7px 11px;font-weight:900;font-size:14px}.geo-hint{background:#fff8ec;border-left:6px solid #3b8fb0;border-radius:12px;padding:10px;font-weight:800;color:#1f5b54}.map-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.map-actions a{background:#7b421f;color:#fff;text-decoration:none;border-radius:15px;padding:12px 15px;font-weight:900}.map-actions a.secondary{background:#246b63}.route-panel{margin-top:18px;background:#fff8ec;border:2px dashed #d8a24b;border-radius:22px;padding:16px}.route-list{display:grid;gap:9px;margin-top:10px}.route-item{background:#fff;border:1px solid #dec199;border-radius:15px;padding:11px;font-weight:900;cursor:pointer}.route-item.active{background:#fff1d6;border-color:#d8a24b}.region-jump{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}.region-jump button{border:0;border-radius:14px;background:#fff;color:#613517;border:1px solid #dec199;padding:9px 12px;font-weight:900;cursor:pointer}.region-jump button:hover{background:#fff1d6}.map-checklist{background:#f7ead3;border-radius:16px;padding:12px;margin-top:14px}.map-checklist strong{display:block;margin-bottom:6px}.map-checklist ul{margin:0 0 0 18px;padding:0}.map-checklist li{font-size:15px;line-height:1.35;margin:4px 0}
 @media(max-width:980px){.map-layout{grid-template-columns:1fr}.map-canvas{min-height:auto}.map-side{min-height:auto}}@media(max-width:620px){.world-map-shell{padding:14px}.hotspot{min-width:34px;height:34px;font-size:16px}.hotspot b{display:none}.map-side h2{font-size:25px}.map-legend,.atlas-scale{display:none}}
+
+/* === V10 Phase 10 Atlas Layout Fix ===
+   Keeps the map educational and readable: real atlas first, game overlays second. */
+.world-map-shell{
+  max-width:1180px;
+  margin-left:auto;
+  margin-right:auto;
+  overflow:hidden;
+}
+.map-layout{
+  grid-template-columns:minmax(0, 1fr) 320px !important;
+  gap:18px !important;
+  align-items:stretch;
+}
+.map-canvas{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  min-height:0 !important;
+  aspect-ratio:16/9 !important;
+  height:auto;
+  overflow:hidden !important;
+}
+.map-side{
+  min-width:0;
+  width:100%;
+  min-height:0 !important;
+  align-self:stretch;
+  overflow-wrap:anywhere;
+  position:relative;
+  z-index:10;
+}
+.map-side-icon{font-size:38px;line-height:1;margin-bottom:6px}
+.map-side h2{font-size:26px !important;line-height:1.05;margin-bottom:8px !important}
+.map-side p{font-size:16px !important;line-height:1.42 !important}
+.map-meta{gap:6px !important;margin:8px 0 !important}
+.map-chip{font-size:12px !important;padding:6px 9px !important}
+.geo-hint{font-size:14px !important;line-height:1.35 !important}
+.map-actions a{font-size:14px;padding:10px 12px !important}
+.route-panel{padding:12px !important;margin-top:12px !important}
+.route-item{font-size:14px;padding:9px !important}
+.map-checklist{font-size:14px;padding:10px !important}
+.map-checklist li{font-size:14px !important}
+
+.hotspot{
+  min-width:32px !important;
+  height:32px !important;
+  font-size:15px !important;
+  border-width:2px !important;
+  padding:0 7px !important;
+}
+.hotspot b{
+  display:none !important;
+  font-size:11px !important;
+  max-width:120px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  z-index:20;
+}
+.hotspot.major b,
+.hotspot.active b,
+.hotspot:hover b{
+  display:block !important;
+}
+.hotspot.active{z-index:12}
+.route-path{stroke-width:4 !important;stroke-dasharray:10 9 !important;opacity:.86}
+.map-legend{font-size:12px !important;padding:9px 11px !important;max-width:220px}
+.atlas-scale{font-size:12px !important;padding:7px 10px !important}
+.atlas-scale span{width:88px !important}
+.region-jump{gap:8px !important}
+.region-jump button{
+  color:#613517 !important;
+  background:#fff !important;
+  border:1px solid #dec199 !important;
+  min-width:142px;
+  text-align:left;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.region-jump button:hover{background:#fff1d6 !important;color:#2b2118 !important}
+.map-toolbar .map-filter{font-size:14px !important;padding:10px 14px !important}
+
+@media(max-width:1100px){
+  .map-layout{grid-template-columns:1fr !important;}
+  .map-side{min-height:auto !important;}
+}
+@media(max-width:720px){
+  .atlas-intro{font-size:17px !important;}
+  .map-canvas{aspect-ratio:4/3 !important;}
+  .hotspot.major b{display:none !important;}
+  .hotspot.active b,.hotspot:hover b{display:block !important;}
+  .region-jump button{min-width:0;flex:1 1 150px;}
+}
