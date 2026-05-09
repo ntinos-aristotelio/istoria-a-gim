@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V10 Chapter Generator</title>
+<link rel="stylesheet" href="core/chapter-core.css">
+<style>
+.generator-banner{background:#fff;border:2px dashed var(--gold);border-radius:24px;padding:18px;margin:18px 0;font-weight:900;color:var(--ink)}
+.generator-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.generator-links a{padding:10px 13px;font-size:14px}
+.notice{background:#fff;border:2px dashed var(--gold);border-radius:20px;padding:16px;font-weight:900}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="logo" id="generatorLogo">Ιστορία Α΄ Γυμνασίου</div>
+    <div class="nav">
+      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
+      <button onclick="showPage('home')">Αρχή</button>
+      <button onclick="showPage('review')">Quiz</button>
+      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
+      <a class="btn secondary" id="legacyLink" href="index.html">Classic HTML</a>
+      <a class="btn" href="index.html">Index</a>
+    </div>
+  </div>
+</header>
+
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow" id="heroEyebrow">Generated chapter</div>
+      <h1 id="heroTitle">Φόρτωση...</h1>
+      <p id="heroSubtitle"></p>
+      <div class="generator-banner">
+        <div id="generatorStatus">Φόρτωση data...</div>
+        <div class="generator-links" id="chapterManifestList"></div>
+      </div>
+      <div class="progress-card">
+        <h3>Πρόοδος κεφαλαίου</h3>
+        <div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
+        <div class="progress-small" id="chapterProgressText"></div>
+        <div class="progress-badges" id="chapterBadgeList"></div>
+      </div>
+      <div class="cards" id="generatedCards"></div>
+    </div>
+  </div>
+</section>
+
+<section id="review" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Generated Quiz</div>
+      <h2>Quiz από JSON</h2>
+      <p>Οι ερωτήσεις φορτώνονται αυτόματα από το data αρχείο του κεφαλαίου.</p>
+      <div id="quizArea"></div>
+      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+      <div id="scoreBox"></div>
+    </div>
+  </div>
+</section>
+
+<section id="glossary" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Generated Glossary</div>
+      <h2>Λεξικό από JSON</h2>
+      <div class="grid2" id="generatedGlossary"></div>
+    </div>
+  </div>
+</section>
+
+<section id="today" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Generated Checklist</div>
+      <h2>Checklist από JSON</h2>
+      <div class="checklist" id="generatedChecklist"></div>
+      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+      <div id="badgeBox"></div>
+    </div>
+  </div>
+</section>
+
+<footer>V10 Phase 4 — Chapter Generator System</footer>
+
+<script src="core/storageEngine.js"></script>
+<script src="core/soundEngine.js"></script>
+<script src="core/uiEngine.js"></script>
+<script src="core/chapterEngine.js"></script>
+<script src="core/quizEngine.js"></script>
+<script src="core/adaptiveEngine.js"></script>
+<script src="core/generatorEngine.js"></script>
+</body>
+</html>
