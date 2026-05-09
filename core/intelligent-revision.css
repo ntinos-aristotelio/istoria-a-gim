@@ -1,0 +1,11 @@
+.revision-hero-box{background:#fff4dc;border:2px solid var(--gold);border-radius:24px;padding:20px;margin:20px 0;color:var(--ink)}
+.revision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+.revision-card{background:white;border:2px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 8px 18px rgba(70,40,18,.08);color:var(--ink)}
+.revision-card.urgent{background:#fde2df;border-color:var(--bad)}
+.revision-card.done{background:#ddf6e5;border-color:var(--ok)}
+.revision-card strong{display:block;font-size:22px;color:var(--brown);margin-bottom:8px}
+.revision-card small{display:block;font-size:15px;color:#6d5a48;margin-bottom:12px;font-weight:800}
+.dynamic-quiz-card{background:white;border:2px solid var(--line);border-radius:22px;padding:18px;margin:14px 0;color:var(--ink)}
+.dynamic-quiz-card button{display:block;width:100%;margin:8px 0;background:white;color:var(--ink)!important;border:2px solid var(--line);text-align:left}
+.dynamic-quiz-card button.correct{background:#ddf6e5!important;border-color:var(--ok)!important}
+.dynamic-quiz-card button.wrong{background:#fde2df!important;border-color:var(--bad)!important}

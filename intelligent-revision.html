@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intelligent Revision - Ιστορία Α΄ Γυμνασίου</title>
+<link rel="stylesheet" href="core/index.css">
+<link rel="stylesheet" href="core/intelligent-revision.css">
+</head>
+<body>
+<header><div class="bar"><div class="logo">🧠 Intelligent Revision System</div><div class="nav"><a href="index.html">Αρχική</a><a class="secondary" href="smart-study.html">Smart Study</a><a class="blue" href="teacher.html">Teacher Analytics</a></div></div></header>
+<div class="wrap">
+<section class="panel text">
+<div class="eyebrow">V10 Phase 8</div>
+<h1>Έξυπνη Επανάληψη</h1>
+<p>Το σύστημα οργανώνει επαναλήψεις με βάση τα αδύναμα σημεία, τα λάθη και τη λογική spaced repetition.</p>
+<div id="revisionPlan"></div>
+</section>
+<section class="panel text" style="margin-top:22px">
+<h2>Dynamic Quiz</h2>
+<p>Δημιουργείται αυτόματα από το question bank και δίνει προτεραιότητα στα αδύναμα θέματα.</p>
+<div id="dynamicQuiz"></div>
+</section>
+</div>
+<footer>Ιστορία Α΄ Γυμνασίου • V10 Intelligent Revision</footer>
+<script src="core/storageEngine.js"></script>
+<script src="core/adaptiveEngine.js"></script>
+<script src="core/revisionEngine.js"></script>
+<script src="core/dynamicQuizEngine.js"></script>
+<script>
+IstoriaRevision.render('revisionPlan');
+(function(){
+ const quiz = IstoriaDynamicQuiz.buildQuiz(5);
+ const box = document.getElementById('dynamicQuiz');
+ box.innerHTML = quiz.map(function(item, idx){
+   return '<div class="dynamic-quiz-card"><h3>'+(idx+1)+'. '+item.q+'</h3>'+item.a.map(function(ans,i){return '<button onclick="answerDyn(this,'+idx+','+i+')">'+ans+'</button>';}).join('')+'</div>';
+ }).join('');
+ window.answerDyn = function(btn, idx, i){
+   const item = quiz[idx];
+   const ok = IstoriaDynamicQuiz.recordAnswer(item,i);
+   btn.classList.add(ok?'correct':'wrong');
+ };
+})();
+</script>
+</body>
+</html>
