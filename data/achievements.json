@@ -1,0 +1,147 @@
+{
+  "ranks": [
+    {
+      "id": "beginner",
+      "title": "Νέος Ιστορικός",
+      "xp": 0
+    },
+    {
+      "id": "explorer",
+      "title": "Εξερευνητής της Ιστορίας",
+      "xp": 300
+    },
+    {
+      "id": "strategist",
+      "title": "Στρατηγικός Νους",
+      "xp": 750
+    },
+    {
+      "id": "scholar",
+      "title": "Μελετητής Αρχαίας Ιστορίας",
+      "xp": 1300
+    },
+    {
+      "id": "master",
+      "title": "Master of Ancient History",
+      "xp": 2200
+    }
+  ],
+  "achievements": [
+    {
+      "id": "first_steps",
+      "icon": "🏺",
+      "title": "Πρώτα Βήματα",
+      "desc": "Ολοκλήρωσε το πρώτο μάθημα ή quiz.",
+      "type": "progress",
+      "target": 1
+    },
+    {
+      "id": "marathon_hero",
+      "icon": "⚔️",
+      "title": "Ήρωας του Μαραθώνα",
+      "desc": "Ολοκλήρωσε αποστολή Περσικών Πολέμων.",
+      "type": "simulation",
+      "target": 1
+    },
+    {
+      "id": "atlas_explorer",
+      "icon": "🌍",
+      "title": "Εξερευνητής Άτλαντα",
+      "desc": "Άνοιξε 5 ιστορικά σημεία στον άτλαντα.",
+      "type": "atlas",
+      "target": 5
+    },
+    {
+      "id": "revision_master",
+      "icon": "📚",
+      "title": "Revision Master",
+      "desc": "Κάνε 7 επαναλήψεις.",
+      "type": "revision",
+      "target": 7
+    },
+    {
+      "id": "mentor_listener",
+      "icon": "🧭",
+      "title": "Άκου τον Οδηγό",
+      "desc": "Χρησιμοποίησε τον ιστορικό οδηγό 3 φορές.",
+      "type": "mentor",
+      "target": 3
+    },
+    {
+      "id": "ancient_greece_master",
+      "icon": "🏛️",
+      "title": "Γνώστης της Αρχαίας Ελλάδας",
+      "desc": "Φτάσε 80% mastery στα ελληνικά κεφάλαια.",
+      "type": "mastery",
+      "target": 80
+    },
+    {
+      "id": "roman_strategist",
+      "icon": "🛡️",
+      "title": "Roman Strategist",
+      "desc": "Δείξε πρόοδο στα ρωμαϊκά κεφάλαια.",
+      "type": "mastery",
+      "target": 70
+    },
+    {
+      "id": "streak_5",
+      "icon": "🔥",
+      "title": "Σειρά 5 Ημερών",
+      "desc": "Κράτησε ενεργή μελέτη για 5 ημέρες.",
+      "type": "streak",
+      "target": 5
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter1",
+      "title": "Η Εποχή του Λίθου",
+      "group": "Προϊστορία"
+    },
+    {
+      "id": "chapter2",
+      "title": "Η Εποχή του Χαλκού",
+      "group": "Προϊστορία"
+    },
+    {
+      "id": "chapter3",
+      "title": "1100–800 π.Χ.",
+      "group": "Γεωμετρική εποχή"
+    },
+    {
+      "id": "chapter4",
+      "title": "Αρχαϊκή εποχή",
+      "group": "Αρχαία Ελλάδα"
+    },
+    {
+      "id": "chapter5",
+      "title": "Ηγεμονία της Αθήνας",
+      "group": "Κλασική εποχή"
+    },
+    {
+      "id": "chapter6",
+      "title": "Πελοποννησιακός πόλεμος",
+      "group": "Κλασική εποχή"
+    },
+    {
+      "id": "chapter7",
+      "title": "Μακεδονία και Αλέξανδρος",
+      "group": "Ελληνιστικός κόσμος"
+    },
+    {
+      "id": "chapter8",
+      "title": "Ελληνιστικά χρόνια",
+      "group": "Ελληνιστικός κόσμος"
+    },
+    {
+      "id": "chapter9",
+      "title": "Ρώμη και ελληνικός κόσμος",
+      "group": "Ρώμη"
+    },
+    {
+      "id": "chapter10",
+      "title": "Ρωμαϊκή αυτοκρατορία",
+      "group": "Ρώμη/Βυζάντιο"
+    }
+  ]
+}

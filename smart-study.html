@@ -6,25 +6,22 @@
 <title>Smart Study Mode - Ιστορία Α΄ Γυμνασίου</title>
 <link rel="stylesheet" href="core/index.css">
 <link rel="stylesheet" href="core/smart-study.css">
+<link rel="stylesheet" href="core/v13-integration.css">
 </head>
 <body>
 <header>
   <div class="bar">
     <div class="logo">🧠 Smart Study Mode</div>
     <div class="nav">
-      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
       <a href="index.html">Αρχική</a>
       <a class="secondary" href="revision.html">Γενική επανάληψη</a>
       <a class="blue" href="intelligent-revision.html">Intelligent Revision</a>
-      <a class="gold" href="chapter-template.html?chapter=1">Generator Preview</a>
-          <a class="blue" href="teacher.html">Teacher Analytics</a>
-    <a class="btn blue" href="historical-campaign.html">History Campaign</a>      <a class="btn blue" href="mentor.html">Ιστορικός Οδηγός</a>
-
-
-<div class="wrap">
-  <section class="hero">
-    <div class="panel text smart-hero-card">
-      <div class="eyebrow">V10 Adaptive Learning</div>
+      <a class="gold" href="teacher.html">Teacher</a>
+      <a class="blue" href="mentor.html">Ιστορικός Οδηγός</a>
+      <a class="gold" href="achievements.html">🏆 Achievements</a>
+    </div>
+  </div>
+</header>
       <h1>Smart Study Mode</h1>
       <p>Εδώ το app δεν δείχνει απλώς όλα τα κεφάλαια. Διαβάζει την πρόοδο, τα quiz και τα αδύναμα σημεία και προτείνει την επόμενη καλύτερη αποστολή για τον μαθητή.</p>
       <div class="box" id="smartStatus">Φόρτωση Smart Study...</div>
@@ -80,5 +77,9 @@
 <script src="core/soundEngine.js"></script>
 <script src="core/adaptiveEngine.js"></script>
 <script src="core/smartStudyEngine.js"></script>
+
+<script src="core/masterySystem.js"></script>
+<script src="core/achievementEngine.js"></script>
+<script src="core/v13Integration.js"></script>
 </body>
 </html>

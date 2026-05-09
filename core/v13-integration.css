@@ -1,0 +1,7 @@
+
+.v13-profile-card{background:#fff;border:2px dashed var(--gold,#d8a24b);border-radius:24px;padding:18px;margin:18px 0;box-shadow:0 8px 22px rgba(70,40,18,.08)}
+.v13-profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:12px}
+.v13-profile-stat{background:var(--paper,#fff8ec);border:1px solid var(--line,#dec199);border-radius:18px;padding:14px;font-weight:900}
+.v13-profile-stat .num{font-size:28px;color:var(--brown,#7b421f);display:block}.v13-mini-bar{height:12px;background:#ead8ba;border-radius:999px;overflow:hidden;margin-top:8px}.v13-mini-fill{height:100%;background:linear-gradient(90deg,var(--green,#246b63),var(--gold,#d8a24b));width:0%}
+.v13-toast{position:fixed;right:18px;bottom:18px;z-index:9999;max-width:340px;background:#fff8ec;border:3px solid #d8a24b;border-radius:22px;padding:16px 18px;box-shadow:0 18px 42px rgba(70,40,18,.22);transform:translateY(130%);opacity:0;transition:.28s ease;color:#2b2118;font-weight:900}.v13-toast.show{transform:translateY(0);opacity:1}.v13-toast small{display:block;color:#6d5a48;margin-top:4px;font-weight:800}
+.v13-teacher-mastery{background:white;border:1px solid var(--line,#dec199);border-radius:22px;padding:18px;margin-top:18px}.v13-master-row{display:grid;grid-template-columns:1fr 110px;gap:12px;align-items:center;margin:10px 0}.v13-master-row strong{font-size:18px}.v13-mentor-reaction{background:#e5f0ec;border-left:8px solid var(--green,#246b63);border-radius:16px;padding:16px;margin:16px 0;font-weight:900;color:#2b2118}

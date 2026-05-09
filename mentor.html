@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Mentor / Ιστορικός Οδηγός</title>
 <link rel="stylesheet" href="core/mentor.css">
+<link rel="stylesheet" href="core/v13-integration.css">
 </head>
 <body>
 <header>
@@ -13,13 +14,16 @@
     <div class="nav">
       <a href="index.html">Αρχική</a>
       <a class="secondary" href="smart-study.html">Smart Study</a>
+      <a class="blue" href="intelligent-revision.html">Revision</a>
       <a class="gold" href="world-map.html">Άτλαντας</a>
       <a class="blue" href="historical-campaign.html">Campaign</a>
-      <a class="secondary" href="narration.html">Αφήγηση</a>
+      <a class="gold" href="achievements.html">🏆 Achievements</a>
     </div>
   </div>
 </header>
 <div class="wrap">
+  <section id="v13MentorReaction"></section>
+  <section data-v13-profile></section>
   <section class="panel text">
     <div class="eyebrow">V12 Learning Support</div>
     <h1>Ιστορικός Οδηγός</h1>
@@ -51,5 +55,9 @@
   </section>
 </div>
 <script src="core/mentorEngine.js"></script>
+
+<script src="core/masterySystem.js"></script>
+<script src="core/achievementEngine.js"></script>
+<script src="core/v13Integration.js"></script>
 </body>
 </html>

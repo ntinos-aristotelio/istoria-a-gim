@@ -6,6 +6,7 @@
 <title>Ιστορικός Άτλαντας - Ιστορία Α΄ Γυμνασίου</title>
 <link rel="stylesheet" href="core/index.css">
 <link rel="stylesheet" href="core/world-map.css">
+<link rel="stylesheet" href="core/v13-integration.css">
 </head>
 <body>
 <header>
@@ -13,12 +14,14 @@
     <div class="logo">🌍 Ιστορικός Άτλαντας</div>
     <div class="nav">
       <a href="index.html">Αρχική</a>
-      <a class="secondary" href="historical-campaign.html">History Campaign</a>
-      <a class="secondary" href="narration.html">Ιστορική Αφήγηση</a>
-      <a class="gold" href="smart-study.html">Smart Study</a>
-      <a class="blue" href="teacher.html">Teacher Analytics</a>      <a class="btn blue" href="mentor.html">Ιστορικός Οδηγός</a>
-
-<div class="wrap" id="worldMapApp"></div>
+      <a class="secondary" href="historical-campaign.html">Campaign</a>
+      <a class="blue" href="smart-study.html">Smart Study</a>
+      <a class="secondary" href="narration.html">Αφήγηση</a>
+      <a class="blue" href="mentor.html">Ιστορικός Οδηγός</a>
+      <a class="gold" href="achievements.html">🏆 Achievements</a>
+    </div>
+  </div>
+</header>
 <footer>V10 Phase 10 — Interactive Historical Atlas</footer>
 <script type="application/json" id="worldMapData">
 {
@@ -490,5 +493,9 @@
 </script>
 <script src="core/storageEngine.js"></script>
 <script src="core/mapEngine.js"></script>
+
+<script src="core/masterySystem.js"></script>
+<script src="core/achievementEngine.js"></script>
+<script src="core/v13Integration.js"></script>
 </body>
 </html>
