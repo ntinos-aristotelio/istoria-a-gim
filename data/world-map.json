@@ -1,0 +1,255 @@
+{
+  "title": "Interactive World Map System",
+  "description": "Διαδραστικός ιστορικός χάρτης που συνδέει περιοχές, μάχες, εκστρατείες και missions.",
+  "layers": [
+    {
+      "id": "all",
+      "title": "Όλα"
+    },
+    {
+      "id": "prehistory",
+      "title": "Προϊστορία / Χαλκός"
+    },
+    {
+      "id": "persian",
+      "title": "Περσικοί Πόλεμοι"
+    },
+    {
+      "id": "alexander",
+      "title": "Μέγας Αλέξανδρος"
+    },
+    {
+      "id": "rome",
+      "title": "Ρώμη"
+    }
+  ],
+  "hotspots": [
+    {
+      "id": "cyclades",
+      "name": "Κυκλάδες",
+      "layer": "prehistory",
+      "x": 54,
+      "y": 57,
+      "icon": "🏺",
+      "chapter": "Κεφ. 2",
+      "mission": "Έμπορος στο Αιγαίο",
+      "text": "Θαλάσσιες επαφές, εμπόριο και Κυκλαδικός πολιτισμός.",
+      "link": "chapter2.html"
+    },
+    {
+      "id": "crete",
+      "name": "Κρήτη",
+      "layer": "prehistory",
+      "x": 48,
+      "y": 73,
+      "icon": "🛶",
+      "chapter": "Κεφ. 2",
+      "mission": "Ανάκτορο της Κνωσού",
+      "text": "Μινωικός πολιτισμός, ανάκτορα και θαλάσσιες επαφές.",
+      "link": "chapter2.html"
+    },
+    {
+      "id": "mycenae",
+      "name": "Μυκήνες",
+      "layer": "prehistory",
+      "x": 43,
+      "y": 60,
+      "icon": "🛡️",
+      "chapter": "Κεφ. 2",
+      "mission": "Οργάνωσε το ανάκτορο",
+      "text": "Μυκηναϊκά κέντρα, άμυνα, αποθήκες και διοίκηση.",
+      "link": "chapter2.html"
+    },
+    {
+      "id": "athens",
+      "name": "Αθήνα",
+      "layer": "persian",
+      "x": 47,
+      "y": 55,
+      "icon": "🏛️",
+      "chapter": "Κεφ. 4–6",
+      "mission": "Δημοκρατία και Ηγεμονία",
+      "text": "Πόλη-κράτος, δημοκρατία, Περσικοί Πόλεμοι και αθηναϊκή ηγεμονία.",
+      "link": "chapter5.html"
+    },
+    {
+      "id": "sparta",
+      "name": "Σπάρτη",
+      "layer": "persian",
+      "x": 43,
+      "y": 66,
+      "icon": "⚔️",
+      "chapter": "Κεφ. 4–6",
+      "mission": "Η επιλογή των Θερμοπυλών",
+      "text": "Σπαρτιατική κοινωνία, στρατιωτική οργάνωση και Πελοποννησιακός Πόλεμος.",
+      "link": "chapter6.html"
+    },
+    {
+      "id": "marathon",
+      "name": "Μαραθώνας",
+      "layer": "persian",
+      "x": 50,
+      "y": 52,
+      "icon": "🏃",
+      "chapter": "Κεφ. 4",
+      "mission": "Στρατηγός στον Μαραθώνα",
+      "text": "Η μάχη του Μαραθώνα και η στρατηγική του αιφνιδιασμού.",
+      "link": "historical-campaign.html"
+    },
+    {
+      "id": "thermopylae",
+      "name": "Θερμοπύλες",
+      "layer": "persian",
+      "x": 46,
+      "y": 44,
+      "icon": "🛡️",
+      "chapter": "Κεφ. 4",
+      "mission": "Κράτα το πέρασμα",
+      "text": "Στενό πέρασμα, αριθμητική υπεροχή και στρατηγική άμυνα.",
+      "link": "historical-campaign.html"
+    },
+    {
+      "id": "salamis",
+      "name": "Σαλαμίνα",
+      "layer": "persian",
+      "x": 46,
+      "y": 56,
+      "icon": "⛵",
+      "chapter": "Κεφ. 4",
+      "mission": "Ναυμαχία στα στενά",
+      "text": "Ναυτική στρατηγική, Θεμιστοκλής και περσικός στόλος.",
+      "link": "historical-campaign.html"
+    },
+    {
+      "id": "macedonia",
+      "name": "Μακεδονία",
+      "layer": "alexander",
+      "x": 45,
+      "y": 28,
+      "icon": "🦁",
+      "chapter": "Κεφ. 7",
+      "mission": "Ένωσε τον ελληνικό κόσμο",
+      "text": "Φίλιππος Β΄, μακεδονική φάλαγγα και άνοδος της Μακεδονίας.",
+      "link": "chapter7.html"
+    },
+    {
+      "id": "granicos",
+      "name": "Γρανικός",
+      "layer": "alexander",
+      "x": 62,
+      "y": 39,
+      "icon": "⚔️",
+      "chapter": "Κεφ. 7",
+      "mission": "Πρώτη σύγκρουση στην Ασία",
+      "text": "Η αρχή της εκστρατείας του Αλέξανδρου στην Ανατολή.",
+      "link": "historical-campaign.html"
+    },
+    {
+      "id": "issus",
+      "name": "Ισσός",
+      "layer": "alexander",
+      "x": 70,
+      "y": 50,
+      "icon": "⚔️",
+      "chapter": "Κεφ. 7",
+      "mission": "Αντιμετώπισε τον Δαρείο",
+      "text": "Μεγάλη μάχη με στρατηγικές επιλογές και συνέπειες.",
+      "link": "historical-campaign.html"
+    },
+    {
+      "id": "egypt",
+      "name": "Αίγυπτος",
+      "layer": "alexander",
+      "x": 58,
+      "y": 78,
+      "icon": "🔺",
+      "chapter": "Κεφ. 7–8",
+      "mission": "Ίδρυσε την Αλεξάνδρεια",
+      "text": "Αλεξάνδρεια, ελληνιστικός κόσμος και διάδοση πολιτισμού.",
+      "link": "chapter8.html"
+    },
+    {
+      "id": "gaugamela",
+      "name": "Γαυγάμηλα",
+      "layer": "alexander",
+      "x": 82,
+      "y": 55,
+      "icon": "👑",
+      "chapter": "Κεφ. 7",
+      "mission": "Κρίνεται η αυτοκρατορία",
+      "text": "Η αποφασιστική αναμέτρηση με την Περσική Αυτοκρατορία.",
+      "link": "historical-campaign.html"
+    },
+    {
+      "id": "rome",
+      "name": "Ρώμη",
+      "layer": "rome",
+      "x": 21,
+      "y": 51,
+      "icon": "🛡️",
+      "chapter": "Κεφ. 9–10",
+      "mission": "Χτίσε δύναμη στη Μεσόγειο",
+      "text": "Ρωμαϊκή πολιτεία, επέκταση και αυτοκρατορία.",
+      "link": "chapter9.html"
+    },
+    {
+      "id": "carthage",
+      "name": "Καρχηδόνα",
+      "layer": "rome",
+      "x": 25,
+      "y": 76,
+      "icon": "🐘",
+      "chapter": "Κεφ. 9",
+      "mission": "Ανταγωνισμός στη Μεσόγειο",
+      "text": "Ρώμη, Καρχηδόνα και έλεγχος της δυτικής Μεσογείου.",
+      "link": "historical-campaign.html"
+    },
+    {
+      "id": "constantinople",
+      "name": "Κωνσταντινούπολη",
+      "layer": "rome",
+      "x": 61,
+      "y": 43,
+      "icon": "🏟️",
+      "chapter": "Κεφ. 10",
+      "mission": "Από τη Ρώμη στο Βυζάντιο",
+      "text": "Η μεγάλη στροφή και η νέα πρωτεύουσα της αυτοκρατορίας.",
+      "link": "chapter10.html"
+    }
+  ],
+  "routes": [
+    {
+      "id": "alexander-route",
+      "title": "Εκστρατεία Μεγάλου Αλεξάνδρου",
+      "layer": "alexander",
+      "points": [
+        "macedonia",
+        "granicos",
+        "issus",
+        "egypt",
+        "gaugamela"
+      ]
+    },
+    {
+      "id": "persian-wars",
+      "title": "Περσικοί Πόλεμοι",
+      "layer": "persian",
+      "points": [
+        "marathon",
+        "thermopylae",
+        "salamis"
+      ]
+    },
+    {
+      "id": "roman-expansion",
+      "title": "Ρωμαϊκή επέκταση",
+      "layer": "rome",
+      "points": [
+        "rome",
+        "carthage",
+        "athens",
+        "constantinople"
+      ]
+    }
+  ]
+}
