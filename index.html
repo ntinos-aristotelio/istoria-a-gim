@@ -220,6 +220,30 @@ footer{
 .achievement-card p{font-size:18px;margin:0;}
 .sound-toggle{background:#3b8fb0!important;}
 
+
+/* === V5 student dashboard + learning report === */
+.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:18px;}
+.stat-card{background:white;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 8px 22px rgba(70,40,18,.08);}
+.stat-number{font-size:38px;font-weight:900;color:var(--brown);line-height:1;margin-bottom:8px;}
+.stat-label{font-size:17px;font-weight:900;color:#6d5a48;}
+.next-mission{background:#fff4dc;border:2px solid var(--gold);border-radius:24px;padding:20px;margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.next-mission strong{font-size:24px;color:var(--brown);}
+.next-mission span{font-size:18px;font-weight:800;}
+.timeline-road{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-top:18px;}
+.road-step{background:white;border:2px solid var(--line);border-radius:18px;min-height:74px;padding:10px;text-align:center;font-weight:900;display:grid;place-items:center;}
+.road-step.done{background:#ddf6e5;border-color:var(--ok);}
+.road-step.next{background:#fff1d6;border-color:var(--gold);box-shadow:0 0 0 4px rgba(216,162,75,.18);}
+.road-step small{display:block;font-size:13px;color:#6d5a48;margin-top:4px;}
+.card.chapter-done{border-color:var(--ok);background:#f0fff5;}
+.card.chapter-next{border-color:var(--gold);box-shadow:0 0 0 4px rgba(216,162,75,.18);}
+.chapter-status{display:inline-block;border-radius:999px;padding:7px 11px;font-size:14px;font-weight:900;margin-top:10px;background:#f0ddbe;color:#613517;}
+.chapter-status.done{background:#ddf6e5;color:#17612f;}
+.chapter-status.next{background:#fff1d6;color:#7b421f;}
+.report-box{background:white;border:1px solid var(--line);border-radius:22px;padding:18px;margin-top:18px;}
+.report-box textarea{width:100%;min-height:130px;border:1px solid var(--line);border-radius:16px;padding:14px;font-size:17px;color:var(--ink);background:#fffaf1;resize:vertical;}
+@media(max-width:850px){.timeline-road{grid-template-columns:repeat(5,1fr)}.next-mission{align-items:flex-start}.next-mission a{width:100%;text-align:center}}
+@media(max-width:520px){.timeline-road{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 
@@ -289,6 +313,30 @@ footer{
     <div id="achievementGrid" class="achievement-grid"></div>
   </section>
 
+
+
+  <section class="panel text" id="studentDashboard">
+    <div class="eyebrow">Dashboard μαθητή</div>
+    <h2>Τι να κάνω μετά;</h2>
+    <p>Η εφαρμογή πλέον διαβάζει την πρόοδο και προτείνει τον επόμενο σταθμό.</p>
+    <div class="dashboard-grid">
+      <div class="stat-card"><div class="stat-number" id="statCompleted">0/10</div><div class="stat-label">Κεφάλαια ολοκληρωμένα</div></div>
+      <div class="stat-card"><div class="stat-number" id="statAverage">—</div><div class="stat-label">Μέσο σκορ quiz</div></div>
+      <div class="stat-card"><div class="stat-number" id="statBadges">0</div><div class="stat-label">Badges ξεκλειδωμένα</div></div>
+    </div>
+    <div class="next-mission" id="nextMissionBox">
+      <div><strong>Επόμενη αποστολή</strong><br><span id="nextMissionText">Υπολογισμός...</span></div>
+      <a class="gold" id="nextMissionLink" href="#chapters">Πάμε</a>
+    </div>
+    <div class="timeline-road" id="chapterRoad"></div>
+    <div class="report-box">
+      <h3>Αναφορά προόδου</h3>
+      <p>Χρήσιμο για μαθητή, γονέα ή εκπαιδευτικό.</p>
+      <textarea id="progressReport" readonly></textarea>
+      <p><button class="blue" onclick="copyProgressReport()">Αντιγραφή αναφοράς</button></p>
+    </div>
+  </section>
+
   <section id="chapters" class="panel text section-title">
     <div class="eyebrow">Περιεχόμενα</div>
     <h2>Διάλεξε κεφάλαιο</h2>
@@ -296,7 +344,7 @@ footer{
 
     <div class="cards">
 
-      <div class="card">
+      <div class="card" data-chapter="1">
         <div>
           <div class="icon">🏺</div>
           <h3>Κεφάλαιο 1</h3>
@@ -306,7 +354,7 @@ footer{
         <a href="chapter1.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="2">
         <div>
           <div class="icon">🛶</div>
           <h3>Κεφάλαιο 2</h3>
@@ -316,7 +364,7 @@ footer{
         <a href="chapter2.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="3">
         <div>
           <div class="icon">📜</div>
           <h3>Κεφάλαιο 3</h3>
@@ -326,7 +374,7 @@ footer{
         <a href="chapter3.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="4">
         <div>
           <div class="icon">🏛️</div>
           <h3>Κεφάλαιο 4</h3>
@@ -336,7 +384,7 @@ footer{
         <a href="chapter4.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="5">
         <div>
           <div class="icon">🗳️</div>
           <h3>Κεφάλαιο 5</h3>
@@ -346,7 +394,7 @@ footer{
         <a href="chapter5.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="6">
         <div>
           <div class="icon">⚔️</div>
           <h3>Κεφάλαιο 6</h3>
@@ -356,7 +404,7 @@ footer{
         <a href="chapter6.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="7">
         <div>
           <div class="icon">🦁</div>
           <h3>Κεφάλαιο 7</h3>
@@ -366,7 +414,7 @@ footer{
         <a href="chapter7.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="8">
         <div>
           <div class="icon">🌍</div>
           <h3>Κεφάλαιο 8</h3>
@@ -376,7 +424,7 @@ footer{
         <a href="chapter8.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="9">
         <div>
           <div class="icon">🛡️</div>
           <h3>Κεφάλαιο 9</h3>
@@ -386,7 +434,7 @@ footer{
         <a href="chapter9.html">Άνοιγμα</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-chapter="10">
         <div>
           <div class="icon">🏟️</div>
           <h3>Κεφάλαιο 10</h3>
@@ -419,6 +467,91 @@ footer{
 <script>
 const APP_PROGRESS_KEY = 'istoriaAGymnasiouProgress';
 function loadAppProgress(){try{return JSON.parse(localStorage.getItem(APP_PROGRESS_KEY)) || {chapters:{}};}catch(e){return {chapters:{}};}}
+
+const CHAPTER_TITLES = {
+  1:'Η Εποχή του Λίθου', 2:'Η Εποχή του Χαλκού', 3:'Ο ελληνικός κόσμος 1100-800 π.Χ.', 4:'Αρχαϊκή εποχή', 5:'Η ηγεμονία της Αθήνας',
+  6:'Ο Πελοποννησιακός πόλεμος', 7:'Η Μακεδονία και ο Μέγας Αλέξανδρος', 8:'Τα ελληνιστικά χρόνια', 9:'Η Ρώμη και ο ελληνικός κόσμος', 10:'Η Ρωμαϊκή αυτοκρατορία'
+};
+function getCompletedCount(chapters){return Object.values(chapters || {}).filter(ch => ch.completed).length;}
+function getUnlockedAchievementCount(progress){
+  const chapters = progress.chapters || {};
+  const completed = getCompletedCount(chapters);
+  return [completed>=1, completed>=3, completed>=5, completed>=8, completed>=10, !!progress.finalMission].filter(Boolean).length;
+}
+function getQuizScores(chapters){
+  return Object.values(chapters || {}).map(ch => Number(ch.bestScore ?? ch.score ?? ch.quizScore)).filter(n => !Number.isNaN(n));
+}
+function renderStudentDashboard(){
+  const progress = loadAppProgress();
+  const chapters = progress.chapters || {};
+  const completed = getCompletedCount(chapters);
+  const scores = getQuizScores(chapters);
+  const avg = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) + '%' : '—';
+  const next = Array.from({length:10},(_,i)=>i+1).find(i => !(chapters[i] && chapters[i].completed));
+  const statCompleted = document.getElementById('statCompleted');
+  const statAverage = document.getElementById('statAverage');
+  const statBadges = document.getElementById('statBadges');
+  if(statCompleted) statCompleted.textContent = completed + '/10';
+  if(statAverage) statAverage.textContent = avg;
+  if(statBadges) statBadges.textContent = getUnlockedAchievementCount(progress) + '/6';
+  const nextText = document.getElementById('nextMissionText');
+  const nextLink = document.getElementById('nextMissionLink');
+  if(next){
+    if(nextText) nextText.textContent = 'Συνέχισε με Κεφάλαιο ' + next + ': ' + CHAPTER_TITLES[next];
+    if(nextLink) nextLink.href = 'chapter' + next + '.html';
+  } else {
+    if(nextText) nextText.textContent = 'Όλα τα κεφάλαια ολοκληρώθηκαν. Ώρα για την τελική αποστολή!';
+    if(nextLink) nextLink.href = 'revision.html';
+  }
+  const road = document.getElementById('chapterRoad');
+  if(road){
+    road.innerHTML = '';
+    for(let i=1;i<=10;i++){
+      const done = chapters[i] && chapters[i].completed;
+      const div = document.createElement('div');
+      div.className = 'road-step ' + (done?'done':(i===next?'next':''));
+      div.innerHTML = (done?'✅':'Κεφ. '+i) + '<small>' + (done?'έγινε':(i===next?'επόμενο':'σε αναμονή')) + '</small>';
+      road.appendChild(div);
+    }
+  }
+  renderChapterCardStatus(progress, next);
+  renderProgressReport(progress, next, avg);
+}
+function renderChapterCardStatus(progress, next){
+  const chapters = progress.chapters || {};
+  document.querySelectorAll('[data-chapter]').forEach(card => {
+    const n = Number(card.getAttribute('data-chapter'));
+    const done = chapters[n] && chapters[n].completed;
+    card.classList.toggle('chapter-done', !!done);
+    card.classList.toggle('chapter-next', !done && n === next);
+    let status = card.querySelector('.chapter-status');
+    if(!status){ status = document.createElement('span'); status.className='chapter-status'; const first = card.querySelector('div'); if(first) first.appendChild(status); }
+    status.className = 'chapter-status ' + (done?'done':(!done && n===next?'next':''));
+    status.textContent = done ? 'Ολοκληρώθηκε' : (n===next ? 'Επόμενο βήμα' : 'Σε αναμονή');
+  });
+}
+function renderProgressReport(progress, next, avg){
+  const chapters = progress.chapters || {};
+  const completed = getCompletedCount(chapters);
+  const missing = Array.from({length:10},(_,i)=>i+1).filter(i => !(chapters[i] && chapters[i].completed));
+  const lines = [];
+  lines.push('Αναφορά προόδου - Ιστορία Α΄ Γυμνασίου');
+  lines.push('Ολοκληρωμένα κεφάλαια: ' + completed + '/10');
+  lines.push('Μέσο σκορ quiz: ' + avg);
+  lines.push('Badges: ' + getUnlockedAchievementCount(progress) + '/6');
+  lines.push('Επόμενη πρόταση: ' + (next ? ('Κεφάλαιο ' + next + ' - ' + CHAPTER_TITLES[next]) : 'Τελική αποστολή / γενική επανάληψη'));
+  lines.push('Κεφάλαια που μένουν: ' + (missing.length ? missing.join(', ') : 'κανένα'));
+  if(progress.finalMission){lines.push('Τελική αποστολή: παίχτηκε');}
+  const area = document.getElementById('progressReport');
+  if(area) area.value = lines.join('\n');
+}
+function copyProgressReport(){
+  const area = document.getElementById('progressReport');
+  if(!area) return;
+  area.select(); area.setSelectionRange(0, 99999);
+  navigator.clipboard?.writeText(area.value).then(()=>alert('Η αναφορά αντιγράφηκε.')).catch(()=>document.execCommand('copy'));
+}
+
 function renderOverallProgress(){
   const progress = loadAppProgress();
   const chapters = progress.chapters || {};
@@ -449,10 +582,10 @@ function renderAchievementGallery(){
   grid.innerHTML = achievements.map(a => '<div class="achievement-card '+(a.unlocked?'unlocked':'locked')+'"><div class="achievement-icon">'+(a.unlocked?a.icon:'🔒')+'</div><h3>'+a.title+'</h3><p>'+a.desc+'</p></div>').join('');
 }
 
-function resetAllProgress(){if(confirm('Θέλεις σίγουρα να μηδενιστεί η πρόοδος;')){localStorage.removeItem(APP_PROGRESS_KEY);renderOverallProgress();renderAchievementGallery();
-renderAchievementGallery();}}
+function resetAllProgress(){if(confirm('Θέλεις σίγουρα να μηδενιστεί η πρόοδος;')){localStorage.removeItem(APP_PROGRESS_KEY);renderOverallProgress();renderAchievementGallery();renderStudentDashboard();}}
 renderOverallProgress();
-
+renderAchievementGallery();
+renderStudentDashboard();
 
 /* === V4 polish: lightweight sound feedback === */
 let istoriaSoundEnabled = true;
