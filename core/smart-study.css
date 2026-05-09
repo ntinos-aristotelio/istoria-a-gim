@@ -1,0 +1,138 @@
+/* Istoria V10 Phase 5 - Smart Study Mode */
+.smart-hero-card{
+  background:linear-gradient(135deg,#fff8ec,#f0ddbe);
+  border:2px solid rgba(216,162,75,.45);
+}
+.smart-layout{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+  align-items:start;
+}
+.smart-panel{
+  background:#fff;
+  border:2px dashed var(--gold);
+  border-radius:26px;
+  padding:22px;
+  margin-top:18px;
+  box-shadow:0 8px 22px rgba(70,40,18,.08);
+  color:var(--ink);
+}
+.smart-panel *{color:var(--ink)}
+.smart-mission-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px;
+  margin-top:16px;
+}
+.smart-mission-card{
+  background:var(--paper);
+  border:2px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 8px 18px rgba(70,40,18,.08);
+  cursor:pointer;
+  transition:.18s;
+}
+.smart-mission-card:hover{
+  transform:translateY(-2px);
+  border-color:var(--gold);
+}
+.smart-mission-card.urgent{
+  background:#fde2df;
+  border-color:var(--bad);
+}
+.smart-mission-card.ready{
+  background:#fff1d6;
+  border-color:var(--gold);
+}
+.smart-mission-card.done{
+  background:#ddf6e5;
+  border-color:var(--ok);
+}
+.smart-mission-card h3{margin:0 0 8px;font-size:23px}
+.smart-mission-card p{font-size:18px;margin:8px 0;line-height:1.35}
+.smart-meta{
+  display:inline-block;
+  margin:4px 4px 0 0;
+  background:#e6f2ed;
+  border:1px solid rgba(36,107,99,.20);
+  border-radius:999px;
+  padding:7px 11px;
+  font-size:14px;
+  font-weight:900;
+}
+.smart-meta.warn{background:#fff1d6;border-color:var(--gold)}
+.smart-meta.bad{background:#fde2df;border-color:var(--bad)}
+.smart-stat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+.smart-stat{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:15px;
+  font-weight:900;
+}
+.smart-stat strong{
+  display:block;
+  font-size:30px;
+  color:var(--brown);
+  line-height:1;
+  margin-bottom:6px;
+}
+.smart-quiz-box{
+  background:#fff8ec;
+  border:2px solid var(--line);
+  border-radius:24px;
+  padding:20px;
+  margin-top:18px;
+}
+.smart-question{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  margin:14px 0;
+}
+.smart-question h3{font-size:22px;margin:0 0 10px}
+.smart-option{
+  display:block;
+  width:100%;
+  margin:9px 0;
+  background:white;
+  color:var(--ink)!important;
+  border:2px solid var(--line);
+  border-radius:16px;
+  text-align:left;
+  padding:13px 15px;
+  font-size:18px;
+  font-weight:800;
+}
+.smart-option:hover{border-color:var(--gold)}
+.smart-option.correct{background:#ddf6e5!important;border-color:var(--ok)!important}
+.smart-option.wrong{background:#fde2df!important;border-color:var(--bad)!important}
+.smart-result{
+  margin-top:16px;
+  background:#e5f0ec;
+  border-left:8px solid var(--green);
+  border-radius:16px;
+  padding:16px;
+  font-size:20px;
+  font-weight:900;
+}
+.smart-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.smart-actions a,
+.smart-actions button{margin:0}
+@media(max-width:850px){
+  .smart-layout{grid-template-columns:1fr}
+  .smart-panel{padding:18px}
+}
