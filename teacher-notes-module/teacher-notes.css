@@ -14,7 +14,7 @@ body{margin:0;font-family:Arial,"Segoe UI",sans-serif;background:linear-gradient
 .tn-hero{padding:28px;margin-bottom:18px}
 .tn-hero h1{font-size:clamp(34px,5vw,58px);line-height:1;color:var(--brown);margin:0 0 10px}
 .tn-hero p{font-size:clamp(18px,2.2vw,23px);line-height:1.45;margin:0}
-.tn-layout{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start}
+.tn-layout{display:grid;grid-template-columns:310px 1fr;gap:18px;align-items:start}
 .tn-sidebar{padding:16px;position:sticky;top:86px}
 .tn-sidebar h2,.tn-card h2,.tn-card h3{color:#613517}
 .tn-menu-btn{width:100%;margin:7px 0;padding:12px;border-radius:15px;border:2px solid var(--line);background:#fff;color:var(--ink);font-weight:900;text-align:left;cursor:pointer}
@@ -23,10 +23,11 @@ body{margin:0;font-family:Arial,"Segoe UI",sans-serif;background:linear-gradient
 .tn-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
 .tn-tab{border:0;background:var(--green);color:#fff;border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer}
 .tn-tab.active{background:var(--brown)}
-.tn-note,.tn-diagram,.tn-qa{background:#fff;border:1px solid var(--line);border-radius:18px;margin:12px 0;padding:16px}
+.tn-note,.tn-diagram,.tn-qa,.tn-qa-category{background:#fff;border:1px solid var(--line);border-radius:18px;margin:12px 0;padding:16px}
 .tn-diagram{border:2px dashed var(--gold);background:#fffaf1}
+.tn-qa-category{background:#fffaf1;border:2px solid var(--line)}
 .tn-note p,.tn-diagram li,.tn-qa p{font-size:18px;line-height:1.5}
 .tn-qa summary{cursor:pointer;font-weight:900;color:var(--brown);font-size:18px}
 .tn-empty{background:#fff;border:2px dashed var(--line);border-radius:18px;padding:16px;font-weight:900}
 @media(max-width:850px){.tn-layout{grid-template-columns:1fr}.tn-sidebar{position:relative;top:auto}.tn-nav a,.tn-nav button{width:100%;text-align:center}}
-@media print{.tn-header,.tn-sidebar,.tn-tabs{display:none!important}body{background:#fff}.tn-layout{display:block}.tn-card,.tn-hero,.tn-note,.tn-diagram,.tn-qa{box-shadow:none}.tn-panel{display:block!important}}
+@media print{.tn-header,.tn-sidebar,.tn-tabs{display:none!important}body{background:#fff}.tn-layout{display:block}.tn-card,.tn-hero,.tn-note,.tn-diagram,.tn-qa,.tn-qa-category{box-shadow:none}.tn-panel{display:block!important}}
