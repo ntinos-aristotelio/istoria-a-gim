@@ -306,6 +306,88 @@ footer{
 .progress-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
 .progress-badge-chip{background:#e6f2ed;color:#1f5b54;border:1px solid rgba(36,107,99,.20);border-radius:999px;padding:9px 13px;font-size:16px;font-weight:900;}
 
+
+/* Version 2: Campaign / Time Mission mode */
+.campaign-hero{
+  background:linear-gradient(135deg,#fff8ec,#f0ddbe);
+  border:2px solid rgba(216,162,75,.45);
+}
+.mission-map{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+  margin:20px 0;
+}
+.mission-stop{
+  background:white;
+  border:2px solid var(--line);
+  border-radius:20px;
+  padding:15px;
+  text-align:center;
+  font-weight:900;
+  box-shadow:0 8px 18px rgba(70,40,18,.08);
+  position:relative;
+}
+.mission-stop.active{border-color:var(--gold);background:#fff1d6;transform:translateY(-2px)}
+.mission-stop.complete{border-color:var(--ok);background:#ddf6e5}
+.mission-stop .stamp{font-size:34px;display:block;margin-bottom:6px}
+.mission-stop small{display:block;color:#6d5a48;font-size:14px;margin-top:4px}
+.campaign-status{
+  background:#fff;
+  border:2px dashed var(--gold);
+  border-radius:24px;
+  padding:18px;
+  margin:18px 0;
+  font-size:22px;
+  font-weight:900;
+}
+.quest-card{
+  border:2px solid var(--line);
+  transition:.2s;
+}
+.quest-card.answered{border-color:var(--gold);background:#fffaf1}
+.quest-card.correct{border-color:var(--ok)!important;background:#ddf6e5!important}
+.quest-card.wrong{border-color:var(--bad)!important;background:#fde2df!important}
+.quest-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.quest-tag{
+  background:#e6f2ed;
+  color:#1f5b54;
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:14px;
+  font-weight:900;
+}
+.option-btn{
+  display:block;
+  width:100%;
+  margin:10px 0;
+  background:#fff;
+  color:var(--ink);
+  border:2px solid var(--line);
+  border-radius:16px;
+  text-align:left;
+  font-size:clamp(18px,2.4vw,24px);
+  padding:14px 16px;
+}
+.option-btn.selected{border-color:var(--gold);background:#fff1d6}
+.option-btn.correct{background:#ddf6e5!important;border-color:var(--ok)!important}
+.option-btn.wrong{background:#fde2df!important;border-color:var(--bad)!important}
+.final-certificate{
+  background:#fff;
+  border:4px double var(--gold);
+  border-radius:28px;
+  padding:28px;
+  text-align:center;
+  box-shadow:0 12px 30px rgba(70,40,18,.12);
+}
+.final-certificate .big{font-size:54px;margin-bottom:8px}
+
 </style>
 </head>
 
@@ -515,13 +597,16 @@ footer{
 
 <section id="megaquiz" class="page">
   <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Mega Quiz</div>
-      <h2>20 ερωτήσεις από όλα τα κεφάλαια</h2>
-      <p>Οι μαθητές μπορούν να αλλάζουν απαντήσεις μέχρι να πατήσουν «Έλεγχος απαντήσεων».</p>
+    <div class="panel text campaign-hero">
+      <div class="eyebrow">🎮 Τελική αποστολή</div>
+      <h2>Ταξίδι στον χρόνο</h2>
+      <p>Αντί για απλό τεστ, ο μαθητής περνά 6 ιστορικούς σταθμούς. Κάθε σωστή απάντηση φωτίζει την αποστολή και στο τέλος κερδίζει τίτλο ιστορικού εξερευνητή.</p>
+      <div class="mission-map" id="missionMap"></div>
+      <div class="campaign-status" id="campaignStatus">Διάλεξε απαντήσεις για να ξεκινήσει η αποστολή.</div>
       <div id="quizArea"></div>
-      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button onclick="gradeQuiz()">Έλεγχος αποστολής</button>
       <button class="secondary" onclick="resetQuiz()">Ξανά από την αρχή</button>
+      <button class="gold" onclick="scrollToMissionTop()">Πίσω στον χάρτη αποστολής</button>
       <div id="scoreBox"></div>
     </div>
   </div>
@@ -555,6 +640,12 @@ document.querySelectorAll('[data-draw]').forEach(function(el){
   const id = el.getAttribute('data-draw');
   el.innerHTML = document.getElementById(id).innerHTML;
 });
+
+
+function shuffleChoices(options){
+  return options.map(function(opt, i){ return {text: opt, originalIndex: i}; })
+    .sort(function(){ return Math.random() - 0.5; });
+}
 
 function showPage(id){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -590,11 +681,11 @@ function newWho(){
   document.getElementById('whoQuestion').textContent = currentWho.q;
   const area = document.getElementById('whoOptions');
   area.innerHTML = '';
-  currentWho.options.forEach((opt, i) => {
+  shuffleChoices(currentWho.options).forEach((choice) => {
     const b = document.createElement('button');
     b.className = 'answer';
-    b.textContent = opt;
-    b.onclick = function(){ checkWho(i,b); };
+    b.textContent = choice.text;
+    b.onclick = function(){ checkWho(choice.originalIndex,b); };
     area.appendChild(b);
   });
   document.getElementById('whoResult').textContent = 'Διάλεξε απάντηση.';
@@ -638,57 +729,161 @@ function checkTF(value, btn){
   document.getElementById('tfResult').textContent = value === currentTF.a ? 'Σωστά!' : 'Λάθος απάντηση. Ξανασκέψου την πρόταση.';
 }
 
-const questions = [
-  {q:'Τι χαρακτηρίζει τη Νεολιθική εποχή;', options:['Γεωργία και μόνιμοι οικισμοί','Μόνο κυνήγι','Ρωμαϊκοί δρόμοι'], a:0},
-  {q:'Ποιος πολιτισμός αναπτύχθηκε κυρίως στην Κρήτη;', options:['Μινωικός','Κυκλαδικός','Ρωμαϊκός'], a:0},
-  {q:'Ποιος πολιτισμός συνδέεται με κυκλώπεια τείχη;', options:['Μυκηναϊκός','Μινωικός','Κυκλαδικός'], a:0},
-  {q:'Ποια περίοδος συνδέεται με σίδηρο, αλφάβητο και Όμηρο;', options:['1100-800 π.Χ.','Παλαιολιθική','Ρωμαϊκή αυτοκρατορία'], a:0},
-  {q:'Τι είναι πόλη-κράτος;', options:['Ανεξάρτητη κοινότητα πολιτών με νόμους','Μεγάλη βιβλιοθήκη','Στρατιωτικό όπλο'], a:0},
-  {q:'Τι ήταν ο Β΄ ελληνικός αποικισμός;', options:['Ίδρυση νέων πόλεων από Έλληνες','Κατάκτηση της Ελλάδας από Ρώμη','Εκστρατεία στη Σικελία'], a:0},
-  {q:'Ποια πόλη συνδέεται με στρατιωτική αγωγή;', options:['Σπάρτη','Αθήνα','Αλεξάνδρεια'], a:0},
-  {q:'Ποιος συνδέεται με την ακμή της Αθήνας;', options:['Περικλής','Αύγουστος','Φίλιππος Β΄'], a:0},
-  {q:'Τι ήταν η Α΄ Αθηναϊκή Συμμαχία;', options:['Συμμαχία πόλεων με ηγετική Αθήνα','Ρωμαϊκή επαρχία','Μακεδονική φάλαγγα'], a:0},
-  {q:'Τι συνέβη στον Πελοποννησιακό πόλεμο;', options:['Συγκρούστηκαν Αθήνα και Σπάρτη','Οι Ρωμαίοι ίδρυσαν τη Ρώμη','Οι Κυκλάδες ανακάλυψαν τη γεωργία'], a:0},
-  {q:'Ποια εκστρατεία ήταν μεγάλη αποτυχία της Αθήνας;', options:['Σικελική εκστρατεία','Εκστρατεία του Αλεξάνδρου','Β΄ αποικισμός'], a:0},
-  {q:'Ποιος οργάνωσε τη Μακεδονία σε ισχυρό κράτος;', options:['Φίλιππος Β΄','Όμηρος','Σόλων'], a:0},
-  {q:'Τι ήταν η μακεδονική φάλαγγα;', options:['Στρατιωτικός σχηματισμός με σάρισες','Πολίτευμα της Αθήνας','Ρωμαϊκός δρόμος'], a:0},
-  {q:'Εναντίον ποιας δύναμης εκστράτευσε ο Αλέξανδρος;', options:['Περσών','Ρωμαίων','Κυκλαδιτών'], a:0},
-  {q:'Τι είναι ο ελληνιστικός κόσμος;', options:['Κόσμος επαφών ελληνικού και ανατολικών πολιτισμών','Μόνο η Αθήνα','Η Νεολιθική εποχή'], a:0},
-  {q:'Ποια πόλη έγινε κέντρο γνώσης στα ελληνιστικά χρόνια;', options:['Αλεξάνδρεια','Σπάρτη','Μυκήνες'], a:0},
-  {q:'Τι ήταν η κοινή ελληνιστική;', options:['Γλώσσα επικοινωνίας','Σπαρτιατικό όπλο','Ρωμαϊκή λεγεώνα'], a:0},
-  {q:'Ποια ήταν βασική στρατιωτική μονάδα της Ρώμης;', options:['Λεγεώνα','Φάλαγγα με σάρισες','Κυκλαδικό ειδώλιο'], a:0},
-  {q:'Τι θαύμαζαν οι Ρωμαίοι στον ελληνικό κόσμο;', options:['Παιδεία, τέχνη και φιλοσοφία','Μόνο τη φωτιά','Μόνο το κυνήγι'], a:0},
-  {q:'Τι σημαίνει Pax Romana;', options:['Περίοδος σχετικής ειρήνης και ανάπτυξης','Ελληνιστική γλώσσα','Μινωικό ανάκτορο'], a:0}
+const missionStops = [
+  {id:'prehistory', icon:'🪨', title:'Προϊστορία', subtitle:'Λίθος & Χαλκός'},
+  {id:'polis', icon:'🏛️', title:'Πόλεις-κράτη', subtitle:'1100-479 π.Χ.'},
+  {id:'athens', icon:'🗳️', title:'Κλασική Αθήνα', subtitle:'Δημοκρατία'},
+  {id:'war', icon:'⚔️', title:'Συγκρούσεις', subtitle:'Πελοποννησιακός'},
+  {id:'alexander', icon:'🦁', title:'Αλέξανδρος', subtitle:'Ελληνιστικός κόσμος'},
+  {id:'rome', icon:'🏟️', title:'Ρώμη', subtitle:'Αυτοκρατορία'}
 ];
 
+const questions = [
+  {stop:'prehistory', q:'Ποια αλλαγή χαρακτηρίζει κυρίως τη Νεολιθική εποχή;', options:['Γεωργία, κτηνοτροφία και μόνιμοι οικισμοί','Μόνο κυνήγι και νομαδική ζωή','Ρωμαϊκοί δρόμοι'], a:0},
+  {stop:'prehistory', q:'Ποιος πολιτισμός συνδέεται με τα ανάκτορα της Κνωσού;', options:['Μινωικός','Κυκλαδικός','Ρωμαϊκός'], a:0},
+  {stop:'prehistory', q:'Ποιοι ανέπτυξαν ισχυρά ανάκτορα και χρησιμοποίησαν τη Γραμμική Β΄;', options:['Μυκηναίοι','Σουμέριοι','Ρωμαίοι'], a:0},
+  {stop:'polis', q:'Ποια περίοδος συνδέεται με σίδηρο, αλφάβητο και Όμηρο;', options:['1100-800 π.Χ.','Παλαιολιθική','Ρωμαϊκή αυτοκρατορία'], a:0},
+  {stop:'polis', q:'Τι είναι πόλη-κράτος;', options:['Ανεξάρτητη κοινότητα πολιτών με νόμους','Μεγάλη βιβλιοθήκη','Στρατιωτικό όπλο'], a:0},
+  {stop:'polis', q:'Τι ήταν ο Β΄ ελληνικός αποικισμός;', options:['Ίδρυση νέων πόλεων από Έλληνες','Κατάκτηση της Ελλάδας από Ρώμη','Εκστρατεία στη Σικελία'], a:0},
+  {stop:'polis', q:'Ποια πόλη συνδέεται με στρατιωτική αγωγή;', options:['Σπάρτη','Αθήνα','Αλεξάνδρεια'], a:0},
+  {stop:'athens', q:'Ποιος συνδέεται με την ακμή της Αθήνας;', options:['Περικλής','Αύγουστος','Φίλιππος Β΄'], a:0},
+  {stop:'athens', q:'Τι ήταν η Α΄ Αθηναϊκή Συμμαχία;', options:['Συμμαχία πόλεων με ηγετική Αθήνα','Ρωμαϊκή επαρχία','Μακεδονική φάλαγγα'], a:0},
+  {stop:'athens', q:'Ποια αρχή ταιριάζει περισσότερο με τη δημοκρατία της Αθήνας;', options:['Συμμετοχή των πολιτών','Απόλυτη εξουσία ενός βασιλιά','Καμία συνέλευση'], a:0},
+  {stop:'war', q:'Τι συνέβη στον Πελοποννησιακό πόλεμο;', options:['Συγκρούστηκαν Αθήνα και Σπάρτη','Οι Ρωμαίοι ίδρυσαν τη Ρώμη','Οι Κυκλάδες ανακάλυψαν τη γεωργία'], a:0},
+  {stop:'war', q:'Ποια εκστρατεία ήταν μεγάλη αποτυχία της Αθήνας;', options:['Σικελική εκστρατεία','Εκστρατεία του Αλεξάνδρου','Β΄ αποικισμός'], a:0},
+  {stop:'alexander', q:'Ποιος οργάνωσε τη Μακεδονία σε ισχυρό κράτος;', options:['Φίλιππος Β΄','Όμηρος','Σόλων'], a:0},
+  {stop:'alexander', q:'Τι ήταν η μακεδονική φάλαγγα;', options:['Στρατιωτικός σχηματισμός με σάρισες','Πολίτευμα της Αθήνας','Ρωμαϊκός δρόμος'], a:0},
+  {stop:'alexander', q:'Εναντίον ποιας δύναμης εκστράτευσε ο Αλέξανδρος;', options:['Περσών','Ρωμαίων','Κυκλαδιτών'], a:0},
+  {stop:'alexander', q:'Τι είναι ο ελληνιστικός κόσμος;', options:['Κόσμος επαφών ελληνικού και ανατολικών πολιτισμών','Μόνο η Αθήνα','Η Νεολιθική εποχή'], a:0},
+  {stop:'alexander', q:'Ποια πόλη έγινε κέντρο γνώσης στα ελληνιστικά χρόνια;', options:['Αλεξάνδρεια','Σπάρτη','Μυκήνες'], a:0},
+  {stop:'rome', q:'Ποια ήταν βασική στρατιωτική μονάδα της Ρώμης;', options:['Λεγεώνα','Φάλαγγα με σάρισες','Κυκλαδικό ειδώλιο'], a:0},
+  {stop:'rome', q:'Τι θαύμαζαν οι Ρωμαίοι στον ελληνικό κόσμο;', options:['Παιδεία, τέχνη και φιλοσοφία','Μόνο τη φωτιά','Μόνο το κυνήγι'], a:0},
+  {stop:'rome', q:'Τι σημαίνει Pax Romana;', options:['Περίοδος σχετικής ειρήνης και ανάπτυξης','Ελληνιστική γλώσσα','Μινωικό ανάκτορο'], a:0}
+];
+
+let selectedAnswers = {};
+let lastScore = 0;
+
+function renderMissionMap(completedStops = []){
+  const map = document.getElementById('missionMap');
+  if(!map) return;
+  map.innerHTML = '';
+  missionStops.forEach((stop, index) => {
+    const total = questions.filter(q => q.stop === stop.id).length;
+    const right = completedStops.filter(s => s === stop.id).length;
+    const div = document.createElement('div');
+    div.className = 'mission-stop';
+    if(right >= total) div.classList.add('complete');
+    else if(Object.keys(selectedAnswers).length > 0) div.classList.add('active');
+    div.innerHTML = '<span class="stamp">'+stop.icon+'</span>' + stop.title + '<small>'+stop.subtitle+'</small>';
+    map.appendChild(div);
+  });
+}
+
 function renderQuiz(){
+  selectedAnswers = {};
   const area = document.getElementById('quizArea');
   area.innerHTML = '';
+  let currentStop = '';
   questions.forEach((item, index) => {
+    const stop = missionStops.find(s => s.id === item.stop);
+    if(item.stop !== currentStop){
+      currentStop = item.stop;
+      const heading = document.createElement('div');
+      heading.className = 'box';
+      heading.innerHTML = stop.icon + ' Σταθμός: ' + stop.title + ' — ' + stop.subtitle;
+      area.appendChild(heading);
+    }
     const div = document.createElement('div');
-    div.className = 'quiz-card';
-    div.innerHTML = '<h3>'+(index+1)+'. '+item.q+'</h3>';
-    item.options.forEach((opt, i) => {
-      div.innerHTML += '<label style="display:block;font-size:22px;margin:10px 0;"><input type="radio" name="q'+index+'" value="'+i+'"> '+opt+'</label>';
+    div.className = 'quiz-card quest-card';
+    div.setAttribute('data-question-index', index);
+    div.innerHTML = '<div class="quest-top"><h3>'+(index+1)+'. '+item.q+'</h3><span class="quest-tag">'+stop.title+'</span></div>';
+    shuffleChoices(item.options).forEach((choice) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'option-btn';
+      btn.textContent = choice.text;
+      btn.dataset.optionIndex = choice.originalIndex;
+      btn.onclick = () => chooseAnswer(index, choice.originalIndex);
+      div.appendChild(btn);
     });
     area.appendChild(div);
   });
+  renderMissionMap([]);
+  updateCampaignStatus();
+}
+
+function chooseAnswer(questionIndex, optionIndex){
+  selectedAnswers[questionIndex] = optionIndex;
+  const card = document.querySelector('[data-question-index="'+questionIndex+'"]');
+  if(!card) return;
+  card.classList.add('answered');
+  card.querySelectorAll('.option-btn').forEach((btn) => {
+    const originalIndex = Number(btn.dataset.optionIndex);
+    btn.classList.toggle('selected', originalIndex === optionIndex);
+    btn.classList.remove('correct','wrong');
+  });
+  updateCampaignStatus();
+}
+
+function updateCampaignStatus(){
+  const status = document.getElementById('campaignStatus');
+  if(!status) return;
+  const answered = Object.keys(selectedAnswers).length;
+  status.textContent = 'Απαντήθηκαν ' + answered + ' από τις ' + questions.length + ' ερωτήσεις της αποστολής.';
 }
 
 function gradeQuiz(){
   let score = 0;
+  const completedStops = [];
+  const stopScores = {};
+  missionStops.forEach(s => stopScores[s.id] = {right:0,total:0});
+
   questions.forEach((item, index) => {
-    const chosen = document.querySelector('input[name="q'+index+'"]:checked');
-    if(chosen && Number(chosen.value) === item.a) score++;
+    const chosen = selectedAnswers[index];
+    const card = document.querySelector('[data-question-index="'+index+'"]');
+    stopScores[item.stop].total++;
+    if(chosen === item.a){ score++; stopScores[item.stop].right++; }
+    if(card){
+      card.classList.remove('correct','wrong');
+      card.classList.add(chosen === item.a ? 'correct' : 'wrong');
+      card.querySelectorAll('.option-btn').forEach((btn) => {
+        const originalIndex = Number(btn.dataset.optionIndex);
+        btn.classList.remove('correct','wrong');
+        if(originalIndex === item.a) btn.classList.add('correct');
+        else if(originalIndex === chosen) btn.classList.add('wrong');
+      });
+    }
   });
+
+  Object.keys(stopScores).forEach(id => {
+    for(let i=0;i<stopScores[id].right;i++) completedStops.push(id);
+  });
+  renderMissionMap(completedStops);
+
   const box = document.getElementById('scoreBox');
   box.className = 'score';
-  let message = 'Σκορ: ' + score + ' / ' + questions.length;
-  if(score >= 18){ message += ' 🏆 Εξαιρετικά!'; }
-  else if(score >= 14){ message += ' ✅ Πολύ καλή προσπάθεια!'; }
-  else if(score >= 10){ message += ' 👍 Καλή αρχή, θέλει λίγη επανάληψη.'; }
-  else { message += ' 📚 Πάμε ξανά με τον χάρτη κεφαλαίων.'; }
-  box.textContent = message;
+  let rank = '📚 Μαθητευόμενος ιστορικός';
+  if(score >= 18) rank = '👑 Μέγας Ιστορικός';
+  else if(score >= 15) rank = '🏆 Ιστορικός Εξερευνητής';
+  else if(score >= 11) rank = '✅ Χρονοταξιδιώτης';
+
+  let stationText = missionStops.map(s => {
+    const r = stopScores[s.id];
+    return s.icon + ' ' + s.title + ': ' + r.right + '/' + r.total;
+  }).join(' • ');
+
+  box.innerHTML = '<div class="final-certificate"><div class="big">'+rank.split(' ')[0]+'</div><h2>'+rank+'</h2><p>Σκορ αποστολής: <strong>'+score+' / '+questions.length+'</strong></p><p style="font-size:20px">'+stationText+'</p></div>';
+  saveMissionResult(score, rank);
+  lastScore = score;
+}
+
+function saveMissionResult(score, rank){
+  try{
+    const progress = JSON.parse(localStorage.getItem('istoriaAGymnasiouProgress')) || {chapters:{}};
+    progress.finalMission = {score:score, total:questions.length, rank:rank, completedAt:new Date().toISOString()};
+    localStorage.setItem('istoriaAGymnasiouProgress', JSON.stringify(progress));
+  }catch(e){}
 }
 
 function resetQuiz(){
@@ -696,6 +891,13 @@ function resetQuiz(){
   document.getElementById('scoreBox').className = '';
   document.getElementById('scoreBox').textContent = '';
 }
+
+function scrollToMissionTop(){
+  const el = document.getElementById('megaquiz');
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+renderQuiz();
 
 function finalBadge(){
   document.getElementById('finalBadgeBox').innerHTML = '<div class="badge">🏆 Ολοκλήρωσες τη Μεγάλη Επανάληψη Ιστορίας Α΄ Γυμνασίου!</div>';
