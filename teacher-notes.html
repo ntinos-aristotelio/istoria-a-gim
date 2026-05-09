@@ -3,149 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Σημειώσεις Καθηγητή - Ιστορία Α΄ Γυμνασίου</title>
+<title>Σημειώσεις Καθηγητή</title>
 <link rel="stylesheet" href="core/teacher-notes.css">
 </head>
 <body>
-<header>
-  <div class="bar">
-    <div class="logo">📘 Σημειώσεις Καθηγητή</div>
-    <div class="nav">
+<header class="tn-header">
+  <div class="tn-bar">
+    <div class="tn-logo">📘 Σημειώσεις Καθηγητή</div>
+    <nav class="tn-nav">
       <a href="index.html">Αρχική</a>
-      <a class="secondary" href="revision.html">Επανάληψη</a>
-      <a class="gold" href="smart-study.html">Smart Study</a>
-      <a class="blue" href="intelligent-revision.html">Revision</a>
-      <a class="secondary" href="world-map.html">Άτλαντας</a>
-      <a class="blue" href="historical-campaign.html">Campaign</a>
-      <a class="secondary" href="narration.html">Αφήγηση</a>
-      <a class="gold" href="mentor.html">Mentor</a>
-      <a class="blue" href="teacher.html">Teacher</a>
-      <a class="gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
-    </div>
+      <a href="revision.html">Επανάληψη</a>
+      <a href="world-map.html">Άτλαντας</a>
+      <a href="mentor.html">AI Mentor</a>
+      <button onclick="window.print()">🖨️ Εκτύπωση</button>
+    </nav>
   </div>
 </header>
 
-<div class="wrap">
-  <section class="hero">
-    <div class="eyebrow">Βιβλιοθήκη εκπαιδευτικού υλικού</div>
-    <h1>Σημειώσεις Καθηγητή</h1>
-    <p>Οργανωμένο υλικό ανά κεφάλαιο και ενότητα: σχολικό βιβλίο, σχεδιαγράμματα και ερωτήσεις/απαντήσεις. Το υλικό θα εμπλουτίζεται σταδιακά.</p>
-    <div class="print-actions">
-      <button class="gold" onclick="window.print()">🖨️ Εκτύπωση / PDF</button>
-      <a class="secondary" href="chapter2.html">Άνοιγμα κεφαλαίου</a>
-      <a class="blue" href="world-map.html">Άνοιγμα Άτλαντα</a>
+<main class="tn-wrap">
+  <section class="tn-hero">
+    <div>
+      <div class="tn-eyebrow">Teacher Notes Module</div>
+      <h1>Ψηφιακή Βιβλιοθήκη Σημειώσεων</h1>
+      <p>Οργανωμένο υλικό ανά κεφάλαιο με θεωρία, σχεδιαγράμματα και ερωτήσεις/απαντήσεις.</p>
     </div>
   </section>
 
-  <div class="layout">
-    <aside class="side">
-      <h3>Κεφάλαιο 1</h3>
-      <a class="active" href="#cycladic">1.2.2 Ο Κυκλαδικός Πολιτισμός</a>
-      <a href="#minoic">1.2.3 Ο Μινωικός Πολιτισμός</a>
-      <a href="#mycenaean">1.2.5 Ο Μυκηναϊκός Πολιτισμός</a>
-      <div class="note">Πρώτα περνάμε τον Κυκλαδικό Πολιτισμό. Οι επόμενες ενότητες θα συμπληρωθούν κομμάτι-κομμάτι με το υλικό που θα δοθεί.</div>
+  <section class="tn-layout">
+    <aside class="tn-sidebar">
+      <h2>Κεφάλαια</h2>
+      <div id="tnMenu"></div>
     </aside>
 
-    <main>
-      <article class="module" id="cycladic">
-        <div class="eyebrow">Κεφάλαιο 1 • Ενότητα 1.2.2</div>
-        <h2>Ο Κυκλαδικός Πολιτισμός</h2>
-        <p>Η ενότητα οργανώνεται σε τρία μέρη: σχολικό βιβλίο, σχεδιαγράμματα και ερωτήσεις/απαντήσεις.</p>
+    <section class="tn-content">
+      <div id="tnContent" class="tn-card">
+        <p>Φόρτωση σημειώσεων...</p>
+      </div>
+    </section>
+  </section>
+</main>
 
-        <div class="tabs">
-          <button class="tab active" data-tab="book">📖 Σχολικό Βιβλίο</button>
-          <button class="tab" data-tab="maps">🧠 Σχεδιαγράμματα</button>
-          <button class="tab" data-tab="qa">❓ Ερωτήσεις / Απαντήσεις</button>
-        </div>
-
-        <section class="section active" id="book">
-          <div class="card">
-            <h3>Βασικό κείμενο</h3>
-            <p>Ένας από τους παλαιότερους πολιτισμούς της Ευρώπης αναπτύχθηκε στις Κυκλάδες κατά την 3η και 2η χιλιετία π.Χ., δηλαδή στην Εποχή του Χαλκού. Στην ανάπτυξή του συνέβαλαν το ήπιο κλίμα και κυρίως η προνομιακή γεωγραφική θέση των νησιών.</p>
-            <p>Οι Κυκλάδες αποτέλεσαν φυσική γέφυρα ανάμεσα στην Ευρώπη και την Ασία, την ηπειρωτική Ελλάδα και την Κρήτη. Τα κυκλαδικά πλοία κυριαρχούσαν στο Αιγαίο και μετέφεραν προϊόντα, ιδέες, τεχνικές γνώσεις και θρησκευτικές αντιλήψεις.</p>
-          </div>
-          <div class="card">
-            <h3>Οικισμοί και κοινωνική οργάνωση</h3>
-            <p>Σε πολλά νησιά των Κυκλάδων έχουν εντοπιστεί οικισμοί της 3ης χιλιετίας π.Χ. Οι οικισμοί ήταν συνήθως μικροί και φαίνεται ότι αναπτύσσονταν αυτόνομα, χωρίς κεντρική εξουσία.</p>
-            <p>Αρχικά δημιουργούνται κοντά στη θάλασσα ή σε χαμηλούς λόφους. Περίπου το 2300 π.Χ. ορισμένοι οικισμοί οχυρώνονται, όπως η Αγία Ειρήνη στην Κέα, ενώ άλλοι ξαναχτίζονται οχυρωμένοι, όπως η Φυλακωπή στη Μήλο.</p>
-          </div>
-          <div class="card">
-            <h3>Σχέσεις με άλλους πολιτισμούς</h3>
-            <p>Στη 2η χιλιετία π.Χ. οι Κυκλάδες έχουν επαφές με την ηπειρωτική Ελλάδα και στη συνέχεια με την Κρήτη. Μετά τις καταστροφές μεγάλων κυκλαδικών οικισμών περίπου το 1600 π.Χ., περνούν στη σφαίρα επιρροής της μινωικής Κρήτης. Μετά το 1450 π.Χ. επηρεάζονται έντονα από τους Μυκηναίους.</p>
-          </div>
-          <div class="card">
-            <h3>Τέχνη</h3>
-            <p>Το χαρακτηριστικότερο δημιούργημα της κυκλαδικής τέχνης είναι τα μαρμάρινα ειδώλια. Τα περισσότερα παριστάνουν γυναικείες μορφές, ενώ υπάρχουν και ειδώλια ανδρών μουσικών, πολεμιστών ή κυνηγών. Οι μορφές είναι σχηματοποιημένες, με λιτές γραμμές και ελάχιστες λεπτομέρειες.</p>
-            <p>Σημαντικά είναι επίσης τα πήλινα και μαρμάρινα αγγεία, καθώς και μεταλλικά αντικείμενα με απλή διακόσμηση.</p>
-          </div>
-          <div class="note">Λέξεις-κλειδιά: Κυκλάδες, Αιγαίο, φυσική γέφυρα, οικισμοί, ναυτιλία, εμπόριο, ειδώλια, μαρμάρινη τέχνη.</div>
-        </section>
-
-        <section class="section" id="maps">
-          <div class="mini-grid">
-            <div class="card"><h3>Πού;</h3><p>Στα νησιά των Κυκλάδων, στο κέντρο του Αιγαίου.</p></div>
-            <div class="card"><h3>Πότε;</h3><p>Κατά την 3η και 2η χιλιετία π.Χ., στην Εποχή του Χαλκού.</p></div>
-            <div class="card"><h3>Γιατί αναπτύχθηκε;</h3><p>Λόγω ήπιου κλίματος, θάλασσας και προνομιακής γεωγραφικής θέσης.</p></div>
-            <div class="card"><h3>Τι ρόλο έπαιζε;</h3><p>Οι Κυκλάδες λειτουργούσαν ως γέφυρα ανάμεσα σε Ελλάδα, Κρήτη, Μικρά Ασία και Ανατολή.</p></div>
-          </div>
-          <div class="card">
-            <h3>Σχεδιάγραμμα: Κυκλαδικός Πολιτισμός</h3>
-            <ul>
-              <li><strong>Γεωγραφία:</strong> νησιά στο κέντρο του Αιγαίου.</li>
-              <li><strong>Οικονομία:</strong> ναυτιλία, εμπόριο, ανταλλαγές.</li>
-              <li><strong>Οικισμοί:</strong> μικροί, αυτόνομοι, κοντά στη θάλασσα ή σε λόφους.</li>
-              <li><strong>Επαφές:</strong> με Κρήτη, ηπειρωτική Ελλάδα, Μικρά Ασία και Ανατολή.</li>
-              <li><strong>Τέχνη:</strong> μαρμάρινα ειδώλια, αγγεία, μεταλλικά αντικείμενα.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Χρονολογική πορεία</h3>
-            <div class="timeline-list">
-              <div><strong>3η χιλιετία π.Χ.</strong> Ανάπτυξη μικρών κυκλαδικών οικισμών.</div>
-              <div><strong>περ. 2300 π.Χ.</strong> Ορισμένοι οικισμοί οχυρώνονται.</div>
-              <div><strong>2η χιλιετία π.Χ.</strong> Εντονότερες επαφές με ηπειρωτική Ελλάδα και Κρήτη.</div>
-              <div><strong>περ. 1600 π.Χ.</strong> Καταστροφές σε μεγάλους οικισμούς και ενίσχυση μινωικής επιρροής.</div>
-              <div><strong>μετά το 1450 π.Χ.</strong> Μυκηναϊκή κυριαρχία και επίδραση.</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section qa" id="qa">
-          <details open><summary>1. Πού αναπτύχθηκε ο Κυκλαδικός Πολιτισμός;</summary><p>Αναπτύχθηκε στα νησιά των Κυκλάδων, στο κέντρο του Αιγαίου.</p></details>
-          <details><summary>2. Πότε αναπτύχθηκε;</summary><p>Κατά την 3η και 2η χιλιετία π.Χ., δηλαδή στην Εποχή του Χαλκού.</p></details>
-          <details><summary>3. Γιατί η γεωγραφική θέση των Κυκλάδων ήταν σημαντική;</summary><p>Επειδή οι Κυκλάδες αποτελούσαν φυσική γέφυρα ανάμεσα στην Ευρώπη και την Ασία, την ηπειρωτική Ελλάδα και την Κρήτη.</p></details>
-          <details><summary>4. Ποιο ήταν το χαρακτηριστικότερο δημιούργημα της κυκλαδικής τέχνης;</summary><p>Τα μαρμάρινα ειδώλια, κυρίως γυναικείες μορφές με απλή και σχηματοποιημένη απόδοση.</p></details>
-          <details><summary>5. Είχε ο Κυκλαδικός Πολιτισμός κεντρική εξουσία;</summary><p>Όχι. Οι οικισμοί φαίνεται ότι αναπτύσσονταν αυτόνομα και δεν υπήρχε ενιαία κεντρική εξουσία.</p></details>
-          <details><summary>6. Με ποιους πολιτισμούς ή περιοχές είχαν επαφές οι Κυκλάδες;</summary><p>Με την Κρήτη, την ηπειρωτική Ελλάδα, τη Μικρά Ασία και την Ανατολική Μεσόγειο.</p></details>
-          <details><summary>7. Τι δείχνει η οχύρωση ορισμένων οικισμών γύρω στο 2300 π.Χ.;</summary><p>Δείχνει αναστάτωση ή ανάγκη προστασίας, πιθανόν λόγω παρουσίας νέων πληθυσμών ή κινδύνων.</p></details>
-          <details><summary>8. Γιατί τα κυκλαδικά ειδώλια είναι τόσο σημαντικά;</summary><p>Επειδή αποτελούν από τα πιο χαρακτηριστικά και αναγνωρίσιμα έργα της προϊστορικής τέχνης του Αιγαίου.</p></details>
-        </section>
-      </article>
-
-      <article class="module placeholder" id="minoic" style="margin-top:20px">
-        <div class="eyebrow">Κεφάλαιο 1 • Ενότητα 1.2.3</div>
-        <h2>Ο Μινωικός Πολιτισμός</h2>
-        <p>Η ενότητα θα συμπληρωθεί στο επόμενο βήμα με το υλικό που θα δοθεί.</p>
-      </article>
-
-      <article class="module placeholder" id="mycenaean" style="margin-top:20px">
-        <div class="eyebrow">Κεφάλαιο 1 • Ενότητα 1.2.5</div>
-        <h2>Ο Μυκηναϊκός Πολιτισμός</h2>
-        <p>Η ενότητα θα συμπληρωθεί στο επόμενο βήμα με το υλικό που θα δοθεί.</p>
-      </article>
-    </main>
-  </div>
-</div>
-
-<script>
-document.querySelectorAll('.tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  });
-});
-</script>
+<script src="core/teacher-notes.js"></script>
 </body>
 </html>
