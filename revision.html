@@ -388,6 +388,28 @@ footer{
 }
 .final-certificate .big{font-size:54px;margin-bottom:8px}
 
+
+
+/* === V4 polish: animations, glow, achievement cards === */
+@keyframes softFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes softGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(216,162,75,0))}50%{filter:drop-shadow(0 0 14px rgba(216,162,75,.75))}}
+@keyframes drawDash{to{stroke-dashoffset:-120}}
+@keyframes popIn{0%{transform:scale(.92);opacity:.4}100%{transform:scale(1);opacity:1}}
+.drawing svg{animation:softFloat 5.5s ease-in-out infinite;transform-origin:center;}
+.drawing svg circle:nth-of-type(1){animation:softGlow 3.5s ease-in-out infinite;}
+.drawing svg path[stroke-dasharray], .drawing svg line[stroke-dasharray]{animation:drawDash 3.5s linear infinite;}
+.card,.quiz-card,.mini,.timeitem,.bubble,.progress-badge-chip{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+.card:hover,.quiz-card:hover,.mini:hover,.timeitem:hover,.bubble:hover{box-shadow:0 14px 28px rgba(70,40,18,.16);}
+.badge,.score,.final-certificate{animation:popIn .32s ease-out;}
+.achievement-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:18px;}
+.achievement-card{background:white;border:2px solid var(--line);border-radius:22px;padding:18px;min-height:150px;box-shadow:0 8px 22px rgba(70,40,18,.08);}
+.achievement-card.unlocked{border-color:var(--gold);background:#fff4dc;}
+.achievement-card.locked{opacity:.62;filter:grayscale(.35);}
+.achievement-icon{font-size:42px;margin-bottom:8px;}
+.achievement-card h3{font-size:22px;margin:0 0 6px;}
+.achievement-card p{font-size:18px;margin:0;}
+.sound-toggle{background:#3b8fb0!important;}
+
 </style>
 </head>
 
@@ -397,6 +419,7 @@ footer{
   <div class="bar">
     <div class="logo">🏛️ Γενική Επανάληψη Ιστορίας Α΄ Γυμνασίου</div>
     <div class="nav">
+      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
       <button onclick="showPage('home')">Αρχή</button>
       <button onclick="showPage('map')">Χάρτης</button>
       <button class="secondary" onclick="showPage('timeline')">Χρονογραμμή</button>
@@ -851,7 +874,9 @@ function gradeQuiz(){
         const originalIndex = Number(btn.dataset.optionIndex);
         btn.classList.remove('correct','wrong');
         if(originalIndex === item.a) btn.classList.add('correct');
+  playUISound('success');
         else if(originalIndex === chosen) btn.classList.add('wrong');
+  playUISound('error');
       });
     }
   });
@@ -874,6 +899,7 @@ function gradeQuiz(){
   }).join(' • ');
 
   box.innerHTML = '<div class="final-certificate"><div class="big">'+rank.split(' ')[0]+'</div><h2>'+rank+'</h2><p>Σκορ αποστολής: <strong>'+score+' / '+questions.length+'</strong></p><p style="font-size:20px">'+stationText+'</p></div>';
+  playUISound(score >= Math.ceil(questions.length*0.7) ? 'badge' : 'error');
   saveMissionResult(score, rank);
   lastScore = score;
 }
@@ -904,6 +930,41 @@ function finalBadge(){
 }
 
 renderQuiz();
+
+
+/* === V4 polish: lightweight sound feedback === */
+let istoriaSoundEnabled = true;
+function playUISound(type){
+  if(!istoriaSoundEnabled) return;
+  try{
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AudioCtx();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    const now = ctx.currentTime;
+    let freq = 520;
+    if(type === 'success') freq = 720;
+    if(type === 'error') freq = 180;
+    if(type === 'badge') freq = 880;
+    o.type = 'sine';
+    o.frequency.setValueAtTime(freq, now);
+    if(type === 'badge') o.frequency.exponentialRampToValueAtTime(1180, now + .16);
+    g.gain.setValueAtTime(.0001, now);
+    g.gain.exponentialRampToValueAtTime(.08, now + .02);
+    g.gain.exponentialRampToValueAtTime(.0001, now + .18);
+    o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + .20);
+  }catch(e){}
+}
+function toggleIstoriaSound(btn){
+  istoriaSoundEnabled = !istoriaSoundEnabled;
+  if(btn) btn.textContent = istoriaSoundEnabled ? '🔊 Ήχοι: ON' : '🔇 Ήχοι: OFF';
+  if(istoriaSoundEnabled) playUISound('click');
+}
+document.addEventListener('click', function(e){
+  const target = e.target.closest('button,a.btn,a.gold,a.secondary');
+  if(target && !target.classList.contains('sound-toggle')) playUISound('click');
+});
+
 </script>
 
 
