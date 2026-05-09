@@ -1,0 +1,21 @@
+
+.teacher-hero{background:linear-gradient(135deg,#fff8ec,#e5f0ec);}
+.teacher-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px;}
+.teacher-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 8px 22px rgba(70,40,18,.08);}
+.teacher-number{font-size:38px;font-weight:900;color:var(--brown);line-height:1;margin-bottom:8px;}
+.teacher-label{font-size:16px;font-weight:900;color:#6d5a48;}
+.analytics-section{background:#fff;border:2px dashed var(--gold);border-radius:26px;padding:22px;margin-top:22px;}
+.analytics-table{width:100%;border-collapse:separate;border-spacing:0 10px;margin-top:12px;}
+.analytics-table th{text-align:left;color:#613517;font-size:15px;padding:8px;}
+.analytics-table td{background:#fff8ec;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px;font-weight:800;}
+.analytics-table td:first-child{border-left:1px solid var(--line);border-radius:14px 0 0 14px;}
+.analytics-table td:last-child{border-right:1px solid var(--line);border-radius:0 14px 14px 0;}
+.heatmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:14px;}
+.heat-cell{background:#fff8ec;border:2px solid var(--line);border-radius:18px;padding:14px;text-align:center;font-weight:900;}
+.heat-cell.good{background:#ddf6e5;border-color:var(--ok);}
+.heat-cell.medium{background:#fff1d6;border-color:var(--gold);}
+.heat-cell.weak{background:#fde2df;border-color:var(--bad);}
+.recommendation{background:#e5f0ec;border-left:8px solid var(--green);border-radius:16px;padding:16px;margin-top:12px;font-weight:900;}
+.teacher-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.export-box textarea{width:100%;min-height:170px;border:1px solid var(--line);border-radius:16px;padding:14px;font-size:15px;color:var(--ink);background:#fffaf1;resize:vertical;}
+@media(max-width:650px){.analytics-table{font-size:14px}.analytics-table th:nth-child(3),.analytics-table td:nth-child(3){display:none}}
