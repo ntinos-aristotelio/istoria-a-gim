@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Mentor / Ιστορικός Οδηγός</title>
+<link rel="stylesheet" href="core/mentor.css">
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="logo">🧭 AI Mentor / Ιστορικός Οδηγός</div>
+    <div class="nav">
+      <a href="index.html">Αρχική</a>
+      <a class="secondary" href="smart-study.html">Smart Study</a>
+      <a class="gold" href="world-map.html">Άτλαντας</a>
+      <a class="blue" href="historical-campaign.html">Campaign</a>
+      <a class="secondary" href="narration.html">Αφήγηση</a>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+  <section class="panel text">
+    <div class="eyebrow">V12 Learning Support</div>
+    <h1>Ιστορικός Οδηγός</h1>
+    <p>Ένας βοηθός με hints, εξηγήσεις και προτάσεις επανάληψης. Δεν δίνει απλώς απαντήσεις· σε βοηθά να καταλάβεις το γιατί.</p>
+  </section>
+  <section class="mentor-layout" style="margin-top:18px">
+    <div class="mentor-card">
+      <div class="mentor-face">
+        <div class="mentor-avatar">🧭</div>
+        <div><h2 style="margin:0">Ρώτησέ με</h2><div class="mentor-status">Σύντομες εξηγήσεις • hints • επανάληψη</div></div>
+      </div>
+      <textarea id="mentorQuestion" class="mentor-input" placeholder="Γράψε εδώ την απορία σου, π.χ. Μπερδεύω Μινωίτες και Μυκηναίους..."></textarea>
+      <div class="mentor-actions">
+        <button onclick="askMentor()">Ρώτα τον Οδηγό</button>
+        <button class="secondary" onclick="explainMentor('correct')">Γιατί είναι σωστό;</button>
+        <button class="gold" onclick="explainMentor('wrong')">Γιατί είναι λάθος;</button>
+      </div>
+      <div id="mentorAnswer" class="mentor-answer">Φόρτωση οδηγού...</div>
+      <div class="mentor-tip"><b>Tip:</b> Για καλύτερη μάθηση, πρώτα ζήτησε hint και μετά ξαναδοκίμασε την ερώτηση.</div>
+    </div>
+    <div class="mentor-card">
+      <h2>Θέματα βιβλίου</h2>
+      <div id="mentorTopics" class="topic-list"></div>
+      <h3 style="margin-top:20px">Γρήγορες απορίες</h3>
+      <div id="quickPrompts" class="prompt-grid"></div>
+      <h3 style="margin-top:20px">Προφίλ μάθησης</h3>
+      <div id="mentorStats" class="mini-feedback"></div>
+    </div>
+  </section>
+</div>
+<script src="core/mentorEngine.js"></script>
+</body>
+</html>
