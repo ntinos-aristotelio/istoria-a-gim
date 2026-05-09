@@ -279,6 +279,60 @@ footer{
   font-weight:800;
 }
 
+
+.daily-panel{
+  margin-top:24px;
+  background:white;
+  border:2px dashed var(--gold);
+  border-radius:26px;
+  padding:22px;
+  box-shadow:0 8px 22px rgba(70,40,18,.08);
+}
+.daily-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;
+  margin-top:14px;
+}
+.daily-stat{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:16px;
+  font-weight:900;
+}
+.daily-question{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  margin-top:14px;
+}
+.daily-answer{
+  display:block;
+  width:100%;
+  margin:10px 0;
+  background:white;
+  color:var(--ink);
+  border:2px solid var(--line);
+  text-align:left;
+  font-size:18px;
+  border-radius:15px;
+  padding:12px 14px;
+  cursor:pointer;
+}
+.daily-answer:hover{border-color:var(--gold)}
+.daily-answer.correct{background:#ddf6e5!important;border-color:#2d8a4d!important}
+.daily-answer.wrong{background:#fde2df!important;border-color:#b13f3f!important}
+.daily-result{
+  margin-top:14px;
+  background:#e5f0ec;
+  border-left:8px solid var(--green);
+  border-radius:16px;
+  padding:16px;
+  font-weight:900;
+}
+
 </style>
 </head>
 
@@ -507,6 +561,21 @@ footer{
     </div>
   </section>
 
+
+  <section class="daily-panel" id="daily-challenge-v7">
+    <h2>🔥 Daily Challenge V7</h2>
+    <p>Κάθε μέρα 5 γρήγορες ερωτήσεις από όλη την ύλη. Κράτα streak και γύρνα ξανά αύριο!</p>
+    <div class="daily-grid">
+      <div class="daily-stat">📅 Σημερινή αποστολή: <span id="dailyStatus">έτοιμη</span></div>
+      <div class="daily-stat">🔥 Streak: <span id="dailyStreak">0</span> μέρες</div>
+      <div class="daily-stat">⭐ Καλύτερο daily score: <span id="dailyBest">0</span>/5</div>
+    </div>
+    <div id="dailyQuizBox"></div>
+    <div style="margin-top:16px">
+      <button class="gold" onclick="startDailyChallenge()">Ξεκίνα Daily Challenge</button>
+    </div>
+  </section>
+
 <footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
 
 
@@ -703,6 +772,124 @@ document.addEventListener('click', function(e){
     }
   }
   renderSmartTimeline();
+})();
+</script>
+
+
+<script>
+(function(){
+  const dailyQuestions = [
+    {q:'Τι χαρακτηρίζει κυρίως τη Νεολιθική εποχή;', o:['Γεωργία, κτηνοτροφία και μόνιμοι οικισμοί','Ρωμαϊκή ειρήνη','Περσικοί πόλεμοι'], a:0},
+    {q:'Ποιος πολιτισμός συνδέεται με την Κνωσό;', o:['Μινωικός','Ρωμαϊκός','Ελληνιστικός'], a:0},
+    {q:'Ποιοι χρησιμοποίησαν τη Γραμμική Β΄;', o:['Μυκηναίοι','Σουμέριοι','Σπαρτιάτες'], a:0},
+    {q:'Τι ήταν η πόλη-κράτος;', o:['Ανεξάρτητη κοινότητα με δικούς της νόμους','Ρωμαϊκός δρόμος','Μινωικό ανάκτορο'], a:0},
+    {q:'Με ποια μάχη συνδέεται ο Μαραθώνας;', o:['Περσικοί πόλεμοι','Πελοποννησιακός πόλεμος','Κατάκτηση της Ρώμης'], a:0},
+    {q:'Ποιος συνδέεται με την αθηναϊκή δημοκρατία του 5ου αιώνα;', o:['Περικλής','Χαμουραμπί','Αύγουστος'], a:0},
+    {q:'Ποιοι συγκρούστηκαν στον Πελοποννησιακό πόλεμο;', o:['Αθήνα και Σπάρτη','Μινωίτες και Κυκλαδίτες','Ρωμαίοι και Αιγύπτιοι'], a:0},
+    {q:'Ποιος ήταν ο πατέρας του Μεγάλου Αλεξάνδρου;', o:['Φίλιππος Β΄','Περικλής','Κλεισθένης'], a:0},
+    {q:'Τι βοήθησε να εξαπλωθεί μετά τον Αλέξανδρο;', o:['Η ελληνική γλώσσα και ο πολιτισμός','Η σφηνοειδής γραφή','Η Pax Romana'], a:0},
+    {q:'Τι σημαίνει Pax Romana;', o:['Περίοδος σχετικής ειρήνης στη Ρωμαϊκή αυτοκρατορία','Μινωική θαλασσοκρατία','Αθηναϊκή συμμαχία'], a:0}
+  ];
+
+  function todayKey(){
+    const d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+  function yesterdayKey(){
+    const d = new Date();
+    d.setDate(d.getDate()-1);
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+  function loadDaily(){
+    try{return JSON.parse(localStorage.getItem('istoriaDaily')||'{}')}catch(e){return{}}
+  }
+  function saveDaily(data){
+    localStorage.setItem('istoriaDaily', JSON.stringify(data));
+  }
+  function shuffle(arr){
+    return arr.map(function(x){return {v:x,r:Math.random()};}).sort(function(a,b){return a.r-b.r;}).map(function(x){return x.v;});
+  }
+  function pickDailyQuestions(){
+    const seed = todayKey().split('').reduce(function(a,c){return a+c.charCodeAt(0);},0);
+    const rotated = dailyQuestions.slice(seed % dailyQuestions.length).concat(dailyQuestions.slice(0, seed % dailyQuestions.length));
+    return rotated.slice(0,5);
+  }
+  function renderDailyStats(){
+    const data = loadDaily();
+    const today = todayKey();
+    const done = data.lastDate === today;
+    const st = document.getElementById('dailyStatus');
+    const streak = document.getElementById('dailyStreak');
+    const best = document.getElementById('dailyBest');
+    if(st) st.textContent = done ? 'ολοκληρώθηκε' : 'διαθέσιμη';
+    if(streak) streak.textContent = data.streak || 0;
+    if(best) best.textContent = data.best || 0;
+  }
+
+  window.startDailyChallenge = function(){
+    const box = document.getElementById('dailyQuizBox');
+    if(!box) return;
+    const chosen = pickDailyQuestions();
+    let score = 0;
+    let answered = 0;
+    box.innerHTML = '';
+    chosen.forEach(function(q, idx){
+      const wrap = document.createElement('div');
+      wrap.className = 'daily-question';
+      wrap.innerHTML = '<h3>'+(idx+1)+'. '+q.q+'</h3>';
+      const choices = shuffle(q.o.map(function(text,i){return {text:text, original:i};}));
+      choices.forEach(function(choice){
+        const btn = document.createElement('button');
+        btn.className = 'daily-answer';
+        btn.textContent = choice.text;
+        btn.onclick = function(){
+          if(wrap.getAttribute('data-answered')) return;
+          wrap.setAttribute('data-answered','1');
+          answered++;
+          if(choice.original === q.a){
+            score++;
+            btn.classList.add('correct');
+          }else{
+            btn.classList.add('wrong');
+            Array.from(wrap.querySelectorAll('.daily-answer')).forEach(function(b){
+              if(b.textContent === q.o[q.a]) b.classList.add('correct');
+            });
+          }
+          if(answered === chosen.length){
+            finishDaily(score);
+          }
+        };
+        wrap.appendChild(btn);
+      });
+      box.appendChild(wrap);
+    });
+  }
+
+  function finishDaily(score){
+    const data = loadDaily();
+    const today = todayKey();
+    if(data.lastDate !== today){
+      data.streak = data.lastDate === yesterdayKey() ? (data.streak || 0) + 1 : 1;
+    }
+    data.lastDate = today;
+    data.best = Math.max(data.best || 0, score);
+    data.lastScore = score;
+    saveDaily(data);
+
+    let all = {};
+    try{all = JSON.parse(localStorage.getItem('istoriaProgress')||'{}')}catch(e){all={}}
+    all.dailyChallenge = {completed:true,lastScore:score,lastDate:today,streak:data.streak};
+    localStorage.setItem('istoriaProgress', JSON.stringify(all));
+
+    const box = document.getElementById('dailyQuizBox');
+    const result = document.createElement('div');
+    result.className = 'daily-result';
+    result.innerHTML = score >= 4 ? '🏆 Εξαιρετικά! Σκορ '+score+'/5. Το streak σου ενημερώθηκε.' : '💪 Σκορ '+score+'/5. Κάνε λίγη επανάληψη και ξαναδοκίμασε αύριο!';
+    box.appendChild(result);
+    renderDailyStats();
+  }
+
+  renderDailyStats();
 })();
 </script>
 
