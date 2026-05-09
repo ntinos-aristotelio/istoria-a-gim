@@ -6,22 +6,25 @@
 <title>History Campaign Mode - Ιστορία Α΄ Γυμνασίου</title>
 <link rel="stylesheet" href="core/chapter-core.css">
 <link rel="stylesheet" href="core/simulation.css">
-<link rel="stylesheet" href="core/v13-integration.css">
 </head>
 <body>
 <header>
   <div class="bar">
     <div class="logo">⚔️ History Campaign Mode</div>
     <div class="nav">
-      <a href="index.html">Αρχική</a>
-      <a class="secondary" href="revision.html">Γενική επανάληψη</a>
-      <a class="gold" href="world-map.html">Άτλαντας</a>
-      <a class="blue" href="smart-study.html">Smart Study</a>
-      <a class="blue" href="mentor.html">Ιστορικός Οδηγός</a>
-      <a class="gold" href="achievements.html">🏆 Achievements</a>
+      <a class="btn" href="index.html">Αρχική</a>
+      <a class="btn secondary" href="narration.html">Ιστορική Αφήγηση</a>
+      <a class="btn secondary" href="smart-study.html">Smart Study</a>
+      <a class="btn gold" href="intelligent-revision.html">Revision</a>
+      <button id="resetCampaign" class="blue">Reset Campaign</button>
     </div>
   </div>
 </header>
+
+<main class="wrap">
+  <section class="sim-hero">
+    <div class="sim-panel">
+      <div class="eyebrow">Interactive history adventure</div>
       <h1 class="sim-title">Ζήσε την Ιστορία</h1>
       <p class="sim-sub">Πάρε αποφάσεις, δες συνέπειες και ξεκλείδωσε ιστορικές αποστολές από όλο το βιβλίο.</p>
       <div id="campaignStats" class="sim-stats"></div>
@@ -56,9 +59,5 @@
 
 <script src="core/storageEngine.js"></script>
 <script src="core/simulationEngine.js"></script>
-
-<script src="core/masterySystem.js"></script>
-<script src="core/achievementEngine.js"></script>
-<script src="core/v13Integration.js"></script>
 </body>
 </html>

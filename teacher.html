@@ -6,7 +6,6 @@
 <title>Teacher Analytics - Ιστορία Α΄ Γυμνασίου</title>
 <link rel="stylesheet" href="core/index.css">
 <link rel="stylesheet" href="core/teacher-analytics.css">
-<link rel="stylesheet" href="core/v13-integration.css">
 </head>
 <body onload="renderTeacherAnalytics()">
 <header>
@@ -16,13 +15,14 @@
       <a href="index.html">Αρχική</a>
       <a class="secondary" href="revision.html">Γενική επανάληψη</a>
       <a class="blue" href="intelligent-revision.html">Intelligent Revision</a>
-      <a class="gold" href="smart-study.html">Smart Study</a>
-      <a class="blue" href="historical-campaign.html">Campaign</a>
-      <a class="blue" href="mentor.html">Ιστορικός Οδηγός</a>
-      <a class="gold" href="achievements.html">🏆 Achievements</a>
+      <a class="gold" href="smart-study.html">Smart Study Mode</a>
+    <a class="btn blue" href="historical-campaign.html">History Campaign</a>
     </div>
   </div>
 </header>
+<div class="wrap">
+  <section class="panel text teacher-hero">
+    <div class="eyebrow">V10 Phase 7</div>
     <h1>Πίνακας εκπαιδευτικού</h1>
     <p>Συγκεντρώνει πρόοδο, σκορ, αδύναμα σημεία και προτάσεις επανάληψης από τα δεδομένα που αποθηκεύονται τοπικά στον browser.</p>
     <div class="teacher-grid">
@@ -32,8 +32,6 @@
       <div class="teacher-card"><div class="teacher-number" id="taRank">—</div><div class="teacher-label">Rank / Level</div></div>
     </div>
   </section>
-
-  <section class="analytics-section" id="v13TeacherMastery"></section>
 
   <section class="analytics-section">
     <div class="eyebrow">Progress Heatmap</div>
@@ -71,9 +69,5 @@
 <footer>V10 Phase 7 — Teacher Analytics</footer>
 <script src="core/storageEngine.js"></script>
 <script src="core/teacherAnalyticsEngine.js"></script>
-
-<script src="core/masterySystem.js"></script>
-<script src="core/achievementEngine.js"></script>
-<script src="core/v13Integration.js"></script>
 </body>
 </html>
