@@ -22,13 +22,16 @@
   function gradeQuiz(){
     const questions = window.questions || [];
     let score = 0;
+    const answers = [];
     questions.forEach(function(item, index){
       const chosen = document.querySelector('input[name="q'+index+'"]:checked');
+      answers[index] = chosen ? Number(chosen.value) : null;
       if(chosen && Number(chosen.value) === item.a) score++;
     });
     const box = document.getElementById('scoreBox');
     if(box){ box.className = 'score'; box.textContent = 'Σκορ: ' + score + ' / ' + questions.length; }
     if(window.playUISound) playUISound(score >= Math.ceil(questions.length*0.7) ? 'success' : 'error');
+    if(window.IstoriaAdaptive) IstoriaAdaptive.recordQuizAttempt({score:score,total:questions.length,questions:questions,answers:answers});
     if(window.saveChapterProgress) saveChapterProgress({score:score,total:questions.length,bestScore:Math.round((score/questions.length)*100)});
   }
   function resetReview(){
