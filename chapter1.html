@@ -483,54 +483,12 @@
 
 <footer>Κεφάλαιο 1 — Η Εποχή του Λίθου</footer>
 
+<script src="core/storageEngine.js"></script>
+<script src="core/soundEngine.js"></script>
+<script src="core/uiEngine.js"></script>
+<script src="core/chapterEngine.js"></script>
+<script src="core/quizEngine.js"></script>
 <script>
-document.querySelectorAll('[data-draw]').forEach(function(el){
-  const id = el.getAttribute('data-draw');
-  el.innerHTML = document.getElementById(id).innerHTML;
-});
-
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-}
-
-function openLesson(){
-  showPage('chapter1');
-  slide = 0;
-  showSlide();
-}
-
-let slide = 0;
-const slides = document.querySelectorAll('.lesson-slide');
-
-function showSlide(){
-  slides.forEach(s => s.classList.remove('active'));
-  slides[slide].classList.add('active');
-  document.getElementById('counter').textContent = (slide + 1) + ' / ' + slides.length;
-  document.getElementById('progress').style.width = ((slide + 1) / slides.length * 100) + '%';
-  window.scrollTo(0,0);
-}
-
-function nextSlide(){
-  if(slide < slides.length - 1){
-    slide++;
-    showSlide();
-  }
-}
-
-function prevSlide(){
-  if(slide > 0){
-    slide--;
-    showSlide();
-  }
-}
-
-function doneMsg(btn){
-  btn.textContent = '✅ Ολοκληρώθηκε';
-  btn.style.background = '#2d8a4d';
-}
-
 let archChoice = null;
 let archButton = null;
 
@@ -575,45 +533,7 @@ function concept(t){
 }
 
 
-const APP_PROGRESS_KEY = 'istoriaAGymnasiouProgress';
-const CHAPTER_ID = 1;
-const CHAPTER_TITLE = "🏺 Κεφάλαιο 1: Η Εποχή του Λίθου";
-
-function loadAppProgress(){
-  try{ return JSON.parse(localStorage.getItem(APP_PROGRESS_KEY)) || {chapters:{}}; }catch(e){ return {chapters:{}}; }
-}
-function saveAppProgress(progress){ localStorage.setItem(APP_PROGRESS_KEY, JSON.stringify(progress)); }
-function saveChapterProgress(update){
-  const progress = loadAppProgress();
-  progress.chapters = progress.chapters || {};
-  const previous = progress.chapters[CHAPTER_ID] || {};
-  progress.chapters[CHAPTER_ID] = Object.assign({}, previous, update, {title:CHAPTER_TITLE, updatedAt:new Date().toISOString()});
-  saveAppProgress(progress);
-  renderChapterProgress();
-}
-function renderChapterProgress(){
-  const progress = loadAppProgress();
-  const chapter = (progress.chapters || {})[CHAPTER_ID] || {};
-  const fill = document.getElementById('chapterProgressFill');
-  const text = document.getElementById('chapterProgressText');
-  const badges = document.getElementById('chapterBadgeList');
-  if(!fill || !text || !badges) return;
-  let percent = 0;
-  if(typeof chapter.score === 'number' && chapter.total) percent = Math.round((chapter.score / chapter.total) * 70);
-  if(chapter.completed) percent = 100;
-  fill.style.width = percent + '%';
-  const scoreText = chapter.total ? ('Τελευταίο σκορ quiz: ' + chapter.score + ' / ' + chapter.total + '.') : 'Δεν έχει γίνει ακόμη quiz.';
-  text.textContent = chapter.completed ? ('✅ Το κεφάλαιο ολοκληρώθηκε! ' + scoreText) : ('Πρόοδος: ' + percent + '%. ' + scoreText);
-  badges.innerHTML = chapter.completed ? '<span class="progress-badge-chip">🏆 Badge κεφαλαίου</span><span class="progress-badge-chip">✅ Ολοκληρώθηκε</span>' : '<span class="progress-badge-chip">🎯 Στόχος: κάνε το quiz</span><span class="progress-badge-chip">🏁 Πάτησε ολοκλήρωση</span>';
-}
-
-function badge(){
-  saveChapterProgress({completed:true});
-  playUISound('badge');
-  document.getElementById('badgeBox').innerHTML = '<div class="badge">🏆 Ολοκλήρωσες το Κεφάλαιο 1!</div>';
-}
-
-const questions = [
+window.questions = [
   {
     q:"Τι είναι η Προϊστορία;",
     options:["Η περίοδος πριν από τις γραπτές πηγές","Η εποχή των αυτοκινήτων","Η περίοδος μετά το Βυζάντιο"],
@@ -641,83 +561,7 @@ const questions = [
   }
 ];
 
-
-function shuffleChoices(options){
-  return options.map(function(opt, i){ return {text: opt, originalIndex: i}; })
-    .sort(function(){ return Math.random() - 0.5; });
-}
-
-function renderQuiz(){
-  const area = document.getElementById('quizArea');
-  area.innerHTML = '';
-  questions.forEach((item, index) => {
-    const div = document.createElement('div');
-    div.className = 'quiz-card';
-    div.innerHTML = '<h3>'+(index+1)+'. '+item.q+'</h3>';
-    shuffleChoices(item.options).forEach((choice) => {
-      div.innerHTML += '<label style="display:block;font-size:22px;margin:10px 0;"><input type="radio" name="q'+index+'" value="'+choice.originalIndex+'"> '+choice.text+'</label>';
-    });
-    area.appendChild(div);
-  });
-}
-
-function gradeQuiz(){
-  let score = 0;
-  questions.forEach((item, index) => {
-    const chosen = document.querySelector('input[name="q'+index+'"]:checked');
-    if(chosen && Number(chosen.value) === item.a) score++;
-  });
-  const box = document.getElementById('scoreBox');
-  box.className = 'score';
-  box.textContent = 'Σκορ: ' + score + ' / ' + questions.length;
-  playUISound(score >= Math.ceil(questions.length*0.7) ? 'success' : 'error');
-  saveChapterProgress({score:score,total:questions.length});
-}
-
-function resetReview(){
-  renderQuiz();
-  document.getElementById('scoreBox').className = '';
-  document.getElementById('scoreBox').textContent = '';
-}
-
-renderChapterProgress();
-renderQuiz();
-showSlide();
-
-
-/* === V4 polish: lightweight sound feedback === */
-let istoriaSoundEnabled = true;
-function playUISound(type){
-  if(!istoriaSoundEnabled) return;
-  try{
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    const ctx = new AudioCtx();
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
-    const now = ctx.currentTime;
-    let freq = 520;
-    if(type === 'success') freq = 720;
-    if(type === 'error') freq = 180;
-    if(type === 'badge') freq = 880;
-    o.type = 'sine';
-    o.frequency.setValueAtTime(freq, now);
-    if(type === 'badge') o.frequency.exponentialRampToValueAtTime(1180, now + .16);
-    g.gain.setValueAtTime(.0001, now);
-    g.gain.exponentialRampToValueAtTime(.08, now + .02);
-    g.gain.exponentialRampToValueAtTime(.0001, now + .18);
-    o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + .20);
-  }catch(e){}
-}
-function toggleIstoriaSound(btn){
-  istoriaSoundEnabled = !istoriaSoundEnabled;
-  if(btn) btn.textContent = istoriaSoundEnabled ? '🔊 Ήχοι: ON' : '🔇 Ήχοι: OFF';
-  if(istoriaSoundEnabled) playUISound('click');
-}
-document.addEventListener('click', function(e){
-  const target = e.target.closest('button,a.btn,a.gold,a.secondary');
-  if(target && !target.classList.contains('sound-toggle')) playUISound('click');
-});
-
+IstoriaChapter.init();
 </script>
 
 

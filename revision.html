@@ -260,6 +260,9 @@
 
 <footer>Γενική επανάληψη — Ιστορία Α΄ Γυμνασίου</footer>
 
+<script src="core/storageEngine.js"></script>
+<script src="core/soundEngine.js"></script>
+<script src="core/uiEngine.js"></script>
 <script>
 document.querySelectorAll('[data-draw]').forEach(function(el){
   const id = el.getAttribute('data-draw');
@@ -475,10 +478,8 @@ function gradeQuiz(){
       card.querySelectorAll('.option-btn').forEach((btn) => {
         const originalIndex = Number(btn.dataset.optionIndex);
         btn.classList.remove('correct','wrong');
-        if(originalIndex === item.a) btn.classList.add('correct');
-  playUISound('success');
-        else if(originalIndex === chosen) btn.classList.add('wrong');
-  playUISound('error');
+        if(originalIndex === item.a){ btn.classList.add('correct'); }
+        else if(originalIndex === chosen){ btn.classList.add('wrong'); }
       });
     }
   });
@@ -535,38 +536,6 @@ renderQuiz();
 
 
 /* === V4 polish: lightweight sound feedback === */
-let istoriaSoundEnabled = true;
-function playUISound(type){
-  if(!istoriaSoundEnabled) return;
-  try{
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    const ctx = new AudioCtx();
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
-    const now = ctx.currentTime;
-    let freq = 520;
-    if(type === 'success') freq = 720;
-    if(type === 'error') freq = 180;
-    if(type === 'badge') freq = 880;
-    o.type = 'sine';
-    o.frequency.setValueAtTime(freq, now);
-    if(type === 'badge') o.frequency.exponentialRampToValueAtTime(1180, now + .16);
-    g.gain.setValueAtTime(.0001, now);
-    g.gain.exponentialRampToValueAtTime(.08, now + .02);
-    g.gain.exponentialRampToValueAtTime(.0001, now + .18);
-    o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + .20);
-  }catch(e){}
-}
-function toggleIstoriaSound(btn){
-  istoriaSoundEnabled = !istoriaSoundEnabled;
-  if(btn) btn.textContent = istoriaSoundEnabled ? '🔊 Ήχοι: ON' : '🔇 Ήχοι: OFF';
-  if(istoriaSoundEnabled) playUISound('click');
-}
-document.addEventListener('click', function(e){
-  const target = e.target.closest('button,a.btn,a.gold,a.secondary');
-  if(target && !target.classList.contains('sound-toggle')) playUISound('click');
-});
-
 </script>
 
 
