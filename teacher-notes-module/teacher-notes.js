@@ -42,13 +42,5 @@ function render(){
 }
 function book(a){return a?.length?a.map(x=>`<article class="tn-note"><h3>${esc(x.heading)}</h3><p>${esc(x.body)}</p></article>`).join(''):'<div class="tn-empty">Δεν έχει προστεθεί υλικό.</div>'}
 function diagrams(a){return a?.length?a.map(x=>`<article class="tn-diagram"><h3>${esc(x.heading)}</h3><ul>${(x.points||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ul></article>`).join(''):'<div class="tn-empty">Δεν έχει προστεθεί σχεδιάγραμμα.</div>'}
-function qa(a){
-  if(!a?.length) return '<div class="tn-empty">Δεν έχουν προστεθεί ερωτήσεις.</div>';
-  return a.map(group=>{
-    if(group.items){
-      return `<section class="tn-qa-category"><h3>${esc(group.category)}</h3>${group.items.map(x=>`<details class="tn-qa"><summary>${esc(x.q)}</summary><p>${esc(x.a)}</p></details>`).join('')}</section>`;
-    }
-    return `<details class="tn-qa"><summary>${esc(group.q)}</summary><p>${esc(group.a)}</p></details>`;
-  }).join('');
-}
+function qa(a){return a?.length?a.map(x=>`<details class="tn-qa"><summary>${esc(x.q)}</summary><p>${esc(x.a)}</p></details>`).join(''):'<div class="tn-empty">Δεν έχουν προστεθεί ερωτήσεις.</div>'}
 document.addEventListener('DOMContentLoaded',init);
