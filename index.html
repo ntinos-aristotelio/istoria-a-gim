@@ -6,6 +6,7 @@
 <title>Ιστορία Α΄ Γυμνασίου - Διαδραστική Εφαρμογή</title>
 
 <link rel="stylesheet" href="core/index.css">
+<link rel="stylesheet" href="core/v26-polish.css">
 </head>
 
 <body>
@@ -14,18 +15,21 @@
   <div class="bar">
     <div class="logo">🏛️ Ιστορία Α΄ Γυμνασίου</div>
     <div class="nav">
-      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
+      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι</button>
       <a href="#chapters">Κεφάλαια</a>
-      <a class="secondary" href="revision.html">Γενική επανάληψη</a>
-      <a class="gold" href="smart-study.html">Smart Study Mode</a>
-      <a class="blue" href="intelligent-revision.html">Intelligent Revision</a>
-          <a class="blue" href="teacher.html">Teacher Analytics</a>
-    <a class="btn blue" href="historical-campaign.html">History Campaign</a>
-      <a class="btn gold" href="world-map.html">Ιστορικός Άτλαντας</a>
-      <a class="btn secondary" href="narration.html">Ιστορική Αφήγηση</a>
+      <a class="secondary" href="revision.html">Επανάληψη</a>
+      <a class="gold" href="smart-study.html">Smart Study</a>
+      <a class="blue" href="intelligent-revision.html">Revision</a>
+      <a class="btn secondary" href="world-map.html">Άτλαντας</a>
+      <a class="btn blue" href="historical-campaign.html">Campaign</a>
+      <a class="btn secondary" href="narration.html">Αφήγηση</a>
+      <a class="btn gold" href="mentor.html">Mentor</a>
+      <a class="btn blue" href="teacher.html">Teacher</a>
     </div>
   </div>
 </header>
+
+<div class="v26-hub" id="v26StudentHub"></div>
 
 <div class="wrap">
 
@@ -755,5 +759,6 @@ function alexanderAnswer(btn, correct){
 }
 </script>
 
+<script src="core/v26-polish.js"></script>
 </body>
 </html>
