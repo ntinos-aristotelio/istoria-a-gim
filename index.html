@@ -333,6 +333,156 @@ footer{
   font-weight:900;
 }
 
+
+.mg-panel{
+  margin-top:28px;
+  background:white;
+  border:2px dashed var(--gold);
+  border-radius:28px;
+  padding:24px;
+}
+.mg-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+  margin-top:18px;
+}
+.mg-card{
+  background:var(--paper);
+  border:2px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 8px 18px rgba(70,40,18,.08);
+}
+.mg-card h3{margin-top:0}
+.mg-btn{
+  margin-top:12px;
+  width:100%;
+}
+.mg-area{
+  margin-top:22px;
+  background:#fff8ec;
+  border:2px solid var(--line);
+  border-radius:22px;
+  padding:22px;
+}
+.choice-btn{
+  display:block;
+  width:100%;
+  margin:10px 0;
+  padding:14px;
+  border-radius:16px;
+  border:2px solid var(--line);
+  background:white;
+  cursor:pointer;
+  font-weight:800;
+}
+.choice-btn:hover{border-color:var(--gold)}
+.choice-btn.correct{background:#ddf6e5;border-color:#2d8a4d}
+.choice-btn.wrong{background:#fde2df;border-color:#b13f3f}
+.timeline-drop{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:14px;
+}
+.timeline-item{
+  background:white;
+  border:2px solid var(--gold);
+  border-radius:999px;
+  padding:12px 18px;
+  cursor:pointer;
+  font-weight:900;
+}
+.mg-result{
+  margin-top:18px;
+  background:#e5f0ec;
+  border-left:8px solid var(--green);
+  border-radius:16px;
+  padding:16px;
+  font-weight:900;
+}
+
+
+
+/* === CONTRAST FIX: Smart Timeline V6 + V8 Mini Games + light cards === */
+.smart-timeline,
+.smart-timeline *,
+.smart-era,
+.smart-note,
+.daily-panel,
+.daily-panel *,
+.daily-stat,
+.daily-question,
+.daily-result,
+.mg-panel,
+.mg-panel *,
+.mg-card,
+.mg-area,
+.choice-btn,
+.timeline-item,
+.mg-result,
+.weak-panel,
+.weak-panel *,
+.weak-list,
+.weak-list *,
+.mission-stop,
+.quest-card,
+.report-box,
+.report-box *,
+.stat-card,
+.next-mission,
+.next-mission *,
+.progress-card,
+.progress-card *,
+.achievement-card,
+.achievement-card *,
+.card,
+.card *,
+.mini,
+.mini *,
+.quiz-card,
+.quiz-card *,
+.timeitem,
+.timeitem *,
+.checklist label,
+.checklist label *,
+.badge,
+.score,
+.note,
+.box{
+  color:var(--ink) !important;
+}
+
+button,
+a.btn,
+.nav a,
+.nav button,
+.sound-toggle,
+.bubble.main,
+.bubble.main *,
+button.secondary,
+a.secondary,
+button.blue,
+a.blue{
+  color:#ffffff !important;
+}
+
+button.gold,
+a.gold,
+.gold,
+.chapter-status,
+.chapter-status *,
+.correct,
+.correct *,
+.wrong,
+.wrong *,
+.answer,
+.option-btn,
+.daily-answer{
+  color:var(--ink) !important;
+}
+
 </style>
 </head>
 
@@ -575,6 +725,42 @@ footer{
       <button class="gold" onclick="startDailyChallenge()">Ξεκίνα Daily Challenge</button>
     </div>
   </section>
+
+
+<section class="mg-panel" id="v8-minigames">
+  <h2>🎮 V8 Mini Games Expansion</h2>
+  <p>Μικρά ιστορικά παιχνίδια για να μαθαίνεις παίζοντας.</p>
+
+  <div class="mg-grid">
+    <div class="mg-card">
+      <h3>⚔️ Battle Strategy</h3>
+      <p>Διάλεξε τη σωστή στρατηγική και κέρδισε τη μάχη.</p>
+      <button class="gold mg-btn" onclick="startBattleGame()">Παίξε</button>
+    </div>
+
+    <div class="mg-card">
+      <h3>🏛️ Δήμος της Αθήνας</h3>
+      <p>Ψήφισε σαν Αθηναίος πολίτης και δες τις συνέπειες.</p>
+      <button class="gold mg-btn" onclick="startAssemblyGame()">Παίξε</button>
+    </div>
+
+    <div class="mg-card">
+      <h3>📜 Timeline Puzzle</h3>
+      <p>Βάλε τα γεγονότα στη σωστή χρονική σειρά.</p>
+      <button class="gold mg-btn" onclick="startTimelineGame()">Παίξε</button>
+    </div>
+
+    <div class="mg-card">
+      <h3>🦁 Μέγας Αλέξανδρος</h3>
+      <p>Πάρε αποφάσεις πριν από μια μεγάλη μάχη.</p>
+      <button class="gold mg-btn" onclick="startAlexanderGame()">Παίξε</button>
+    </div>
+  </div>
+
+  <div id="minigameArea" class="mg-area">
+    <strong>🎯 Επίλεξε ένα mini game για να ξεκινήσεις.</strong>
+  </div>
+</section>
 
 <footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
 
@@ -891,6 +1077,181 @@ document.addEventListener('click', function(e){
 
   renderDailyStats();
 })();
+</script>
+
+
+<script>
+function saveMiniGame(name, score){
+  let data = {};
+  try{data = JSON.parse(localStorage.getItem('istoriaProgress')||'{}')}catch(e){}
+  data.minigames = data.minigames || {};
+  data.minigames[name] = {
+    score: score,
+    playedAt: new Date().toISOString()
+  };
+  localStorage.setItem('istoriaProgress', JSON.stringify(data));
+}
+
+function showMiniGame(html){
+  document.getElementById('minigameArea').innerHTML = html;
+}
+
+function startBattleGame(){
+  showMiniGame(`
+    <h3>⚔️ Μάχη του Μαραθώνα</h3>
+    <p>Οι Πέρσες έχουν μεγάλο στρατό. Ποια στρατηγική θα διάλεγες;</p>
+
+    <button class="choice-btn" onclick="battleAnswer(this,false)">
+      Ανοιχτή μάχη σε μεγάλη πεδιάδα
+    </button>
+
+    <button class="choice-btn" onclick="battleAnswer(this,true)">
+      Γρήγορη επίθεση και εκμετάλλευση του εδάφους
+    </button>
+
+    <button class="choice-btn" onclick="battleAnswer(this,false)">
+      Υποχώρηση χωρίς μάχη
+    </button>
+
+    <div id="battleResult"></div>
+  `);
+}
+
+function battleAnswer(btn, correct){
+  document.querySelectorAll('#minigameArea .choice-btn').forEach(b => b.disabled = true);
+
+  if(correct){
+    btn.classList.add('correct');
+    document.getElementById('battleResult').innerHTML =
+      '<div class="mg-result">🏆 Σωστά! Οι Έλληνες χρησιμοποίησαν έξυπνη τακτική και γνώση του εδάφους.</div>';
+    saveMiniGame('battleStrategy',100);
+  }else{
+    btn.classList.add('wrong');
+    document.getElementById('battleResult').innerHTML =
+      '<div class="mg-result">📚 Η στρατηγική αυτή θα έδινε πλεονέκτημα στους Πέρσες.</div>';
+    saveMiniGame('battleStrategy',40);
+  }
+}
+
+function startAssemblyGame(){
+  showMiniGame(`
+    <h3>🏛️ Εκκλησία του Δήμου</h3>
+    <p>Η Αθήνα σκέφτεται να ενισχύσει τον στόλο της. Τι ψηφίζεις;</p>
+
+    <button class="choice-btn" onclick="assemblyAnswer(this,true)">
+      Ενίσχυση του στόλου για προστασία και εμπόριο
+    </button>
+
+    <button class="choice-btn" onclick="assemblyAnswer(this,false)">
+      Καμία προετοιμασία
+    </button>
+
+    <button class="choice-btn" onclick="assemblyAnswer(this,false)">
+      Καταστροφή όλων των πλοίων
+    </button>
+
+    <div id="assemblyResult"></div>
+  `);
+}
+
+function assemblyAnswer(btn, correct){
+  document.querySelectorAll('#minigameArea .choice-btn').forEach(b => b.disabled = true);
+
+  if(correct){
+    btn.classList.add('correct');
+    document.getElementById('assemblyResult').innerHTML =
+      '<div class="mg-result">🏛️ Καλή επιλογή! Ο αθηναϊκός στόλος βοήθησε πολύ την πόλη.</div>';
+    saveMiniGame('assembly',100);
+  }else{
+    btn.classList.add('wrong');
+    document.getElementById('assemblyResult').innerHTML =
+      '<div class="mg-result">📚 Η Αθήνα βασίστηκε πολύ στη ναυτική της δύναμη.</div>';
+    saveMiniGame('assembly',40);
+  }
+}
+
+function startTimelineGame(){
+  showMiniGame(`
+    <h3>📜 Timeline Puzzle</h3>
+    <p>Πάτησε τα γεγονότα με τη σωστή χρονική σειρά.</p>
+
+    <div class="timeline-drop">
+      <button class="timeline-item" onclick="timelinePick(this,'minoan')">Μινωικός πολιτισμός</button>
+      <button class="timeline-item" onclick="timelinePick(this,'alexander')">Εκστρατεία Αλεξάνδρου</button>
+      <button class="timeline-item" onclick="timelinePick(this,'roman')">Ρωμαϊκή αυτοκρατορία</button>
+    </div>
+
+    <div id="timelineState" class="mg-result">Σειρά: —</div>
+  `);
+
+  window.timelineProgress = [];
+}
+
+function timelinePick(btn,id){
+  if(btn.disabled) return;
+  btn.disabled = true;
+  window.timelineProgress.push(id);
+
+  const names = {
+    minoan:'Μινωικός',
+    alexander:'Αλέξανδρος',
+    roman:'Ρώμη'
+  };
+
+  document.getElementById('timelineState').innerHTML =
+    'Σειρά: ' + window.timelineProgress.map(x => names[x]).join(' → ');
+
+  if(window.timelineProgress.length === 3){
+    const correct = ['minoan','alexander','roman'].join(',') === window.timelineProgress.join(',');
+
+    if(correct){
+      document.getElementById('timelineState').innerHTML +=
+        '<br><br>🏆 Σωστή σειρά!';
+      saveMiniGame('timeline',100);
+    }else{
+      document.getElementById('timelineState').innerHTML +=
+        '<br><br>📚 Η σωστή σειρά ήταν: Μινωικός → Αλέξανδρος → Ρώμη';
+      saveMiniGame('timeline',50);
+    }
+  }
+}
+
+function startAlexanderGame(){
+  showMiniGame(`
+    <h3>🦁 Στρατόπεδο του Αλέξανδρου</h3>
+    <p>Πριν από τη μάχη, τι θα έκανες πρώτο;</p>
+
+    <button class="choice-btn" onclick="alexanderAnswer(this,true)">
+      Οργάνωση στρατού και σχέδιο επίθεσης
+    </button>
+
+    <button class="choice-btn" onclick="alexanderAnswer(this,false)">
+      Άμεση επίθεση χωρίς σχέδιο
+    </button>
+
+    <button class="choice-btn" onclick="alexanderAnswer(this,false)">
+      Επιστροφή στη Μακεδονία
+    </button>
+
+    <div id="alexanderResult"></div>
+  `);
+}
+
+function alexanderAnswer(btn, correct){
+  document.querySelectorAll('#minigameArea .choice-btn').forEach(b => b.disabled = true);
+
+  if(correct){
+    btn.classList.add('correct');
+    document.getElementById('alexanderResult').innerHTML =
+      '<div class="mg-result">🦁 Ο Αλέξανδρος σχεδίαζε προσεκτικά πριν από κάθε μάχη.</div>';
+    saveMiniGame('alexander',100);
+  }else{
+    btn.classList.add('wrong');
+    document.getElementById('alexanderResult').innerHTML =
+      '<div class="mg-result">📚 Οι μεγάλες εκστρατείες χρειάζονταν καλή οργάνωση.</div>';
+    saveMiniGame('alexander',45);
+  }
+}
 </script>
 
 </body>
