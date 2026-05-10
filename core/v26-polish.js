@@ -101,25 +101,34 @@
     const st = getProgress();
     const scoreVals = Object.values(st.scores || {}).map(Number).filter(function(n){ return !Number.isNaN(n); });
     const avg = scoreVals.length ? Math.round(scoreVals.reduce(function(a,b){ return a + b; }, 0) / scoreVals.length) + '%' : '—';
+    const next = Math.min(TOTAL_CHAPTERS, st.completed + 1);
+    const nextHref = st.completed >= TOTAL_CHAPTERS ? 'revision.html' : ('chapter' + next + '.html');
 
-    host.innerHTML = '<section class="v26-hub-panel">' +
-      '<div class="eyebrow">V26 Student Hub</div>' +
-      '<h2>Συνέχισε τη μαθησιακή διαδρομή</h2>' +
-      '<div class="v26-hub-grid">' +
-        '<div class="v26-hub-card">' +
-          '<h3>Προτεινόμενο επόμενο βήμα</h3>' +
-          '<p>Ξεκίνα από Smart Study για να δεις τι χρειάζεται επανάληψη και μετά άνοιξε τον Άτλαντα για χωρική κατανόηση.</p>' +
-          '<div class="v26-actions">' +
-            '<a class="gold" href="smart-study.html">Smart Study</a>' +
-            '<a class="secondary" href="world-map.html">Άτλαντας</a>' +
-            '<a class="blue" href="intelligent-revision.html">Revision</a>' +
-          '</div>' +
-        '</div>' +
-        '<div class="v26-hub-card"><div class="v26-stat">' + st.completed + '/' + TOTAL_CHAPTERS + '</div><div class="v26-muted">Κεφάλαια</div><p>Πρόοδος κεφαλαίων</p></div>' +
-        '<div class="v26-hub-card"><div class="v26-stat">' + avg + '</div><div class="v26-muted">Μέσο σκορ</div><p>Από διαθέσιμα quiz</p></div>' +
-        '<div class="v26-hub-card"><div class="v26-stat">' + st.xp + '</div><div class="v26-muted">XP</div><p>Journey progress</p><span class="v26-pill">Streak: ' + st.streak + '</span></div>' +
+    host.innerHTML = '<section class="v26-hub-panel clean-progress-row">' +
+      '<div>' +
+        '<div class="eyebrow">Student Hub</div>' +
+        '<h2>Συνέχισε τη μαθησιακή διαδρομή</h2>' +
+        '<p>Πρόοδος: ' + st.completed + '/' + TOTAL_CHAPTERS + ' κεφάλαια · Μέσο σκορ: ' + avg + ' · XP: ' + st.xp + '</p>' +
+      '</div>' +
+      '<div class="clean-stat-row">' +
+        '<span class="clean-stat-pill">' + st.completed + '/' + TOTAL_CHAPTERS + ' κεφάλαια</span>' +
+        '<span class="clean-stat-pill">Quiz: ' + avg + '</span>' +
+        '<span class="clean-stat-pill">Streak: ' + st.streak + '</span>' +
+        '<a class="gold" href="' + nextHref + '">Συνέχεια</a>' +
       '</div>' +
     '</section>';
+
+    const title = document.getElementById('cleanNextStepTitle');
+    const text = document.getElementById('cleanNextStepText');
+    const btn = document.getElementById('continueLearningBtn');
+    if(st.completed >= TOTAL_CHAPTERS){
+      if(title) title.textContent = 'Γενική επανάληψη';
+      if(text) text.textContent = 'Έχεις ολοκληρώσει τα κεφάλαια. Συνέχισε με επανάληψη και quiz.';
+    }else{
+      if(title) title.textContent = 'Κεφάλαιο ' + next;
+      if(text) text.textContent = 'Συνέχισε από το επόμενο κεφάλαιο ή ξεκίνα με Smart Study για στοχευμένη μελέτη.';
+    }
+    if(btn) btn.href = nextHref;
   }
 
   window.IstoriaV26 = window.IstoriaV26 || {};

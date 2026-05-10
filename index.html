@@ -7,10 +7,11 @@
 
 <link rel="stylesheet" href="core/index.css">
 <link rel="stylesheet" href="core/v26-polish.css">
+<link rel="stylesheet" href="core/v27-clean-home.css">
 <link rel="stylesheet" href="core/mobile-menu.css">
 </head>
 
-<body>
+<body class="v27-clean-home">
 
 <header>
   <div class="bar">
@@ -31,83 +32,43 @@
   </div>
 </header>
 
-<div class="v26-hub" id="v26StudentHub"></div>
+<div class="v26-hub clean-progress-strip" id="v26StudentHub"></div>
 
-<div class="wrap">
+<div class="wrap clean-home-wrap">
 
-  <section class="hero">
-    <div class="panel text">
-      <div class="eyebrow">Διαδραστική εφαρμογή μαθήματος</div>
+  <section class="clean-hero panel">
+    <div class="clean-hero-copy">
+      <div class="eyebrow">V27 Clean Learning Home</div>
       <h1>Ιστορία Α΄ Γυμνασίου</h1>
-      <p>Καλώς ήρθες στη διαδραστική εφαρμογή του μαθήματος. Διάλεξε κεφάλαιο, διάβασε το μάθημα, κάνε δραστηριότητες και στο τέλος δοκίμασε τη μεγάλη επανάληψη.</p>
-      <div class="box">
-        Η διαδρομή μας ξεκινά από την Προϊστορία και φτάνει μέχρι τη Ρωμαϊκή αυτοκρατορία.
+      <p>Διάλεξε πώς θέλεις να μελετήσεις σήμερα. Η αρχική κρατά μόνο τα βασικά μπροστά σου.</p>
+      <div class="clean-hero-actions">
+        <a class="gold" id="continueLearningBtn" href="#chapters">Συνέχεια μάθησης</a>
+        <a class="secondary" href="smart-study.html">Smart Study</a>
       </div>
-      <p>
-        <a href="#chapters">Άνοιγμα κεφαλαίων</a>
-        <a class="gold" href="revision.html">Μεγάλη επανάληψη</a>
-      </p>
     </div>
-
-    <div class="panel drawing">
-      <svg viewBox="0 0 900 620">
-        <rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-        <circle cx="745" cy="95" r="65" fill="#ffd56d"/>
-        <path d="M0 500 C220 420 420 520 900 435 L900 620 L0 620Z" fill="#8abc69"/>
-        <rect x="105" y="370" width="95" height="115" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-        <rect x="270" y="335" width="95" height="150" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-        <rect x="435" y="370" width="95" height="115" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-        <path d="M75 370 L320 230 L565 370Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-        <circle cx="670" cy="390" r="75" fill="#b9422f" stroke="#5b351c" stroke-width="9"/>
-        <path d="M670 325 v130 M605 390 h130" stroke="#ffd56d" stroke-width="11"/>
-        <path d="M160 215 C300 140 505 150 710 225" fill="none" stroke="#246b63" stroke-width="12" stroke-dasharray="20 16" stroke-linecap="round"/>
-        <text x="60" y="90" font-size="50" font-weight="900" fill="#7b421f">Μαθαίνω Ιστορία</text>
-        <text x="62" y="138" font-size="28" fill="#246b63">με βήματα • σχέδια • ασκήσεις • παιχνίδια</text>
-      </svg>
+    <div class="clean-hero-card">
+      <span class="clean-kicker">Προτεινόμενο βήμα</span>
+      <strong id="cleanNextStepTitle">Υπολογισμός...</strong>
+      <p id="cleanNextStepText">Άνοιξε ένα κεφάλαιο ή ξεκίνα από Smart Study.</p>
     </div>
   </section>
 
-
-  <section class="panel text progress-card" id="progressDashboard">
-    <div class="eyebrow">Πίνακας προόδου</div>
-    <h2>Η πορεία μου στην Ιστορία</h2>
-    <div class="progress-line"><div id="overallProgressFill" class="progress-fill"></div></div>
-    <div id="overallProgressText" class="progress-small">Φόρτωση προόδου...</div>
-    <div id="overallBadges" class="progress-badges"></div>
-    <p><button class="secondary" onclick="resetAllProgress()">Μηδενισμός προόδου</button></p>
-  </section>
-
-
-
-  <section class="panel text" id="achievementGallery">
-    <div class="eyebrow">Achievement Gallery</div>
-    <h2>Η συλλογή μου</h2>
-    <p>Τα παράσημα ξεκλειδώνουν όσο ολοκληρώνονται κεφάλαια και η τελική αποστολή.</p>
-    <div id="achievementGrid" class="achievement-grid"></div>
-  </section>
-
-
-
-  <section class="panel text" id="studentDashboard">
-    <div class="eyebrow">Dashboard μαθητή</div>
-    <h2>Τι να κάνω μετά;</h2>
-    <p>Η εφαρμογή πλέον διαβάζει την πρόοδο και προτείνει τον επόμενο σταθμό.</p>
-    <div class="dashboard-grid">
-      <div class="stat-card"><div class="stat-number" id="statCompleted">0/10</div><div class="stat-label">Κεφάλαια ολοκληρωμένα</div></div>
-      <div class="stat-card"><div class="stat-number" id="statAverage">—</div><div class="stat-label">Μέσο σκορ quiz</div></div>
-      <div class="stat-card"><div class="stat-number" id="statBadges">0</div><div class="stat-label">Badges ξεκλειδωμένα</div></div>
-    </div>
-    <div class="next-mission" id="nextMissionBox">
-      <div><strong>Επόμενη αποστολή</strong><br><span id="nextMissionText">Υπολογισμός...</span></div>
-      <a class="gold" id="nextMissionLink" href="#chapters">Πάμε</a>
-    </div>
-    <div class="timeline-road" id="chapterRoad"></div>
-    <div class="report-box">
-      <h3>Αναφορά προόδου</h3>
-      <p>Χρήσιμο για μαθητή, γονέα ή εκπαιδευτικό.</p>
-      <textarea id="progressReport" readonly></textarea>
-      <p><button class="blue" onclick="copyProgressReport()">Αντιγραφή αναφοράς</button></p>
-    </div>
+  <section class="clean-tools" aria-label="Βασικά εργαλεία μάθησης">
+    <a class="clean-tool-card" href="smart-study.html">
+      <span class="clean-tool-icon">🧠</span>
+      <strong>Smart Study</strong>
+      <small>Προσωποποιημένη μελέτη και πρόταση επανάληψης.</small>
+    </a>
+    <a class="clean-tool-card" href="world-map.html">
+      <span class="clean-tool-icon">🗺️</span>
+      <strong>Άτλαντας</strong>
+      <small>Δες τόπους, πολιτισμούς και κινήσεις στον χάρτη.</small>
+    </a>
+    <a class="clean-tool-card" href="intelligent-revision.html">
+      <span class="clean-tool-icon">⚡</span>
+      <strong>Revision</strong>
+      <small>Γρήγορη επανάληψη στα σημεία που χρειάζονται δουλειά.</small>
+    </a>
   </section>
 
   <section id="chapters" class="panel text section-title">
@@ -232,8 +193,21 @@
 
   </section>
 
+  <details class="secondary-tools-panel">
+    <summary>Περισσότερα εργαλεία</summary>
+    <div class="secondary-link-grid">
+      <a href="revision.html">Γενική Επανάληψη</a>
+      <a href="narration.html">Αφήγηση</a>
+      <a href="mentor.html">Mentor</a>
+      <a href="historical-campaign.html">Campaign</a>
+      <a href="teacher.html">Teacher</a>
+      <a href="teacher-notes.html">Σημειώσεις</a>
+    </div>
+  </details>
 </div>
 
+<details class="secondary-tools-panel secondary-tools-panel-wide">
+  <summary>Προχωρημένα / παλιά εργαλεία αρχικής</summary>
 
   <section class="smart-timeline" id="smart-timeline-v6">
     <h2>🗺️ Smart Timeline V6</h2>
@@ -297,6 +271,7 @@
 </section>
 
   <section id="adaptivePanel"></section>
+</details>
 
 <footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
 
