@@ -19,6 +19,17 @@ display:none !important;
 }
 </style>
 
+
+<style id="v46-tools-flat-fix">
+/* V46: Όλα τα εργαλεία σε μία καθαρή σελίδα, χωρίς accordions */
+.secondary-tools-panel{display:none !important;}
+.advanced-tools-flat{display:grid; gap:22px; margin-top:28px;}
+.advanced-tools-flat > section{background:#fffdf8; border-radius:28px; padding:26px; box-shadow:0 10px 28px rgba(90,45,12,.08);}
+.advanced-tools-flat summary{display:none !important;}
+.clean-tools{margin-bottom:0;}
+.clean-tool-card{scroll-margin-top:90px;}
+#smart-timeline-v6,#daily-challenge-v7,#v8-minigames{scroll-margin-top:90px;}
+</style>
 </head>
 <body class="v27-clean-home">
 
@@ -58,27 +69,11 @@ display:none !important;
     <a class="clean-tool-card" href="historical-campaign.html"><span class="clean-tool-icon">🏛️</span><strong>Campaign</strong><small>Διαδραστική ιστορική εμπειρία.</small></a>
     <a class="clean-tool-card" href="teacher.html"><span class="clean-tool-icon">👨‍🏫</span><strong>Teacher</strong><small>Εργαλεία εκπαιδευτικού.</small></a>
     <a class="clean-tool-card" href="teacher-notes.html"><span class="clean-tool-icon">📝</span><strong>Σημειώσεις</strong><small>Σημειώσεις καθηγητή.</small></a>
+    <a class="clean-tool-card" href="#smart-timeline-v6"><span class="clean-tool-icon">🗺️</span><strong>Smart Timeline</strong><small>Πρόοδος και προτεινόμενη επανάληψη.</small></a>
+    <a class="clean-tool-card" href="#daily-challenge-v7"><span class="clean-tool-icon">🔥</span><strong>Daily Challenge</strong><small>5 γρήγορες ερωτήσεις κάθε μέρα.</small></a>
+    <a class="clean-tool-card" href="#v8-minigames"><span class="clean-tool-icon">🎮</span><strong>Mini Games</strong><small>Μικρά ιστορικά παιχνίδια.</small></a>
   </section>
-
-
-
-
-  <details class="secondary-tools-panel">
-    <summary>Περισσότερα εργαλεία</summary>
-    <div class="secondary-link-grid">
-      <a href="revision.html">Γενική Επανάληψη</a>
-      <a href="narration.html">Αφήγηση</a>
-      <a href="mentor.html">Mentor</a>
-      <a href="historical-campaign.html">Campaign</a>
-      <a href="teacher.html">Teacher</a>
-      <a href="teacher-notes.html">Σημειώσεις</a>
-    </div>
-  </details>
-
-
-
-<details class="secondary-tools-panel secondary-tools-panel-wide">
-  <summary>Προχωρημένα / παλιά εργαλεία αρχικής</summary>
+<section class="advanced-tools-flat" aria-label="Προχωρημένα εργαλεία">
 
   <section class="smart-timeline" id="smart-timeline-v6">
     <h2>🗺️ Smart Timeline V6</h2>
@@ -142,7 +137,7 @@ display:none !important;
 </section>
 
   <section id="adaptivePanel"></section>
-</details>
+</section>
 </div>
 
 
