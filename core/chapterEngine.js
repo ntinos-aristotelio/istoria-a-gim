@@ -22,7 +22,9 @@
     const badges = document.getElementById('chapterBadgeList');
     if(!fill || !text || !badges) return;
     let percent = 0;
-    if(typeof chapter.score === 'number' && chapter.total) percent = Math.round((chapter.score / chapter.total) * 70);
+    if(chapter.visited) percent = 10;
+    if(typeof chapter.score === 'number' && chapter.total) percent = Math.max(percent, Math.round((chapter.score / chapter.total) * 70));
+    if(chapter.lessonStarted) percent = Math.max(percent, 35);
     if(chapter.completed) percent = 100;
     fill.style.width = percent + '%';
     const scoreText = chapter.total ? ('Τελευταίο σκορ quiz: ' + chapter.score + ' / ' + chapter.total + '.') : 'Δεν έχει γίνει ακόμη quiz.';

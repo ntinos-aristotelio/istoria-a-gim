@@ -18,6 +18,7 @@
   function openLesson(){
     const id = 'chapter' + (window.CHAPTER_ID || 1);
     showPage(id);
+    if(window.saveChapterProgress) saveChapterProgress({lessonStarted:true, visited:true});
     slide = 0;
     showSlide();
   }
