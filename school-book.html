@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Σχολικό Βιβλίο</title>
+<style>
+body{
+margin:0;
+font-family:Inter,Arial,sans-serif;
+background:#efe0c2;
+color:#5a2d0c;
+}
+.container{
+max-width:1300px;
+margin:auto;
+padding:30px 20px;
+}
+.hero{
+background:#fff;
+padding:32px;
+border-radius:28px;
+margin-bottom:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.hero h1{
+margin-top:0;
+font-size:3rem;
+}
+.hero p{
+font-size:1.1rem;
+opacity:.8;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+.card{
+background:white;
+border-radius:24px;
+padding:22px;
+box-shadow:0 10px 26px rgba(0,0,0,.08);
+transition:.2s;
+}
+.card:hover{
+transform:translateY(-4px);
+}
+.card h3{
+margin-top:0;
+font-size:1.4rem;
+}
+.badges{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin:14px 0;
+}
+.badge{
+background:#f5e6cc;
+padding:6px 10px;
+border-radius:999px;
+font-size:.8rem;
+font-weight:bold;
+}
+.tools{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:16px;
+}
+.tool{
+background:#0f766e;
+color:white;
+text-decoration:none;
+padding:10px;
+border-radius:12px;
+text-align:center;
+font-weight:bold;
+}
+.topnav{
+display:flex;
+gap:12px;
+margin-bottom:18px;
+flex-wrap:wrap;
+}
+.topnav a{
+background:white;
+padding:10px 14px;
+border-radius:14px;
+text-decoration:none;
+color:#5a2d0c;
+font-weight:bold;
+}
+@media(max-width:1000px){
+.grid{
+grid-template-columns:1fr 1fr;
+}
+}
+@media(max-width:700px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="topnav">
+<a href="index.html">🏠 Αρχική</a>
+<a href="chapters.html">📚 Κεφάλαια</a>
+<a href="tools.html">🧰 Εργαλεία</a>
+</div>
+
+<div class="hero">
+<h1>📖 Interactive Σχολικό Βιβλίο</h1>
+<p>Το σχολικό βιβλίο μετατρέπεται σε διαδραστική εμπειρία μάθησης με Smart Study, Atlas, Narration και δραστηριότητες.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>🏺 Κεφάλαιο 1 — Προϊστορία</h3>
+<p>Παλαιολιθική και Νεολιθική εποχή, πρώτοι οικισμοί και καθημερινή ζωή.</p>
+
+<div class="badges">
+<div class="badge">Θεωρία</div>
+<div class="badge">Δραστηριότητες</div>
+<div class="badge">Εικόνες</div>
+<div class="badge">Quiz</div>
+</div>
+
+<div class="tools">
+<a class="tool" href="#">🧠 Smart Study</a>
+<a class="tool" href="#">🎙️ Narration</a>
+<a class="tool" href="#">🗺️ Atlas</a>
+<a class="tool" href="#">📝 Quiz</a>
+</div>
+</div>
+
+<div class="card">
+<h3>⚔️ Κεφάλαιο 4 — Αρχαϊκή Εποχή</h3>
+<p>Δράκοντας, πανελλήνιοι δεσμοί, Ολυμπιάδες και εξέλιξη των ελληνικών πόλεων.</p>
+
+<div class="badges">
+<div class="badge">Ιστορικές Πηγές</div>
+<div class="badge">Χάρτες</div>
+<div class="badge">Smart Revision</div>
+<div class="badge">Mentor</div>
+</div>
+
+<div class="tools">
+<a class="tool" href="#">🧠 Smart Study</a>
+<a class="tool" href="#">👨‍🏫 Mentor</a>
+<a class="tool" href="#">🎙️ Narration</a>
+<a class="tool" href="#">📝 Quiz</a>
+</div>
+</div>
+
+<div class="card">
+<h3>👑 Κεφάλαιο 7 — Μακεδονία</h3>
+<p>Φίλιππος Β΄, Αλέξανδρος και η άνοδος της Μακεδονίας.</p>
+
+<div class="badges">
+<div class="badge">Timeline</div>
+<div class="badge">Battle Maps</div>
+<div class="badge">AI Mentor</div>
+<div class="badge">Revision</div>
+</div>
+
+<div class="tools">
+<a class="tool" href="#">🧠 Smart Study</a>
+<a class="tool" href="#">🗺️ Atlas</a>
+<a class="tool" href="#">🎙️ Narration</a>
+<a class="tool" href="#">📝 Quiz</a>
+</div>
+</div>
+
+<div class="card">
+<h3>🏛️ Κλασική Τέχνη</h3>
+<p>Δισκοβόλος, αγγεία, γλυπτική και καλλιτεχνική έκφραση της κλασικής εποχής.</p>
+
+<div class="badges">
+<div class="badge">Εικόνες</div>
+<div class="badge">Ανάλυση</div>
+<div class="badge">Τέχνη</div>
+<div class="badge">Πηγές</div>
+</div>
+
+<div class="tools">
+<a class="tool" href="#">🎙️ Narration</a>
+<a class="tool" href="#">👨‍🏫 Mentor</a>
+<a class="tool" href="#">🧠 Study</a>
+<a class="tool" href="#">📝 Quiz</a>
+</div>
+</div>
+
+<div class="card">
+<h3>🏺 Σπάρτη & Αθήνα</h3>
+<p>Κοινωνία, θεσμοί, στρατιωτική αγωγή και δημοκρατία.</p>
+
+<div class="badges">
+<div class="badge">Comparison</div>
+<div class="badge">Activities</div>
+<div class="badge">Sources</div>
+<div class="badge">Atlas</div>
+</div>
+
+<div class="tools">
+<a class="tool" href="#">🧠 Smart Study</a>
+<a class="tool" href="#">🗺️ Atlas</a>
+<a class="tool" href="#">🎙️ Narration</a>
+<a class="tool" href="#">📝 Quiz</a>
+</div>
+</div>
+
+<div class="card">
+<h3>🌍 Ρωμαϊκή Εποχή</h3>
+<p>Αυτοκρατορία, λεγεώνες, επαρχίες και πολιτισμός.</p>
+
+<div class="badges">
+<div class="badge">Χάρτες</div>
+<div class="badge">Timeline</div>
+<div class="badge">Sources</div>
+<div class="badge">Mentor</div>
+</div>
+
+<div class="tools">
+<a class="tool" href="#">🧠 Study</a>
+<a class="tool" href="#">🎙️ Narration</a>
+<a class="tool" href="#">👨‍🏫 Mentor</a>
+<a class="tool" href="#">📝 Quiz</a>
+</div>
+</div>
+
+</div>
+</div>
+</body>
+</html>
