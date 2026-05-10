@@ -19,6 +19,49 @@ display:none !important;
 }
 </style>
 
+
+<style id="unified-main-menu-v52">
+header .bar{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+header .nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+header .nav .main-menu-link,
+header .nav a.main-menu-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:42px;
+  padding:10px 18px;
+  border-radius:13px;
+  background:#fffaf1 !important;
+  border:1px solid rgba(123,66,31,.13);
+  color:#3f1f08 !important;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:0 6px 16px rgba(70,40,18,.08);
+  line-height:1;
+  white-space:nowrap;
+}
+header .nav .main-menu-link:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(70,40,18,.13);
+}
+@media(max-width:860px){
+  header .bar.mobile-menu-open > .nav .main-menu-link{
+    width:100%;
+  }
+}
+</style>
+
 </head>
 <body class="v27-clean-home">
 
@@ -26,16 +69,10 @@ display:none !important;
   <div class="bar">
     <div class="logo">🏛️ Ιστορία Α΄ Γυμνασίου</div>
     <div class="nav">
-
-      <a href="index.html">Αρχική</a>
-      <a href="chapters.html">Κεφάλαια</a>
-      <a class="secondary" href="revision.html">Επανάληψη</a>
-      <a class="gold" href="smart-study.html">Smart Study</a>
-      <a class="blue" href="intelligent-revision.html">Revision</a>
-      <a class="btn secondary" href="world-map.html">Άτλαντας</a>
-      <a class="btn gold" href="school-book.html">Σχολικό Βιβλίο</a>
-      <a class="btn gold" href="tools.html">Εργαλεία</a>
-    
+      <a class="main-menu-link" href="index.html">🏠 Αρχική</a>
+      <a class="main-menu-link" href="chapters.html">📚 Κεφάλαια</a>
+      <a class="main-menu-link" href="revision.html">🔁 Επανάληψη</a>
+      <a class="main-menu-link" href="tools.html">🧰 Εργαλεία</a>
     </div>
   </div>
 </header>
