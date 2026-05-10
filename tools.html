@@ -30,6 +30,37 @@ display:none !important;
 .clean-tool-card{scroll-margin-top:90px;}
 #smart-timeline-v6,#daily-challenge-v7,#v8-minigames{scroll-margin-top:90px;}
 </style>
+
+<style id="v48-compact-5-tools-grid">
+/* V48: Tools page compact layout - 5 cards per row, no bulky advanced panels */
+.clean-hero{padding:24px 28px !important; margin-bottom:18px !important;}
+.clean-hero h1{font-size:2rem !important; margin:6px 0 6px !important;}
+.clean-hero p{margin:0 !important; max-width:780px !important;}
+.clean-tools{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  gap:14px !important;
+  margin-top:18px !important;
+  margin-bottom:0 !important;
+}
+.clean-tool-card{
+  min-height:118px !important;
+  padding:14px 12px !important;
+  border-radius:18px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:center !important;
+  text-align:center !important;
+}
+.clean-tool-icon{font-size:1.55rem !important; margin-bottom:6px !important;}
+.clean-tool-card strong{font-size:.95rem !important; line-height:1.15 !important;}
+.clean-tool-card small{font-size:.74rem !important; line-height:1.25 !important; margin-top:5px !important;}
+.advanced-tools-flat{display:none !important;}
+@media (max-width:1050px){.clean-tools{grid-template-columns:repeat(4,minmax(0,1fr)) !important;}}
+@media (max-width:760px){.clean-tools{grid-template-columns:repeat(2,minmax(0,1fr)) !important;} .clean-tool-card{min-height:110px !important;}}
+</style>
+
 </head>
 <body class="v27-clean-home">
 
