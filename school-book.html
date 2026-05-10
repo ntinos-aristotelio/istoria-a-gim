@@ -3,239 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Σχολικό Βιβλίο</title>
+<title>Σχολικό Βιβλίο - Ιστορία Α΄ Γυμνασίου</title>
+<link rel="stylesheet" href="core/index.css">
+<link rel="stylesheet" href="core/v26-polish.css">
+<link rel="stylesheet" href="core/v27-clean-home.css">
+<link rel="stylesheet" href="core/mobile-menu.css">
 <style>
-body{
-margin:0;
-font-family:Inter,Arial,sans-serif;
-background:#efe0c2;
-color:#5a2d0c;
-}
-.container{
-max-width:1300px;
-margin:auto;
-padding:30px 20px;
-}
-.hero{
-background:#fff;
-padding:32px;
-border-radius:28px;
-margin-bottom:24px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-.hero h1{
-margin-top:0;
-font-size:3rem;
-}
-.hero p{
-font-size:1.1rem;
-opacity:.8;
-}
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-}
-.card{
-background:white;
-border-radius:24px;
-padding:22px;
-box-shadow:0 10px 26px rgba(0,0,0,.08);
-transition:.2s;
-}
-.card:hover{
-transform:translateY(-4px);
-}
-.card h3{
-margin-top:0;
-font-size:1.4rem;
-}
-.badges{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin:14px 0;
-}
-.badge{
-background:#f5e6cc;
-padding:6px 10px;
-border-radius:999px;
-font-size:.8rem;
-font-weight:bold;
-}
-.tools{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-margin-top:16px;
-}
-.tool{
-background:#0f766e;
-color:white;
-text-decoration:none;
-padding:10px;
-border-radius:12px;
-text-align:center;
-font-weight:bold;
-}
-.topnav{
-display:flex;
-gap:12px;
-margin-bottom:18px;
-flex-wrap:wrap;
-}
-.topnav a{
-background:white;
-padding:10px 14px;
-border-radius:14px;
-text-decoration:none;
-color:#5a2d0c;
-font-weight:bold;
-}
-@media(max-width:1000px){
-.grid{
-grid-template-columns:1fr 1fr;
-}
-}
-@media(max-width:700px){
-.grid{
-grid-template-columns:1fr;
-}
-}
+body{background:#efe0c2;color:#5a2d0c;}
+.book-shell{max-width:1280px;margin:0 auto;padding:28px 20px 60px;}
+.book-hero{background:#fffdf8;border-radius:28px;padding:28px;box-shadow:0 10px 28px rgba(90,45,12,.08);margin-bottom:18px;}
+.book-hero h1{font-size:2.4rem;margin:.2rem 0 .4rem;}
+.book-hero p{max-width:880px;line-height:1.55;}
+.book-toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;align-items:center;}
+.book-toolbar input{flex:1;min-width:240px;padding:13px 16px;border-radius:16px;border:1px solid rgba(90,45,12,.18);font-size:1rem;}
+.book-toolbar a,.book-toolbar button{border:0;background:#0f766e;color:white;text-decoration:none;padding:13px 16px;border-radius:16px;font-weight:800;cursor:pointer;}
+.book-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.book-card{background:#fffdf8;border-radius:22px;padding:18px;box-shadow:0 10px 26px rgba(90,45,12,.08);display:flex;flex-direction:column;gap:10px;}
+.book-icon{font-size:1.8rem;}
+.book-meta{font-size:.78rem;font-weight:800;opacity:.72;text-transform:uppercase;letter-spacing:.03em;}
+.book-card h2{font-size:1.12rem;margin:0;line-height:1.2;}
+.book-card p{margin:0;line-height:1.45;font-size:.92rem;}
+.book-card details{background:#f8ecd7;border-radius:14px;padding:10px 12px;}
+.book-card summary{font-weight:800;cursor:pointer;}
+.book-card ul{margin:10px 0 0 18px;padding:0;font-size:.86rem;line-height:1.45;}
+.book-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:auto;}
+.book-actions a{background:#0f766e;color:white;text-decoration:none;text-align:center;border-radius:12px;padding:9px 8px;font-size:.82rem;font-weight:800;}
+.reader{margin-top:20px;background:#fffdf8;border-radius:24px;padding:18px;box-shadow:0 10px 26px rgba(90,45,12,.08);}
+.reader iframe{width:100%;height:720px;border:0;border-radius:16px;background:white;}
+.note{font-size:.9rem;opacity:.78;margin-top:8px;}
+@media(max-width:1050px){.book-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:720px){.book-grid{grid-template-columns:1fr;}.reader iframe{height:560px;}}
 </style>
 </head>
-<body>
+<body class="v27-clean-home">
+<header>
+  <div class="bar">
+    <div class="logo">🏛️ Ιστορία Α΄ Γυμνασίου</div>
+    <div class="nav">
+      <a href="index.html">Αρχική</a>
+      <a href="chapters.html">Κεφάλαια</a>
+      <a class="secondary" href="revision.html">Επανάληψη</a>
+      <a class="gold" href="smart-study.html">Smart Study</a>
+      <a class="blue" href="intelligent-revision.html">Revision</a>
+      <a class="btn secondary" href="world-map.html">Άτλαντας</a>
+      <a class="btn gold" href="school-book.html">Σχολικό Βιβλίο</a>
+      <a class="btn gold" href="tools.html">Εργαλεία</a>
+    </div>
+  </div>
+</header>
 
-<div class="container">
+<main class="book-shell">
+  <section class="book-hero">
+    <div class="eyebrow">Smart Text Extraction</div>
+    <h1>📖 Σχολικό Βιβλίο</h1>
+    <p>Το επίσημο βιβλίο έχει οργανωθεί σε διαδραστικές ενότητες: τίτλοι, σελίδες, βασικές υποενότητες και άμεση σύνδεση με Smart Study, Revision, Αφήγηση και Άτλαντα. Κάτω υπάρχει και ο ενσωματωμένος αναγνώστης PDF για πλήρη προβολή.</p>
+    <div class="book-toolbar">
+      <input id="bookSearch" type="search" placeholder="Αναζήτηση: π.χ. Σπάρτη, Μινωικός, Μαραθώνας, Αλέξανδρος...">
+      <a href="assets/vivlio-mathiti.pdf" target="_blank">Άνοιγμα PDF</a>
+      <button onclick="document.getElementById('bookReader').scrollIntoView({behavior:'smooth'})">Προβολή βιβλίου</button>
+    </div>
+  </section>
 
-<div class="topnav">
-<a href="index.html">🏠 Αρχική</a>
-<a href="chapters.html">📚 Κεφάλαια</a>
-<a href="tools.html">🧰 Εργαλεία</a>
-</div>
+  <section class="book-grid" id="bookGrid">
+<article class="book-card" data-title="ι. η προϊστορία η παλαιολιθική και η μεσολιθική εποχή η νεολιθική εποχή οι λαοί και οι πολιτισμοί της εγγύς ανατολής ο κυκλαδικός πολιτισμός ο μινωικός πολιτισμός η θρησκεία και η τέχνη των μινωιτών ο μυκηναϊκός κόσμος η μυκηναϊκή θρησκεία και τέχνη">
+  <div class="book-icon">🏺</div>
+  <div class="book-meta">Σελίδες βιβλίου: 5-35</div>
+  <h2>Ι. Η Προϊστορία</h2>
+  <p>Από την Εποχή του Λίθου ως την Εποχή του Χαλκού: καθημερινή ζωή, πρώτοι οικισμοί, Κυκλαδικός, Μινωικός και Μυκηναϊκός πολιτισμός.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Η Παλαιολιθική και η Μεσολιθική Εποχή</li><li>Η Νεολιθική Εποχή</li><li>Οι λαοί και οι πολιτισμοί της Εγγύς Ανατολής</li><li>Ο Κυκλαδικός Πολιτισμός</li><li>Ο Μινωικός Πολιτισμός</li><li>Η θρησκεία και η τέχνη των Μινωιτών</li><li>+2 ακόμη ενότητες</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+<article class="book-card" data-title="ο ελληνικός κόσμος 1100-800 π.χ. οι μεταβατικοί χρόνοι η πολιτισμική αναγέννηση">
+  <div class="book-icon">🧭</div>
+  <div class="book-meta">Σελίδες βιβλίου: 36-41</div>
+  <h2>Ο Ελληνικός κόσμος 1100-800 π.Χ.</h2>
+  <p>Μεταβατικοί χρόνοι, πρώτος ελληνικός αποικισμός, ομηρικά έπη, ελληνικό αλφάβητο και γεωμετρική τέχνη.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Οι Μεταβατικοί Χρόνοι</li><li>Η πολιτισμική αναγέννηση</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+<article class="book-card" data-title="αρχαϊκή εποχή 800-479 π.χ. αποικιακή εξάπλωση η πόλη-κράτος και η εξέλιξη του πολιτεύματος η σπάρτη αθήνα: από τη βασιλεία στην αριστοκρατία αθήνα: πορεία προς τη δημοκρατία οι πανελλήνιοι δεσμοί πέρσες και έλληνες η οριστική απομάκρυνση της περσικής επίθεσης τα γράμματα η τέχνη">
+  <div class="book-icon">⚔️</div>
+  <div class="book-meta">Σελίδες βιβλίου: 42-67</div>
+  <h2>Αρχαϊκή Εποχή 800-479 π.Χ.</h2>
+  <p>Αποικισμός, πόλη-κράτος, Σπάρτη, Αθήνα, περσικοί πόλεμοι, γράμματα και τέχνη.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Αποικιακή εξάπλωση</li><li>Η πόλη-κράτος και η εξέλιξη του πολιτεύματος</li><li>Η Σπάρτη</li><li>Αθήνα: Από τη Βασιλεία στην Αριστοκρατία</li><li>Αθήνα: πορεία προς τη Δημοκρατία</li><li>Οι Πανελλήνιοι Δεσμοί</li><li>+4 ακόμη ενότητες</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+<article class="book-card" data-title="η ηγεμονία της αθήνας 479-431 π.χ. η συμμαχία της δήλου το δημοκρατικό πολίτευμα και ο περικλής η λειτουργία του πολιτεύματος - οι λειτουργίες η σύγκρουση της κοινωνίας - η καθημερινή ζωή η διαδικασία της μόρφωσης - η αθήνα γιορτάζει">
+  <div class="book-icon">🏛️</div>
+  <div class="book-meta">Σελίδες βιβλίου: 68-81</div>
+  <h2>Η ηγεμονία της Αθήνας 479-431 π.Χ.</h2>
+  <p>Συμμαχία της Δήλου, Περικλής, δημοκρατικό πολίτευμα, λειτουργίες, κοινωνία και καθημερινή ζωή.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Η Συμμαχία της Δήλου</li><li>Το δημοκρατικό πολίτευμα και ο Περικλής</li><li>Η λειτουργία του πολιτεύματος - Οι Λειτουργίες</li><li>Η σύγκρουση της κοινωνίας - Η καθημερινή ζωή</li><li>Η διαδικασία της μόρφωσης - Η Αθήνα γιορτάζει</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+<article class="book-card" data-title="ηγεμονικοί ανταγωνισμοί 431-362 π.χ. τα αίτια και οι αφορμές του πελοποννησιακού πολέμου η εκστρατεία στη σικελία - ο δεκελεικός πόλεμος η ηγεμονία της σπάρτης η κυριαρχία της θήβας στην ελλάδα">
+  <div class="book-icon">🛡️</div>
+  <div class="book-meta">Σελίδες βιβλίου: 82-94</div>
+  <h2>Ηγεμονικοί ανταγωνισμοί 431-362 π.Χ.</h2>
+  <p>Πελοποννησιακός πόλεμος, εκστρατεία στη Σικελία, Δεκελεικός πόλεμος, ηγεμονία Σπάρτης και Θήβας.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Τα αίτια και οι αφορμές του Πελοποννησιακού πολέμου</li><li>Η εκστρατεία στη Σικελία - Ο Δεκελεικός πόλεμος</li><li>Η Ηγεμονία της Σπάρτης</li><li>Η κυριαρχία της Θήβας στην Ελλάδα</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+<article class="book-card" data-title="η ανάπτυξη της μακεδονίας το κράτος της μακεδονίας το κράτος της μακεδονίας επεκτείνεται αλέξανδρος. η κατάκτηση της ανατολής το έργο του αλέξανδρου οι τύχες της κύπρου">
+  <div class="book-icon">👑</div>
+  <div class="book-meta">Σελίδες βιβλίου: 95-106</div>
+  <h2>Η ανάπτυξη της Μακεδονίας</h2>
+  <p>Το κράτος της Μακεδονίας, Φίλιππος, Αλέξανδρος, κατάκτηση της Ανατολής και ελληνιστικός κόσμος.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Το κράτος της Μακεδονίας</li><li>Το κράτος της Μακεδονίας επεκτείνεται</li><li>Αλέξανδρος. Η κατάκτηση της Ανατολής</li><li>Το έργο του Αλέξανδρου</li><li>Οι τύχες της Κύπρου</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+<article class="book-card" data-title="τέχνες και γράμματα την κλασική εποχή τα γράμματα οι τέχνες η αρχιτεκτονική των κλασικών χρόνων η γλυπτική και η ζωγραφική των κλασικών χρόνων">
+  <div class="book-icon">🎨</div>
+  <div class="book-meta">Σελίδες βιβλίου: 107-116</div>
+  <h2>Τέχνες και γράμματα την Κλασική Εποχή</h2>
+  <p>Γράμματα, τέχνες, αρχιτεκτονική, γλυπτική και ζωγραφική των κλασικών χρόνων.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Τα Γράμματα</li><li>Οι Τέχνες</li><li>Η Αρχιτεκτονική των Κλασικών Χρόνων</li><li>Η Γλυπτική και η Ζωγραφική των Κλασικών Χρόνων</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+<article class="book-card" data-title="ελληνιστικοί και ρωμαϊκοί χρόνοι τα ελληνιστικά βασίλεια η κατάσταση στον ελλαδικό χώρο το ρωμαϊκό κράτος αποκτά μεγάλη δύναμη η υποταγή του ελληνικού κόσμου τα γράμματα και οι τέχνες των ελληνιστικών χρόνων ελληνορωμαϊκός πολιτισμός">
+  <div class="book-icon">🌍</div>
+  <div class="book-meta">Σελίδες βιβλίου: 117-136</div>
+  <h2>Ελληνιστικοί και Ρωμαϊκοί Χρόνοι</h2>
+  <p>Ελληνιστικά βασίλεια, Ρωμαϊκό κράτος, υποταγή του ελληνικού κόσμου, γράμματα, τέχνες και ελληνορωμαϊκός πολιτισμός.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Τα Ελληνιστικά Βασίλεια</li><li>Η κατάσταση στον ελλαδικό χώρο</li><li>Το Ρωμαϊκό Κράτος αποκτά μεγάλη δύναμη</li><li>Η υποταγή του ελληνικού κόσμου</li><li>Τα Γράμματα και οι Τέχνες των Ελληνιστικών Χρόνων</li><li>Ελληνορωμαϊκός Πολιτισμός</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+<article class="book-card" data-title="από τη ρώμη στο βυζάντιο η ρωμαϊκή ειρήνη ο χριστός και η διδασκαλία του. η πρώτη εκκλησία η διάδοση του χριστιανισμού 3ος αιώνας μ.χ. η ρωμαϊκή αυτοκρατορία σε κρίση κωνσταντίνος. η μεγάλη στροφή">
+  <div class="book-icon">✝️</div>
+  <div class="book-meta">Σελίδες βιβλίου: 137-147</div>
+  <h2>Από τη Ρώμη στο Βυζάντιο</h2>
+  <p>Ρωμαϊκή ειρήνη, Χριστός και πρώτη Εκκλησία, διάδοση χριστιανισμού, κρίση 3ου αιώνα και Κωνσταντίνος.</p>
+  <details><summary>Ενότητες από το σχολικό βιβλίο</summary><ul><li>Η Ρωμαϊκή Ειρήνη</li><li>Ο Χριστός και η Διδασκαλία του. Η Πρώτη Εκκλησία</li><li>Η Διάδοση του Χριστιανισμού</li><li>3ος Αιώνας μ.Χ. Η Ρωμαϊκή Αυτοκρατορία σε κρίση</li><li>Κωνσταντίνος. Η μεγάλη στροφή</li></ul></details>
+  <div class="book-actions">
+    <a href="smart-study.html">🧠 Smart Study</a>
+    <a href="intelligent-revision.html">⚡ Revision</a>
+    <a href="narration.html">🎙️ Αφήγηση</a>
+    <a href="world-map.html">🗺️ Άτλαντας</a>
+  </div>
+</article>
+  </section>
 
-<div class="hero">
-<h1>📖 Interactive Σχολικό Βιβλίο</h1>
-<p>Το σχολικό βιβλίο μετατρέπεται σε διαδραστική εμπειρία μάθησης με Smart Study, Atlas, Narration και δραστηριότητες.</p>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>🏺 Κεφάλαιο 1 — Προϊστορία</h3>
-<p>Παλαιολιθική και Νεολιθική εποχή, πρώτοι οικισμοί και καθημερινή ζωή.</p>
-
-<div class="badges">
-<div class="badge">Θεωρία</div>
-<div class="badge">Δραστηριότητες</div>
-<div class="badge">Εικόνες</div>
-<div class="badge">Quiz</div>
-</div>
-
-<div class="tools">
-<a class="tool" href="#">🧠 Smart Study</a>
-<a class="tool" href="#">🎙️ Narration</a>
-<a class="tool" href="#">🗺️ Atlas</a>
-<a class="tool" href="#">📝 Quiz</a>
-</div>
-</div>
-
-<div class="card">
-<h3>⚔️ Κεφάλαιο 4 — Αρχαϊκή Εποχή</h3>
-<p>Δράκοντας, πανελλήνιοι δεσμοί, Ολυμπιάδες και εξέλιξη των ελληνικών πόλεων.</p>
-
-<div class="badges">
-<div class="badge">Ιστορικές Πηγές</div>
-<div class="badge">Χάρτες</div>
-<div class="badge">Smart Revision</div>
-<div class="badge">Mentor</div>
-</div>
-
-<div class="tools">
-<a class="tool" href="#">🧠 Smart Study</a>
-<a class="tool" href="#">👨‍🏫 Mentor</a>
-<a class="tool" href="#">🎙️ Narration</a>
-<a class="tool" href="#">📝 Quiz</a>
-</div>
-</div>
-
-<div class="card">
-<h3>👑 Κεφάλαιο 7 — Μακεδονία</h3>
-<p>Φίλιππος Β΄, Αλέξανδρος και η άνοδος της Μακεδονίας.</p>
-
-<div class="badges">
-<div class="badge">Timeline</div>
-<div class="badge">Battle Maps</div>
-<div class="badge">AI Mentor</div>
-<div class="badge">Revision</div>
-</div>
-
-<div class="tools">
-<a class="tool" href="#">🧠 Smart Study</a>
-<a class="tool" href="#">🗺️ Atlas</a>
-<a class="tool" href="#">🎙️ Narration</a>
-<a class="tool" href="#">📝 Quiz</a>
-</div>
-</div>
-
-<div class="card">
-<h3>🏛️ Κλασική Τέχνη</h3>
-<p>Δισκοβόλος, αγγεία, γλυπτική και καλλιτεχνική έκφραση της κλασικής εποχής.</p>
-
-<div class="badges">
-<div class="badge">Εικόνες</div>
-<div class="badge">Ανάλυση</div>
-<div class="badge">Τέχνη</div>
-<div class="badge">Πηγές</div>
-</div>
-
-<div class="tools">
-<a class="tool" href="#">🎙️ Narration</a>
-<a class="tool" href="#">👨‍🏫 Mentor</a>
-<a class="tool" href="#">🧠 Study</a>
-<a class="tool" href="#">📝 Quiz</a>
-</div>
-</div>
-
-<div class="card">
-<h3>🏺 Σπάρτη & Αθήνα</h3>
-<p>Κοινωνία, θεσμοί, στρατιωτική αγωγή και δημοκρατία.</p>
-
-<div class="badges">
-<div class="badge">Comparison</div>
-<div class="badge">Activities</div>
-<div class="badge">Sources</div>
-<div class="badge">Atlas</div>
-</div>
-
-<div class="tools">
-<a class="tool" href="#">🧠 Smart Study</a>
-<a class="tool" href="#">🗺️ Atlas</a>
-<a class="tool" href="#">🎙️ Narration</a>
-<a class="tool" href="#">📝 Quiz</a>
-</div>
-</div>
-
-<div class="card">
-<h3>🌍 Ρωμαϊκή Εποχή</h3>
-<p>Αυτοκρατορία, λεγεώνες, επαρχίες και πολιτισμός.</p>
-
-<div class="badges">
-<div class="badge">Χάρτες</div>
-<div class="badge">Timeline</div>
-<div class="badge">Sources</div>
-<div class="badge">Mentor</div>
-</div>
-
-<div class="tools">
-<a class="tool" href="#">🧠 Study</a>
-<a class="tool" href="#">🎙️ Narration</a>
-<a class="tool" href="#">👨‍🏫 Mentor</a>
-<a class="tool" href="#">📝 Quiz</a>
-</div>
-</div>
-
-</div>
-</div>
+  <section class="reader" id="bookReader">
+    <h2>Πλήρες σχολικό βιβλίο</h2>
+    <iframe src="assets/vivlio-mathiti.pdf#page=5"></iframe>
+    <div class="note">Το PDF είναι διαθέσιμο μέσα στο project ως <strong>assets/vivlio-mathiti.pdf</strong>.</div>
+  </section>
+</main>
+<script>
+const search = document.getElementById('bookSearch');
+const cards = Array.from(document.querySelectorAll('.book-card'));
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  cards.forEach(card => { card.style.display = !q || card.dataset.title.includes(q) ? '' : 'none'; });
+});
+</script>
 </body>
 </html>
