@@ -1,459 +1,497 @@
 <!DOCTYPE html>
-
 <html lang="el">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Κεφάλαιο 1 - Η Εποχή του Λίθου</title>
-<link href="core/chapter-core.css" rel="stylesheet"/>
-<link href="core/v26-polish.css" rel="stylesheet"/>
-<link href="core/mobile-menu.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="core/chapter-core.css">
+<link rel="stylesheet" href="core/v26-polish.css">
+<link rel="stylesheet" href="core/mobile-menu.css">
 </head>
+
 <body>
+
 <header>
-<div class="bar">
-<div class="logo">🏺 Κεφάλαιο 1: Η Εποχή του Λίθου</div>
-<div class="nav"><a href="index.html">Αρχική</a>
-<a href="chapters.html">Κεφάλαια</a>
-<a class="secondary" href="revision.html">Επανάληψη</a>
-<a class="gold" href="smart-study.html">Smart Study</a>
-<a class="blue" href="intelligent-revision.html">Revision</a>
-<a class="btn secondary" href="world-map.html">Άτλαντας</a>
-<a class="btn gold" href="tools.html">Εργαλεία</a>
-</div>
-</div>
+  <div class="bar">
+    <div class="logo">🏺 Κεφάλαιο 1: Η Εποχή του Λίθου</div>
+    <div class="nav">
+      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
+      <button onclick="showPage('home')">Αρχή</button>
+      <button onclick="openLesson()">Μάθημα</button>
+      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+      <button onclick="showPage('review')">Επανάληψη</button>
+      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
+      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
+    </div>
+  </div>
 </header>
+
 <!-- Σχέδια SVG, όχι φωτογραφίες -->
 <template id="draw-cover">
-<svg viewbox="0 0 900 620">
-<rect fill="#e9f6ff" height="620" rx="35" width="900"></rect>
-<circle cx="740" cy="100" fill="#ffd56d" r="70"></circle>
-<path d="M0 440 C150 370 310 420 460 350 C640 260 720 330 900 250 L900 620 L0 620Z" fill="#8abc69"></path>
-<path d="M0 500 C210 450 390 510 590 435 C740 375 820 415 900 380 L900 620 L0 620Z" fill="#5d9a59"></path>
-<path d="M130 430 l60-135 l60 135 z" fill="#8d5b35"></path>
-<path d="M150 430 l40-92 l40 92 z" fill="#f2d9ba"></path>
-<rect fill="#8d5b35" height="58" rx="6" width="70" x="155" y="430"></rect>
-<circle cx="420" cy="370" fill="#c3834b" r="34"></circle>
-<path d="M385 345 q38-58 85 0" fill="#3a2517"></path>
-<rect fill="#7b421f" height="95" rx="23" width="60" x="390" y="402"></rect>
-<line stroke="#5b351c" stroke-linecap="round" stroke-width="12" x1="455" x2="540" y1="420" y2="350"></line>
-<path d="M540 350 l62 20 l-62 20z" fill="#555"></path>
-<path d="M630 430 q45-75 90 0" fill="#ffb13b"></path>
-<path d="M675 350 q38 55 0 120 q-38-65 0-120" fill="#ff7b2f"></path>
-<text fill="#7b421f" font-size="55" font-weight="900" x="70" y="100">Η Εποχή του Λίθου</text>
-<text fill="#246b63" font-size="28" x="73" y="145">διάβασε • σκέψου • θυμήσου</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e9f6ff"/>
+<circle cx="740" cy="100" r="70" fill="#ffd56d"/>
+<path d="M0 440 C150 370 310 420 460 350 C640 260 720 330 900 250 L900 620 L0 620Z" fill="#8abc69"/>
+<path d="M0 500 C210 450 390 510 590 435 C740 375 820 415 900 380 L900 620 L0 620Z" fill="#5d9a59"/>
+<path d="M130 430 l60-135 l60 135 z" fill="#8d5b35"/>
+<path d="M150 430 l40-92 l40 92 z" fill="#f2d9ba"/>
+<rect x="155" y="430" width="70" height="58" rx="6" fill="#8d5b35"/>
+<circle cx="420" cy="370" r="34" fill="#c3834b"/>
+<path d="M385 345 q38-58 85 0" fill="#3a2517"/>
+<rect x="390" y="402" width="60" height="95" rx="23" fill="#7b421f"/>
+<line x1="455" y1="420" x2="540" y2="350" stroke="#5b351c" stroke-width="12" stroke-linecap="round"/>
+<path d="M540 350 l62 20 l-62 20z" fill="#555"/>
+<path d="M630 430 q45-75 90 0" fill="#ffb13b"/>
+<path d="M675 350 q38 55 0 120 q-38-65 0-120" fill="#ff7b2f"/>
+<text x="70" y="100" font-size="55" font-weight="900" fill="#7b421f">Η Εποχή του Λίθου</text>
+<text x="73" y="145" font-size="28" fill="#246b63">διάβασε • σκέψου • θυμήσου</text>
 </svg>
 </template>
+
 <template id="draw-tools">
-<svg viewbox="0 0 900 620">
-<rect fill="#f3dfc0" height="620" rx="35" width="900"></rect>
-<path d="M0 520 C220 445 410 530 900 455 L900 620 L0 620Z" fill="#d0b083"></path>
-<ellipse cx="240" cy="325" fill="#62625e" rx="75" ry="150" transform="rotate(-20 240 325)"></ellipse>
-<path d="M205 205 L265 455 L205 400 L170 290Z" fill="#9a9a92"></path>
-<path d="M460 145 L535 145 L505 500 L430 500Z" fill="#7a5337"></path>
-<path d="M420 145 L545 145 L505 80Z" fill="#3f3f3c"></path>
-<path d="M675 120 C750 180 755 300 690 455 C645 340 620 220 675 120Z" fill="#4d4d49"></path>
-<text fill="#7b421f" font-size="45" font-weight="900" x="70" y="90">Λίθινα εργαλεία</text>
-<text fill="#246b63" font-size="27" x="72" y="135">πέτρα, κόκαλο και ξύλο</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f3dfc0"/>
+<path d="M0 520 C220 445 410 530 900 455 L900 620 L0 620Z" fill="#d0b083"/>
+<ellipse cx="240" cy="325" rx="75" ry="150" fill="#62625e" transform="rotate(-20 240 325)"/>
+<path d="M205 205 L265 455 L205 400 L170 290Z" fill="#9a9a92"/>
+<path d="M460 145 L535 145 L505 500 L430 500Z" fill="#7a5337"/>
+<path d="M420 145 L545 145 L505 80Z" fill="#3f3f3c"/>
+<path d="M675 120 C750 180 755 300 690 455 C645 340 620 220 675 120Z" fill="#4d4d49"/>
+<text x="70" y="90" font-size="45" font-weight="900" fill="#7b421f">Λίθινα εργαλεία</text>
+<text x="72" y="135" font-size="27" fill="#246b63">πέτρα, κόκαλο και ξύλο</text>
 </svg>
 </template>
+
 <template id="draw-camp">
-<svg viewbox="0 0 900 620">
-<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
-<path d="M0 380 C140 315 250 360 400 300 C570 230 700 280 900 210 L900 620 L0 620Z" fill="#86a66b"></path>
-<path d="M0 500 C180 430 360 500 560 420 C700 365 805 390 900 350 L900 620 L0 620Z" fill="#5d8f54"></path>
-<path d="M120 430 l75-165 l75 165 z" fill="#9a6a41"></path>
-<path d="M145 430 l50-110 l50 110 z" fill="#f2d8b7"></path>
-<circle cx="365" cy="380" fill="#c3834b" r="32"></circle>
-<path d="M335 350 q35-55 80 0" fill="#3b2a1b"></path>
-<rect fill="#7b421f" height="90" rx="22" width="58" x="338" y="410"></rect>
-<line stroke="#5b351c" stroke-linecap="round" stroke-width="10" x1="397" x2="505" y1="430" y2="335"></line>
-<path d="M505 335 l70 20 l-65 18z" fill="#4c4c47"></path>
-<ellipse cx="720" cy="390" fill="#a4784c" rx="80" ry="40"></ellipse>
-<text fill="#7b421f" font-size="43" font-weight="900" x="70" y="90">Κυνήγι και μετακίνηση</text>
-<text fill="#246b63" font-size="27" x="72" y="135">ο άνθρωπος ακολουθεί την τροφή</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 380 C140 315 250 360 400 300 C570 230 700 280 900 210 L900 620 L0 620Z" fill="#86a66b"/>
+<path d="M0 500 C180 430 360 500 560 420 C700 365 805 390 900 350 L900 620 L0 620Z" fill="#5d8f54"/>
+<path d="M120 430 l75-165 l75 165 z" fill="#9a6a41"/>
+<path d="M145 430 l50-110 l50 110 z" fill="#f2d8b7"/>
+<circle cx="365" cy="380" r="32" fill="#c3834b"/>
+<path d="M335 350 q35-55 80 0" fill="#3b2a1b"/>
+<rect x="338" y="410" width="58" height="90" rx="22" fill="#7b421f"/>
+<line x1="397" y1="430" x2="505" y2="335" stroke="#5b351c" stroke-width="10" stroke-linecap="round"/>
+<path d="M505 335 l70 20 l-65 18z" fill="#4c4c47"/>
+<ellipse cx="720" cy="390" rx="80" ry="40" fill="#a4784c"/>
+<text x="70" y="90" font-size="43" font-weight="900" fill="#7b421f">Κυνήγι και μετακίνηση</text>
+<text x="72" y="135" font-size="27" fill="#246b63">ο άνθρωπος ακολουθεί την τροφή</text>
 </svg>
 </template>
+
 <template id="draw-fire">
-<svg viewbox="0 0 900 620">
-<rect fill="#203040" height="620" rx="35" width="900"></rect>
-<circle cx="150" cy="90" fill="#fff" r="4"></circle><circle cx="260" cy="140" fill="#fff" r="3"></circle><circle cx="760" cy="110" fill="#fff" r="4"></circle>
-<path d="M0 490 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#4b5a48"></path>
-<path d="M390 480 q60-125 120 0" fill="#ff8c32"></path>
-<path d="M450 350 q55 75 0 170 q-55-95 0-170" fill="#ffd35a"></path>
-<path d="M330 500 l240 0" stroke="#4b2d1a" stroke-linecap="round" stroke-width="20"></path>
-<circle cx="250" cy="395" fill="#c3834b" r="30"></circle><rect fill="#7b421f" height="70" rx="18" width="50" x="225" y="425"></rect>
-<circle cx="650" cy="395" fill="#c3834b" r="30"></circle><rect fill="#7b421f" height="70" rx="18" width="50" x="625" y="425"></rect>
-<text fill="#ffd35a" font-size="45" font-weight="900" x="70" y="90">Η φωτιά</text>
-<text fill="#fff2dc" font-size="27" x="72" y="135">ζέστη • φως • μαγείρεμα • προστασία</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#203040"/>
+<circle cx="150" cy="90" r="4" fill="#fff"/><circle cx="260" cy="140" r="3" fill="#fff"/><circle cx="760" cy="110" r="4" fill="#fff"/>
+<path d="M0 490 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#4b5a48"/>
+<path d="M390 480 q60-125 120 0" fill="#ff8c32"/>
+<path d="M450 350 q55 75 0 170 q-55-95 0-170" fill="#ffd35a"/>
+<path d="M330 500 l240 0" stroke="#4b2d1a" stroke-width="20" stroke-linecap="round"/>
+<circle cx="250" cy="395" r="30" fill="#c3834b"/><rect x="225" y="425" width="50" height="70" rx="18" fill="#7b421f"/>
+<circle cx="650" cy="395" r="30" fill="#c3834b"/><rect x="625" y="425" width="50" height="70" rx="18" fill="#7b421f"/>
+<text x="70" y="90" font-size="45" font-weight="900" fill="#ffd35a">Η φωτιά</text>
+<text x="72" y="135" font-size="27" fill="#fff2dc">ζέστη • φως • μαγείρεμα • προστασία</text>
 </svg>
 </template>
+
 <template id="draw-cave">
-<svg viewbox="0 0 900 620">
-<rect fill="#b88b5d" height="620" rx="35" width="900"></rect>
-<path d="M0 0 C130 65 190 20 320 75 C480 140 580 20 900 90 L900 620 L0 620Z" fill="#8a6040"></path>
-<path d="M70 440 C210 280 330 315 450 400 C555 475 675 350 825 415" fill="none" stroke="#5c2f1c" stroke-linecap="round" stroke-width="20"></path>
-<path d="M210 365 q60-95 180 0 q-75 45-180 0z" fill="#6b321f"></path>
-<circle cx="355" cy="355" fill="#2d2117" r="10"></circle>
-<path d="M565 370 q95-85 185 0 q-120 55-185 0z" fill="#6b321f"></path>
-<path d="M620 345 l-45-38 M690 345 l42-40" stroke="#6b321f" stroke-linecap="round" stroke-width="10"></path>
-<text fill="#fff2dc" font-size="46" font-weight="900" x="70" y="95">Σπηλαιογραφίες</text>
-<text fill="#ffe1b0" font-size="27" x="72" y="140">ζώα και σύμβολα στους βράχους</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#b88b5d"/>
+<path d="M0 0 C130 65 190 20 320 75 C480 140 580 20 900 90 L900 620 L0 620Z" fill="#8a6040"/>
+<path d="M70 440 C210 280 330 315 450 400 C555 475 675 350 825 415" fill="none" stroke="#5c2f1c" stroke-width="20" stroke-linecap="round"/>
+<path d="M210 365 q60-95 180 0 q-75 45-180 0z" fill="#6b321f"/>
+<circle cx="355" cy="355" r="10" fill="#2d2117"/>
+<path d="M565 370 q95-85 185 0 q-120 55-185 0z" fill="#6b321f"/>
+<path d="M620 345 l-45-38 M690 345 l42-40" stroke="#6b321f" stroke-width="10" stroke-linecap="round"/>
+<text x="70" y="95" font-size="46" font-weight="900" fill="#fff2dc">Σπηλαιογραφίες</text>
+<text x="72" y="140" font-size="27" fill="#ffe1b0">ζώα και σύμβολα στους βράχους</text>
 </svg>
 </template>
+
 <template id="draw-village">
-<svg viewbox="0 0 900 620">
-<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
-<circle cx="750" cy="95" fill="#ffd978" r="65"></circle>
-<path d="M0 430 C180 350 350 420 520 350 C690 275 770 325 900 280 L900 620 L0 620Z" fill="#8fbd68"></path>
-<path d="M0 505 C230 455 480 505 900 440 L900 620 L0 620Z" fill="#6aa052"></path>
-<rect fill="#9b6b3f" height="115" width="150" x="120" y="340"></rect>
-<path d="M100 342 l95-110 l95 110 z" fill="#c08a4c"></path>
-<rect fill="#a8794d" height="125" width="160" x="350" y="330"></rect>
-<path d="M330 332 l100-120 l100 120 z" fill="#d09a55"></path>
-<rect fill="#9b6b3f" height="105" width="130" x="590" y="350"></rect>
-<path d="M570 352 l85-92 l85 92 z" fill="#c08a4c"></path>
-<path d="M115 505 C220 460 305 530 410 480 C525 425 600 500 760 455" fill="none" stroke="#d7a34a" stroke-width="16"></path>
-<text fill="#7b421f" font-size="43" font-weight="900" x="70" y="90">Μόνιμοι οικισμοί</text>
-<text fill="#246b63" font-size="27" x="72" y="135">σπίτια, χωράφια και κοινότητα</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<circle cx="750" cy="95" r="65" fill="#ffd978"/>
+<path d="M0 430 C180 350 350 420 520 350 C690 275 770 325 900 280 L900 620 L0 620Z" fill="#8fbd68"/>
+<path d="M0 505 C230 455 480 505 900 440 L900 620 L0 620Z" fill="#6aa052"/>
+<rect x="120" y="340" width="150" height="115" fill="#9b6b3f"/>
+<path d="M100 342 l95-110 l95 110 z" fill="#c08a4c"/>
+<rect x="350" y="330" width="160" height="125" fill="#a8794d"/>
+<path d="M330 332 l100-120 l100 120 z" fill="#d09a55"/>
+<rect x="590" y="350" width="130" height="105" fill="#9b6b3f"/>
+<path d="M570 352 l85-92 l85 92 z" fill="#c08a4c"/>
+<path d="M115 505 C220 460 305 530 410 480 C525 425 600 500 760 455" fill="none" stroke="#d7a34a" stroke-width="16"/>
+<text x="70" y="90" font-size="43" font-weight="900" fill="#7b421f">Μόνιμοι οικισμοί</text>
+<text x="72" y="135" font-size="27" fill="#246b63">σπίτια, χωράφια και κοινότητα</text>
 </svg>
 </template>
+
 <template id="draw-pottery">
-<svg viewbox="0 0 900 620">
-<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
-<path d="M180 270 C150 350 160 470 250 510 C340 470 350 350 320 270 C290 240 210 240 180 270Z" fill="#b6753e" stroke="#3b2a1b" stroke-width="10"></path>
-<path d="M172 320 q78 55 156 0" fill="none" stroke="#fff2dc" stroke-width="12"></path>
-<path d="M190 410 q60-45 120 0" fill="none" stroke="#3b2a1b" stroke-width="10"></path>
-<circle cx="595" cy="325" fill="#d6ad7a" r="70" stroke="#7b421f" stroke-width="10"></circle>
-<rect fill="#d6ad7a" height="75" stroke="#7b421f" stroke-width="8" width="60" x="565" y="395"></rect>
-<path d="M535 320 q60-130 120 0" fill="none" stroke="#7b421f" stroke-width="12"></path>
-<text fill="#7b421f" font-size="43" font-weight="900" x="70" y="90">Αγγεία και ειδώλια</text>
-<text fill="#246b63" font-size="27" x="72" y="135">αποθήκευση, μαγείρεμα και τέχνη</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
+<path d="M180 270 C150 350 160 470 250 510 C340 470 350 350 320 270 C290 240 210 240 180 270Z" fill="#b6753e" stroke="#3b2a1b" stroke-width="10"/>
+<path d="M172 320 q78 55 156 0" fill="none" stroke="#fff2dc" stroke-width="12"/>
+<path d="M190 410 q60-45 120 0" fill="none" stroke="#3b2a1b" stroke-width="10"/>
+<circle cx="595" cy="325" r="70" fill="#d6ad7a" stroke="#7b421f" stroke-width="10"/>
+<rect x="565" y="395" width="60" height="75" fill="#d6ad7a" stroke="#7b421f" stroke-width="8"/>
+<path d="M535 320 q60-130 120 0" fill="none" stroke="#7b421f" stroke-width="12"/>
+<text x="70" y="90" font-size="43" font-weight="900" fill="#7b421f">Αγγεία και ειδώλια</text>
+<text x="72" y="135" font-size="27" fill="#246b63">αποθήκευση, μαγείρεμα και τέχνη</text>
 </svg>
 </template>
-<section class="page active" id="home">
-<div class="wrap">
-<div class="hero">
-<div class="panel text">
-<div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
-<h1>Κεφάλαιο 1<br/>Η Εποχή του Λίθου</h1>
-<p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς ζούσαν οι πρώτοι άνθρωποι και πώς άλλαξε η ζωή τους στη Νεολιθική εποχή.</p>
-<div class="box">Κεντρική ιδέα: από την αναζήτηση τροφής στην παραγωγή τροφής.</div>
-<p>
-<button onclick="openLesson()">Ξεκίνα το μάθημα</button>
-<button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-</p>
-</div>
-<div class="panel drawing" data-draw="draw-cover"></div>
-</div>
-</div>
+
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel text">
+        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+        <h1>Κεφάλαιο 1<br>Η Εποχή του Λίθου</h1>
+        <p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς ζούσαν οι πρώτοι άνθρωποι και πώς άλλαξε η ζωή τους στη Νεολιθική εποχή.</p>
+        <div class="box">Κεντρική ιδέα: από την αναζήτηση τροφής στην παραγωγή τροφής.</div>
+        <p>
+          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+        </p>
+      </div>
+      <div class="panel drawing" data-draw="draw-cover"></div>
+    </div>
+  </div>
 </section>
-<section class="wrap">
-<div class="panel text progress-card">
-<div class="eyebrow">Η πρόοδός μου</div>
-<h2>Πρόοδος κεφαλαίου</h2>
-<div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
-<div class="progress-small" id="chapterProgressText">Φόρτωση προόδου...</div>
-<div class="progress-badges" id="chapterBadgeList"></div>
-</div>
+
+  <section class="wrap">
+    <div class="panel text progress-card">
+      <div class="eyebrow">Η πρόοδός μου</div>
+      <h2>Πρόοδος κεφαλαίου</h2>
+      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
+      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
+      <div id="chapterBadgeList" class="progress-badges"></div>
+    </div>
+  </section>
+
+
+<section id="chapter1" class="page">
+  <div class="wrap">
+    <div class="lesson-top">
+      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+      <div id="counter">1 / 8</div>
+    </div>
+
+    <div class="panel">
+
+      <div class="lesson-slide active">
+        <div class="text">
+          <div class="eyebrow">1. Εισαγωγή</div>
+          <h2>Η Εποχή του Λίθου</h2>
+          <p>Η Προϊστορία είναι η περίοδος πριν από την εμφάνιση των πρώτων γραπτών πηγών.</p>
+          <div class="box">Βασική ιδέα: οι άνθρωποι μαθαίνουν σιγά σιγά να ζουν καλύτερα, να φτιάχνουν εργαλεία και να οργανώνονται.</div>
+        </div>
+        <div class="drawing" data-draw="draw-cover"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">2. Παλαιολιθική εποχή</div>
+          <h2>Τα πρώτα εργαλεία</h2>
+          <p>Οι άνθρωποι χρησιμοποιούν κυρίως τον λίθο, αλλά και ξύλο, οστά και κέρατα ζώων.</p>
+          <ul>
+            <li>φτιάχνουν αιχμές και λεπίδες</li>
+            <li>κυνηγούν πιο αποτελεσματικά</li>
+            <li>προστατεύονται καλύτερα</li>
+          </ul>
+          <div class="box">Ερώτηση: τι μας δείχνουν τα εργαλεία για τις ανάγκες των ανθρώπων;</div>
+        </div>
+        <div class="drawing" data-draw="draw-tools"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">3. Καθημερινή ζωή</div>
+          <h2>Κυνήγι και μετακίνηση</h2>
+          <p>Οι άνθρωποι της Παλαιολιθικής εποχής είναι κυνηγοί και τροφοσυλλέκτες.</p>
+          <ul>
+            <li>κυνηγούν ζώα</li>
+            <li>μαζεύουν καρπούς</li>
+            <li>μετακινούνται συχνά</li>
+            <li>ζουν σε μικρές ομάδες</li>
+          </ul>
+          <div class="box">Αποστολή: περιέγραψε μία ημέρα ενός παλαιολιθικού ανθρώπου.</div>
+        </div>
+        <div class="drawing" data-draw="draw-camp"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">4. Μεγάλη ανακάλυψη</div>
+          <h2>Η φωτιά</h2>
+          <p>Η φωτιά άλλαξε την καθημερινή ζωή των ανθρώπων.</p>
+          <ul>
+            <li>ζέστη</li>
+            <li>φως</li>
+            <li>μαγείρεμα</li>
+            <li>προστασία</li>
+          </ul>
+          <div class="box">Συζήτηση: ποια χρήση της φωτιάς ήταν πιο σημαντική;</div>
+        </div>
+        <div class="drawing" data-draw="draw-fire"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">5. Τέχνη</div>
+          <h2>Σπηλαιογραφίες</h2>
+          <p>Προς το τέλος της Παλαιολιθικής εποχής εμφανίζονται ζωγραφικές παραστάσεις σε σπήλαια.</p>
+          <div class="note">Συνήθως παρουσιάζουν ζώα και ίσως είχαν συμβολική ή μαγική σημασία.</div>
+          <div class="box">Ερώτηση: γιατί να ζωγράφιζαν ζώα στους βράχους;</div>
+        </div>
+        <div class="drawing" data-draw="draw-cave"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">6. Νεολιθική εποχή</div>
+          <h2>Η μεγάλη αλλαγή</h2>
+          <p>Στη Νεολιθική εποχή οι άνθρωποι γίνονται γεωργοί και κτηνοτρόφοι.</p>
+          <ul>
+            <li>καλλιεργούν τη γη</li>
+            <li>εξημερώνουν ζώα</li>
+            <li>παράγουν τροφή</li>
+            <li>μένουν πιο μόνιμα σε έναν τόπο</li>
+          </ul>
+          <div class="box">Κλειδί: από την αναζήτηση τροφής στην παραγωγή τροφής.</div>
+        </div>
+        <div class="drawing" data-draw="draw-village"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">7. Νεολιθική ζωή</div>
+          <h2>Σπίτια, χωριά και αγγεία</h2>
+          <p>Η μόνιμη εγκατάσταση φέρνει αλλαγές στην καθημερινή ζωή.</p>
+          <ul>
+            <li>χτίζονται σπίτια</li>
+            <li>δημιουργούνται οικισμοί</li>
+            <li>φτιάχνονται πήλινα αγγεία</li>
+            <li>αναπτύσσεται η συνεργασία</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί τα αγγεία ταιριάζουν περισσότερο σε μόνιμους οικισμούς;</div>
+        </div>
+        <div class="drawing" data-draw="draw-pottery"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">8. Τι πρέπει να θυμάμαι</div>
+          <h2>Σύνοψη</h2>
+          <ul>
+            <li>Στην Παλαιολιθική εποχή οι άνθρωποι κυνηγούν, μαζεύουν καρπούς και μετακινούνται.</li>
+            <li>Η φωτιά βελτιώνει τη ζωή τους.</li>
+            <li>Στη Νεολιθική εποχή εμφανίζονται γεωργία, κτηνοτροφία και μόνιμοι οικισμοί.</li>
+          </ul>
+          <p>
+            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+          </p>
+        </div>
+        <div class="drawing" data-draw="draw-cover"></div>
+      </div>
+
+    </div>
+
+    <div class="lesson-nav">
+      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+      <button onclick="nextSlide()">Επόμενο ➡</button>
+    </div>
+  </div>
 </section>
-<section class="page" id="chapter1">
-<div class="wrap">
-<div class="lesson-top">
-<button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
-<div class="progress-wrap"><div class="progress" id="progress"></div></div>
-<div id="counter">1 / 8</div>
-</div>
-<div class="panel">
-<div class="lesson-slide active">
-<div class="text">
-<div class="eyebrow">1. Εισαγωγή</div>
-<h2>Η Εποχή του Λίθου</h2>
-<p>Η Προϊστορία είναι η περίοδος πριν από την εμφάνιση των πρώτων γραπτών πηγών.</p>
-<div class="box">Βασική ιδέα: οι άνθρωποι μαθαίνουν σιγά σιγά να ζουν καλύτερα, να φτιάχνουν εργαλεία και να οργανώνονται.</div>
-</div>
-<div class="drawing" data-draw="draw-cover"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">2. Παλαιολιθική εποχή</div>
-<h2>Τα πρώτα εργαλεία</h2>
-<p>Οι άνθρωποι χρησιμοποιούν κυρίως τον λίθο, αλλά και ξύλο, οστά και κέρατα ζώων.</p>
-<ul>
-<li>φτιάχνουν αιχμές και λεπίδες</li>
-<li>κυνηγούν πιο αποτελεσματικά</li>
-<li>προστατεύονται καλύτερα</li>
-</ul>
-<div class="box">Ερώτηση: τι μας δείχνουν τα εργαλεία για τις ανάγκες των ανθρώπων;</div>
-</div>
-<div class="drawing" data-draw="draw-tools"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">3. Καθημερινή ζωή</div>
-<h2>Κυνήγι και μετακίνηση</h2>
-<p>Οι άνθρωποι της Παλαιολιθικής εποχής είναι κυνηγοί και τροφοσυλλέκτες.</p>
-<ul>
-<li>κυνηγούν ζώα</li>
-<li>μαζεύουν καρπούς</li>
-<li>μετακινούνται συχνά</li>
-<li>ζουν σε μικρές ομάδες</li>
-</ul>
-<div class="box">Αποστολή: περιέγραψε μία ημέρα ενός παλαιολιθικού ανθρώπου.</div>
-</div>
-<div class="drawing" data-draw="draw-camp"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">4. Μεγάλη ανακάλυψη</div>
-<h2>Η φωτιά</h2>
-<p>Η φωτιά άλλαξε την καθημερινή ζωή των ανθρώπων.</p>
-<ul>
-<li>ζέστη</li>
-<li>φως</li>
-<li>μαγείρεμα</li>
-<li>προστασία</li>
-</ul>
-<div class="box">Συζήτηση: ποια χρήση της φωτιάς ήταν πιο σημαντική;</div>
-</div>
-<div class="drawing" data-draw="draw-fire"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">5. Τέχνη</div>
-<h2>Σπηλαιογραφίες</h2>
-<p>Προς το τέλος της Παλαιολιθικής εποχής εμφανίζονται ζωγραφικές παραστάσεις σε σπήλαια.</p>
-<div class="note">Συνήθως παρουσιάζουν ζώα και ίσως είχαν συμβολική ή μαγική σημασία.</div>
-<div class="box">Ερώτηση: γιατί να ζωγράφιζαν ζώα στους βράχους;</div>
-</div>
-<div class="drawing" data-draw="draw-cave"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">6. Νεολιθική εποχή</div>
-<h2>Η μεγάλη αλλαγή</h2>
-<p>Στη Νεολιθική εποχή οι άνθρωποι γίνονται γεωργοί και κτηνοτρόφοι.</p>
-<ul>
-<li>καλλιεργούν τη γη</li>
-<li>εξημερώνουν ζώα</li>
-<li>παράγουν τροφή</li>
-<li>μένουν πιο μόνιμα σε έναν τόπο</li>
-</ul>
-<div class="box">Κλειδί: από την αναζήτηση τροφής στην παραγωγή τροφής.</div>
-</div>
-<div class="drawing" data-draw="draw-village"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">7. Νεολιθική ζωή</div>
-<h2>Σπίτια, χωριά και αγγεία</h2>
-<p>Η μόνιμη εγκατάσταση φέρνει αλλαγές στην καθημερινή ζωή.</p>
-<ul>
-<li>χτίζονται σπίτια</li>
-<li>δημιουργούνται οικισμοί</li>
-<li>φτιάχνονται πήλινα αγγεία</li>
-<li>αναπτύσσεται η συνεργασία</li>
-</ul>
-<div class="box">Ερώτηση: γιατί τα αγγεία ταιριάζουν περισσότερο σε μόνιμους οικισμούς;</div>
-</div>
-<div class="drawing" data-draw="draw-pottery"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">8. Τι πρέπει να θυμάμαι</div>
-<h2>Σύνοψη</h2>
-<ul>
-<li>Στην Παλαιολιθική εποχή οι άνθρωποι κυνηγούν, μαζεύουν καρπούς και μετακινούνται.</li>
-<li>Η φωτιά βελτιώνει τη ζωή τους.</li>
-<li>Στη Νεολιθική εποχή εμφανίζονται γεωργία, κτηνοτροφία και μόνιμοι οικισμοί.</li>
-</ul>
-<p>
-<button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
-<button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
-</p>
-</div>
-<div class="drawing" data-draw="draw-cover"></div>
-</div>
-</div>
-<div class="lesson-nav">
-<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-<button onclick="nextSlide()">Επόμενο ➡</button>
-</div>
-</div>
+
+<section id="extras" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Extra για τα παιδιά</div>
+      <h2>Δραστηριότητες Κεφαλαίου 1</h2>
+      <p>Αυτές οι δραστηριότητες βοηθούν το μάθημα να γίνει πιο ενεργητικό.</p>
+
+      <div class="cards">
+        <div class="card" onclick="showPage('missions')">
+          <div><div class="icon">🎯</div><h3>Αποστολή μαθητή</h3><p>Μικρές εργασίες για σκέψη, τάξη ή σπίτι.</p></div>
+          <span class="tag">δραστηριότητα</span>
+        </div>
+        <div class="card" onclick="showPage('archaeologist')">
+          <div><div class="icon">🕵️</div><h3>Γίνε αρχαιολόγος</h3><p>Διάβασε το εύρημα και διάλεξε εποχή.</p></div>
+          <span class="tag">παιχνίδι σκέψης</span>
+        </div>
+        <div class="card" onclick="showPage('timeline')">
+          <div><div class="icon">🕰️</div><h3>Χρονογραμμή</h3><p>Δες τη σειρά των εποχών.</p></div>
+          <span class="tag">διαδραστικό</span>
+        </div>
+        <div class="card" onclick="showPage('concepts')">
+          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+          <span class="tag">επανάληψη</span>
+        </div>
+        <div class="card" onclick="showPage('today')">
+          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+          <span class="tag">ολοκλήρωση</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="page" id="extras">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Extra για τα παιδιά</div>
-<h2>Δραστηριότητες Κεφαλαίου 1</h2>
-<p>Αυτές οι δραστηριότητες βοηθούν το μάθημα να γίνει πιο ενεργητικό.</p>
-<div class="cards">
-<div class="card" onclick="showPage('missions')">
-<div><div class="icon">🎯</div><h3>Αποστολή μαθητή</h3><p>Μικρές εργασίες για σκέψη, τάξη ή σπίτι.</p></div>
-<span class="tag">δραστηριότητα</span>
-</div>
-<div class="card" onclick="showPage('archaeologist')">
-<div><div class="icon">🕵️</div><h3>Γίνε αρχαιολόγος</h3><p>Διάβασε το εύρημα και διάλεξε εποχή.</p></div>
-<span class="tag">παιχνίδι σκέψης</span>
-</div>
-<div class="card" onclick="showPage('timeline')">
-<div><div class="icon">🕰️</div><h3>Χρονογραμμή</h3><p>Δες τη σειρά των εποχών.</p></div>
-<span class="tag">διαδραστικό</span>
-</div>
-<div class="card" onclick="showPage('concepts')">
-<div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
-<span class="tag">επανάληψη</span>
-</div>
-<div class="card" onclick="showPage('today')">
-<div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
-<span class="tag">ολοκλήρωση</span>
-</div>
-</div>
-</div>
-</div>
+
+<section id="missions" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🎯 Αποστολή μαθητή</div>
+      <h2>Διάλεξε αποστολή</h2>
+      <div class="grid2">
+        <div class="mini">
+          <h3>Αποστολή 1</h3>
+          <p>Γράψε 3 πράγματα που θα σε δυσκόλευαν στην Παλαιολιθική εποχή.</p>
+          <button onclick="doneMsg(this)">Το ολοκλήρωσα</button>
+        </div>
+        <div class="mini">
+          <h3>Αποστολή 2</h3>
+          <p>Βρες 2 διαφορές ανάμεσα στην Παλαιολιθική και τη Νεολιθική εποχή.</p>
+          <button onclick="doneMsg(this)">Το ολοκλήρωσα</button>
+        </div>
+        <div class="mini">
+          <h3>Αποστολή 3</h3>
+          <p>Σχεδίασε σε χαρτί ένα προϊστορικό εργαλείο και εξήγησε τη χρήση του.</p>
+          <button onclick="doneMsg(this)">Το ολοκλήρωσα</button>
+        </div>
+      </div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="missions">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🎯 Αποστολή μαθητή</div>
-<h2>Διάλεξε αποστολή</h2>
-<div class="grid2">
-<div class="mini">
-<h3>Αποστολή 1</h3>
-<p>Γράψε 3 πράγματα που θα σε δυσκόλευαν στην Παλαιολιθική εποχή.</p>
-<button onclick="doneMsg(this)">Το ολοκλήρωσα</button>
-</div>
-<div class="mini">
-<h3>Αποστολή 2</h3>
-<p>Βρες 2 διαφορές ανάμεσα στην Παλαιολιθική και τη Νεολιθική εποχή.</p>
-<button onclick="doneMsg(this)">Το ολοκλήρωσα</button>
-</div>
-<div class="mini">
-<h3>Αποστολή 3</h3>
-<p>Σχεδίασε σε χαρτί ένα προϊστορικό εργαλείο και εξήγησε τη χρήση του.</p>
-<button onclick="doneMsg(this)">Το ολοκλήρωσα</button>
-</div>
-</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="archaeologist" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🕵️ Γίνε αρχαιολόγος</div>
+      <h2>Βρέθηκε ένα πήλινο αγγείο</h2>
+      <p>Σε ποια εποχή ανήκει πιθανότερα;</p>
+      <button class="answer arch-answer" onclick="selectArch(false,this)">Παλαιολιθική</button>
+      <button class="answer arch-answer" onclick="selectArch(true,this)">Νεολιθική</button>
+      <button class="answer arch-answer" onclick="selectArch(false,this)">Σήμερα</button>
+      <div id="archResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+      <p>
+        <button onclick="checkArch()">Έλεγχος</button>
+        <button class="secondary" onclick="resetArch()">Ξαναδοκίμασε</button>
+        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+      </p>
+    </div>
+  </div>
 </section>
-<section class="page" id="archaeologist">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🕵️ Γίνε αρχαιολόγος</div>
-<h2>Βρέθηκε ένα πήλινο αγγείο</h2>
-<p>Σε ποια εποχή ανήκει πιθανότερα;</p>
-<button class="answer arch-answer" onclick="selectArch(false,this)">Παλαιολιθική</button>
-<button class="answer arch-answer" onclick="selectArch(true,this)">Νεολιθική</button>
-<button class="answer arch-answer" onclick="selectArch(false,this)">Σήμερα</button>
-<div class="box" id="archResult">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
-<p>
-<button onclick="checkArch()">Έλεγχος</button>
-<button class="secondary" onclick="resetArch()">Ξαναδοκίμασε</button>
-<button class="secondary" onclick="showPage('extras')">← Πίσω</button>
-</p>
-</div>
-</div>
+
+<section id="timeline" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🕰️ Χρονογραμμή</div>
+      <h2>Η σειρά των εποχών</h2>
+      <div class="timeline">
+        <div class="timeitem" onclick="timeInfo('Παλαιολιθική: κυνήγι, καρποί, μετακίνηση, πρώτα εργαλεία.')">
+          <h3>1. Παλαιολιθική εποχή</h3>
+          <p>Οι άνθρωποι ζουν κυρίως ως κυνηγοί και τροφοσυλλέκτες.</p>
+        </div>
+        <div class="timeitem" onclick="timeInfo('Μεσολιθική: μεταβατική περίοδος πριν από τη Νεολιθική εποχή.')">
+          <h3>2. Μεσολιθική εποχή</h3>
+          <p>Μεταβατικό στάδιο.</p>
+        </div>
+        <div class="timeitem" onclick="timeInfo('Νεολιθική: γεωργία, κτηνοτροφία, μόνιμοι οικισμοί, κεραμική.')">
+          <h3>3. Νεολιθική εποχή</h3>
+          <p>Οι άνθρωποι παράγουν τροφή και εγκαθίστανται μόνιμα.</p>
+        </div>
+        <div class="timeitem" onclick="timeInfo('Εποχή του Χαλκού: η επόμενη μεγάλη περίοδος με σημαντικούς πολιτισμούς.')">
+          <h3>4. Εποχή του Χαλκού</h3>
+          <p>Ακολουθεί μετά την Εποχή του Λίθου.</p>
+        </div>
+      </div>
+      <div id="timeResult" class="box">Πάτησε μια εποχή.</div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="timeline">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🕰️ Χρονογραμμή</div>
-<h2>Η σειρά των εποχών</h2>
-<div class="timeline">
-<div class="timeitem" onclick="timeInfo('Παλαιολιθική: κυνήγι, καρποί, μετακίνηση, πρώτα εργαλεία.')">
-<h3>1. Παλαιολιθική εποχή</h3>
-<p>Οι άνθρωποι ζουν κυρίως ως κυνηγοί και τροφοσυλλέκτες.</p>
-</div>
-<div class="timeitem" onclick="timeInfo('Μεσολιθική: μεταβατική περίοδος πριν από τη Νεολιθική εποχή.')">
-<h3>2. Μεσολιθική εποχή</h3>
-<p>Μεταβατικό στάδιο.</p>
-</div>
-<div class="timeitem" onclick="timeInfo('Νεολιθική: γεωργία, κτηνοτροφία, μόνιμοι οικισμοί, κεραμική.')">
-<h3>3. Νεολιθική εποχή</h3>
-<p>Οι άνθρωποι παράγουν τροφή και εγκαθίστανται μόνιμα.</p>
-</div>
-<div class="timeitem" onclick="timeInfo('Εποχή του Χαλκού: η επόμενη μεγάλη περίοδος με σημαντικούς πολιτισμούς.')">
-<h3>4. Εποχή του Χαλκού</h3>
-<p>Ακολουθεί μετά την Εποχή του Λίθου.</p>
-</div>
-</div>
-<div class="box" id="timeResult">Πάτησε μια εποχή.</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="concepts" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
+      <h2>Πώς συνδέονται οι λέξεις;</h2>
+      <div class="concept-map">
+        <div class="bubble main" onclick="concept('Η Εποχή του Λίθου χωρίζεται σε Παλαιολιθική, Μεσολιθική και Νεολιθική.')">Εποχή του Λίθου</div>
+        <div class="bubble" onclick="concept('Τα εργαλεία βοηθούν τον άνθρωπο στο κυνήγι και στην καθημερινή ζωή.')">εργαλεία</div>
+        <div class="bubble" onclick="concept('Η φωτιά δίνει ζέστη, φως, μαγείρεμα και προστασία.')">φωτιά</div>
+        <div class="bubble" onclick="concept('Στην Παλαιολιθική εποχή κυριαρχεί το κυνήγι και η συλλογή καρπών.')">κυνήγι</div>
+        <div class="bubble" onclick="concept('Στη Νεολιθική εποχή ο άνθρωπος καλλιεργεί τη γη.')">γεωργία</div>
+        <div class="bubble" onclick="concept('Οι μόνιμοι οικισμοί δείχνουν αλλαγή στον τρόπο ζωής.')">οικισμοί</div>
+      </div>
+      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="concepts">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🧠 Χάρτης εννοιών</div>
-<h2>Πώς συνδέονται οι λέξεις;</h2>
-<div class="concept-map">
-<div class="bubble main" onclick="concept('Η Εποχή του Λίθου χωρίζεται σε Παλαιολιθική, Μεσολιθική και Νεολιθική.')">Εποχή του Λίθου</div>
-<div class="bubble" onclick="concept('Τα εργαλεία βοηθούν τον άνθρωπο στο κυνήγι και στην καθημερινή ζωή.')">εργαλεία</div>
-<div class="bubble" onclick="concept('Η φωτιά δίνει ζέστη, φως, μαγείρεμα και προστασία.')">φωτιά</div>
-<div class="bubble" onclick="concept('Στην Παλαιολιθική εποχή κυριαρχεί το κυνήγι και η συλλογή καρπών.')">κυνήγι</div>
-<div class="bubble" onclick="concept('Στη Νεολιθική εποχή ο άνθρωπος καλλιεργεί τη γη.')">γεωργία</div>
-<div class="bubble" onclick="concept('Οι μόνιμοι οικισμοί δείχνουν αλλαγή στον τρόπο ζωής.')">οικισμοί</div>
-</div>
-<div class="box" id="conceptResult">Πάτησε έναν κύκλο.</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="today" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+      <h2>Checklist κεφαλαίου</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Έμαθα τι είναι η Προϊστορία.</label>
+        <label><input type="checkbox"> Ξέρω πώς ζούσαν οι παλαιολιθικοί άνθρωποι.</label>
+        <label><input type="checkbox"> Κατάλαβα γιατί ήταν σημαντική η φωτιά.</label>
+        <label><input type="checkbox"> Ξέρω τι άλλαξε στη Νεολιθική εποχή.</label>
+        <label><input type="checkbox"> Έκανα την επανάληψη ή το κουίζ.</label>
+      </div>
+      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+      <div id="badgeBox"></div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="today">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">✅ Τι έμαθα σήμερα</div>
-<h2>Checklist κεφαλαίου</h2>
-<div class="checklist">
-<label><input type="checkbox"/> Έμαθα τι είναι η Προϊστορία.</label>
-<label><input type="checkbox"/> Ξέρω πώς ζούσαν οι παλαιολιθικοί άνθρωποι.</label>
-<label><input type="checkbox"/> Κατάλαβα γιατί ήταν σημαντική η φωτιά.</label>
-<label><input type="checkbox"/> Ξέρω τι άλλαξε στη Νεολιθική εποχή.</label>
-<label><input type="checkbox"/> Έκανα την επανάληψη ή το κουίζ.</label>
-</div>
-<button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
-<div id="badgeBox"></div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="review" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Επανάληψη</div>
+      <h2>Ασκήσεις για το Κεφάλαιο 1</h2>
+      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+      <div id="quizArea"></div>
+      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+      <div id="scoreBox"></div>
+    </div>
+  </div>
 </section>
-<section class="page" id="review">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Επανάληψη</div>
-<h2>Ασκήσεις για το Κεφάλαιο 1</h2>
-<p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
-<div id="quizArea"></div>
-<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
-<button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
-<div id="scoreBox"></div>
-</div>
-</div>
+
+<section id="glossary" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Μικρό λεξικό</div>
+      <h2>Λέξεις που πρέπει να ξέρω</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Προϊστορία</h3><p>Η περίοδος πριν από τις πρώτες γραπτές πηγές.</p></div>
+        <div class="mini"><h3>Παλαιολιθική εποχή</h3><p>Η παλαιότερη περίοδος της Εποχής του Λίθου.</p></div>
+        <div class="mini"><h3>Τροφοσυλλέκτης</h3><p>Άνθρωπος που μαζεύει τροφή από τη φύση.</p></div>
+        <div class="mini"><h3>Νεολιθική εποχή</h3><p>Περίοδος με γεωργία, κτηνοτροφία και μόνιμους οικισμούς.</p></div>
+        <div class="mini"><h3>Οικισμός</h3><p>Μόνιμος τόπος κατοικίας μιας ομάδας ανθρώπων.</p></div>
+        <div class="mini"><h3>Κεραμική</h3><p>Κατασκευή πήλινων αγγείων και αντικειμένων.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="page" id="glossary">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Μικρό λεξικό</div>
-<h2>Λέξεις που πρέπει να ξέρω</h2>
-<div class="grid2">
-<div class="mini"><h3>Προϊστορία</h3><p>Η περίοδος πριν από τις πρώτες γραπτές πηγές.</p></div>
-<div class="mini"><h3>Παλαιολιθική εποχή</h3><p>Η παλαιότερη περίοδος της Εποχής του Λίθου.</p></div>
-<div class="mini"><h3>Τροφοσυλλέκτης</h3><p>Άνθρωπος που μαζεύει τροφή από τη φύση.</p></div>
-<div class="mini"><h3>Νεολιθική εποχή</h3><p>Περίοδος με γεωργία, κτηνοτροφία και μόνιμους οικισμούς.</p></div>
-<div class="mini"><h3>Οικισμός</h3><p>Μόνιμος τόπος κατοικίας μιας ομάδας ανθρώπων.</p></div>
-<div class="mini"><h3>Κεραμική</h3><p>Κατασκευή πήλινων αγγείων και αντικειμένων.</p></div>
-</div>
-</div>
-</div>
-</section>
+
 <footer>Κεφάλαιο 1 — Η Εποχή του Λίθου</footer>
+
+
 <script>
 window.CHAPTER_ID = "1";
 window.CHAPTER_TITLE = "🏺 Κεφάλαιο 1: Η Εποχή του Λίθου";
 </script>
+
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -535,9 +573,12 @@ window.questions = [
 
 IstoriaChapter.init();
 </script>
+
+
 <script>
 try{saveChapterProgress({visited:true});}catch(e){}
 </script>
+
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
 </body>

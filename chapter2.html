@@ -1,487 +1,529 @@
 <!DOCTYPE html>
-
 <html lang="el">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Κεφάλαιο 2 - Η Εποχή του Χαλκού</title>
-<link href="core/chapter-core.css" rel="stylesheet"/>
-<link href="core/v26-polish.css" rel="stylesheet"/>
-<link href="core/mobile-menu.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="core/chapter-core.css">
+<link rel="stylesheet" href="core/v26-polish.css">
+<link rel="stylesheet" href="core/mobile-menu.css">
 </head>
+
 <body>
+
 <header>
-<div class="bar">
-<div class="logo">🛶 Κεφάλαιο 2: Η Εποχή του Χαλκού</div>
-<div class="nav"><a href="index.html">Αρχική</a>
-<a href="chapters.html">Κεφάλαια</a>
-<a class="secondary" href="revision.html">Επανάληψη</a>
-<a class="gold" href="smart-study.html">Smart Study</a>
-<a class="blue" href="intelligent-revision.html">Revision</a>
-<a class="btn secondary" href="world-map.html">Άτλαντας</a>
-<a class="btn gold" href="tools.html">Εργαλεία</a>
-</div>
-</div>
+  <div class="bar">
+    <div class="logo">🛶 Κεφάλαιο 2: Η Εποχή του Χαλκού</div>
+    <div class="nav">
+      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
+      <button onclick="showPage('home')">Αρχή</button>
+      <button onclick="openLesson()">Μάθημα</button>
+      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+      <button onclick="showPage('review')">Επανάληψη</button>
+      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
+      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
+    </div>
+  </div>
 </header>
+
 <!-- Σχέδια SVG -->
 <template id="draw-bronze">
-<svg viewbox="0 0 900 620">
-<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
-<circle cx="760" cy="95" fill="#ffd56d" r="65"></circle>
-<path d="M0 460 C160 390 330 460 520 380 C690 310 780 350 900 300 L900 620 L0 620Z" fill="#8abc69"></path>
-<path d="M0 520 C220 455 410 520 900 450 L900 620 L0 620Z" fill="#5d9a59"></path>
-<path d="M160 420 l65-125 l65 125 z" fill="#8d5b35"></path>
-<rect fill="#8d5b35" height="70" width="85" x="182" y="420"></rect>
-<path d="M430 170 L520 170 L500 505 L405 505Z" fill="#b87333" stroke="#6b3d1f" stroke-width="8"></path>
-<path d="M395 170 L535 170 L500 105Z" fill="#d99a42" stroke="#6b3d1f" stroke-width="8"></path>
-<path d="M640 190 q95 90 10 285 q-85-130-10-285Z" fill="#c7833d" stroke="#6b3d1f" stroke-width="8"></path>
-<text fill="#7b421f" font-size="50" font-weight="900" x="65" y="90">Η Εποχή του Χαλκού</text>
-<text fill="#246b63" font-size="28" x="68" y="138">μέταλλα, πόλεις, εμπόριο και πολιτισμοί</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<circle cx="760" cy="95" r="65" fill="#ffd56d"/>
+<path d="M0 460 C160 390 330 460 520 380 C690 310 780 350 900 300 L900 620 L0 620Z" fill="#8abc69"/>
+<path d="M0 520 C220 455 410 520 900 450 L900 620 L0 620Z" fill="#5d9a59"/>
+<path d="M160 420 l65-125 l65 125 z" fill="#8d5b35"/>
+<rect x="182" y="420" width="85" height="70" fill="#8d5b35"/>
+<path d="M430 170 L520 170 L500 505 L405 505Z" fill="#b87333" stroke="#6b3d1f" stroke-width="8"/>
+<path d="M395 170 L535 170 L500 105Z" fill="#d99a42" stroke="#6b3d1f" stroke-width="8"/>
+<path d="M640 190 q95 90 10 285 q-85-130-10-285Z" fill="#c7833d" stroke="#6b3d1f" stroke-width="8"/>
+<text x="65" y="90" font-size="50" font-weight="900" fill="#7b421f">Η Εποχή του Χαλκού</text>
+<text x="68" y="138" font-size="28" fill="#246b63">μέταλλα, πόλεις, εμπόριο και πολιτισμοί</text>
 </svg>
 </template>
+
 <template id="draw-east">
-<svg viewbox="0 0 900 620">
-<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
-<path d="M0 520 C210 450 430 525 900 455 L900 620 L0 620Z" fill="#d6bd8b"></path>
-<path d="M150 460 L300 460 L300 250 L150 250Z" fill="#c28d50" stroke="#7b421f" stroke-width="8"></path>
-<path d="M180 250 L270 250 L270 190 L180 190Z" fill="#d9a862" stroke="#7b421f" stroke-width="8"></path>
-<path d="M205 190 L245 190 L245 140 L205 140Z" fill="#e9bd72" stroke="#7b421f" stroke-width="8"></path>
-<path d="M500 450 C570 330 690 310 760 440" fill="none" stroke="#3b8fb0" stroke-linecap="round" stroke-width="22"></path>
-<path d="M500 500 C600 430 690 455 805 390" fill="none" stroke="#3b8fb0" stroke-linecap="round" stroke-width="18"></path>
-<rect fill="#b88b5d" height="95" rx="8" stroke="#7b421f" stroke-width="8" width="150" x="570" y="180"></rect>
-<path d="M590 205 h110 M590 230 h110 M590 255 h80" stroke="#5b351c" stroke-linecap="round" stroke-width="8"></path>
-<text fill="#7b421f" font-size="46" font-weight="900" x="65" y="90">Εγγύς Ανατολή</text>
-<text fill="#246b63" font-size="28" x="68" y="138">πόλεις, ποτάμια, γραφή και κράτη</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<path d="M0 520 C210 450 430 525 900 455 L900 620 L0 620Z" fill="#d6bd8b"/>
+<path d="M150 460 L300 460 L300 250 L150 250Z" fill="#c28d50" stroke="#7b421f" stroke-width="8"/>
+<path d="M180 250 L270 250 L270 190 L180 190Z" fill="#d9a862" stroke="#7b421f" stroke-width="8"/>
+<path d="M205 190 L245 190 L245 140 L205 140Z" fill="#e9bd72" stroke="#7b421f" stroke-width="8"/>
+<path d="M500 450 C570 330 690 310 760 440" fill="none" stroke="#3b8fb0" stroke-width="22" stroke-linecap="round"/>
+<path d="M500 500 C600 430 690 455 805 390" fill="none" stroke="#3b8fb0" stroke-width="18" stroke-linecap="round"/>
+<rect x="570" y="180" width="150" height="95" rx="8" fill="#b88b5d" stroke="#7b421f" stroke-width="8"/>
+<path d="M590 205 h110 M590 230 h110 M590 255 h80" stroke="#5b351c" stroke-width="8" stroke-linecap="round"/>
+<text x="65" y="90" font-size="46" font-weight="900" fill="#7b421f">Εγγύς Ανατολή</text>
+<text x="68" y="138" font-size="28" fill="#246b63">πόλεις, ποτάμια, γραφή και κράτη</text>
 </svg>
 </template>
+
 <template id="draw-sea">
-<svg viewbox="0 0 900 620">
-<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
-<path d="M0 445 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"></path>
-<path d="M0 515 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"></path>
-<path d="M560 435 L710 435 L635 285Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"></path>
-<path d="M635 285 L635 190" stroke="#7b421f" stroke-width="8"></path>
-<path d="M635 195 q90 50 0 100Z" fill="#fff" stroke="#7b421f" stroke-width="6"></path>
-<path d="M140 300 q70-60 140 0 q-70 45-140 0z" fill="#8abc69" stroke="#246b63" stroke-width="7"></path>
-<path d="M345 250 q65-55 130 0 q-65 42-130 0z" fill="#8abc69" stroke="#246b63" stroke-width="7"></path>
-<path d="M250 430 C385 350 500 360 630 300" fill="none" stroke="#fff8ec" stroke-dasharray="18 18" stroke-linecap="round" stroke-width="12"></path>
-<text fill="#7b421f" font-size="46" font-weight="900" x="65" y="90">Το Αιγαίο ενώνει</text>
-<text fill="#246b63" font-size="28" x="68" y="138">πλοία, εμπόριο, ιδέες και επαφές</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 445 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
+<path d="M0 515 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"/>
+<path d="M560 435 L710 435 L635 285Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
+<path d="M635 285 L635 190" stroke="#7b421f" stroke-width="8"/>
+<path d="M635 195 q90 50 0 100Z" fill="#fff" stroke="#7b421f" stroke-width="6"/>
+<path d="M140 300 q70-60 140 0 q-70 45-140 0z" fill="#8abc69" stroke="#246b63" stroke-width="7"/>
+<path d="M345 250 q65-55 130 0 q-65 42-130 0z" fill="#8abc69" stroke="#246b63" stroke-width="7"/>
+<path d="M250 430 C385 350 500 360 630 300" fill="none" stroke="#fff8ec" stroke-width="12" stroke-dasharray="18 18" stroke-linecap="round"/>
+<text x="65" y="90" font-size="46" font-weight="900" fill="#7b421f">Το Αιγαίο ενώνει</text>
+<text x="68" y="138" font-size="28" fill="#246b63">πλοία, εμπόριο, ιδέες και επαφές</text>
 </svg>
 </template>
+
 <template id="draw-cycladic">
-<svg viewbox="0 0 900 620">
-<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
-<path d="M0 445 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"></path>
-<path d="M0 515 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"></path>
-<path d="M160 390 q85-150 170 0 q-85 48-170 0Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"></path>
-<line stroke="#7b421f" stroke-width="10" x1="245" x2="245" y1="250" y2="475"></line>
-<line stroke="#7b421f" stroke-width="10" x1="190" x2="300" y1="350" y2="350"></line>
-<path d="M560 435 L710 435 L635 285Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"></path>
-<path d="M635 285 L635 190" stroke="#7b421f" stroke-width="8"></path>
-<path d="M635 195 q90 50 0 100Z" fill="#fff" stroke="#7b421f" stroke-width="6"></path>
-<text fill="#7b421f" font-size="47" font-weight="900" x="65" y="90">Κυκλαδικός πολιτισμός</text>
-<text fill="#246b63" font-size="28" x="68" y="138">νησιά, θάλασσα, εμπόριο, ειδώλια</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 445 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
+<path d="M0 515 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"/>
+<path d="M160 390 q85-150 170 0 q-85 48-170 0Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
+<line x1="245" y1="250" x2="245" y2="475" stroke="#7b421f" stroke-width="10"/>
+<line x1="190" y1="350" x2="300" y2="350" stroke="#7b421f" stroke-width="10"/>
+<path d="M560 435 L710 435 L635 285Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
+<path d="M635 285 L635 190" stroke="#7b421f" stroke-width="8"/>
+<path d="M635 195 q90 50 0 100Z" fill="#fff" stroke="#7b421f" stroke-width="6"/>
+<text x="65" y="90" font-size="47" font-weight="900" fill="#7b421f">Κυκλαδικός πολιτισμός</text>
+<text x="68" y="138" font-size="28" fill="#246b63">νησιά, θάλασσα, εμπόριο, ειδώλια</text>
 </svg>
 </template>
+
 <template id="draw-minoan">
-<svg viewbox="0 0 900 620">
-<rect fill="#f5e0c4" height="620" rx="35" width="900"></rect>
-<rect fill="#d99a55" height="190" stroke="#7b421f" stroke-width="8" width="690" x="105" y="305"></rect>
-<rect fill="#b9422f" height="245" width="85" x="155" y="250"></rect>
-<rect fill="#b9422f" height="265" width="85" x="305" y="230"></rect>
-<rect fill="#b9422f" height="245" width="85" x="455" y="250"></rect>
-<rect fill="#b9422f" height="265" width="85" x="605" y="230"></rect>
-<rect fill="#f0c06d" height="55" stroke="#7b421f" stroke-width="8" width="730" x="85" y="215"></rect>
-<path d="M300 155 q65-75 130 0 q-65 45-130 0Z" fill="#7b421f"></path>
-<path d="M525 155 q65-75 130 0 q-65 45-130 0Z" fill="#7b421f"></path>
-<path d="M345 150 q-45 70 0 130" fill="none" stroke="#7b421f" stroke-width="10"></path>
-<path d="M610 150 q45 70 0 130" fill="none" stroke="#7b421f" stroke-width="10"></path>
-<text fill="#7b421f" font-size="47" font-weight="900" x="65" y="90">Μινωικός πολιτισμός</text>
-<text fill="#246b63" font-size="28" x="68" y="138">Κρήτη, ανάκτορα, εμπόριο, τέχνη</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f5e0c4"/>
+<rect x="105" y="305" width="690" height="190" fill="#d99a55" stroke="#7b421f" stroke-width="8"/>
+<rect x="155" y="250" width="85" height="245" fill="#b9422f"/>
+<rect x="305" y="230" width="85" height="265" fill="#b9422f"/>
+<rect x="455" y="250" width="85" height="245" fill="#b9422f"/>
+<rect x="605" y="230" width="85" height="265" fill="#b9422f"/>
+<rect x="85" y="215" width="730" height="55" fill="#f0c06d" stroke="#7b421f" stroke-width="8"/>
+<path d="M300 155 q65-75 130 0 q-65 45-130 0Z" fill="#7b421f"/>
+<path d="M525 155 q65-75 130 0 q-65 45-130 0Z" fill="#7b421f"/>
+<path d="M345 150 q-45 70 0 130" fill="none" stroke="#7b421f" stroke-width="10"/>
+<path d="M610 150 q45 70 0 130" fill="none" stroke="#7b421f" stroke-width="10"/>
+<text x="65" y="90" font-size="47" font-weight="900" fill="#7b421f">Μινωικός πολιτισμός</text>
+<text x="68" y="138" font-size="28" fill="#246b63">Κρήτη, ανάκτορα, εμπόριο, τέχνη</text>
 </svg>
 </template>
+
 <template id="draw-art">
-<svg viewbox="0 0 900 620">
-<rect fill="#e8f6ff" height="620" rx="35" width="900"></rect>
-<path d="M0 470 C180 410 380 485 900 400 L900 620 L0 620Z" fill="#4d9ab0"></path>
-<path d="M180 360 q75-120 150 0 q-75 65-150 0Z" fill="#ffcc5c" stroke="#7b421f" stroke-width="8"></path>
-<path d="M220 345 q35 25 70 0" fill="none" stroke="#7b421f" stroke-width="8"></path>
-<path d="M520 365 q90-130 180 0 q-90 70-180 0Z" fill="#c96f3c" stroke="#7b421f" stroke-width="8"></path>
-<path d="M555 330 q55 55 110 0" fill="none" stroke="#fff8ec" stroke-width="10"></path>
-<path d="M610 250 q30 60 0 125 q-30-65 0-125" fill="#ffd56d" stroke="#7b421f" stroke-width="6"></path>
-<text fill="#7b421f" font-size="47" font-weight="900" x="65" y="90">Θρησκεία και τέχνη</text>
-<text fill="#246b63" font-size="28" x="68" y="138">φύση, χρώμα, κίνηση και σύμβολα</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f6ff"/>
+<path d="M0 470 C180 410 380 485 900 400 L900 620 L0 620Z" fill="#4d9ab0"/>
+<path d="M180 360 q75-120 150 0 q-75 65-150 0Z" fill="#ffcc5c" stroke="#7b421f" stroke-width="8"/>
+<path d="M220 345 q35 25 70 0" fill="none" stroke="#7b421f" stroke-width="8"/>
+<path d="M520 365 q90-130 180 0 q-90 70-180 0Z" fill="#c96f3c" stroke="#7b421f" stroke-width="8"/>
+<path d="M555 330 q55 55 110 0" fill="none" stroke="#fff8ec" stroke-width="10"/>
+<path d="M610 250 q30 60 0 125 q-30-65 0-125" fill="#ffd56d" stroke="#7b421f" stroke-width="6"/>
+<text x="65" y="90" font-size="47" font-weight="900" fill="#7b421f">Θρησκεία και τέχνη</text>
+<text x="68" y="138" font-size="28" fill="#246b63">φύση, χρώμα, κίνηση και σύμβολα</text>
 </svg>
 </template>
+
 <template id="draw-mycenaean">
-<svg viewbox="0 0 900 620">
-<rect fill="#e8eef5" height="620" rx="35" width="900"></rect>
-<path d="M0 505 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"></path>
-<rect fill="#9d8b73" height="150" stroke="#5b351c" stroke-width="8" width="610" x="145" y="345"></rect>
-<path d="M115 345 L785 345 L705 250 L195 250Z" fill="#b09a7a" stroke="#5b351c" stroke-width="8"></path>
-<path d="M380 495 L520 495 L500 382 L400 382Z" fill="#2f2418"></path>
-<path d="M390 245 q60-85 120 0 q-60 42-120 0Z" fill="#7b421f"></path>
-<circle cx="425" cy="225" fill="#d8a24b" r="18"></circle>
-<circle cx="475" cy="225" fill="#d8a24b" r="18"></circle>
-<text fill="#7b421f" font-size="47" font-weight="900" x="65" y="90">Μυκηναϊκός κόσμος</text>
-<text fill="#246b63" font-size="28" x="68" y="138">ακροπόλεις, άνακτες, τείχη, Γραμμική Β</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8eef5"/>
+<path d="M0 505 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"/>
+<rect x="145" y="345" width="610" height="150" fill="#9d8b73" stroke="#5b351c" stroke-width="8"/>
+<path d="M115 345 L785 345 L705 250 L195 250Z" fill="#b09a7a" stroke="#5b351c" stroke-width="8"/>
+<path d="M380 495 L520 495 L500 382 L400 382Z" fill="#2f2418"/>
+<path d="M390 245 q60-85 120 0 q-60 42-120 0Z" fill="#7b421f"/>
+<circle cx="425" cy="225" r="18" fill="#d8a24b"/>
+<circle cx="475" cy="225" r="18" fill="#d8a24b"/>
+<text x="65" y="90" font-size="47" font-weight="900" fill="#7b421f">Μυκηναϊκός κόσμος</text>
+<text x="68" y="138" font-size="28" fill="#246b63">ακροπόλεις, άνακτες, τείχη, Γραμμική Β</text>
 </svg>
 </template>
+
 <template id="draw-compare">
-<svg viewbox="0 0 900 620">
-<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
-<circle cx="200" cy="290" fill="#dff3ff" r="110" stroke="#246b63" stroke-width="10"></circle>
-<circle cx="450" cy="290" fill="#ffe2c2" r="110" stroke="#a7652d" stroke-width="10"></circle>
-<circle cx="700" cy="290" fill="#e8eef5" r="110" stroke="#7b421f" stroke-width="10"></circle>
-<text fill="#246b63" font-size="33" font-weight="900" x="145" y="285">Κυκλάδες</text>
-<text fill="#a7652d" font-size="33" font-weight="900" x="397" y="285">Κρήτη</text>
-<text fill="#7b421f" font-size="33" font-weight="900" x="640" y="285">Μυκήνες</text>
-<path d="M305 290 H345 M555 290 H595" stroke="#7b421f" stroke-linecap="round" stroke-width="14"></path>
-<text fill="#7b421f" font-size="46" font-weight="900" x="80" y="95">Σύγκριση πολιτισμών</text>
-<text fill="#246b63" font-size="28" x="82" y="142">διαφορετικοί, αλλά συνδεδεμένοι από το Αιγαίο</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<circle cx="200" cy="290" r="110" fill="#dff3ff" stroke="#246b63" stroke-width="10"/>
+<circle cx="450" cy="290" r="110" fill="#ffe2c2" stroke="#a7652d" stroke-width="10"/>
+<circle cx="700" cy="290" r="110" fill="#e8eef5" stroke="#7b421f" stroke-width="10"/>
+<text x="145" y="285" font-size="33" font-weight="900" fill="#246b63">Κυκλάδες</text>
+<text x="397" y="285" font-size="33" font-weight="900" fill="#a7652d">Κρήτη</text>
+<text x="640" y="285" font-size="33" font-weight="900" fill="#7b421f">Μυκήνες</text>
+<path d="M305 290 H345 M555 290 H595" stroke="#7b421f" stroke-width="14" stroke-linecap="round"/>
+<text x="80" y="95" font-size="46" font-weight="900" fill="#7b421f">Σύγκριση πολιτισμών</text>
+<text x="82" y="142" font-size="28" fill="#246b63">διαφορετικοί, αλλά συνδεδεμένοι από το Αιγαίο</text>
 </svg>
 </template>
-<section class="page active" id="home">
-<div class="wrap">
-<div class="hero">
-<div class="panel text">
-<div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
-<h1>Κεφάλαιο 2<br/>Η Εποχή του Χαλκού</h1>
-<p>Στόχος του κεφαλαίου είναι να γνωρίσουμε τους μεγάλους πολιτισμούς της Εποχής του Χαλκού στην Εγγύς Ανατολή και στο Αιγαίο.</p>
-<div class="box">Κεντρική ιδέα: μέταλλα, γραφή, εμπόριο, ανάκτορα και θάλασσα αλλάζουν τον κόσμο.</div>
-<p>
-<button onclick="openLesson()">Ξεκίνα το μάθημα</button>
-<button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-</p>
-</div>
-<div class="panel drawing" data-draw="draw-bronze"></div>
-</div>
-</div>
+
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel text">
+        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+        <h1>Κεφάλαιο 2<br>Η Εποχή του Χαλκού</h1>
+        <p>Στόχος του κεφαλαίου είναι να γνωρίσουμε τους μεγάλους πολιτισμούς της Εποχής του Χαλκού στην Εγγύς Ανατολή και στο Αιγαίο.</p>
+        <div class="box">Κεντρική ιδέα: μέταλλα, γραφή, εμπόριο, ανάκτορα και θάλασσα αλλάζουν τον κόσμο.</div>
+        <p>
+          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+        </p>
+      </div>
+      <div class="panel drawing" data-draw="draw-bronze"></div>
+    </div>
+  </div>
 </section>
-<section class="wrap">
-<div class="panel text progress-card">
-<div class="eyebrow">Η πρόοδός μου</div>
-<h2>Πρόοδος κεφαλαίου</h2>
-<div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
-<div class="progress-small" id="chapterProgressText">Φόρτωση προόδου...</div>
-<div class="progress-badges" id="chapterBadgeList"></div>
-</div>
+
+  <section class="wrap">
+    <div class="panel text progress-card">
+      <div class="eyebrow">Η πρόοδός μου</div>
+      <h2>Πρόοδος κεφαλαίου</h2>
+      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
+      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
+      <div id="chapterBadgeList" class="progress-badges"></div>
+    </div>
+  </section>
+
+
+<section id="chapter2" class="page">
+  <div class="wrap">
+    <div class="lesson-top">
+      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+      <div id="counter">1 / 12</div>
+    </div>
+
+    <div class="panel">
+
+      <div class="lesson-slide active">
+        <div class="text">
+          <div class="eyebrow">1. Εισαγωγή</div>
+          <h2>Η Εποχή του Χαλκού</h2>
+          <p>Η Εποχή του Χαλκού καλύπτει περίπου την περίοδο 3000-1100 π.Χ.</p>
+          <div class="box">Βασική ιδέα: ο χαλκός, η γραφή, οι πόλεις, τα ανάκτορα και το εμπόριο αλλάζουν τον κόσμο.</div>
+        </div>
+        <div class="drawing" data-draw="draw-bronze"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">2. Λαοί και πολιτισμοί της Εγγύς Ανατολής</div>
+          <h2>Οι πρώτοι μεγάλοι πολιτισμοί</h2>
+          <p>Στην Εγγύς Ανατολή αναπτύσσονται μεγάλοι πολιτισμοί, όπως στη Μεσοποταμία και στην Αίγυπτο.</p>
+          <ul>
+            <li>οργανωμένες πόλεις</li>
+            <li>κράτη και ηγεμόνες</li>
+            <li>γραφή</li>
+            <li>μεταλλουργία</li>
+            <li>μεγάλα έργα</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί η γραφή είναι τόσο σημαντική για την Ιστορία;</div>
+        </div>
+        <div class="drawing" data-draw="draw-east"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">3. Το Αιγαίο</div>
+          <h2>Η θάλασσα ως δρόμος</h2>
+          <p>Στον ελληνικό χώρο εμφανίζονται οι πρώτοι σημαντικοί πολιτισμοί. Η θάλασσα του Αιγαίου βοηθά τις επαφές.</p>
+          <ul>
+            <li>ταξίδια</li>
+            <li>εμπόριο</li>
+            <li>ανταλλαγή ιδεών</li>
+            <li>επαφές με την Ανατολή</li>
+          </ul>
+          <div class="box">Κλειδί: το Αιγαίο δεν χωρίζει· ενώνει.</div>
+        </div>
+        <div class="drawing" data-draw="draw-sea"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">4. Ο Κυκλαδικός πολιτισμός</div>
+          <h2>Τα νησιά των Κυκλάδων</h2>
+          <p>Ο Κυκλαδικός πολιτισμός αναπτύσσεται στις Κυκλάδες την 3η και 2η χιλιετία π.Χ.</p>
+          <ul>
+            <li>προνομιακή γεωγραφική θέση</li>
+            <li>ναυσιπλοΐα</li>
+            <li>εμπόριο</li>
+            <li>μαρμάρινα ειδώλια</li>
+          </ul>
+          <div class="box">Αποστολή: γιατί τα νησιά των Κυκλάδων λειτουργούσαν σαν γέφυρα;</div>
+        </div>
+        <div class="drawing" data-draw="draw-cycladic"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">5. Κυκλαδική τέχνη</div>
+          <h2>Τα ειδώλια</h2>
+          <p>Τα κυκλαδικά ειδώλια είναι απλά, λιτά και σχηματοποιημένα. Πολλά βρέθηκαν σε τάφους.</p>
+          <div class="note">Τα ειδώλια δείχνουν ότι οι άνθρωποι δεν φτιάχνουν μόνο χρήσιμα αντικείμενα, αλλά και έργα με συμβολική σημασία.</div>
+          <div class="box">Ερώτηση: τι εντύπωση σου δίνει ένα τόσο απλό ειδώλιο;</div>
+        </div>
+        <div class="drawing" data-draw="draw-cycladic"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">6. Ο Μινωικός πολιτισμός</div>
+          <h2>Η Κρήτη και τα ανάκτορα</h2>
+          <p>Στην Κρήτη αναπτύσσεται ο Μινωικός πολιτισμός. Κέντρο της ζωής είναι τα μεγάλα ανάκτορα.</p>
+          <ul>
+            <li>Κνωσός, Φαιστός, Μάλια, Ζάκρος</li>
+            <li>εμπόριο</li>
+            <li>οργάνωση παραγωγής</li>
+            <li>αποθήκες και εργαστήρια</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί το ανάκτορο δεν ήταν απλώς κατοικία;</div>
+        </div>
+        <div class="drawing" data-draw="draw-minoan"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">7. Η μινωική θαλασσοκρατία</div>
+          <h2>Η Κρήτη κοιτάζει τη θάλασσα</h2>
+          <p>Οι Μινωίτες αναπτύσσουν έντονη ναυτική και εμπορική δραστηριότητα στο Αιγαίο.</p>
+          <ul>
+            <li>πλοία</li>
+            <li>εμπορικές επαφές</li>
+            <li>πλούτος</li>
+            <li>επιδράσεις σε άλλους λαούς</li>
+          </ul>
+          <div class="box">Συζήτηση: γιατί η Κρήτη μπορούσε να γίνει ισχυρή στη θάλασσα;</div>
+        </div>
+        <div class="drawing" data-draw="draw-sea"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">8. Θρησκεία και τέχνη των Μινωιτών</div>
+          <h2>Φύση, χρώμα και κίνηση</h2>
+          <p>Η μινωική τέχνη δείχνει ζωντάνια. Συχνά παρουσιάζει τη φύση, ζώα, φυτά, θαλάσσια θέματα και ανθρώπινες μορφές.</p>
+          <ul>
+            <li>τοιχογραφίες</li>
+            <li>αγγεία</li>
+            <li>ταύρος</li>
+            <li>θαλάσσια θέματα</li>
+          </ul>
+          <div class="box">Αποστολή: σχεδίασε μια μινωική τοιχογραφία για την τάξη.</div>
+        </div>
+        <div class="drawing" data-draw="draw-art"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">9. Ο Μυκηναϊκός κόσμος</div>
+          <h2>Ακροπόλεις και ανάκτορα</h2>
+          <p>Ο Μυκηναϊκός πολιτισμός αναπτύσσεται στην ηπειρωτική Ελλάδα. Κέντρα του είναι οι Μυκήνες, η Τίρυνθα, η Πύλος και άλλα.</p>
+          <ul>
+            <li>οχυρωμένες ακροπόλεις</li>
+            <li>ανάκτορα</li>
+            <li>κυκλώπεια τείχη</li>
+            <li>θολωτοί τάφοι</li>
+          </ul>
+          <div class="box">Ερώτηση: τι δείχνουν τα μεγάλα τείχη για τον χαρακτήρα του μυκηναϊκού κόσμου;</div>
+        </div>
+        <div class="drawing" data-draw="draw-mycenaean"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">10. Γραφή και οργάνωση</div>
+          <h2>Η Γραμμική Β</h2>
+          <p>Οι Μυκηναίοι χρησιμοποιούν τη Γραμμική Β, η οποία αποκρυπτογραφήθηκε και αποδείχθηκε ότι αποδίδει ελληνική γλώσσα.</p>
+          <ul>
+            <li>καταγραφές προϊόντων</li>
+            <li>οργάνωση ανακτόρων</li>
+            <li>διοίκηση</li>
+            <li>σημαντική μαρτυρία για τους Έλληνες</li>
+          </ul>
+          <div class="box">Κλειδί: η γραφή βοηθά την οργάνωση ενός σύνθετου κόσμου.</div>
+        </div>
+        <div class="drawing" data-draw="draw-east"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">11. Σύγκριση</div>
+          <h2>Οι 3 πολιτισμοί του Αιγαίου</h2>
+          <div class="grid2">
+            <div class="mini"><h3>Κυκλαδικός</h3><p>Νησιά, εμπόριο, μαρμάρινα ειδώλια.</p></div>
+            <div class="mini"><h3>Μινωικός</h3><p>Κρήτη, ανάκτορα, θάλασσα, πολύχρωμη τέχνη.</p></div>
+            <div class="mini"><h3>Μυκηναϊκός</h3><p>Ηπειρωτική Ελλάδα, ακροπόλεις, τείχη, Γραμμική Β.</p></div>
+            <div class="mini"><h3>Κοινό στοιχείο</h3><p>Εμπόριο, επαφές και ανάπτυξη πολιτισμού στο Αιγαίο.</p></div>
+          </div>
+        </div>
+        <div class="drawing" data-draw="draw-compare"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">12. Τι πρέπει να θυμάμαι</div>
+          <h2>Σύνοψη Κεφαλαίου 2</h2>
+          <ul>
+            <li>Η Εποχή του Χαλκού φέρνει μέταλλα, γραφή, πόλεις και σύνθετη οργάνωση.</li>
+            <li>Στην Εγγύς Ανατολή αναπτύσσονται μεγάλοι πολιτισμοί.</li>
+            <li>Στο Αιγαίο αναπτύσσονται Κυκλαδικός, Μινωικός και Μυκηναϊκός πολιτισμός.</li>
+            <li>Η θάλασσα παίζει καθοριστικό ρόλο στις επαφές και στο εμπόριο.</li>
+          </ul>
+          <p>
+            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+          </p>
+        </div>
+        <div class="drawing" data-draw="draw-bronze"></div>
+      </div>
+
+    </div>
+
+    <div class="lesson-nav">
+      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+      <button onclick="nextSlide()">Επόμενο ➡</button>
+    </div>
+  </div>
 </section>
-<section class="page" id="chapter2">
-<div class="wrap">
-<div class="lesson-top">
-<button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
-<div class="progress-wrap"><div class="progress" id="progress"></div></div>
-<div id="counter">1 / 12</div>
-</div>
-<div class="panel">
-<div class="lesson-slide active">
-<div class="text">
-<div class="eyebrow">1. Εισαγωγή</div>
-<h2>Η Εποχή του Χαλκού</h2>
-<p>Η Εποχή του Χαλκού καλύπτει περίπου την περίοδο 3000-1100 π.Χ.</p>
-<div class="box">Βασική ιδέα: ο χαλκός, η γραφή, οι πόλεις, τα ανάκτορα και το εμπόριο αλλάζουν τον κόσμο.</div>
-</div>
-<div class="drawing" data-draw="draw-bronze"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">2. Λαοί και πολιτισμοί της Εγγύς Ανατολής</div>
-<h2>Οι πρώτοι μεγάλοι πολιτισμοί</h2>
-<p>Στην Εγγύς Ανατολή αναπτύσσονται μεγάλοι πολιτισμοί, όπως στη Μεσοποταμία και στην Αίγυπτο.</p>
-<ul>
-<li>οργανωμένες πόλεις</li>
-<li>κράτη και ηγεμόνες</li>
-<li>γραφή</li>
-<li>μεταλλουργία</li>
-<li>μεγάλα έργα</li>
-</ul>
-<div class="box">Ερώτηση: γιατί η γραφή είναι τόσο σημαντική για την Ιστορία;</div>
-</div>
-<div class="drawing" data-draw="draw-east"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">3. Το Αιγαίο</div>
-<h2>Η θάλασσα ως δρόμος</h2>
-<p>Στον ελληνικό χώρο εμφανίζονται οι πρώτοι σημαντικοί πολιτισμοί. Η θάλασσα του Αιγαίου βοηθά τις επαφές.</p>
-<ul>
-<li>ταξίδια</li>
-<li>εμπόριο</li>
-<li>ανταλλαγή ιδεών</li>
-<li>επαφές με την Ανατολή</li>
-</ul>
-<div class="box">Κλειδί: το Αιγαίο δεν χωρίζει· ενώνει.</div>
-</div>
-<div class="drawing" data-draw="draw-sea"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">4. Ο Κυκλαδικός πολιτισμός</div>
-<h2>Τα νησιά των Κυκλάδων</h2>
-<p>Ο Κυκλαδικός πολιτισμός αναπτύσσεται στις Κυκλάδες την 3η και 2η χιλιετία π.Χ.</p>
-<ul>
-<li>προνομιακή γεωγραφική θέση</li>
-<li>ναυσιπλοΐα</li>
-<li>εμπόριο</li>
-<li>μαρμάρινα ειδώλια</li>
-</ul>
-<div class="box">Αποστολή: γιατί τα νησιά των Κυκλάδων λειτουργούσαν σαν γέφυρα;</div>
-</div>
-<div class="drawing" data-draw="draw-cycladic"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">5. Κυκλαδική τέχνη</div>
-<h2>Τα ειδώλια</h2>
-<p>Τα κυκλαδικά ειδώλια είναι απλά, λιτά και σχηματοποιημένα. Πολλά βρέθηκαν σε τάφους.</p>
-<div class="note">Τα ειδώλια δείχνουν ότι οι άνθρωποι δεν φτιάχνουν μόνο χρήσιμα αντικείμενα, αλλά και έργα με συμβολική σημασία.</div>
-<div class="box">Ερώτηση: τι εντύπωση σου δίνει ένα τόσο απλό ειδώλιο;</div>
-</div>
-<div class="drawing" data-draw="draw-cycladic"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">6. Ο Μινωικός πολιτισμός</div>
-<h2>Η Κρήτη και τα ανάκτορα</h2>
-<p>Στην Κρήτη αναπτύσσεται ο Μινωικός πολιτισμός. Κέντρο της ζωής είναι τα μεγάλα ανάκτορα.</p>
-<ul>
-<li>Κνωσός, Φαιστός, Μάλια, Ζάκρος</li>
-<li>εμπόριο</li>
-<li>οργάνωση παραγωγής</li>
-<li>αποθήκες και εργαστήρια</li>
-</ul>
-<div class="box">Ερώτηση: γιατί το ανάκτορο δεν ήταν απλώς κατοικία;</div>
-</div>
-<div class="drawing" data-draw="draw-minoan"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">7. Η μινωική θαλασσοκρατία</div>
-<h2>Η Κρήτη κοιτάζει τη θάλασσα</h2>
-<p>Οι Μινωίτες αναπτύσσουν έντονη ναυτική και εμπορική δραστηριότητα στο Αιγαίο.</p>
-<ul>
-<li>πλοία</li>
-<li>εμπορικές επαφές</li>
-<li>πλούτος</li>
-<li>επιδράσεις σε άλλους λαούς</li>
-</ul>
-<div class="box">Συζήτηση: γιατί η Κρήτη μπορούσε να γίνει ισχυρή στη θάλασσα;</div>
-</div>
-<div class="drawing" data-draw="draw-sea"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">8. Θρησκεία και τέχνη των Μινωιτών</div>
-<h2>Φύση, χρώμα και κίνηση</h2>
-<p>Η μινωική τέχνη δείχνει ζωντάνια. Συχνά παρουσιάζει τη φύση, ζώα, φυτά, θαλάσσια θέματα και ανθρώπινες μορφές.</p>
-<ul>
-<li>τοιχογραφίες</li>
-<li>αγγεία</li>
-<li>ταύρος</li>
-<li>θαλάσσια θέματα</li>
-</ul>
-<div class="box">Αποστολή: σχεδίασε μια μινωική τοιχογραφία για την τάξη.</div>
-</div>
-<div class="drawing" data-draw="draw-art"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">9. Ο Μυκηναϊκός κόσμος</div>
-<h2>Ακροπόλεις και ανάκτορα</h2>
-<p>Ο Μυκηναϊκός πολιτισμός αναπτύσσεται στην ηπειρωτική Ελλάδα. Κέντρα του είναι οι Μυκήνες, η Τίρυνθα, η Πύλος και άλλα.</p>
-<ul>
-<li>οχυρωμένες ακροπόλεις</li>
-<li>ανάκτορα</li>
-<li>κυκλώπεια τείχη</li>
-<li>θολωτοί τάφοι</li>
-</ul>
-<div class="box">Ερώτηση: τι δείχνουν τα μεγάλα τείχη για τον χαρακτήρα του μυκηναϊκού κόσμου;</div>
-</div>
-<div class="drawing" data-draw="draw-mycenaean"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">10. Γραφή και οργάνωση</div>
-<h2>Η Γραμμική Β</h2>
-<p>Οι Μυκηναίοι χρησιμοποιούν τη Γραμμική Β, η οποία αποκρυπτογραφήθηκε και αποδείχθηκε ότι αποδίδει ελληνική γλώσσα.</p>
-<ul>
-<li>καταγραφές προϊόντων</li>
-<li>οργάνωση ανακτόρων</li>
-<li>διοίκηση</li>
-<li>σημαντική μαρτυρία για τους Έλληνες</li>
-</ul>
-<div class="box">Κλειδί: η γραφή βοηθά την οργάνωση ενός σύνθετου κόσμου.</div>
-</div>
-<div class="drawing" data-draw="draw-east"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">11. Σύγκριση</div>
-<h2>Οι 3 πολιτισμοί του Αιγαίου</h2>
-<div class="grid2">
-<div class="mini"><h3>Κυκλαδικός</h3><p>Νησιά, εμπόριο, μαρμάρινα ειδώλια.</p></div>
-<div class="mini"><h3>Μινωικός</h3><p>Κρήτη, ανάκτορα, θάλασσα, πολύχρωμη τέχνη.</p></div>
-<div class="mini"><h3>Μυκηναϊκός</h3><p>Ηπειρωτική Ελλάδα, ακροπόλεις, τείχη, Γραμμική Β.</p></div>
-<div class="mini"><h3>Κοινό στοιχείο</h3><p>Εμπόριο, επαφές και ανάπτυξη πολιτισμού στο Αιγαίο.</p></div>
-</div>
-</div>
-<div class="drawing" data-draw="draw-compare"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">12. Τι πρέπει να θυμάμαι</div>
-<h2>Σύνοψη Κεφαλαίου 2</h2>
-<ul>
-<li>Η Εποχή του Χαλκού φέρνει μέταλλα, γραφή, πόλεις και σύνθετη οργάνωση.</li>
-<li>Στην Εγγύς Ανατολή αναπτύσσονται μεγάλοι πολιτισμοί.</li>
-<li>Στο Αιγαίο αναπτύσσονται Κυκλαδικός, Μινωικός και Μυκηναϊκός πολιτισμός.</li>
-<li>Η θάλασσα παίζει καθοριστικό ρόλο στις επαφές και στο εμπόριο.</li>
-</ul>
-<p>
-<button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
-<button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
-</p>
-</div>
-<div class="drawing" data-draw="draw-bronze"></div>
-</div>
-</div>
-<div class="lesson-nav">
-<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-<button onclick="nextSlide()">Επόμενο ➡</button>
-</div>
-</div>
+
+<section id="extras" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Extra για τα παιδιά</div>
+      <h2>Δραστηριότητες Κεφαλαίου 2</h2>
+      <p>Αυτές οι δραστηριότητες βοηθούν να ξεχωρίσουμε τους πολιτισμούς της Εποχής του Χαλκού.</p>
+
+      <div class="cards">
+        <div class="card" onclick="showPage('missions')">
+          <div><div class="icon">🎯</div><h3>Αποστολή σύγκρισης</h3><p>Φτιάξε πίνακα για τους 3 πολιτισμούς του Αιγαίου.</p></div>
+          <span class="tag">δραστηριότητα</span>
+        </div>
+        <div class="card" onclick="showPage('detective')">
+          <div><div class="icon">🕵️</div><h3>Βρες τον πολιτισμό</h3><p>Διάβασε το στοιχείο και διάλεξε πολιτισμό.</p></div>
+          <span class="tag">παιχνίδι σκέψης</span>
+        </div>
+        <div class="card" onclick="showPage('sea')">
+          <div><div class="icon">🗺️</div><h3>Το Αιγαίο ενώνει</h3><p>Δες γιατί η θάλασσα είναι τόσο σημαντική.</p></div>
+          <span class="tag">χάρτης εννοιών</span>
+        </div>
+        <div class="card" onclick="showPage('today')">
+          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+          <span class="tag">ολοκλήρωση</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="page" id="extras">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Extra για τα παιδιά</div>
-<h2>Δραστηριότητες Κεφαλαίου 2</h2>
-<p>Αυτές οι δραστηριότητες βοηθούν να ξεχωρίσουμε τους πολιτισμούς της Εποχής του Χαλκού.</p>
-<div class="cards">
-<div class="card" onclick="showPage('missions')">
-<div><div class="icon">🎯</div><h3>Αποστολή σύγκρισης</h3><p>Φτιάξε πίνακα για τους 3 πολιτισμούς του Αιγαίου.</p></div>
-<span class="tag">δραστηριότητα</span>
-</div>
-<div class="card" onclick="showPage('detective')">
-<div><div class="icon">🕵️</div><h3>Βρες τον πολιτισμό</h3><p>Διάβασε το στοιχείο και διάλεξε πολιτισμό.</p></div>
-<span class="tag">παιχνίδι σκέψης</span>
-</div>
-<div class="card" onclick="showPage('sea')">
-<div><div class="icon">🗺️</div><h3>Το Αιγαίο ενώνει</h3><p>Δες γιατί η θάλασσα είναι τόσο σημαντική.</p></div>
-<span class="tag">χάρτης εννοιών</span>
-</div>
-<div class="card" onclick="showPage('today')">
-<div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
-<span class="tag">ολοκλήρωση</span>
-</div>
-</div>
-</div>
-</div>
+
+<section id="missions" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🎯 Αποστολή σύγκρισης</div>
+      <h2>Φτιάξε έναν πίνακα στο τετράδιό σου</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Κυκλαδικός</h3><p>Γράψε 2 λέξεις που τον χαρακτηρίζουν.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Μινωικός</h3><p>Γράψε 2 λέξεις που τον χαρακτηρίζουν.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Μυκηναϊκός</h3><p>Γράψε 2 λέξεις που τον χαρακτηρίζουν.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Κοινό στοιχείο</h3><p>Ποιο κοινό στοιχείο έχουν οι πολιτισμοί του Αιγαίου;</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+      </div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="missions">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🎯 Αποστολή σύγκρισης</div>
-<h2>Φτιάξε έναν πίνακα στο τετράδιό σου</h2>
-<div class="grid2">
-<div class="mini"><h3>Κυκλαδικός</h3><p>Γράψε 2 λέξεις που τον χαρακτηρίζουν.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Μινωικός</h3><p>Γράψε 2 λέξεις που τον χαρακτηρίζουν.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Μυκηναϊκός</h3><p>Γράψε 2 λέξεις που τον χαρακτηρίζουν.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Κοινό στοιχείο</h3><p>Ποιο κοινό στοιχείο έχουν οι πολιτισμοί του Αιγαίου;</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="detective" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🕵️ Βρες τον πολιτισμό</div>
+      <h2>Στοιχείο: Κυκλώπεια τείχη</h2>
+      <p>Σε ποιον πολιτισμό ταιριάζει περισσότερο;</p>
+      <button class="answer civ-answer" onclick="selectCiv(false,this)">Κυκλαδικός</button>
+      <button class="answer civ-answer" onclick="selectCiv(false,this)">Μινωικός</button>
+      <button class="answer civ-answer" onclick="selectCiv(true,this)">Μυκηναϊκός</button>
+      <div id="civResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+      <p>
+        <button onclick="checkCiv()">Έλεγχος</button>
+        <button class="secondary" onclick="resetCiv()">Ξαναδοκίμασε</button>
+        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+      </p>
+    </div>
+  </div>
 </section>
-<section class="page" id="detective">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🕵️ Βρες τον πολιτισμό</div>
-<h2>Στοιχείο: Κυκλώπεια τείχη</h2>
-<p>Σε ποιον πολιτισμό ταιριάζει περισσότερο;</p>
-<button class="answer civ-answer" onclick="selectCiv(false,this)">Κυκλαδικός</button>
-<button class="answer civ-answer" onclick="selectCiv(false,this)">Μινωικός</button>
-<button class="answer civ-answer" onclick="selectCiv(true,this)">Μυκηναϊκός</button>
-<div class="box" id="civResult">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
-<p>
-<button onclick="checkCiv()">Έλεγχος</button>
-<button class="secondary" onclick="resetCiv()">Ξαναδοκίμασε</button>
-<button class="secondary" onclick="showPage('extras')">← Πίσω</button>
-</p>
-</div>
-</div>
+
+<section id="sea" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🗺️ Το Αιγαίο ενώνει</div>
+      <h2>Γιατί ήταν σημαντική η θάλασσα;</h2>
+      <div class="concept-map">
+        <div class="bubble main" onclick="seaInfo('Το Αιγαίο λειτουργεί σαν δρόμος επικοινωνίας ανάμεσα στα νησιά, την Κρήτη και την ηπειρωτική Ελλάδα.')">Αιγαίο</div>
+        <div class="bubble" onclick="seaInfo('Τα πλοία μεταφέρουν ανθρώπους, προϊόντα και ιδέες.')">πλοία</div>
+        <div class="bubble" onclick="seaInfo('Το εμπόριο φέρνει πλούτο και επαφές.')">εμπόριο</div>
+        <div class="bubble" onclick="seaInfo('Οι πολιτισμοί επηρεάζουν ο ένας τον άλλο.')">επαφές</div>
+        <div class="bubble" onclick="seaInfo('Η Ανατολή επηρεάζει τον ελληνικό χώρο μέσα από ανταλλαγές.')">Ανατολή</div>
+      </div>
+      <div id="seaResult" class="box">Πάτησε έναν κύκλο.</div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="sea">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🗺️ Το Αιγαίο ενώνει</div>
-<h2>Γιατί ήταν σημαντική η θάλασσα;</h2>
-<div class="concept-map">
-<div class="bubble main" onclick="seaInfo('Το Αιγαίο λειτουργεί σαν δρόμος επικοινωνίας ανάμεσα στα νησιά, την Κρήτη και την ηπειρωτική Ελλάδα.')">Αιγαίο</div>
-<div class="bubble" onclick="seaInfo('Τα πλοία μεταφέρουν ανθρώπους, προϊόντα και ιδέες.')">πλοία</div>
-<div class="bubble" onclick="seaInfo('Το εμπόριο φέρνει πλούτο και επαφές.')">εμπόριο</div>
-<div class="bubble" onclick="seaInfo('Οι πολιτισμοί επηρεάζουν ο ένας τον άλλο.')">επαφές</div>
-<div class="bubble" onclick="seaInfo('Η Ανατολή επηρεάζει τον ελληνικό χώρο μέσα από ανταλλαγές.')">Ανατολή</div>
-</div>
-<div class="box" id="seaResult">Πάτησε έναν κύκλο.</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="today" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+      <h2>Checklist Κεφαλαίου 2</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Έμαθα τι είναι η Εποχή του Χαλκού.</label>
+        <label><input type="checkbox"> Ξέρω γιατί η Εγγύς Ανατολή είναι σημαντική.</label>
+        <label><input type="checkbox"> Ξεχωρίζω Κυκλαδικό, Μινωικό και Μυκηναϊκό πολιτισμό.</label>
+        <label><input type="checkbox"> Κατάλαβα τον ρόλο του Αιγαίου και της θάλασσας.</label>
+        <label><input type="checkbox"> Έκανα την επανάληψη ή το κουίζ.</label>
+      </div>
+      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+      <div id="badgeBox"></div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="today">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">✅ Τι έμαθα σήμερα</div>
-<h2>Checklist Κεφαλαίου 2</h2>
-<div class="checklist">
-<label><input type="checkbox"/> Έμαθα τι είναι η Εποχή του Χαλκού.</label>
-<label><input type="checkbox"/> Ξέρω γιατί η Εγγύς Ανατολή είναι σημαντική.</label>
-<label><input type="checkbox"/> Ξεχωρίζω Κυκλαδικό, Μινωικό και Μυκηναϊκό πολιτισμό.</label>
-<label><input type="checkbox"/> Κατάλαβα τον ρόλο του Αιγαίου και της θάλασσας.</label>
-<label><input type="checkbox"/> Έκανα την επανάληψη ή το κουίζ.</label>
-</div>
-<button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
-<div id="badgeBox"></div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="review" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Επανάληψη</div>
+      <h2>Ασκήσεις για το Κεφάλαιο 2</h2>
+      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+      <div id="quizArea"></div>
+      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+      <div id="scoreBox"></div>
+    </div>
+  </div>
 </section>
-<section class="page" id="review">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Επανάληψη</div>
-<h2>Ασκήσεις για το Κεφάλαιο 2</h2>
-<p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
-<div id="quizArea"></div>
-<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
-<button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
-<div id="scoreBox"></div>
-</div>
-</div>
+
+<section id="glossary" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Μικρό λεξικό</div>
+      <h2>Λέξεις που πρέπει να ξέρω</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Εποχή του Χαλκού</h3><p>Περίοδος περίπου 3000-1100 π.Χ. κατά την οποία ο χαλκός χρησιμοποιείται όλο και περισσότερο.</p></div>
+        <div class="mini"><h3>Εγγύς Ανατολή</h3><p>Περιοχή όπου αναπτύχθηκαν μεγάλοι αρχαίοι πολιτισμοί, όπως στη Μεσοποταμία και την Αίγυπτο.</p></div>
+        <div class="mini"><h3>Κυκλαδικός πολιτισμός</h3><p>Πολιτισμός των Κυκλάδων, γνωστός για τα μαρμάρινα ειδώλια.</p></div>
+        <div class="mini"><h3>Μινωικός πολιτισμός</h3><p>Πολιτισμός της Κρήτης με ανάκτορα, εμπόριο και πλούσια τέχνη.</p></div>
+        <div class="mini"><h3>Μυκηναϊκός πολιτισμός</h3><p>Πολιτισμός της ηπειρωτικής Ελλάδας με ακροπόλεις, ανάκτορα, τείχη και Γραμμική Β.</p></div>
+        <div class="mini"><h3>Γραμμική Β</h3><p>Γραφή των Μυκηναίων που αποδίδει ελληνική γλώσσα.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="page" id="glossary">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Μικρό λεξικό</div>
-<h2>Λέξεις που πρέπει να ξέρω</h2>
-<div class="grid2">
-<div class="mini"><h3>Εποχή του Χαλκού</h3><p>Περίοδος περίπου 3000-1100 π.Χ. κατά την οποία ο χαλκός χρησιμοποιείται όλο και περισσότερο.</p></div>
-<div class="mini"><h3>Εγγύς Ανατολή</h3><p>Περιοχή όπου αναπτύχθηκαν μεγάλοι αρχαίοι πολιτισμοί, όπως στη Μεσοποταμία και την Αίγυπτο.</p></div>
-<div class="mini"><h3>Κυκλαδικός πολιτισμός</h3><p>Πολιτισμός των Κυκλάδων, γνωστός για τα μαρμάρινα ειδώλια.</p></div>
-<div class="mini"><h3>Μινωικός πολιτισμός</h3><p>Πολιτισμός της Κρήτης με ανάκτορα, εμπόριο και πλούσια τέχνη.</p></div>
-<div class="mini"><h3>Μυκηναϊκός πολιτισμός</h3><p>Πολιτισμός της ηπειρωτικής Ελλάδας με ακροπόλεις, ανάκτορα, τείχη και Γραμμική Β.</p></div>
-<div class="mini"><h3>Γραμμική Β</h3><p>Γραφή των Μυκηναίων που αποδίδει ελληνική γλώσσα.</p></div>
-</div>
-</div>
-</div>
-</section>
+
 <footer>Κεφάλαιο 2 — Η Εποχή του Χαλκού</footer>
+
+
 <script>
 window.CHAPTER_ID = "2";
 window.CHAPTER_TITLE = "🛶 Κεφάλαιο 2: Η Εποχή του Χαλκού";
 </script>
+
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -564,9 +606,12 @@ window.questions = [
 
 IstoriaChapter.init();
 </script>
+
+
 <script>
 try{saveChapterProgress({visited:true});}catch(e){}
 </script>
+
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
 </body>

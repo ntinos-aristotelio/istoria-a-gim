@@ -1,70 +1,75 @@
 <!DOCTYPE html>
-
 <html lang="el">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Teacher Analytics - Ιστορία Α΄ Γυμνασίου</title>
-<link href="core/index.css" rel="stylesheet"/>
-<link href="core/teacher-analytics.css" rel="stylesheet"/>
-<link href="core/v26-polish.css" rel="stylesheet"/>
-<link href="core/mobile-menu.css" rel="stylesheet"/>
+<link rel="stylesheet" href="core/index.css">
+<link rel="stylesheet" href="core/teacher-analytics.css">
+<link rel="stylesheet" href="core/v26-polish.css">
+<link rel="stylesheet" href="core/mobile-menu.css">
 </head>
 <body onload="renderTeacherAnalytics()">
 <header>
-<div class="bar">
-<div class="logo">📊 Teacher Analytics</div>
-<div class="nav"><a href="index.html">Αρχική</a>
-<a href="chapters.html">Κεφάλαια</a>
-<a class="secondary" href="revision.html">Επανάληψη</a>
-<a class="gold" href="smart-study.html">Smart Study</a>
-<a class="blue" href="intelligent-revision.html">Revision</a>
-<a class="btn secondary" href="world-map.html">Άτλαντας</a>
-<a class="btn gold" href="tools.html">Εργαλεία</a>
-</div>
-</div>
+  <div class="bar">
+    <div class="logo">📊 Teacher Analytics</div>
+    <div class="nav">
+      <a href="index.html">Αρχική</a>
+      <a class="secondary" href="revision.html">Γενική επανάληψη</a>
+      <a class="blue" href="intelligent-revision.html">Intelligent Revision</a>
+      <a class="gold" href="smart-study.html">Smart Study Mode</a>
+    <a class="btn blue" href="historical-campaign.html">History Campaign</a>
+          <a class="btn gold" href="mentor.html">Mentor</a>
+          <a class="btn secondary" href="world-map.html">Άτλαντας</a>
+      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
+    </div>
+  </div>
 </header>
 <div class="wrap">
-<section class="panel text teacher-hero">
-<div class="eyebrow">V10 Phase 7</div>
-<h1>Πίνακας εκπαιδευτικού</h1>
-<p>Συγκεντρώνει πρόοδο, σκορ, αδύναμα σημεία και προτάσεις επανάληψης από τα δεδομένα που αποθηκεύονται τοπικά στον browser.</p>
-<div class="teacher-grid">
-<div class="teacher-card"><div class="teacher-number" id="taCompleted">0/10</div><div class="teacher-label">Ολοκληρωμένα κεφάλαια</div></div>
-<div class="teacher-card"><div class="teacher-number" id="taAverage">—</div><div class="teacher-label">Μέσο σκορ</div></div>
-<div class="teacher-card"><div class="teacher-number" id="taXP">0</div><div class="teacher-label">XP μαθητή</div></div>
-<div class="teacher-card"><div class="teacher-number" id="taRank">—</div><div class="teacher-label">Rank / Level</div></div>
-</div>
-</section>
-<section class="analytics-section">
-<div class="eyebrow">Progress Heatmap</div>
-<h2>Εικόνα κεφαλαίων</h2>
-<div class="heatmap" id="taHeatmap"></div>
-</section>
-<section class="analytics-section">
-<div class="eyebrow">Ανά κεφάλαιο</div>
-<h2>Αναλυτική πρόοδος</h2>
-<table class="analytics-table">
-<thead><tr><th>Κεφάλαιο</th><th>Τίτλος</th><th>Κατάσταση</th><th>Σκορ</th><th>Ένδειξη</th></tr></thead>
-<tbody id="taTableBody"></tbody>
-</table>
-</section>
-<section class="analytics-section">
-<div class="eyebrow">Weak points</div>
-<h2>Αδύναμα σημεία</h2>
-<div class="heatmap" id="taWeakTopics"></div>
-<div class="recommendation" id="taRecommendation">Υπολογισμός πρότασης...</div>
-</section>
-<section class="analytics-section export-box">
-<div class="eyebrow">Αναφορά</div>
-<h2>Export για γονέα / εκπαιδευτικό</h2>
-<textarea id="taExport" readonly=""></textarea>
-<div class="teacher-actions">
-<button class="blue" onclick="copyTeacherReport()">Αντιγραφή αναφοράς</button>
-<button class="secondary" onclick="renderTeacherAnalytics()">Ανανέωση</button>
-<button onclick="resetTeacherDemo()">Καθαρισμός demo δεδομένων</button>
-</div>
-</section>
+  <section class="panel text teacher-hero">
+    <div class="eyebrow">V10 Phase 7</div>
+    <h1>Πίνακας εκπαιδευτικού</h1>
+    <p>Συγκεντρώνει πρόοδο, σκορ, αδύναμα σημεία και προτάσεις επανάληψης από τα δεδομένα που αποθηκεύονται τοπικά στον browser.</p>
+    <div class="teacher-grid">
+      <div class="teacher-card"><div class="teacher-number" id="taCompleted">0/10</div><div class="teacher-label">Ολοκληρωμένα κεφάλαια</div></div>
+      <div class="teacher-card"><div class="teacher-number" id="taAverage">—</div><div class="teacher-label">Μέσο σκορ</div></div>
+      <div class="teacher-card"><div class="teacher-number" id="taXP">0</div><div class="teacher-label">XP μαθητή</div></div>
+      <div class="teacher-card"><div class="teacher-number" id="taRank">—</div><div class="teacher-label">Rank / Level</div></div>
+    </div>
+  </section>
+
+  <section class="analytics-section">
+    <div class="eyebrow">Progress Heatmap</div>
+    <h2>Εικόνα κεφαλαίων</h2>
+    <div class="heatmap" id="taHeatmap"></div>
+  </section>
+
+  <section class="analytics-section">
+    <div class="eyebrow">Ανά κεφάλαιο</div>
+    <h2>Αναλυτική πρόοδος</h2>
+    <table class="analytics-table">
+      <thead><tr><th>Κεφάλαιο</th><th>Τίτλος</th><th>Κατάσταση</th><th>Σκορ</th><th>Ένδειξη</th></tr></thead>
+      <tbody id="taTableBody"></tbody>
+    </table>
+  </section>
+
+  <section class="analytics-section">
+    <div class="eyebrow">Weak points</div>
+    <h2>Αδύναμα σημεία</h2>
+    <div class="heatmap" id="taWeakTopics"></div>
+    <div class="recommendation" id="taRecommendation">Υπολογισμός πρότασης...</div>
+  </section>
+
+  <section class="analytics-section export-box">
+    <div class="eyebrow">Αναφορά</div>
+    <h2>Export για γονέα / εκπαιδευτικό</h2>
+    <textarea id="taExport" readonly></textarea>
+    <div class="teacher-actions">
+      <button class="blue" onclick="copyTeacherReport()">Αντιγραφή αναφοράς</button>
+      <button class="secondary" onclick="renderTeacherAnalytics()">Ανανέωση</button>
+      <button onclick="resetTeacherDemo()">Καθαρισμός demo δεδομένων</button>
+    </div>
+  </section>
 </div>
 <footer>V10 Phase 7 — Teacher Analytics</footer>
 <script src="core/storageEngine.js"></script>

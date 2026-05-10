@@ -1,24 +1,16 @@
-<nav class="main-menu">
-<a href="index.html">Αρχική</a>
-<a href="chapters.html">Κεφάλαια</a>
-<a href="review.html">Επανάληψη</a>
-<a href="smart-study.html">Smart Study</a>
-<a href="revision.html">Revision</a>
-<a href="atlas.html">Άτλαντας</a>
-<a href="tools.html">Εργαλεία</a>
-</nav><!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="el">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ιστορία Α΄ Γυμνασίου - Διαδραστική Εφαρμογή</title>
-<link href="core/index.css" rel="stylesheet"/>
-<link href="core/v26-polish.css" rel="stylesheet"/>
-<link href="core/v27-clean-home.css" rel="stylesheet"/>
-<link href="core/mobile-menu.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="core/index.css">
+<link rel="stylesheet" href="core/v26-polish.css">
+<link rel="stylesheet" href="core/v27-clean-home.css">
+<link rel="stylesheet" href="core/mobile-menu.css">
+
 <style id="tools-hub-cleanup">
-details summary:has-text("Προχωρημένα"),
 .advanced-home,
 .old-tools,
 #advanced-tools,
@@ -26,65 +18,70 @@ details summary:has-text("Προχωρημένα"),
 display:none !important;
 }
 </style>
-<style id="v43-final-cleanup">
-/* V43 final homepage cleanup */
-#chapters, .secondary-tools-panel, .secondary-tools-panel-wide { display:none !important; }
-.nav { display:flex !important; flex-wrap:wrap !important; gap:10px !important; align-items:center !important; }
-</style></head>
+
+</head>
+
 <body class="v27-clean-home">
+
 <header>
-<div class="bar">
-<div class="logo">🏛️ Ιστορία Α΄ Γυμνασίου</div>
-<div class="nav"><a href="index.html">Αρχική</a>
-<a href="chapters.html">Κεφάλαια</a>
-<a class="secondary" href="revision.html">Επανάληψη</a>
-<a class="gold" href="smart-study.html">Smart Study</a>
-<a class="blue" href="intelligent-revision.html">Revision</a>
-<a class="btn secondary" href="world-map.html">Άτλαντας</a>
-<a class="btn gold" href="tools.html">Εργαλεία</a>
-</div>
-</div>
+  <div class="bar">
+    <div class="logo">🏛️ Ιστορία Α΄ Γυμνασίου</div>
+    <div class="nav">
+
+      <a href="index.html">Αρχική</a>
+      <a href="chapters.html">Κεφάλαια</a>
+      <a class="secondary" href="revision.html">Επανάληψη</a>
+      <a class="gold" href="smart-study.html">Smart Study</a>
+      <a class="blue" href="intelligent-revision.html">Revision</a>
+      <a class="btn secondary" href="world-map.html">Άτλαντας</a>
+      <a class="btn gold" href="tools.html">Εργαλεία</a>
+    </div>
+  </div>
 </header>
+
 <div class="v26-hub clean-progress-strip" id="v26StudentHub"></div>
+
 <div class="wrap clean-home-wrap">
-<section class="clean-hero panel">
-<div class="clean-hero-copy">
-<div class="eyebrow">V27 Clean Learning Home</div>
-<h1>Ιστορία Α΄ Γυμνασίου</h1>
-<p>Διάλεξε πώς θέλεις να μελετήσεις σήμερα. Η αρχική κρατά μόνο τα βασικά μπροστά σου.</p>
-<div class="clean-hero-actions">
-<a class="gold" href="chapters.html" id="continueLearningBtn">Συνέχεια μάθησης</a>
-<a class="secondary" href="smart-study.html">Smart Study</a>
-</div>
-</div>
-<div class="clean-hero-card">
-<span class="clean-kicker">Προτεινόμενο βήμα</span>
-<strong id="cleanNextStepTitle">Υπολογισμός...</strong>
-<p id="cleanNextStepText">Άνοιξε ένα κεφάλαιο ή ξεκίνα από Smart Study.</p>
-</div>
-</section>
-<section aria-label="Βασικά εργαλεία μάθησης" class="clean-tools">
-<a class="clean-tool-card" href="smart-study.html">
-<span class="clean-tool-icon">🧠</span>
-<strong>Smart Study</strong>
-<small>Προσωποποιημένη μελέτη και πρόταση επανάληψης.</small>
-</a>
-<a class="clean-tool-card" href="world-map.html">
-<span class="clean-tool-icon">🗺️</span>
-<strong>Άτλαντας</strong>
-<small>Δες τόπους, πολιτισμούς και κινήσεις στον χάρτη.</small>
-</a>
-<a class="clean-tool-card" href="intelligent-revision.html">
-<span class="clean-tool-icon">⚡</span>
-<strong>Revision</strong>
-<small>Γρήγορη επανάληψη στα σημεία που χρειάζονται δουλειά.</small>
-</a>
-</section>
 
+  <section class="clean-hero panel">
+    <div class="clean-hero-copy">
+      <div class="eyebrow">V27 Clean Learning Home</div>
+      <h1>Ιστορία Α΄ Γυμνασίου</h1>
+      <p>Διάλεξε πώς θέλεις να μελετήσεις σήμερα. Η αρχική κρατά μόνο τα βασικά μπροστά σου.</p>
+      <div class="clean-hero-actions">
+        <a class="gold" id="continueLearningBtn" href="chapters.html">Συνέχεια μάθησης</a>
+        <a class="secondary" href="smart-study.html">Smart Study</a>
+      </div>
+    </div>
+    <div class="clean-hero-card">
+      <span class="clean-kicker">Προτεινόμενο βήμα</span>
+      <strong id="cleanNextStepTitle">Υπολογισμός...</strong>
+      <p id="cleanNextStepText">Άνοιξε ένα κεφάλαιο ή ξεκίνα από Smart Study.</p>
+    </div>
+  </section>
 
+  <section class="clean-tools" aria-label="Βασικά εργαλεία μάθησης">
+    <a class="clean-tool-card" href="smart-study.html">
+      <span class="clean-tool-icon">🧠</span>
+      <strong>Smart Study</strong>
+      <small>Προσωποποιημένη μελέτη και πρόταση επανάληψης.</small>
+    </a>
+    <a class="clean-tool-card" href="world-map.html">
+      <span class="clean-tool-icon">🗺️</span>
+      <strong>Άτλαντας</strong>
+      <small>Δες τόπους, πολιτισμούς και κινήσεις στον χάρτη.</small>
+    </a>
+    <a class="clean-tool-card" href="intelligent-revision.html">
+      <span class="clean-tool-icon">⚡</span>
+      <strong>Revision</strong>
+      <small>Γρήγορη επανάληψη στα σημεία που χρειάζονται δουλειά.</small>
+    </a>
+  </section>
 </div>
 
 <footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
+
+
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -213,6 +210,8 @@ renderStudentDashboard();
 
 /* === V4 polish: lightweight sound feedback === */
 </script>
+
+
 <script>
 (function(){
   const eras = [
@@ -249,6 +248,8 @@ renderStudentDashboard();
   renderSmartTimeline();
 })();
 </script>
+
+
 <script>
 (function(){
   const dailyQuestions = [
@@ -365,6 +366,8 @@ renderStudentDashboard();
   renderDailyStats();
 })();
 </script>
+
+
 <script>
 function saveMiniGame(name, score){
   let data = {};
@@ -538,8 +541,8 @@ function alexanderAnswer(btn, correct){
   }
 }
 </script>
+
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
-<a class="btn" href="tools.html">🧰 Εργαλεία</a>
 </body>
 </html>

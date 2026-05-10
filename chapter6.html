@@ -1,469 +1,509 @@
 <!DOCTYPE html>
-
 <html lang="el">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Κεφάλαιο 6 - Ο Πελοποννησιακός πόλεμος</title>
-<link href="core/chapter-core.css" rel="stylesheet"/>
-<link href="core/v26-polish.css" rel="stylesheet"/>
-<link href="core/mobile-menu.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="core/chapter-core.css">
+<link rel="stylesheet" href="core/v26-polish.css">
+<link rel="stylesheet" href="core/mobile-menu.css">
 </head>
+
 <body>
+
 <header>
-<div class="bar">
-<div class="logo">⚔️ Κεφάλαιο 6: Ο Πελοποννησιακός πόλεμος</div>
-<div class="nav"><a href="index.html">Αρχική</a>
-<a href="chapters.html">Κεφάλαια</a>
-<a class="secondary" href="revision.html">Επανάληψη</a>
-<a class="gold" href="smart-study.html">Smart Study</a>
-<a class="blue" href="intelligent-revision.html">Revision</a>
-<a class="btn secondary" href="world-map.html">Άτλαντας</a>
-<a class="btn gold" href="tools.html">Εργαλεία</a>
-</div>
-</div>
+  <div class="bar">
+    <div class="logo">⚔️ Κεφάλαιο 6: Ο Πελοποννησιακός πόλεμος</div>
+    <div class="nav">
+      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
+      <button onclick="showPage('home')">Αρχή</button>
+      <button onclick="openLesson()">Μάθημα</button>
+      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+      <button onclick="showPage('review')">Επανάληψη</button>
+      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
+      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
+    </div>
+  </div>
 </header>
+
 <!-- Σχέδια SVG -->
 <template id="draw-war">
-<svg viewbox="0 0 900 620">
-<rect fill="#e8eef5" height="620" rx="35" width="900"></rect>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"></path>
-<circle cx="280" cy="290" fill="#c3834b" r="58"></circle>
-<path d="M225 240 q55-75 120 0" fill="#3b2a1b"></path>
-<rect fill="#7b421f" height="145" rx="25" width="110" x="225" y="355"></rect>
-<circle cx="410" cy="395" fill="#b9422f" r="78" stroke="#5b351c" stroke-width="10"></circle>
-<path d="M410 325 v140 M340 395 h140" stroke="#ffd56d" stroke-width="11"></path>
-<circle cx="635" cy="290" fill="#c3834b" r="58"></circle>
-<path d="M580 240 q55-75 120 0" fill="#3b2a1b"></path>
-<rect fill="#246b63" height="145" rx="25" width="110" x="580" y="355"></rect>
-<path d="M520 220 L575 220 L565 500 L505 500Z" fill="#6a6a66" stroke="#333" stroke-width="8"></path>
-<path d="M495 220 L585 220 L555 165Z" fill="#4d4d49" stroke="#333" stroke-width="8"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Πελοποννησιακός πόλεμος</text>
-<text fill="#246b63" font-size="28" x="62" y="138">Αθήνα και Σπάρτη συγκρούονται</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8eef5"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"/>
+<circle cx="280" cy="290" r="58" fill="#c3834b"/>
+<path d="M225 240 q55-75 120 0" fill="#3b2a1b"/>
+<rect x="225" y="355" width="110" height="145" rx="25" fill="#7b421f"/>
+<circle cx="410" cy="395" r="78" fill="#b9422f" stroke="#5b351c" stroke-width="10"/>
+<path d="M410 325 v140 M340 395 h140" stroke="#ffd56d" stroke-width="11"/>
+<circle cx="635" cy="290" r="58" fill="#c3834b"/>
+<path d="M580 240 q55-75 120 0" fill="#3b2a1b"/>
+<rect x="580" y="355" width="110" height="145" rx="25" fill="#246b63"/>
+<path d="M520 220 L575 220 L565 500 L505 500Z" fill="#6a6a66" stroke="#333" stroke-width="8"/>
+<path d="M495 220 L585 220 L555 165Z" fill="#4d4d49" stroke="#333" stroke-width="8"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Πελοποννησιακός πόλεμος</text>
+<text x="62" y="138" font-size="28" fill="#246b63">Αθήνα και Σπάρτη συγκρούονται</text>
 </svg>
 </template>
+
 <template id="draw-rivals">
-<svg viewbox="0 0 900 620">
-<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
-<circle cx="240" cy="320" fill="#dff3ff" r="115" stroke="#246b63" stroke-width="10"></circle>
-<circle cx="660" cy="320" fill="#e8eef5" r="115" stroke="#7b421f" stroke-width="10"></circle>
-<text fill="#246b63" font-size="46" font-weight="900" x="165" y="310">Αθήνα</text>
-<text fill="#7b421f" font-size="46" font-weight="900" x="585" y="310">Σπάρτη</text>
-<path d="M365 320 H535" stroke="#b9422f" stroke-linecap="round" stroke-width="16"></path>
-<path d="M530 320 l-45 -28 v56z" fill="#b9422f"></path>
-<path d="M370 320 l45 -28 v56z" fill="#b9422f"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ανταγωνισμός</text>
-<text fill="#246b63" font-size="28" x="62" y="138">δύο διαφορετικές δυνάμεις στον ελληνικό κόσμο</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<circle cx="240" cy="320" r="115" fill="#dff3ff" stroke="#246b63" stroke-width="10"/>
+<circle cx="660" cy="320" r="115" fill="#e8eef5" stroke="#7b421f" stroke-width="10"/>
+<text x="165" y="310" font-size="46" font-weight="900" fill="#246b63">Αθήνα</text>
+<text x="585" y="310" font-size="46" font-weight="900" fill="#7b421f">Σπάρτη</text>
+<path d="M365 320 H535" stroke="#b9422f" stroke-width="16" stroke-linecap="round"/>
+<path d="M530 320 l-45 -28 v56z" fill="#b9422f"/>
+<path d="M370 320 l45 -28 v56z" fill="#b9422f"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ανταγωνισμός</text>
+<text x="62" y="138" font-size="28" fill="#246b63">δύο διαφορετικές δυνάμεις στον ελληνικό κόσμο</text>
 </svg>
 </template>
+
 <template id="draw-alliances">
-<svg viewbox="0 0 900 620">
-<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
-<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"></path>
-<path d="M0 520 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"></path>
-<circle cx="260" cy="300" fill="#8abc69" r="70" stroke="#246b63" stroke-width="8"></circle>
-<circle cx="620" cy="310" fill="#d8a24b" r="70" stroke="#7b421f" stroke-width="8"></circle>
-<circle cx="420" cy="220" fill="#fff8ec" r="45" stroke="#246b63" stroke-width="7"></circle>
-<circle cx="500" cy="430" fill="#fff8ec" r="45" stroke="#7b421f" stroke-width="7"></circle>
-<path d="M310 300 H375 M465 235 L570 295 M545 410 L590 350 M455 390 L310 325" stroke="#fff8ec" stroke-dasharray="16 12" stroke-linecap="round" stroke-width="10"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Συμμαχίες</text>
-<text fill="#246b63" font-size="28" x="62" y="138">ο πόλεμος απλώνεται σε πολλές πόλεις</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
+<path d="M0 520 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"/>
+<circle cx="260" cy="300" r="70" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
+<circle cx="620" cy="310" r="70" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<circle cx="420" cy="220" r="45" fill="#fff8ec" stroke="#246b63" stroke-width="7"/>
+<circle cx="500" cy="430" r="45" fill="#fff8ec" stroke="#7b421f" stroke-width="7"/>
+<path d="M310 300 H375 M465 235 L570 295 M545 410 L590 350 M455 390 L310 325" stroke="#fff8ec" stroke-width="10" stroke-linecap="round" stroke-dasharray="16 12"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Συμμαχίες</text>
+<text x="62" y="138" font-size="28" fill="#246b63">ο πόλεμος απλώνεται σε πολλές πόλεις</text>
 </svg>
 </template>
+
 <template id="draw-pericles-strategy">
-<svg viewbox="0 0 900 620">
-<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"></path>
-<rect fill="#d8a24b" height="145" stroke="#7b421f" stroke-width="8" width="610" x="145" y="345"></rect>
-<path d="M115 345 L785 345 L705 255 L195 255Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"></path>
-<path d="M190 490 V355 M710 490 V355" stroke="#7b421f" stroke-width="14"></path>
-<path d="M280 430 q100 60 200 0 l-50 70 h-100z" fill="#7b421f" stroke="#5b351c" stroke-width="8"></path>
-<path d="M385 430 L385 285" stroke="#7b421f" stroke-width="8"></path>
-<path d="M385 290 q90 50 0 100Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Στρατηγική Περικλή</text>
-<text fill="#246b63" font-size="28" x="62" y="138">τείχη, στόλος και αποφυγή μάχης στην ξηρά</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
+<rect x="145" y="345" width="610" height="145" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M115 345 L785 345 L705 255 L195 255Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
+<path d="M190 490 V355 M710 490 V355" stroke="#7b421f" stroke-width="14"/>
+<path d="M280 430 q100 60 200 0 l-50 70 h-100z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
+<path d="M385 430 L385 285" stroke="#7b421f" stroke-width="8"/>
+<path d="M385 290 q90 50 0 100Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Στρατηγική Περικλή</text>
+<text x="62" y="138" font-size="28" fill="#246b63">τείχη, στόλος και αποφυγή μάχης στην ξηρά</text>
 </svg>
 </template>
+
 <template id="draw-plague">
-<svg viewbox="0 0 900 620">
-<rect fill="#e8eef5" height="620" rx="35" width="900"></rect>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"></path>
-<circle cx="310" cy="310" fill="#c3834b" r="60"></circle>
-<rect fill="#7b421f" height="120" rx="25" width="110" x="255" y="375"></rect>
-<circle cx="540" cy="330" fill="#c3834b" r="55"></circle>
-<rect fill="#246b63" height="105" rx="25" width="100" x="490" y="390"></rect>
-<circle cx="660" cy="245" fill="#b9422f" r="22"></circle>
-<circle cx="705" cy="305" fill="#b9422f" r="16"></circle>
-<circle cx="635" cy="360" fill="#b9422f" r="18"></circle>
-<circle cx="745" cy="390" fill="#b9422f" r="24"></circle>
-<path d="M185 230 h540" stroke="#7b421f" stroke-linecap="round" stroke-width="12"></path>
-<path d="M185 230 L260 165 H650 L725 230" fill="#fff8ec" stroke="#7b421f" stroke-width="8"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ο λοιμός στην Αθήνα</text>
-<text fill="#246b63" font-size="28" x="62" y="138">αρρώστια, φόβος και απώλειες</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8eef5"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"/>
+<circle cx="310" cy="310" r="60" fill="#c3834b"/>
+<rect x="255" y="375" width="110" height="120" rx="25" fill="#7b421f"/>
+<circle cx="540" cy="330" r="55" fill="#c3834b"/>
+<rect x="490" y="390" width="100" height="105" rx="25" fill="#246b63"/>
+<circle cx="660" cy="245" r="22" fill="#b9422f"/>
+<circle cx="705" cy="305" r="16" fill="#b9422f"/>
+<circle cx="635" cy="360" r="18" fill="#b9422f"/>
+<circle cx="745" cy="390" r="24" fill="#b9422f"/>
+<path d="M185 230 h540" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
+<path d="M185 230 L260 165 H650 L725 230" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ο λοιμός στην Αθήνα</text>
+<text x="62" y="138" font-size="28" fill="#246b63">αρρώστια, φόβος και απώλειες</text>
 </svg>
 </template>
+
 <template id="draw-sicily">
-<svg viewbox="0 0 900 620">
-<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
-<path d="M0 450 C180 400 360 455 540 390 C700 330 810 360 900 320 L900 620 L0 620Z" fill="#4d9ab0"></path>
-<path d="M610 290 q90-75 170 10 q-80 60-170-10z" fill="#8abc69" stroke="#246b63" stroke-width="8"></path>
-<path d="M190 415 q130 75 260 0 l-50 75 h-165z" fill="#7b421f" stroke="#5b351c" stroke-width="8"></path>
-<path d="M320 415 L320 250" stroke="#7b421f" stroke-width="8"></path>
-<path d="M320 255 q95 52 0 110Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"></path>
-<path d="M390 390 C480 320 570 310 675 295" fill="none" stroke="#fff8ec" stroke-dasharray="18 16" stroke-linecap="round" stroke-width="12"></path>
-<path d="M675 295 l-45 -12 l25 40z" fill="#fff8ec"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Σικελική εκστρατεία</text>
-<text fill="#246b63" font-size="28" x="62" y="138">μια μακρινή και καταστροφική επιχείρηση</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 450 C180 400 360 455 540 390 C700 330 810 360 900 320 L900 620 L0 620Z" fill="#4d9ab0"/>
+<path d="M610 290 q90-75 170 10 q-80 60-170-10z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
+<path d="M190 415 q130 75 260 0 l-50 75 h-165z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
+<path d="M320 415 L320 250" stroke="#7b421f" stroke-width="8"/>
+<path d="M320 255 q95 52 0 110Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
+<path d="M390 390 C480 320 570 310 675 295" fill="none" stroke="#fff8ec" stroke-width="12" stroke-dasharray="18 16" stroke-linecap="round"/>
+<path d="M675 295 l-45 -12 l25 40z" fill="#fff8ec"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Σικελική εκστρατεία</text>
+<text x="62" y="138" font-size="28" fill="#246b63">μια μακρινή και καταστροφική επιχείρηση</text>
 </svg>
 </template>
+
 <template id="draw-sparta-victory">
-<svg viewbox="0 0 900 620">
-<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"></path>
-<circle cx="450" cy="245" fill="#c3834b" r="65"></circle>
-<path d="M385 190 q65-85 135 0" fill="#3b2a1b"></path>
-<rect fill="#7b421f" height="165" rx="28" width="130" x="385" y="320"></rect>
-<circle cx="290" cy="380" fill="#b9422f" r="82" stroke="#5b351c" stroke-width="10"></circle>
-<path d="M290 305 v150 M220 380 h140" stroke="#ffd56d" stroke-width="12"></path>
-<path d="M595 195 L660 195 L640 490 L570 490Z" fill="#6a6a66" stroke="#333" stroke-width="8"></path>
-<path d="M560 195 L675 195 L635 125Z" fill="#4d4d49" stroke="#333" stroke-width="8"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ήττα της Αθήνας</text>
-<text fill="#246b63" font-size="28" x="62" y="138">η Σπάρτη επικρατεί, αλλά η Ελλάδα εξαντλείται</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"/>
+<circle cx="450" cy="245" r="65" fill="#c3834b"/>
+<path d="M385 190 q65-85 135 0" fill="#3b2a1b"/>
+<rect x="385" y="320" width="130" height="165" rx="28" fill="#7b421f"/>
+<circle cx="290" cy="380" r="82" fill="#b9422f" stroke="#5b351c" stroke-width="10"/>
+<path d="M290 305 v150 M220 380 h140" stroke="#ffd56d" stroke-width="12"/>
+<path d="M595 195 L660 195 L640 490 L570 490Z" fill="#6a6a66" stroke="#333" stroke-width="8"/>
+<path d="M560 195 L675 195 L635 125Z" fill="#4d4d49" stroke="#333" stroke-width="8"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ήττα της Αθήνας</text>
+<text x="62" y="138" font-size="28" fill="#246b63">η Σπάρτη επικρατεί, αλλά η Ελλάδα εξαντλείται</text>
 </svg>
 </template>
+
 <template id="draw-consequences">
-<svg viewbox="0 0 900 620">
-<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
-<path d="M140 430 l70-130 l70 130 z" fill="#8d5b35"></path>
-<rect fill="#8d5b35" height="65" width="90" x="165" y="430"></rect>
-<path d="M430 420 l70-130 l70 130 z" fill="#a7652d"></path>
-<rect fill="#a7652d" height="75" width="90" x="455" y="420"></rect>
-<path d="M660 440 l70-130 l70 130 z" fill="#8d5b35"></path>
-<rect fill="#8d5b35" height="55" width="90" x="685" y="440"></rect>
-<path d="M220 260 C330 210 510 210 660 260" fill="none" stroke="#7b421f" stroke-dasharray="18 18" stroke-linecap="round" stroke-width="12"></path>
-<path d="M250 505 H760" stroke="#7b421f" stroke-linecap="round" stroke-width="12"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Συνέπειες</text>
-<text fill="#246b63" font-size="28" x="62" y="138">κούραση, καταστροφές και αποδυνάμωση των πόλεων</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<path d="M140 430 l70-130 l70 130 z" fill="#8d5b35"/>
+<rect x="165" y="430" width="90" height="65" fill="#8d5b35"/>
+<path d="M430 420 l70-130 l70 130 z" fill="#a7652d"/>
+<rect x="455" y="420" width="90" height="75" fill="#a7652d"/>
+<path d="M660 440 l70-130 l70 130 z" fill="#8d5b35"/>
+<rect x="685" y="440" width="90" height="55" fill="#8d5b35"/>
+<path d="M220 260 C330 210 510 210 660 260" fill="none" stroke="#7b421f" stroke-width="12" stroke-dasharray="18 18" stroke-linecap="round"/>
+<path d="M250 505 H760" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Συνέπειες</text>
+<text x="62" y="138" font-size="28" fill="#246b63">κούραση, καταστροφές και αποδυνάμωση των πόλεων</text>
 </svg>
 </template>
-<section class="page active" id="home">
-<div class="wrap">
-<div class="hero">
-<div class="panel text">
-<div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
-<h1>Κεφάλαιο 6<br/>Ο Πελοποννησιακός πόλεμος</h1>
-<p>Στόχος του κεφαλαίου είναι να καταλάβουμε γιατί συγκρούστηκαν Αθήνα και Σπάρτη και πώς ο πόλεμος αποδυνάμωσε τον ελληνικό κόσμο.</p>
-<div class="box">Κεντρική ιδέα: ο ανταγωνισμός Αθήνας και Σπάρτης οδηγεί σε μακρύ πόλεμο με σοβαρές συνέπειες για όλους.</div>
-<p>
-<button onclick="openLesson()">Ξεκίνα το μάθημα</button>
-<button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-</p>
-</div>
-<div class="panel drawing" data-draw="draw-war"></div>
-</div>
-</div>
+
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel text">
+        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+        <h1>Κεφάλαιο 6<br>Ο Πελοποννησιακός πόλεμος</h1>
+        <p>Στόχος του κεφαλαίου είναι να καταλάβουμε γιατί συγκρούστηκαν Αθήνα και Σπάρτη και πώς ο πόλεμος αποδυνάμωσε τον ελληνικό κόσμο.</p>
+        <div class="box">Κεντρική ιδέα: ο ανταγωνισμός Αθήνας και Σπάρτης οδηγεί σε μακρύ πόλεμο με σοβαρές συνέπειες για όλους.</div>
+        <p>
+          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+        </p>
+      </div>
+      <div class="panel drawing" data-draw="draw-war"></div>
+    </div>
+  </div>
 </section>
-<section class="wrap">
-<div class="panel text progress-card">
-<div class="eyebrow">Η πρόοδός μου</div>
-<h2>Πρόοδος κεφαλαίου</h2>
-<div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
-<div class="progress-small" id="chapterProgressText">Φόρτωση προόδου...</div>
-<div class="progress-badges" id="chapterBadgeList"></div>
-</div>
+
+  <section class="wrap">
+    <div class="panel text progress-card">
+      <div class="eyebrow">Η πρόοδός μου</div>
+      <h2>Πρόοδος κεφαλαίου</h2>
+      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
+      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
+      <div id="chapterBadgeList" class="progress-badges"></div>
+    </div>
+  </section>
+
+
+<section id="chapter6" class="page">
+  <div class="wrap">
+    <div class="lesson-top">
+      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+      <div id="counter">1 / 10</div>
+    </div>
+
+    <div class="panel">
+
+      <div class="lesson-slide active">
+        <div class="text">
+          <div class="eyebrow">1. Εισαγωγή</div>
+          <h2>Ο Πελοποννησιακός πόλεμος</h2>
+          <p>Ο Πελοποννησιακός πόλεμος ήταν μεγάλη σύγκρουση ανάμεσα στην Αθήνα και τη Σπάρτη, μαζί με τους συμμάχους τους.</p>
+          <div class="box">Βασική ιδέα: ο πόλεμος δεν ήταν μόνο μάχη δύο πόλεων, αλλά σύγκρουση δύο διαφορετικών συστημάτων δύναμης.</div>
+        </div>
+        <div class="drawing" data-draw="draw-war"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">2. Τα αίτια</div>
+          <h2>Γιατί ξέσπασε ο πόλεμος;</h2>
+          <p>Η άνοδος της Αθήνας ανησυχεί τη Σπάρτη και τους συμμάχους της.</p>
+          <ul>
+            <li>αθηναϊκή ηγεμονία</li>
+            <li>φόβος της Σπάρτης</li>
+            <li>ανταγωνισμός συμφερόντων</li>
+            <li>ένταση ανάμεσα στις συμμαχίες</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί η δύναμη μιας πόλης μπορεί να τρομάξει τις άλλες;</div>
+        </div>
+        <div class="drawing" data-draw="draw-rivals"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">3. Οι δύο συμμαχίες</div>
+          <h2>Αθήνα και Σπάρτη δεν πολεμούν μόνες</h2>
+          <p>Ο πόλεμος απλώνεται γιατί κάθε μεγάλη πόλη έχει συμμάχους.</p>
+          <ul>
+            <li>Αθηναϊκή Συμμαχία</li>
+            <li>Πελοποννησιακή Συμμαχία</li>
+            <li>ναυτική δύναμη της Αθήνας</li>
+            <li>στρατιωτική δύναμη της Σπάρτης στην ξηρά</li>
+          </ul>
+          <div class="box">Κλειδί: οι συμμαχίες κάνουν έναν πόλεμο μεγαλύτερο και πιο δύσκολο να τελειώσει.</div>
+        </div>
+        <div class="drawing" data-draw="draw-alliances"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">4. Η στρατηγική του Περικλή</div>
+          <h2>Τείχη και στόλος</h2>
+          <p>Ο Περικλής προτείνει οι Αθηναίοι να αποφύγουν τις μάχες στην ξηρά και να στηριχτούν στον στόλο και στα Μακρά Τείχη.</p>
+          <ul>
+            <li>προστασία πίσω από τα τείχη</li>
+            <li>έλεγχος της θάλασσας</li>
+            <li>χρήση του Πειραιά</li>
+            <li>αποφυγή άμεσης σύγκρουσης με τον σπαρτιατικό στρατό</li>
+          </ul>
+          <div class="box">Συζήτηση: ήταν σωστή η στρατηγική της άμυνας πίσω από τα τείχη;</div>
+        </div>
+        <div class="drawing" data-draw="draw-pericles-strategy"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">5. Ο λοιμός στην Αθήνα</div>
+          <h2>Μια μεγάλη δοκιμασία</h2>
+          <p>Στην Αθήνα ξεσπά λοιμός, δηλαδή βαριά αρρώστια, που προκαλεί πολλές απώλειες και αποδιοργάνωση.</p>
+          <ul>
+            <li>πολλοί άνθρωποι μέσα στα τείχη</li>
+            <li>φόβος και αναστάτωση</li>
+            <li>θάνατος πολλών πολιτών</li>
+            <li>θάνατος του Περικλή</li>
+          </ul>
+          <div class="box">Ερώτηση: πώς μπορεί μια αρρώστια να αλλάξει την πορεία ενός πολέμου;</div>
+        </div>
+        <div class="drawing" data-draw="draw-plague"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">6. Η ειρήνη του Νικία</div>
+          <h2>Μια προσωρινή ανάπαυλα</h2>
+          <p>Μετά από χρόνια πολέμου, Αθήνα και Σπάρτη συμφωνούν σε ειρήνη. Όμως η ειρήνη δεν κρατά πραγματικά για πολύ.</p>
+          <ul>
+            <li>κούραση από τον πόλεμο</li>
+            <li>προσπάθεια συμβιβασμού</li>
+            <li>συνεχιζόμενη δυσπιστία</li>
+            <li>νέες συγκρούσεις</li>
+          </ul>
+          <div class="box">Κλειδί: μια ειρήνη χωρίς εμπιστοσύνη είναι εύθραυστη.</div>
+        </div>
+        <div class="drawing" data-draw="draw-rivals"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">7. Η Σικελική εκστρατεία</div>
+          <h2>Η μεγάλη αποτυχία της Αθήνας</h2>
+          <p>Οι Αθηναίοι επιχειρούν εκστρατεία στη Σικελία. Η επιχείρηση καταλήγει σε μεγάλη καταστροφή.</p>
+          <ul>
+            <li>μακρινός στόχος</li>
+            <li>πολλά έξοδα</li>
+            <li>μεγάλες απώλειες</li>
+            <li>σοβαρό πλήγμα για την Αθήνα</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί είναι επικίνδυνο να ανοίγεις πολλά μέτωπα σε έναν πόλεμο;</div>
+        </div>
+        <div class="drawing" data-draw="draw-sicily"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">8. Το τέλος του πολέμου</div>
+          <h2>Η ήττα της Αθήνας</h2>
+          <p>Μετά από μακρόχρονη σύγκρουση, η Αθήνα ηττάται. Η Σπάρτη επικρατεί, αλλά και αυτή δεν μένει αλώβητη.</p>
+          <ul>
+            <li>εξάντληση της Αθήνας</li>
+            <li>ήττα του στόλου</li>
+            <li>παράδοση της πόλης</li>
+            <li>τέλος της αθηναϊκής ηγεμονίας</li>
+          </ul>
+          <div class="box">Κλειδί: στον μακρύ πόλεμο ακόμα και ο νικητής βγαίνει κουρασμένος.</div>
+        </div>
+        <div class="drawing" data-draw="draw-sparta-victory"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">9. Οι συνέπειες</div>
+          <h2>Ο ελληνικός κόσμος αποδυναμώνεται</h2>
+          <p>Ο Πελοποννησιακός πόλεμος εξαντλεί τις ελληνικές πόλεις και δημιουργεί αστάθεια.</p>
+          <ul>
+            <li>οικονομικές καταστροφές</li>
+            <li>ανθρώπινες απώλειες</li>
+            <li>πολιτικές συγκρούσεις</li>
+            <li>αποδυνάμωση των πόλεων-κρατών</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί ένας εμφύλιος πόλεμος είναι τόσο καταστροφικός;</div>
+        </div>
+        <div class="drawing" data-draw="draw-consequences"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
+          <h2>Σύνοψη Κεφαλαίου 6</h2>
+          <ul>
+            <li>Ο πόλεμος ξέσπασε από τον ανταγωνισμό Αθήνας και Σπάρτης.</li>
+            <li>Η Αθήνα στηρίχτηκε στον στόλο και στα Μακρά Τείχη.</li>
+            <li>Ο λοιμός αποδυνάμωσε σοβαρά την Αθήνα.</li>
+            <li>Η Σικελική εκστρατεία ήταν μεγάλη αποτυχία.</li>
+            <li>Η Αθήνα ηττήθηκε και ο ελληνικός κόσμος αποδυναμώθηκε.</li>
+          </ul>
+          <p>
+            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+          </p>
+        </div>
+        <div class="drawing" data-draw="draw-war"></div>
+      </div>
+
+    </div>
+
+    <div class="lesson-nav">
+      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+      <button onclick="nextSlide()">Επόμενο ➡</button>
+    </div>
+  </div>
 </section>
-<section class="page" id="chapter6">
-<div class="wrap">
-<div class="lesson-top">
-<button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
-<div class="progress-wrap"><div class="progress" id="progress"></div></div>
-<div id="counter">1 / 10</div>
-</div>
-<div class="panel">
-<div class="lesson-slide active">
-<div class="text">
-<div class="eyebrow">1. Εισαγωγή</div>
-<h2>Ο Πελοποννησιακός πόλεμος</h2>
-<p>Ο Πελοποννησιακός πόλεμος ήταν μεγάλη σύγκρουση ανάμεσα στην Αθήνα και τη Σπάρτη, μαζί με τους συμμάχους τους.</p>
-<div class="box">Βασική ιδέα: ο πόλεμος δεν ήταν μόνο μάχη δύο πόλεων, αλλά σύγκρουση δύο διαφορετικών συστημάτων δύναμης.</div>
-</div>
-<div class="drawing" data-draw="draw-war"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">2. Τα αίτια</div>
-<h2>Γιατί ξέσπασε ο πόλεμος;</h2>
-<p>Η άνοδος της Αθήνας ανησυχεί τη Σπάρτη και τους συμμάχους της.</p>
-<ul>
-<li>αθηναϊκή ηγεμονία</li>
-<li>φόβος της Σπάρτης</li>
-<li>ανταγωνισμός συμφερόντων</li>
-<li>ένταση ανάμεσα στις συμμαχίες</li>
-</ul>
-<div class="box">Ερώτηση: γιατί η δύναμη μιας πόλης μπορεί να τρομάξει τις άλλες;</div>
-</div>
-<div class="drawing" data-draw="draw-rivals"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">3. Οι δύο συμμαχίες</div>
-<h2>Αθήνα και Σπάρτη δεν πολεμούν μόνες</h2>
-<p>Ο πόλεμος απλώνεται γιατί κάθε μεγάλη πόλη έχει συμμάχους.</p>
-<ul>
-<li>Αθηναϊκή Συμμαχία</li>
-<li>Πελοποννησιακή Συμμαχία</li>
-<li>ναυτική δύναμη της Αθήνας</li>
-<li>στρατιωτική δύναμη της Σπάρτης στην ξηρά</li>
-</ul>
-<div class="box">Κλειδί: οι συμμαχίες κάνουν έναν πόλεμο μεγαλύτερο και πιο δύσκολο να τελειώσει.</div>
-</div>
-<div class="drawing" data-draw="draw-alliances"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">4. Η στρατηγική του Περικλή</div>
-<h2>Τείχη και στόλος</h2>
-<p>Ο Περικλής προτείνει οι Αθηναίοι να αποφύγουν τις μάχες στην ξηρά και να στηριχτούν στον στόλο και στα Μακρά Τείχη.</p>
-<ul>
-<li>προστασία πίσω από τα τείχη</li>
-<li>έλεγχος της θάλασσας</li>
-<li>χρήση του Πειραιά</li>
-<li>αποφυγή άμεσης σύγκρουσης με τον σπαρτιατικό στρατό</li>
-</ul>
-<div class="box">Συζήτηση: ήταν σωστή η στρατηγική της άμυνας πίσω από τα τείχη;</div>
-</div>
-<div class="drawing" data-draw="draw-pericles-strategy"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">5. Ο λοιμός στην Αθήνα</div>
-<h2>Μια μεγάλη δοκιμασία</h2>
-<p>Στην Αθήνα ξεσπά λοιμός, δηλαδή βαριά αρρώστια, που προκαλεί πολλές απώλειες και αποδιοργάνωση.</p>
-<ul>
-<li>πολλοί άνθρωποι μέσα στα τείχη</li>
-<li>φόβος και αναστάτωση</li>
-<li>θάνατος πολλών πολιτών</li>
-<li>θάνατος του Περικλή</li>
-</ul>
-<div class="box">Ερώτηση: πώς μπορεί μια αρρώστια να αλλάξει την πορεία ενός πολέμου;</div>
-</div>
-<div class="drawing" data-draw="draw-plague"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">6. Η ειρήνη του Νικία</div>
-<h2>Μια προσωρινή ανάπαυλα</h2>
-<p>Μετά από χρόνια πολέμου, Αθήνα και Σπάρτη συμφωνούν σε ειρήνη. Όμως η ειρήνη δεν κρατά πραγματικά για πολύ.</p>
-<ul>
-<li>κούραση από τον πόλεμο</li>
-<li>προσπάθεια συμβιβασμού</li>
-<li>συνεχιζόμενη δυσπιστία</li>
-<li>νέες συγκρούσεις</li>
-</ul>
-<div class="box">Κλειδί: μια ειρήνη χωρίς εμπιστοσύνη είναι εύθραυστη.</div>
-</div>
-<div class="drawing" data-draw="draw-rivals"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">7. Η Σικελική εκστρατεία</div>
-<h2>Η μεγάλη αποτυχία της Αθήνας</h2>
-<p>Οι Αθηναίοι επιχειρούν εκστρατεία στη Σικελία. Η επιχείρηση καταλήγει σε μεγάλη καταστροφή.</p>
-<ul>
-<li>μακρινός στόχος</li>
-<li>πολλά έξοδα</li>
-<li>μεγάλες απώλειες</li>
-<li>σοβαρό πλήγμα για την Αθήνα</li>
-</ul>
-<div class="box">Ερώτηση: γιατί είναι επικίνδυνο να ανοίγεις πολλά μέτωπα σε έναν πόλεμο;</div>
-</div>
-<div class="drawing" data-draw="draw-sicily"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">8. Το τέλος του πολέμου</div>
-<h2>Η ήττα της Αθήνας</h2>
-<p>Μετά από μακρόχρονη σύγκρουση, η Αθήνα ηττάται. Η Σπάρτη επικρατεί, αλλά και αυτή δεν μένει αλώβητη.</p>
-<ul>
-<li>εξάντληση της Αθήνας</li>
-<li>ήττα του στόλου</li>
-<li>παράδοση της πόλης</li>
-<li>τέλος της αθηναϊκής ηγεμονίας</li>
-</ul>
-<div class="box">Κλειδί: στον μακρύ πόλεμο ακόμα και ο νικητής βγαίνει κουρασμένος.</div>
-</div>
-<div class="drawing" data-draw="draw-sparta-victory"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">9. Οι συνέπειες</div>
-<h2>Ο ελληνικός κόσμος αποδυναμώνεται</h2>
-<p>Ο Πελοποννησιακός πόλεμος εξαντλεί τις ελληνικές πόλεις και δημιουργεί αστάθεια.</p>
-<ul>
-<li>οικονομικές καταστροφές</li>
-<li>ανθρώπινες απώλειες</li>
-<li>πολιτικές συγκρούσεις</li>
-<li>αποδυνάμωση των πόλεων-κρατών</li>
-</ul>
-<div class="box">Ερώτηση: γιατί ένας εμφύλιος πόλεμος είναι τόσο καταστροφικός;</div>
-</div>
-<div class="drawing" data-draw="draw-consequences"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
-<h2>Σύνοψη Κεφαλαίου 6</h2>
-<ul>
-<li>Ο πόλεμος ξέσπασε από τον ανταγωνισμό Αθήνας και Σπάρτης.</li>
-<li>Η Αθήνα στηρίχτηκε στον στόλο και στα Μακρά Τείχη.</li>
-<li>Ο λοιμός αποδυνάμωσε σοβαρά την Αθήνα.</li>
-<li>Η Σικελική εκστρατεία ήταν μεγάλη αποτυχία.</li>
-<li>Η Αθήνα ηττήθηκε και ο ελληνικός κόσμος αποδυναμώθηκε.</li>
-</ul>
-<p>
-<button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
-<button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
-</p>
-</div>
-<div class="drawing" data-draw="draw-war"></div>
-</div>
-</div>
-<div class="lesson-nav">
-<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-<button onclick="nextSlide()">Επόμενο ➡</button>
-</div>
-</div>
+
+<section id="extras" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Extra για τα παιδιά</div>
+      <h2>Δραστηριότητες Κεφαλαίου 6</h2>
+      <p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε τα αίτια, την εξέλιξη και τις συνέπειες του πολέμου.</p>
+
+      <div class="cards">
+        <div class="card" onclick="showPage('missions')">
+          <div><div class="icon">🎯</div><h3>Αποστολή αιτίων</h3><p>Βρες γιατί συγκρούστηκαν Αθήνα και Σπάρτη.</p></div>
+          <span class="tag">δραστηριότητα</span>
+        </div>
+        <div class="card" onclick="showPage('detective')">
+          <div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
+          <span class="tag">παιχνίδι σκέψης</span>
+        </div>
+        <div class="card" onclick="showPage('concepts')">
+          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+          <span class="tag">επανάληψη</span>
+        </div>
+        <div class="card" onclick="showPage('today')">
+          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+          <span class="tag">ολοκλήρωση</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="page" id="extras">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Extra για τα παιδιά</div>
-<h2>Δραστηριότητες Κεφαλαίου 6</h2>
-<p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε τα αίτια, την εξέλιξη και τις συνέπειες του πολέμου.</p>
-<div class="cards">
-<div class="card" onclick="showPage('missions')">
-<div><div class="icon">🎯</div><h3>Αποστολή αιτίων</h3><p>Βρες γιατί συγκρούστηκαν Αθήνα και Σπάρτη.</p></div>
-<span class="tag">δραστηριότητα</span>
-</div>
-<div class="card" onclick="showPage('detective')">
-<div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
-<span class="tag">παιχνίδι σκέψης</span>
-</div>
-<div class="card" onclick="showPage('concepts')">
-<div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
-<span class="tag">επανάληψη</span>
-</div>
-<div class="card" onclick="showPage('today')">
-<div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
-<span class="tag">ολοκλήρωση</span>
-</div>
-</div>
-</div>
-</div>
+
+<section id="missions" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🎯 Αποστολή αιτίων</div>
+      <h2>Γιατί έγινε ο πόλεμος;</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Αθήνα</h3><p>Γράψε 2 στοιχεία που έκαναν την Αθήνα ισχυρή.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Σπάρτη</h3><p>Γράψε γιατί η Σπάρτη ανησυχούσε.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Συμμαχίες</h3><p>Γράψε πώς οι συμμαχίες μεγάλωσαν τον πόλεμο.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Συνέπειες</h3><p>Γράψε 2 συνέπειες του πολέμου για τον ελληνικό κόσμο.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+      </div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="missions">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🎯 Αποστολή αιτίων</div>
-<h2>Γιατί έγινε ο πόλεμος;</h2>
-<div class="grid2">
-<div class="mini"><h3>Αθήνα</h3><p>Γράψε 2 στοιχεία που έκαναν την Αθήνα ισχυρή.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Σπάρτη</h3><p>Γράψε γιατί η Σπάρτη ανησυχούσε.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Συμμαχίες</h3><p>Γράψε πώς οι συμμαχίες μεγάλωσαν τον πόλεμο.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Συνέπειες</h3><p>Γράψε 2 συνέπειες του πολέμου για τον ελληνικό κόσμο.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="detective" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🕵️ Βρες την έννοια</div>
+      <h2>Στοιχείο: οι Αθηναίοι επιχειρούν μακρινή εκστρατεία που καταλήγει σε καταστροφή</h2>
+      <p>Ποιο γεγονός περιγράφει;</p>
+      <button class="answer detect-answer" onclick="selectDetect(false,this)">Η ειρήνη του Νικία</button>
+      <button class="answer detect-answer" onclick="selectDetect(true,this)">Η Σικελική εκστρατεία</button>
+      <button class="answer detect-answer" onclick="selectDetect(false,this)">Η ίδρυση της Δήλου</button>
+      <div id="detectResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+      <p>
+        <button onclick="checkDetect()">Έλεγχος</button>
+        <button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
+        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+      </p>
+    </div>
+  </div>
 </section>
-<section class="page" id="detective">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🕵️ Βρες την έννοια</div>
-<h2>Στοιχείο: οι Αθηναίοι επιχειρούν μακρινή εκστρατεία που καταλήγει σε καταστροφή</h2>
-<p>Ποιο γεγονός περιγράφει;</p>
-<button class="answer detect-answer" onclick="selectDetect(false,this)">Η ειρήνη του Νικία</button>
-<button class="answer detect-answer" onclick="selectDetect(true,this)">Η Σικελική εκστρατεία</button>
-<button class="answer detect-answer" onclick="selectDetect(false,this)">Η ίδρυση της Δήλου</button>
-<div class="box" id="detectResult">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
-<p>
-<button onclick="checkDetect()">Έλεγχος</button>
-<button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
-<button class="secondary" onclick="showPage('extras')">← Πίσω</button>
-</p>
-</div>
-</div>
+
+<section id="concepts" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
+      <h2>Πώς συνδέονται οι λέξεις;</h2>
+      <div class="concept-map">
+        <div class="bubble main" onclick="concept('Ο Πελοποννησιακός πόλεμος είναι σύγκρουση Αθήνας και Σπάρτης με τους συμμάχους τους.')">Πόλεμος</div>
+        <div class="bubble" onclick="concept('Η Αθήνα στηρίζεται στον στόλο και στα Μακρά Τείχη.')">Αθήνα</div>
+        <div class="bubble" onclick="concept('Η Σπάρτη έχει ισχυρό στρατό στην ξηρά και φοβάται την αθηναϊκή δύναμη.')">Σπάρτη</div>
+        <div class="bubble" onclick="concept('Οι συμμαχίες κάνουν τον πόλεμο μεγαλύτερο και πιο γενικευμένο.')">συμμαχίες</div>
+        <div class="bubble" onclick="concept('Ο λοιμός αποδυναμώνει σοβαρά την Αθήνα.')">λοιμός</div>
+        <div class="bubble" onclick="concept('Η Σικελική εκστρατεία είναι μεγάλη αθηναϊκή αποτυχία.')">Σικελία</div>
+      </div>
+      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="concepts">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🧠 Χάρτης εννοιών</div>
-<h2>Πώς συνδέονται οι λέξεις;</h2>
-<div class="concept-map">
-<div class="bubble main" onclick="concept('Ο Πελοποννησιακός πόλεμος είναι σύγκρουση Αθήνας και Σπάρτης με τους συμμάχους τους.')">Πόλεμος</div>
-<div class="bubble" onclick="concept('Η Αθήνα στηρίζεται στον στόλο και στα Μακρά Τείχη.')">Αθήνα</div>
-<div class="bubble" onclick="concept('Η Σπάρτη έχει ισχυρό στρατό στην ξηρά και φοβάται την αθηναϊκή δύναμη.')">Σπάρτη</div>
-<div class="bubble" onclick="concept('Οι συμμαχίες κάνουν τον πόλεμο μεγαλύτερο και πιο γενικευμένο.')">συμμαχίες</div>
-<div class="bubble" onclick="concept('Ο λοιμός αποδυναμώνει σοβαρά την Αθήνα.')">λοιμός</div>
-<div class="bubble" onclick="concept('Η Σικελική εκστρατεία είναι μεγάλη αθηναϊκή αποτυχία.')">Σικελία</div>
-</div>
-<div class="box" id="conceptResult">Πάτησε έναν κύκλο.</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="today" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+      <h2>Checklist Κεφαλαίου 6</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Έμαθα γιατί συγκρούστηκαν Αθήνα και Σπάρτη.</label>
+        <label><input type="checkbox"> Κατάλαβα τον ρόλο των συμμαχιών.</label>
+        <label><input type="checkbox"> Ξέρω τη στρατηγική του Περικλή.</label>
+        <label><input type="checkbox"> Θυμάμαι τον λοιμό και τη Σικελική εκστρατεία.</label>
+        <label><input type="checkbox"> Κατάλαβα τις συνέπειες του πολέμου.</label>
+      </div>
+      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+      <div id="badgeBox"></div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="today">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">✅ Τι έμαθα σήμερα</div>
-<h2>Checklist Κεφαλαίου 6</h2>
-<div class="checklist">
-<label><input type="checkbox"/> Έμαθα γιατί συγκρούστηκαν Αθήνα και Σπάρτη.</label>
-<label><input type="checkbox"/> Κατάλαβα τον ρόλο των συμμαχιών.</label>
-<label><input type="checkbox"/> Ξέρω τη στρατηγική του Περικλή.</label>
-<label><input type="checkbox"/> Θυμάμαι τον λοιμό και τη Σικελική εκστρατεία.</label>
-<label><input type="checkbox"/> Κατάλαβα τις συνέπειες του πολέμου.</label>
-</div>
-<button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
-<div id="badgeBox"></div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="review" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Επανάληψη</div>
+      <h2>Ασκήσεις για το Κεφάλαιο 6</h2>
+      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+      <div id="quizArea"></div>
+      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+      <div id="scoreBox"></div>
+    </div>
+  </div>
 </section>
-<section class="page" id="review">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Επανάληψη</div>
-<h2>Ασκήσεις για το Κεφάλαιο 6</h2>
-<p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
-<div id="quizArea"></div>
-<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
-<button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
-<div id="scoreBox"></div>
-</div>
-</div>
+
+<section id="glossary" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Μικρό λεξικό</div>
+      <h2>Λέξεις που πρέπει να ξέρω</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Πελοποννησιακός πόλεμος</h3><p>Μεγάλη σύγκρουση ανάμεσα στην Αθήνα και τη Σπάρτη με τους συμμάχους τους.</p></div>
+        <div class="mini"><h3>Συμμαχία</h3><p>Συνεργασία πόλεων ή κρατών για κοινό σκοπό.</p></div>
+        <div class="mini"><h3>Μακρά Τείχη</h3><p>Τείχη που συνέδεαν την Αθήνα με τον Πειραιά και προστάτευαν την επικοινωνία με το λιμάνι.</p></div>
+        <div class="mini"><h3>Λοιμός</h3><p>Βαριά αρρώστια που εξαπλώνεται σε πολλούς ανθρώπους.</p></div>
+        <div class="mini"><h3>Σικελική εκστρατεία</h3><p>Μεγάλη και αποτυχημένη εκστρατεία των Αθηναίων στη Σικελία.</p></div>
+        <div class="mini"><h3>Ηγεμονία</h3><p>Κυριαρχική επιρροή μιας πόλης πάνω σε άλλες.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="page" id="glossary">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Μικρό λεξικό</div>
-<h2>Λέξεις που πρέπει να ξέρω</h2>
-<div class="grid2">
-<div class="mini"><h3>Πελοποννησιακός πόλεμος</h3><p>Μεγάλη σύγκρουση ανάμεσα στην Αθήνα και τη Σπάρτη με τους συμμάχους τους.</p></div>
-<div class="mini"><h3>Συμμαχία</h3><p>Συνεργασία πόλεων ή κρατών για κοινό σκοπό.</p></div>
-<div class="mini"><h3>Μακρά Τείχη</h3><p>Τείχη που συνέδεαν την Αθήνα με τον Πειραιά και προστάτευαν την επικοινωνία με το λιμάνι.</p></div>
-<div class="mini"><h3>Λοιμός</h3><p>Βαριά αρρώστια που εξαπλώνεται σε πολλούς ανθρώπους.</p></div>
-<div class="mini"><h3>Σικελική εκστρατεία</h3><p>Μεγάλη και αποτυχημένη εκστρατεία των Αθηναίων στη Σικελία.</p></div>
-<div class="mini"><h3>Ηγεμονία</h3><p>Κυριαρχική επιρροή μιας πόλης πάνω σε άλλες.</p></div>
-</div>
-</div>
-</div>
-</section>
+
 <footer>Κεφάλαιο 6 — Ο Πελοποννησιακός πόλεμος</footer>
+
+
 <script>
 window.CHAPTER_ID = "6";
 window.CHAPTER_TITLE = "⚔️ Κεφάλαιο 6: Ο Πελοποννησιακός πόλεμος";
 </script>
+
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -545,9 +585,12 @@ window.questions = [
 
 IstoriaChapter.init();
 </script>
+
+
 <script>
 try{saveChapterProgress({visited:true});}catch(e){}
 </script>
+
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
 </body>

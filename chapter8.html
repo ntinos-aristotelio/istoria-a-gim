@@ -1,455 +1,495 @@
 <!DOCTYPE html>
-
 <html lang="el">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Κεφάλαιο 8 - Τα ελληνιστικά χρόνια</title>
-<link href="core/chapter-core.css" rel="stylesheet"/>
-<link href="core/v26-polish.css" rel="stylesheet"/>
-<link href="core/mobile-menu.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="core/chapter-core.css">
+<link rel="stylesheet" href="core/v26-polish.css">
+<link rel="stylesheet" href="core/mobile-menu.css">
 </head>
+
 <body>
+
 <header>
-<div class="bar">
-<div class="logo">🌍 Κεφάλαιο 8: Τα ελληνιστικά χρόνια</div>
-<div class="nav"><a href="index.html">Αρχική</a>
-<a href="chapters.html">Κεφάλαια</a>
-<a class="secondary" href="revision.html">Επανάληψη</a>
-<a class="gold" href="smart-study.html">Smart Study</a>
-<a class="blue" href="intelligent-revision.html">Revision</a>
-<a class="btn secondary" href="world-map.html">Άτλαντας</a>
-<a class="btn gold" href="tools.html">Εργαλεία</a>
-</div>
-</div>
+  <div class="bar">
+    <div class="logo">🌍 Κεφάλαιο 8: Τα ελληνιστικά χρόνια</div>
+    <div class="nav">
+      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
+      <button onclick="showPage('home')">Αρχή</button>
+      <button onclick="openLesson()">Μάθημα</button>
+      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+      <button onclick="showPage('review')">Επανάληψη</button>
+      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
+      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
+    </div>
+  </div>
 </header>
+
 <template id="draw-hellenistic">
-<svg viewbox="0 0 900 620">
-<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
-<circle cx="240" cy="290" fill="#dff3ff" r="95" stroke="#246b63" stroke-width="10"></circle>
-<text fill="#246b63" font-size="40" font-weight="900" x="185" y="305">Ελλάδα</text>
-<circle cx="470" cy="330" fill="#fff8ec" r="95" stroke="#7b421f" stroke-width="10"></circle>
-<text fill="#7b421f" font-size="40" font-weight="900" x="415" y="345">Ασία</text>
-<circle cx="700" cy="290" fill="#d6bd8b" r="95" stroke="#a7652d" stroke-width="10"></circle>
-<text fill="#a7652d" font-size="40" font-weight="900" x="635" y="305">Αίγυπτος</text>
-<path d="M335 300 H375 M565 315 H605" stroke="#7b421f" stroke-linecap="round" stroke-width="14"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ελληνιστικός κόσμος</text>
-<text fill="#246b63" font-size="28" x="62" y="138">συνάντηση λαών, γλωσσών και πολιτισμών</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
+<circle cx="240" cy="290" r="95" fill="#dff3ff" stroke="#246b63" stroke-width="10"/>
+<text x="185" y="305" font-size="40" font-weight="900" fill="#246b63">Ελλάδα</text>
+<circle cx="470" cy="330" r="95" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<text x="415" y="345" font-size="40" font-weight="900" fill="#7b421f">Ασία</text>
+<circle cx="700" cy="290" r="95" fill="#d6bd8b" stroke="#a7652d" stroke-width="10"/>
+<text x="635" y="305" font-size="40" font-weight="900" fill="#a7652d">Αίγυπτος</text>
+<path d="M335 300 H375 M565 315 H605" stroke="#7b421f" stroke-width="14" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ελληνιστικός κόσμος</text>
+<text x="62" y="138" font-size="28" fill="#246b63">συνάντηση λαών, γλωσσών και πολιτισμών</text>
 </svg>
 </template>
+
 <template id="draw-kingdoms">
-<svg viewbox="0 0 900 620">
-<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"></path>
-<circle cx="220" cy="330" fill="#d8a24b" r="85" stroke="#7b421f" stroke-width="9"></circle>
-<circle cx="455" cy="300" fill="#fff8ec" r="95" stroke="#246b63" stroke-width="9"></circle>
-<circle cx="700" cy="350" fill="#d6bd8b" r="85" stroke="#a7652d" stroke-width="9"></circle>
-<path d="M170 265 h100 l-25 -45 l-25 25 l-25 -25z" fill="#7b421f"></path>
-<path d="M400 225 h110 l-30 -50 l-25 30 l-30 -30z" fill="#246b63"></path>
-<path d="M650 285 h100 l-25 -45 l-25 25 l-25 -25z" fill="#a7652d"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ελληνιστικά βασίλεια</text>
-<text fill="#246b63" font-size="28" x="62" y="138">μετά τον Αλέξανδρο, η αυτοκρατορία μοιράζεται</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
+<circle cx="220" cy="330" r="85" fill="#d8a24b" stroke="#7b421f" stroke-width="9"/>
+<circle cx="455" cy="300" r="95" fill="#fff8ec" stroke="#246b63" stroke-width="9"/>
+<circle cx="700" cy="350" r="85" fill="#d6bd8b" stroke="#a7652d" stroke-width="9"/>
+<path d="M170 265 h100 l-25 -45 l-25 25 l-25 -25z" fill="#7b421f"/>
+<path d="M400 225 h110 l-30 -50 l-25 30 l-30 -30z" fill="#246b63"/>
+<path d="M650 285 h100 l-25 -45 l-25 25 l-25 -25z" fill="#a7652d"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ελληνιστικά βασίλεια</text>
+<text x="62" y="138" font-size="28" fill="#246b63">μετά τον Αλέξανδρο, η αυτοκρατορία μοιράζεται</text>
 </svg>
 </template>
+
 <template id="draw-alexandria">
-<svg viewbox="0 0 900 620">
-<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
-<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"></path>
-<path d="M0 520 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"></path>
-<rect fill="#d8a24b" height="115" stroke="#7b421f" stroke-width="8" width="100" x="145" y="365"></rect>
-<rect fill="#d8a24b" height="155" stroke="#7b421f" stroke-width="8" width="100" x="315" y="325"></rect>
-<rect fill="#d8a24b" height="115" stroke="#7b421f" stroke-width="8" width="100" x="485" y="365"></rect>
-<path d="M110 365 L365 220 L620 365Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"></path>
-<rect fill="#fff8ec" height="250" stroke="#246b63" stroke-width="8" width="70" x="675" y="230"></rect>
-<circle cx="710" cy="200" fill="#ffd56d" r="30" stroke="#246b63" stroke-width="7"></circle>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Αλεξάνδρεια</text>
-<text fill="#246b63" font-size="28" x="62" y="138">πόλη, λιμάνι, φάρος και γνώση</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
+<path d="M0 520 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"/>
+<rect x="145" y="365" width="100" height="115" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="315" y="325" width="100" height="155" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="485" y="365" width="100" height="115" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M110 365 L365 220 L620 365Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<rect x="675" y="230" width="70" height="250" fill="#fff8ec" stroke="#246b63" stroke-width="8"/>
+<circle cx="710" cy="200" r="30" fill="#ffd56d" stroke="#246b63" stroke-width="7"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Αλεξάνδρεια</text>
+<text x="62" y="138" font-size="28" fill="#246b63">πόλη, λιμάνι, φάρος και γνώση</text>
 </svg>
 </template>
+
 <template id="draw-library">
-<svg viewbox="0 0 900 620">
-<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
-<rect fill="#fff8ec" height="330" rx="25" stroke="#7b421f" stroke-width="10" width="600" x="150" y="170"></rect>
-<rect fill="#d8a24b" height="210" stroke="#7b421f" stroke-width="8" width="90" x="210" y="230"></rect>
-<rect fill="#a7652d" height="220" stroke="#7b421f" stroke-width="8" width="90" x="330" y="220"></rect>
-<rect fill="#246b63" height="200" stroke="#7b421f" stroke-width="8" width="90" x="450" y="240"></rect>
-<rect fill="#d8a24b" height="225" stroke="#7b421f" stroke-width="8" width="90" x="570" y="215"></rect>
-<path d="M190 455 H695" stroke="#7b421f" stroke-linecap="round" stroke-width="12"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Βιβλιοθήκη</text>
-<text fill="#246b63" font-size="28" x="62" y="138">γνώση, έρευνα και επιστήμες</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<rect x="150" y="170" width="600" height="330" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<rect x="210" y="230" width="90" height="210" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<rect x="330" y="220" width="90" height="220" fill="#a7652d" stroke="#7b421f" stroke-width="8"/>
+<rect x="450" y="240" width="90" height="200" fill="#246b63" stroke="#7b421f" stroke-width="8"/>
+<rect x="570" y="215" width="90" height="225" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M190 455 H695" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Βιβλιοθήκη</text>
+<text x="62" y="138" font-size="28" fill="#246b63">γνώση, έρευνα και επιστήμες</text>
 </svg>
 </template>
+
 <template id="draw-science">
-<svg viewbox="0 0 900 620">
-<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
-<circle cx="280" cy="300" fill="#fff8ec" r="95" stroke="#7b421f" stroke-width="9"></circle>
-<path d="M220 300 h120 M280 240 v120" stroke="#246b63" stroke-linecap="round" stroke-width="10"></path>
-<circle cx="560" cy="280" fill="#d8a24b" r="70" stroke="#7b421f" stroke-width="8"></circle>
-<path d="M560 210 v140 M490 280 h140" stroke="#fff8ec" stroke-width="9"></path>
-<path d="M620 405 q95 55 190 0 l-45 70 h-100z" fill="#7b421f" stroke="#5b351c" stroke-width="8"></path>
-<path d="M715 405 L715 250" stroke="#7b421f" stroke-width="8"></path>
-<path d="M715 255 q75 45 0 90Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Επιστήμες</text>
-<text fill="#246b63" font-size="28" x="62" y="138">μαθηματικά, αστρονομία, ιατρική και τεχνική</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
+<circle cx="280" cy="300" r="95" fill="#fff8ec" stroke="#7b421f" stroke-width="9"/>
+<path d="M220 300 h120 M280 240 v120" stroke="#246b63" stroke-width="10" stroke-linecap="round"/>
+<circle cx="560" cy="280" r="70" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M560 210 v140 M490 280 h140" stroke="#fff8ec" stroke-width="9"/>
+<path d="M620 405 q95 55 190 0 l-45 70 h-100z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
+<path d="M715 405 L715 250" stroke="#7b421f" stroke-width="8"/>
+<path d="M715 255 q75 45 0 90Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Επιστήμες</text>
+<text x="62" y="138" font-size="28" fill="#246b63">μαθηματικά, αστρονομία, ιατρική και τεχνική</text>
 </svg>
 </template>
+
 <template id="draw-art">
-<svg viewbox="0 0 900 620">
-<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
-<circle cx="300" cy="235" fill="#c3834b" r="65"></circle>
-<path d="M240 180 q65-85 135 0" fill="#3b2a1b"></path>
-<rect fill="#fff8ec" height="170" rx="30" stroke="#7b421f" stroke-width="8" width="130" x="235" y="310"></rect>
-<path d="M235 365 h130 M235 420 h130" stroke="#d8a24b" stroke-width="9"></path>
-<circle cx="590" cy="255" fill="#d8a24b" r="65" stroke="#7b421f" stroke-width="8"></circle>
-<path d="M530 345 q60-85 120 0 q-60 60-120 0z" fill="#246b63" stroke="#7b421f" stroke-width="8"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ελληνιστική τέχνη</text>
-<text fill="#246b63" font-size="28" x="62" y="138">κίνηση, συναίσθημα και ρεαλισμός</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
+<circle cx="300" cy="235" r="65" fill="#c3834b"/>
+<path d="M240 180 q65-85 135 0" fill="#3b2a1b"/>
+<rect x="235" y="310" width="130" height="170" rx="30" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
+<path d="M235 365 h130 M235 420 h130" stroke="#d8a24b" stroke-width="9"/>
+<circle cx="590" cy="255" r="65" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
+<path d="M530 345 q60-85 120 0 q-60 60-120 0z" fill="#246b63" stroke="#7b421f" stroke-width="8"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ελληνιστική τέχνη</text>
+<text x="62" y="138" font-size="28" fill="#246b63">κίνηση, συναίσθημα και ρεαλισμός</text>
 </svg>
 </template>
+
 <template id="draw-language">
-<svg viewbox="0 0 900 620">
-<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
-<rect fill="#fff8ec" height="350" rx="25" stroke="#7b421f" stroke-width="10" width="580" x="160" y="150"></rect>
-<text fill="#7b421f" font-size="82" font-weight="900" x="215" y="265">ΚΟΙΝΗ</text>
-<text fill="#246b63" font-size="82" font-weight="900" x="215" y="380">ΓΛΩΣΣΑ</text>
-<path d="M210 430 H690" stroke="#d8a24b" stroke-linecap="round" stroke-width="10"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Κοινή ελληνιστική</text>
-<text fill="#246b63" font-size="28" x="62" y="138">η ελληνική γίνεται γλώσσα επικοινωνίας</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
+<rect x="160" y="150" width="580" height="350" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
+<text x="215" y="265" font-size="82" font-weight="900" fill="#7b421f">ΚΟΙΝΗ</text>
+<text x="215" y="380" font-size="82" font-weight="900" fill="#246b63">ΓΛΩΣΣΑ</text>
+<path d="M210 430 H690" stroke="#d8a24b" stroke-width="10" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Κοινή ελληνιστική</text>
+<text x="62" y="138" font-size="28" fill="#246b63">η ελληνική γίνεται γλώσσα επικοινωνίας</text>
 </svg>
 </template>
+
 <template id="draw-trade">
-<svg viewbox="0 0 900 620">
-<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
-<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"></path>
-<path d="M0 520 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"></path>
-<circle cx="230" cy="310" fill="#d8a24b" r="80" stroke="#7b421f" stroke-width="9"></circle>
-<text fill="#7b421f" font-size="65" font-weight="900" x="190" y="335">₯</text>
-<path d="M480 420 q110 65 220 0 l-45 70 h-130z" fill="#7b421f" stroke="#5b351c" stroke-width="8"></path>
-<path d="M590 420 L590 270" stroke="#7b421f" stroke-width="8"></path>
-<path d="M590 275 q90 50 0 105Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"></path>
-<path d="M295 390 C390 320 475 315 590 305" fill="none" stroke="#fff8ec" stroke-dasharray="18 15" stroke-linecap="round" stroke-width="12"></path>
-<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Εμπόριο</text>
-<text fill="#246b63" font-size="28" x="62" y="138">δρόμοι, λιμάνια, νομίσματα και ανταλλαγές</text>
+<svg viewBox="0 0 900 620">
+<rect width="900" height="620" rx="35" fill="#dff3ff"/>
+<path d="M0 455 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
+<path d="M0 520 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"/>
+<circle cx="230" cy="310" r="80" fill="#d8a24b" stroke="#7b421f" stroke-width="9"/>
+<text x="190" y="335" font-size="65" font-weight="900" fill="#7b421f">₯</text>
+<path d="M480 420 q110 65 220 0 l-45 70 h-130z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
+<path d="M590 420 L590 270" stroke="#7b421f" stroke-width="8"/>
+<path d="M590 275 q90 50 0 105Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
+<path d="M295 390 C390 320 475 315 590 305" fill="none" stroke="#fff8ec" stroke-width="12" stroke-dasharray="18 15" stroke-linecap="round"/>
+<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Εμπόριο</text>
+<text x="62" y="138" font-size="28" fill="#246b63">δρόμοι, λιμάνια, νομίσματα και ανταλλαγές</text>
 </svg>
 </template>
-<section class="page active" id="home">
-<div class="wrap">
-<div class="hero">
-<div class="panel text">
-<div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
-<h1>Κεφάλαιο 8<br/>Τα ελληνιστικά χρόνια</h1>
-<p>Στόχος του κεφαλαίου είναι να καταλάβουμε τι έγινε μετά τον Μέγα Αλέξανδρο και πώς δημιουργήθηκε ο ελληνιστικός κόσμος.</p>
-<div class="box">Κεντρική ιδέα: ο ελληνικός πολιτισμός απλώνεται, αναμειγνύεται με άλλους πολιτισμούς και δημιουργεί έναν νέο κόσμο.</div>
-<p>
-<button onclick="openLesson()">Ξεκίνα το μάθημα</button>
-<button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-</p>
-</div>
-<div class="panel drawing" data-draw="draw-hellenistic"></div>
-</div>
-</div>
+
+<section id="home" class="page active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel text">
+        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+        <h1>Κεφάλαιο 8<br>Τα ελληνιστικά χρόνια</h1>
+        <p>Στόχος του κεφαλαίου είναι να καταλάβουμε τι έγινε μετά τον Μέγα Αλέξανδρο και πώς δημιουργήθηκε ο ελληνιστικός κόσμος.</p>
+        <div class="box">Κεντρική ιδέα: ο ελληνικός πολιτισμός απλώνεται, αναμειγνύεται με άλλους πολιτισμούς και δημιουργεί έναν νέο κόσμο.</div>
+        <p>
+          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+        </p>
+      </div>
+      <div class="panel drawing" data-draw="draw-hellenistic"></div>
+    </div>
+  </div>
 </section>
-<section class="wrap">
-<div class="panel text progress-card">
-<div class="eyebrow">Η πρόοδός μου</div>
-<h2>Πρόοδος κεφαλαίου</h2>
-<div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
-<div class="progress-small" id="chapterProgressText">Φόρτωση προόδου...</div>
-<div class="progress-badges" id="chapterBadgeList"></div>
-</div>
+
+  <section class="wrap">
+    <div class="panel text progress-card">
+      <div class="eyebrow">Η πρόοδός μου</div>
+      <h2>Πρόοδος κεφαλαίου</h2>
+      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
+      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
+      <div id="chapterBadgeList" class="progress-badges"></div>
+    </div>
+  </section>
+
+
+<section id="chapter8" class="page">
+  <div class="wrap">
+    <div class="lesson-top">
+      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+      <div id="counter">1 / 10</div>
+    </div>
+
+    <div class="panel">
+
+      <div class="lesson-slide active">
+        <div class="text">
+          <div class="eyebrow">1. Εισαγωγή</div>
+          <h2>Μετά τον Αλέξανδρο</h2>
+          <p>Μετά τον θάνατο του Μεγάλου Αλεξάνδρου, η τεράστια αυτοκρατορία του δεν μένει ενωμένη.</p>
+          <div class="box">Βασική ιδέα: οι διάδοχοι μοιράζονται την αυτοκρατορία και δημιουργούνται μεγάλα ελληνιστικά βασίλεια.</div>
+        </div>
+        <div class="drawing" data-draw="draw-kingdoms"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">2. Τα ελληνιστικά βασίλεια</div>
+          <h2>Νέες δυνάμεις</h2>
+          <p>Οι στρατηγοί του Αλεξάνδρου, οι Διάδοχοι, συγκρούονται και τελικά δημιουργούν μεγάλα βασίλεια.</p>
+          <ul>
+            <li>Μακεδονία</li>
+            <li>Αίγυπτος</li>
+            <li>Συρία και Ανατολή</li>
+            <li>νέες πρωτεύουσες</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί μια τεράστια αυτοκρατορία είναι δύσκολο να μείνει ενωμένη;</div>
+        </div>
+        <div class="drawing" data-draw="draw-kingdoms"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">3. Ο ελληνιστικός κόσμος</div>
+          <h2>Συνάντηση πολιτισμών</h2>
+          <p>Ο ελληνικός πολιτισμός συναντά παραδόσεις της Ανατολής. Δημιουργείται ένας κόσμος με πολλές επιρροές.</p>
+          <ul>
+            <li>ελληνική γλώσσα</li>
+            <li>ανατολικές παραδόσεις</li>
+            <li>νέες πόλεις</li>
+            <li>εμπόριο και μετακινήσεις</li>
+          </ul>
+          <div class="box">Κλειδί: ο ελληνιστικός κόσμος είναι κόσμος επαφών, όχι απομόνωσης.</div>
+        </div>
+        <div class="drawing" data-draw="draw-hellenistic"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">4. Η κοινή ελληνιστική</div>
+          <h2>Μια γλώσσα επικοινωνίας</h2>
+          <p>Η ελληνική γλώσσα διαδίδεται πολύ και γίνεται κοινό μέσο επικοινωνίας σε μεγάλο μέρος του ελληνιστικού κόσμου.</p>
+          <ul>
+            <li>εμπόριο</li>
+            <li>διοίκηση</li>
+            <li>εκπαίδευση</li>
+            <li>επικοινωνία διαφορετικών λαών</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί μια κοινή γλώσσα βοηθά τους ανθρώπους να συνεργάζονται;</div>
+        </div>
+        <div class="drawing" data-draw="draw-language"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">5. Η Αλεξάνδρεια της Αιγύπτου</div>
+          <h2>Μεγάλη πόλη της εποχής</h2>
+          <p>Η Αλεξάνδρεια γίνεται ένα από τα σημαντικότερα κέντρα του ελληνιστικού κόσμου.</p>
+          <ul>
+            <li>μεγάλο λιμάνι</li>
+            <li>Φάρος</li>
+            <li>εμπόριο</li>
+            <li>επιστήμες και γράμματα</li>
+          </ul>
+          <div class="box">Κλειδί: οι πόλεις γίνονται κέντρα δύναμης, πλούτου και γνώσης.</div>
+        </div>
+        <div class="drawing" data-draw="draw-alexandria"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">6. Η Βιβλιοθήκη</div>
+          <h2>Η γνώση συγκεντρώνεται</h2>
+          <p>Η Βιβλιοθήκη της Αλεξάνδρειας συμβολίζει την προσπάθεια συγκέντρωσης και μελέτης της γνώσης.</p>
+          <ul>
+            <li>βιβλία και πάπυροι</li>
+            <li>μελετητές</li>
+            <li>έρευνα</li>
+            <li>εκπαίδευση</li>
+          </ul>
+          <div class="box">Ερώτηση: γιατί μια βιβλιοθήκη μπορεί να αλλάξει τον κόσμο;</div>
+        </div>
+        <div class="drawing" data-draw="draw-library"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">7. Επιστήμες και τεχνολογία</div>
+          <h2>Νέες ανακαλύψεις</h2>
+          <p>Στα ελληνιστικά χρόνια αναπτύσσονται οι επιστήμες: μαθηματικά, αστρονομία, γεωγραφία, ιατρική και μηχανική.</p>
+          <ul>
+            <li>παρατήρηση</li>
+            <li>υπολογισμοί</li>
+            <li>πειράματα</li>
+            <li>τεχνικές εφευρέσεις</li>
+          </ul>
+          <div class="box">Αποστολή: σκέψου μια επιστημονική ανακάλυψη που βοηθά την καθημερινή ζωή.</div>
+        </div>
+        <div class="drawing" data-draw="draw-science"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">8. Εμπόριο και πόλεις</div>
+          <h2>Ένας κόσμος που κινείται</h2>
+          <p>Οι ελληνιστικές πόλεις συνδέονται με εμπορικούς δρόμους. Άνθρωποι, προϊόντα και ιδέες ταξιδεύουν.</p>
+          <ul>
+            <li>λιμάνια</li>
+            <li>νομίσματα</li>
+            <li>αγορές</li>
+            <li>ανταλλαγή προϊόντων και ιδεών</li>
+          </ul>
+          <div class="box">Ερώτηση: πώς το εμπόριο βοηθά να γνωριστούν διαφορετικοί λαοί;</div>
+        </div>
+        <div class="drawing" data-draw="draw-trade"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">9. Ελληνιστική τέχνη</div>
+          <h2>Κίνηση και συναίσθημα</h2>
+          <p>Η ελληνιστική τέχνη παρουσιάζει πιο έντονη κίνηση, συναίσθημα και ρεαλισμό.</p>
+          <ul>
+            <li>ζωντανές μορφές</li>
+            <li>έντονα συναισθήματα</li>
+            <li>ρεαλισμός</li>
+            <li>μεγάλα έργα σε πόλεις και ιερά</li>
+          </ul>
+          <div class="box">Δραστηριότητα: σχεδίασε ένα άγαλμα που δείχνει έντονο συναίσθημα.</div>
+        </div>
+        <div class="drawing" data-draw="draw-art"></div>
+      </div>
+
+      <div class="lesson-slide">
+        <div class="text">
+          <div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
+          <h2>Σύνοψη Κεφαλαίου 8</h2>
+          <ul>
+            <li>Μετά τον Αλέξανδρο δημιουργούνται ελληνιστικά βασίλεια.</li>
+            <li>Ο ελληνιστικός κόσμος συνδυάζει ελληνικά και ανατολικά στοιχεία.</li>
+            <li>Η κοινή ελληνιστική γλώσσα βοηθά την επικοινωνία.</li>
+            <li>Η Αλεξάνδρεια γίνεται σπουδαίο κέντρο εμπορίου και γνώσης.</li>
+            <li>Αναπτύσσονται οι επιστήμες, το εμπόριο και η τέχνη.</li>
+          </ul>
+          <p>
+            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+          </p>
+        </div>
+        <div class="drawing" data-draw="draw-hellenistic"></div>
+      </div>
+
+    </div>
+
+    <div class="lesson-nav">
+      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+      <button onclick="nextSlide()">Επόμενο ➡</button>
+    </div>
+  </div>
 </section>
-<section class="page" id="chapter8">
-<div class="wrap">
-<div class="lesson-top">
-<button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
-<div class="progress-wrap"><div class="progress" id="progress"></div></div>
-<div id="counter">1 / 10</div>
-</div>
-<div class="panel">
-<div class="lesson-slide active">
-<div class="text">
-<div class="eyebrow">1. Εισαγωγή</div>
-<h2>Μετά τον Αλέξανδρο</h2>
-<p>Μετά τον θάνατο του Μεγάλου Αλεξάνδρου, η τεράστια αυτοκρατορία του δεν μένει ενωμένη.</p>
-<div class="box">Βασική ιδέα: οι διάδοχοι μοιράζονται την αυτοκρατορία και δημιουργούνται μεγάλα ελληνιστικά βασίλεια.</div>
-</div>
-<div class="drawing" data-draw="draw-kingdoms"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">2. Τα ελληνιστικά βασίλεια</div>
-<h2>Νέες δυνάμεις</h2>
-<p>Οι στρατηγοί του Αλεξάνδρου, οι Διάδοχοι, συγκρούονται και τελικά δημιουργούν μεγάλα βασίλεια.</p>
-<ul>
-<li>Μακεδονία</li>
-<li>Αίγυπτος</li>
-<li>Συρία και Ανατολή</li>
-<li>νέες πρωτεύουσες</li>
-</ul>
-<div class="box">Ερώτηση: γιατί μια τεράστια αυτοκρατορία είναι δύσκολο να μείνει ενωμένη;</div>
-</div>
-<div class="drawing" data-draw="draw-kingdoms"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">3. Ο ελληνιστικός κόσμος</div>
-<h2>Συνάντηση πολιτισμών</h2>
-<p>Ο ελληνικός πολιτισμός συναντά παραδόσεις της Ανατολής. Δημιουργείται ένας κόσμος με πολλές επιρροές.</p>
-<ul>
-<li>ελληνική γλώσσα</li>
-<li>ανατολικές παραδόσεις</li>
-<li>νέες πόλεις</li>
-<li>εμπόριο και μετακινήσεις</li>
-</ul>
-<div class="box">Κλειδί: ο ελληνιστικός κόσμος είναι κόσμος επαφών, όχι απομόνωσης.</div>
-</div>
-<div class="drawing" data-draw="draw-hellenistic"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">4. Η κοινή ελληνιστική</div>
-<h2>Μια γλώσσα επικοινωνίας</h2>
-<p>Η ελληνική γλώσσα διαδίδεται πολύ και γίνεται κοινό μέσο επικοινωνίας σε μεγάλο μέρος του ελληνιστικού κόσμου.</p>
-<ul>
-<li>εμπόριο</li>
-<li>διοίκηση</li>
-<li>εκπαίδευση</li>
-<li>επικοινωνία διαφορετικών λαών</li>
-</ul>
-<div class="box">Ερώτηση: γιατί μια κοινή γλώσσα βοηθά τους ανθρώπους να συνεργάζονται;</div>
-</div>
-<div class="drawing" data-draw="draw-language"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">5. Η Αλεξάνδρεια της Αιγύπτου</div>
-<h2>Μεγάλη πόλη της εποχής</h2>
-<p>Η Αλεξάνδρεια γίνεται ένα από τα σημαντικότερα κέντρα του ελληνιστικού κόσμου.</p>
-<ul>
-<li>μεγάλο λιμάνι</li>
-<li>Φάρος</li>
-<li>εμπόριο</li>
-<li>επιστήμες και γράμματα</li>
-</ul>
-<div class="box">Κλειδί: οι πόλεις γίνονται κέντρα δύναμης, πλούτου και γνώσης.</div>
-</div>
-<div class="drawing" data-draw="draw-alexandria"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">6. Η Βιβλιοθήκη</div>
-<h2>Η γνώση συγκεντρώνεται</h2>
-<p>Η Βιβλιοθήκη της Αλεξάνδρειας συμβολίζει την προσπάθεια συγκέντρωσης και μελέτης της γνώσης.</p>
-<ul>
-<li>βιβλία και πάπυροι</li>
-<li>μελετητές</li>
-<li>έρευνα</li>
-<li>εκπαίδευση</li>
-</ul>
-<div class="box">Ερώτηση: γιατί μια βιβλιοθήκη μπορεί να αλλάξει τον κόσμο;</div>
-</div>
-<div class="drawing" data-draw="draw-library"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">7. Επιστήμες και τεχνολογία</div>
-<h2>Νέες ανακαλύψεις</h2>
-<p>Στα ελληνιστικά χρόνια αναπτύσσονται οι επιστήμες: μαθηματικά, αστρονομία, γεωγραφία, ιατρική και μηχανική.</p>
-<ul>
-<li>παρατήρηση</li>
-<li>υπολογισμοί</li>
-<li>πειράματα</li>
-<li>τεχνικές εφευρέσεις</li>
-</ul>
-<div class="box">Αποστολή: σκέψου μια επιστημονική ανακάλυψη που βοηθά την καθημερινή ζωή.</div>
-</div>
-<div class="drawing" data-draw="draw-science"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">8. Εμπόριο και πόλεις</div>
-<h2>Ένας κόσμος που κινείται</h2>
-<p>Οι ελληνιστικές πόλεις συνδέονται με εμπορικούς δρόμους. Άνθρωποι, προϊόντα και ιδέες ταξιδεύουν.</p>
-<ul>
-<li>λιμάνια</li>
-<li>νομίσματα</li>
-<li>αγορές</li>
-<li>ανταλλαγή προϊόντων και ιδεών</li>
-</ul>
-<div class="box">Ερώτηση: πώς το εμπόριο βοηθά να γνωριστούν διαφορετικοί λαοί;</div>
-</div>
-<div class="drawing" data-draw="draw-trade"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">9. Ελληνιστική τέχνη</div>
-<h2>Κίνηση και συναίσθημα</h2>
-<p>Η ελληνιστική τέχνη παρουσιάζει πιο έντονη κίνηση, συναίσθημα και ρεαλισμό.</p>
-<ul>
-<li>ζωντανές μορφές</li>
-<li>έντονα συναισθήματα</li>
-<li>ρεαλισμός</li>
-<li>μεγάλα έργα σε πόλεις και ιερά</li>
-</ul>
-<div class="box">Δραστηριότητα: σχεδίασε ένα άγαλμα που δείχνει έντονο συναίσθημα.</div>
-</div>
-<div class="drawing" data-draw="draw-art"></div>
-</div>
-<div class="lesson-slide">
-<div class="text">
-<div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
-<h2>Σύνοψη Κεφαλαίου 8</h2>
-<ul>
-<li>Μετά τον Αλέξανδρο δημιουργούνται ελληνιστικά βασίλεια.</li>
-<li>Ο ελληνιστικός κόσμος συνδυάζει ελληνικά και ανατολικά στοιχεία.</li>
-<li>Η κοινή ελληνιστική γλώσσα βοηθά την επικοινωνία.</li>
-<li>Η Αλεξάνδρεια γίνεται σπουδαίο κέντρο εμπορίου και γνώσης.</li>
-<li>Αναπτύσσονται οι επιστήμες, το εμπόριο και η τέχνη.</li>
-</ul>
-<p>
-<button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
-<button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
-</p>
-</div>
-<div class="drawing" data-draw="draw-hellenistic"></div>
-</div>
-</div>
-<div class="lesson-nav">
-<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-<button onclick="nextSlide()">Επόμενο ➡</button>
-</div>
-</div>
+
+<section id="extras" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Extra για τα παιδιά</div>
+      <h2>Δραστηριότητες Κεφαλαίου 8</h2>
+      <p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε τον ελληνιστικό κόσμο.</p>
+
+      <div class="cards">
+        <div class="card" onclick="showPage('missions')">
+          <div><div class="icon">🎯</div><h3>Αποστολή πολιτισμών</h3><p>Βρες πώς αναμειγνύονται οι πολιτισμοί.</p></div>
+          <span class="tag">δραστηριότητα</span>
+        </div>
+        <div class="card" onclick="showPage('detective')">
+          <div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
+          <span class="tag">παιχνίδι σκέψης</span>
+        </div>
+        <div class="card" onclick="showPage('concepts')">
+          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+          <span class="tag">επανάληψη</span>
+        </div>
+        <div class="card" onclick="showPage('today')">
+          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+          <span class="tag">ολοκλήρωση</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="page" id="extras">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Extra για τα παιδιά</div>
-<h2>Δραστηριότητες Κεφαλαίου 8</h2>
-<p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε τον ελληνιστικό κόσμο.</p>
-<div class="cards">
-<div class="card" onclick="showPage('missions')">
-<div><div class="icon">🎯</div><h3>Αποστολή πολιτισμών</h3><p>Βρες πώς αναμειγνύονται οι πολιτισμοί.</p></div>
-<span class="tag">δραστηριότητα</span>
-</div>
-<div class="card" onclick="showPage('detective')">
-<div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
-<span class="tag">παιχνίδι σκέψης</span>
-</div>
-<div class="card" onclick="showPage('concepts')">
-<div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
-<span class="tag">επανάληψη</span>
-</div>
-<div class="card" onclick="showPage('today')">
-<div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
-<span class="tag">ολοκλήρωση</span>
-</div>
-</div>
-</div>
-</div>
+
+<section id="missions" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🎯 Αποστολή πολιτισμών</div>
+      <h2>Τι κάνει τον ελληνιστικό κόσμο διαφορετικό;</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Βασίλεια</h3><p>Γράψε γιατί η αυτοκρατορία του Αλεξάνδρου μοιράστηκε.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Γλώσσα</h3><p>Γράψε γιατί η κοινή ελληνιστική ήταν χρήσιμη.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Πόλη</h3><p>Γράψε γιατί η Αλεξάνδρεια ήταν σημαντική.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+        <div class="mini"><h3>Γνώση</h3><p>Γράψε γιατί η Βιβλιοθήκη ήταν σπουδαία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+      </div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="missions">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🎯 Αποστολή πολιτισμών</div>
-<h2>Τι κάνει τον ελληνιστικό κόσμο διαφορετικό;</h2>
-<div class="grid2">
-<div class="mini"><h3>Βασίλεια</h3><p>Γράψε γιατί η αυτοκρατορία του Αλεξάνδρου μοιράστηκε.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Γλώσσα</h3><p>Γράψε γιατί η κοινή ελληνιστική ήταν χρήσιμη.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Πόλη</h3><p>Γράψε γιατί η Αλεξάνδρεια ήταν σημαντική.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-<div class="mini"><h3>Γνώση</h3><p>Γράψε γιατί η Βιβλιοθήκη ήταν σπουδαία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="detective" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🕵️ Βρες την έννοια</div>
+      <h2>Στοιχείο: η ελληνική γλώσσα χρησιμοποιείται από πολλούς λαούς για επικοινωνία</h2>
+      <p>Ποια έννοια περιγράφει;</p>
+      <button class="answer detect-answer" onclick="selectDetect(true,this)">Κοινή ελληνιστική</button>
+      <button class="answer detect-answer" onclick="selectDetect(false,this)">Μακεδονική φάλαγγα</button>
+      <button class="answer detect-answer" onclick="selectDetect(false,this)">Πελοποννησιακή Συμμαχία</button>
+      <div id="detectResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+      <p>
+        <button onclick="checkDetect()">Έλεγχος</button>
+        <button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
+        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+      </p>
+    </div>
+  </div>
 </section>
-<section class="page" id="detective">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🕵️ Βρες την έννοια</div>
-<h2>Στοιχείο: η ελληνική γλώσσα χρησιμοποιείται από πολλούς λαούς για επικοινωνία</h2>
-<p>Ποια έννοια περιγράφει;</p>
-<button class="answer detect-answer" onclick="selectDetect(true,this)">Κοινή ελληνιστική</button>
-<button class="answer detect-answer" onclick="selectDetect(false,this)">Μακεδονική φάλαγγα</button>
-<button class="answer detect-answer" onclick="selectDetect(false,this)">Πελοποννησιακή Συμμαχία</button>
-<div class="box" id="detectResult">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
-<p>
-<button onclick="checkDetect()">Έλεγχος</button>
-<button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
-<button class="secondary" onclick="showPage('extras')">← Πίσω</button>
-</p>
-</div>
-</div>
+
+<section id="concepts" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
+      <h2>Πώς συνδέονται οι λέξεις;</h2>
+      <div class="concept-map">
+        <div class="bubble main" onclick="concept('Τα ελληνιστικά χρόνια αρχίζουν μετά τον θάνατο του Μεγάλου Αλεξάνδρου.')">Ελληνιστικά χρόνια</div>
+        <div class="bubble" onclick="concept('Οι Διάδοχοι δημιουργούν μεγάλα βασίλεια.')">βασίλεια</div>
+        <div class="bubble" onclick="concept('Η κοινή ελληνιστική βοηθά την επικοινωνία πολλών λαών.')">γλώσσα</div>
+        <div class="bubble" onclick="concept('Η Αλεξάνδρεια γίνεται κέντρο εμπορίου και γνώσης.')">Αλεξάνδρεια</div>
+        <div class="bubble" onclick="concept('Η Βιβλιοθήκη συμβολίζει την αγάπη για γνώση και έρευνα.')">Βιβλιοθήκη</div>
+        <div class="bubble" onclick="concept('Η ελληνιστική τέχνη δείχνει κίνηση, συναίσθημα και ρεαλισμό.')">τέχνη</div>
+      </div>
+      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="concepts">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">🧠 Χάρτης εννοιών</div>
-<h2>Πώς συνδέονται οι λέξεις;</h2>
-<div class="concept-map">
-<div class="bubble main" onclick="concept('Τα ελληνιστικά χρόνια αρχίζουν μετά τον θάνατο του Μεγάλου Αλεξάνδρου.')">Ελληνιστικά χρόνια</div>
-<div class="bubble" onclick="concept('Οι Διάδοχοι δημιουργούν μεγάλα βασίλεια.')">βασίλεια</div>
-<div class="bubble" onclick="concept('Η κοινή ελληνιστική βοηθά την επικοινωνία πολλών λαών.')">γλώσσα</div>
-<div class="bubble" onclick="concept('Η Αλεξάνδρεια γίνεται κέντρο εμπορίου και γνώσης.')">Αλεξάνδρεια</div>
-<div class="bubble" onclick="concept('Η Βιβλιοθήκη συμβολίζει την αγάπη για γνώση και έρευνα.')">Βιβλιοθήκη</div>
-<div class="bubble" onclick="concept('Η ελληνιστική τέχνη δείχνει κίνηση, συναίσθημα και ρεαλισμό.')">τέχνη</div>
-</div>
-<div class="box" id="conceptResult">Πάτησε έναν κύκλο.</div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="today" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+      <h2>Checklist Κεφαλαίου 8</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Έμαθα τι έγινε μετά τον θάνατο του Αλεξάνδρου.</label>
+        <label><input type="checkbox"> Κατάλαβα τι είναι τα ελληνιστικά βασίλεια.</label>
+        <label><input type="checkbox"> Ξέρω γιατί η κοινή ελληνιστική ήταν σημαντική.</label>
+        <label><input type="checkbox"> Θυμάμαι τη σημασία της Αλεξάνδρειας και της Βιβλιοθήκης.</label>
+        <label><input type="checkbox"> Κατάλαβα την ανάπτυξη επιστημών, εμπορίου και τέχνης.</label>
+      </div>
+      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+      <div id="badgeBox"></div>
+      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+    </div>
+  </div>
 </section>
-<section class="page" id="today">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">✅ Τι έμαθα σήμερα</div>
-<h2>Checklist Κεφαλαίου 8</h2>
-<div class="checklist">
-<label><input type="checkbox"/> Έμαθα τι έγινε μετά τον θάνατο του Αλεξάνδρου.</label>
-<label><input type="checkbox"/> Κατάλαβα τι είναι τα ελληνιστικά βασίλεια.</label>
-<label><input type="checkbox"/> Ξέρω γιατί η κοινή ελληνιστική ήταν σημαντική.</label>
-<label><input type="checkbox"/> Θυμάμαι τη σημασία της Αλεξάνδρειας και της Βιβλιοθήκης.</label>
-<label><input type="checkbox"/> Κατάλαβα την ανάπτυξη επιστημών, εμπορίου και τέχνης.</label>
-</div>
-<button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
-<div id="badgeBox"></div>
-<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-</div>
-</div>
+
+<section id="review" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Επανάληψη</div>
+      <h2>Ασκήσεις για το Κεφάλαιο 8</h2>
+      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+      <div id="quizArea"></div>
+      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+      <div id="scoreBox"></div>
+    </div>
+  </div>
 </section>
-<section class="page" id="review">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Επανάληψη</div>
-<h2>Ασκήσεις για το Κεφάλαιο 8</h2>
-<p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
-<div id="quizArea"></div>
-<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
-<button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
-<div id="scoreBox"></div>
-</div>
-</div>
+
+<section id="glossary" class="page">
+  <div class="wrap">
+    <div class="panel text">
+      <div class="eyebrow">Μικρό λεξικό</div>
+      <h2>Λέξεις που πρέπει να ξέρω</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Ελληνιστικά χρόνια</h3><p>Η περίοδος μετά τον Αλέξανδρο, όταν ο ελληνικός πολιτισμός διαδίδεται και αναμειγνύεται με άλλους.</p></div>
+        <div class="mini"><h3>Διάδοχοι</h3><p>Οι στρατηγοί του Αλεξάνδρου που διεκδίκησαν την εξουσία μετά τον θάνατό του.</p></div>
+        <div class="mini"><h3>Ελληνιστικά βασίλεια</h3><p>Τα μεγάλα κράτη που δημιουργήθηκαν μετά τη διάσπαση της αυτοκρατορίας του Αλεξάνδρου.</p></div>
+        <div class="mini"><h3>Κοινή ελληνιστική</h3><p>Η ελληνική γλώσσα που χρησιμοποιήθηκε ευρέως ως γλώσσα επικοινωνίας.</p></div>
+        <div class="mini"><h3>Αλεξάνδρεια</h3><p>Σπουδαία πόλη της Αιγύπτου, κέντρο εμπορίου, γνώσης και πολιτισμού.</p></div>
+        <div class="mini"><h3>Βιβλιοθήκη της Αλεξάνδρειας</h3><p>Μεγάλο κέντρο συγκέντρωσης βιβλίων, γνώσης και έρευνας.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="page" id="glossary">
-<div class="wrap">
-<div class="panel text">
-<div class="eyebrow">Μικρό λεξικό</div>
-<h2>Λέξεις που πρέπει να ξέρω</h2>
-<div class="grid2">
-<div class="mini"><h3>Ελληνιστικά χρόνια</h3><p>Η περίοδος μετά τον Αλέξανδρο, όταν ο ελληνικός πολιτισμός διαδίδεται και αναμειγνύεται με άλλους.</p></div>
-<div class="mini"><h3>Διάδοχοι</h3><p>Οι στρατηγοί του Αλεξάνδρου που διεκδίκησαν την εξουσία μετά τον θάνατό του.</p></div>
-<div class="mini"><h3>Ελληνιστικά βασίλεια</h3><p>Τα μεγάλα κράτη που δημιουργήθηκαν μετά τη διάσπαση της αυτοκρατορίας του Αλεξάνδρου.</p></div>
-<div class="mini"><h3>Κοινή ελληνιστική</h3><p>Η ελληνική γλώσσα που χρησιμοποιήθηκε ευρέως ως γλώσσα επικοινωνίας.</p></div>
-<div class="mini"><h3>Αλεξάνδρεια</h3><p>Σπουδαία πόλη της Αιγύπτου, κέντρο εμπορίου, γνώσης και πολιτισμού.</p></div>
-<div class="mini"><h3>Βιβλιοθήκη της Αλεξάνδρειας</h3><p>Μεγάλο κέντρο συγκέντρωσης βιβλίων, γνώσης και έρευνας.</p></div>
-</div>
-</div>
-</div>
-</section>
+
 <footer>Κεφάλαιο 8 — Τα ελληνιστικά χρόνια</footer>
+
+
 <script>
 window.CHAPTER_ID = "8";
 window.CHAPTER_TITLE = "🌍 Κεφάλαιο 8: Τα ελληνιστικά χρόνια";
 </script>
+
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -531,9 +571,12 @@ window.questions = [
 
 IstoriaChapter.init();
 </script>
+
+
 <script>
 try{saveChapterProgress({visited:true});}catch(e){}
 </script>
+
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
 </body>
