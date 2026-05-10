@@ -10,12 +10,23 @@
 <link rel="stylesheet" href="core/v27-clean-home.css">
 <link rel="stylesheet" href="core/mobile-menu.css">
 
-<style id="tools-hub-cleanup">
-details summary:has-text("Προχωρημένα"),
-.advanced-home,
-.old-tools,
-#advanced-tools,
-#legacy-tools{
+<style id="v42-menu-cleanup">
+/* Hide old nav buttons */
+nav a[href*="campaign"],
+nav a[href*="mentor"],
+nav a[href*="teacher"]{
+display:none !important;
+}
+
+/* Cleaner nav */
+nav{
+display:flex !important;
+flex-wrap:wrap !important;
+gap:10px !important;
+}
+
+/* Remove chapter area on homepage */
+#chapters,.chapters,.chapter-grid{
 display:none !important;
 }
 </style>
@@ -82,129 +93,9 @@ display:none !important;
     </a>
   </section>
 
-  <section id="chapters" class="panel text section-title">
-    <div class="eyebrow">Περιεχόμενα</div>
-    <h2>Διάλεξε κεφάλαιο</h2>
-    <p>Κάθε κεφάλαιο ανοίγει σε ξεχωριστή εφαρμογή, ώστε να μη μπερδεύονται μεταξύ τους.</p>
+  
 
-    <div class="cards">
-
-      <div class="card" data-chapter="1">
-        <div>
-          <div class="icon">🏺</div>
-          <h3>Κεφάλαιο 1</h3>
-          <p>Η Εποχή του Λίθου</p>
-          <span class="tag">Προϊστορία</span>
-        </div>
-        <a href="chapter1.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="2">
-        <div>
-          <div class="icon">🛶</div>
-          <h3>Κεφάλαιο 2</h3>
-          <p>Η Εποχή του Χαλκού</p>
-          <span class="tag">Αιγαίο</span>
-        </div>
-        <a href="chapter2.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="3">
-        <div>
-          <div class="icon">📜</div>
-          <h3>Κεφάλαιο 3</h3>
-          <p>Ο ελληνικός κόσμος 1100-800 π.Χ.</p>
-          <span class="tag">Μετάβαση</span>
-        </div>
-        <a href="chapter3.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="4">
-        <div>
-          <div class="icon">🏛️</div>
-          <h3>Κεφάλαιο 4</h3>
-          <p>Αρχαϊκή εποχή</p>
-          <span class="tag">Πόλη-κράτος</span>
-        </div>
-        <a href="chapter4.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="5">
-        <div>
-          <div class="icon">🗳️</div>
-          <h3>Κεφάλαιο 5</h3>
-          <p>Η ηγεμονία της Αθήνας</p>
-          <span class="tag">Δημοκρατία</span>
-        </div>
-        <a href="chapter5.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="6">
-        <div>
-          <div class="icon">⚔️</div>
-          <h3>Κεφάλαιο 6</h3>
-          <p>Ο Πελοποννησιακός πόλεμος</p>
-          <span class="tag">Πόλεμος</span>
-        </div>
-        <a href="chapter6.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="7">
-        <div>
-          <div class="icon">🦁</div>
-          <h3>Κεφάλαιο 7</h3>
-          <p>Η Μακεδονία και ο Μέγας Αλέξανδρος</p>
-          <span class="tag">Εκστρατεία</span>
-        </div>
-        <a href="chapter7.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="8">
-        <div>
-          <div class="icon">🌍</div>
-          <h3>Κεφάλαιο 8</h3>
-          <p>Τα ελληνιστικά χρόνια</p>
-          <span class="tag">Πολιτισμοί</span>
-        </div>
-        <a href="chapter8.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="9">
-        <div>
-          <div class="icon">🛡️</div>
-          <h3>Κεφάλαιο 9</h3>
-          <p>Η Ρώμη και ο ελληνικός κόσμος</p>
-          <span class="tag">Ρώμη</span>
-        </div>
-        <a href="chapter9.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="10">
-        <div>
-          <div class="icon">🏟️</div>
-          <h3>Κεφάλαιο 10</h3>
-          <p>Η Ρωμαϊκή αυτοκρατορία</p>
-          <span class="tag">Αυτοκρατορία</span>
-        </div>
-        <a href="chapter10.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" style="border:3px solid var(--gold);">
-        <div>
-          <div class="icon">🏆</div>
-          <h3>Γενική Επανάληψη</h3>
-          <p>Όλα τα κεφάλαια σε ένα μεγάλο παιχνίδι επανάληψης.</p>
-          <span class="tag">Mega Quiz</span>
-          <span class="tag">Timeline</span>
-        </div>
-        <a class="gold" href="revision.html">Άνοιγμα</a>
-      </div>
-
-    </div>
-
-  </section>
-</div>
-
+  
 
 <footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
 
@@ -671,6 +562,5 @@ function alexanderAnswer(btn, correct){
 
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
-<a class="btn" href="tools.html">🧰 Εργαλεία</a>
 </body>
 </html>
