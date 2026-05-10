@@ -1,742 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="el">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ιστορία Α΄ Γυμνασίου - Διαδραστική Εφαρμογή</title>
-
-<link rel="stylesheet" href="core/index.css">
-<link rel="stylesheet" href="core/v26-polish.css">
-<link rel="stylesheet" href="core/v27-clean-home.css">
-<link rel="stylesheet" href="core/mobile-menu.css">
+<title>Ιστορία Α' Γυμνασίου</title>
+<style>
+body{
+font-family: Arial, sans-serif;
+background:#f5f7fb;
+margin:0;
+color:#1f2937;
+}
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+.hero{
+background:white;
+border-radius:20px;
+padding:50px 30px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+margin-bottom:40px;
+}
+.hero h1{
+font-size:2.2rem;
+margin-bottom:10px;
+}
+.hero p{
+color:#6b7280;
+margin-bottom:30px;
+}
+.main-btn{
+display:inline-block;
+padding:16px 28px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:14px;
+font-weight:bold;
+}
+.chapters{
+background:white;
+border-radius:20px;
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+.chapter{
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+border-bottom:1px solid #e5e7eb;
+}
+.chapter:last-child{
+border-bottom:none;
+}
+.footer{
+margin-top:30px;
+text-align:center;
+color:#6b7280;
+font-size:0.9rem;
+}
+</style>
 </head>
-
-<body class="v27-clean-home">
-
-<header>
-  <div class="bar">
-    <div class="logo">🏛️ Ιστορία Α΄ Γυμνασίου</div>
-    <div class="nav">
-      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι</button>
-      <a href="#chapters">Κεφάλαια</a>
-      <a class="secondary" href="revision.html">Επανάληψη</a>
-      <a class="gold" href="smart-study.html">Smart Study</a>
-      <a class="blue" href="intelligent-revision.html">Revision</a>
-      <a class="btn secondary" href="world-map.html">Άτλαντας</a>
-      <a class="btn blue" href="historical-campaign.html">Campaign</a>
-      <a class="btn secondary" href="narration.html">Αφήγηση</a>
-      <a class="btn gold" href="mentor.html">Mentor</a>
-      <a class="btn blue" href="teacher.html">Teacher</a>
-      <a class="btn gold" href="teacher-notes.html">Σημειώσεις</a>
-    </div>
-  </div>
-</header>
-
-<div class="v26-hub clean-progress-strip" id="v26StudentHub"></div>
-
-<div class="wrap clean-home-wrap">
-
-  <section class="clean-hero panel">
-    <div class="clean-hero-copy">
-      <div class="eyebrow">V27 Clean Learning Home</div>
-      <h1>Ιστορία Α΄ Γυμνασίου</h1>
-      <p>Διάλεξε πώς θέλεις να μελετήσεις σήμερα. Η αρχική κρατά μόνο τα βασικά μπροστά σου.</p>
-      <div class="clean-hero-actions">
-        <a class="gold" id="continueLearningBtn" href="#chapters">Συνέχεια μάθησης</a>
-        <a class="secondary" href="smart-study.html">Smart Study</a>
-      </div>
-    </div>
-    <div class="clean-hero-card">
-      <span class="clean-kicker">Προτεινόμενο βήμα</span>
-      <strong id="cleanNextStepTitle">Υπολογισμός...</strong>
-      <p id="cleanNextStepText">Άνοιξε ένα κεφάλαιο ή ξεκίνα από Smart Study.</p>
-    </div>
-  </section>
-
-  <section class="clean-tools" aria-label="Βασικά εργαλεία μάθησης">
-    <a class="clean-tool-card" href="smart-study.html">
-      <span class="clean-tool-icon">🧠</span>
-      <strong>Smart Study</strong>
-      <small>Προσωποποιημένη μελέτη και πρόταση επανάληψης.</small>
-    </a>
-    <a class="clean-tool-card" href="world-map.html">
-      <span class="clean-tool-icon">🗺️</span>
-      <strong>Άτλαντας</strong>
-      <small>Δες τόπους, πολιτισμούς και κινήσεις στον χάρτη.</small>
-    </a>
-    <a class="clean-tool-card" href="intelligent-revision.html">
-      <span class="clean-tool-icon">⚡</span>
-      <strong>Revision</strong>
-      <small>Γρήγορη επανάληψη στα σημεία που χρειάζονται δουλειά.</small>
-    </a>
-  </section>
-
-  <section id="chapters" class="panel text section-title">
-    <div class="eyebrow">Περιεχόμενα</div>
-    <h2>Διάλεξε κεφάλαιο</h2>
-    <p>Κάθε κεφάλαιο ανοίγει σε ξεχωριστή εφαρμογή, ώστε να μη μπερδεύονται μεταξύ τους.</p>
-
-    <div class="cards">
-
-      <div class="card" data-chapter="1">
-        <div>
-          <div class="icon">🏺</div>
-          <h3>Κεφάλαιο 1</h3>
-          <p>Η Εποχή του Λίθου</p>
-          <span class="tag">Προϊστορία</span>
-        </div>
-        <a href="chapter1.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="2">
-        <div>
-          <div class="icon">🛶</div>
-          <h3>Κεφάλαιο 2</h3>
-          <p>Η Εποχή του Χαλκού</p>
-          <span class="tag">Αιγαίο</span>
-        </div>
-        <a href="chapter2.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="3">
-        <div>
-          <div class="icon">📜</div>
-          <h3>Κεφάλαιο 3</h3>
-          <p>Ο ελληνικός κόσμος 1100-800 π.Χ.</p>
-          <span class="tag">Μετάβαση</span>
-        </div>
-        <a href="chapter3.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="4">
-        <div>
-          <div class="icon">🏛️</div>
-          <h3>Κεφάλαιο 4</h3>
-          <p>Αρχαϊκή εποχή</p>
-          <span class="tag">Πόλη-κράτος</span>
-        </div>
-        <a href="chapter4.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="5">
-        <div>
-          <div class="icon">🗳️</div>
-          <h3>Κεφάλαιο 5</h3>
-          <p>Η ηγεμονία της Αθήνας</p>
-          <span class="tag">Δημοκρατία</span>
-        </div>
-        <a href="chapter5.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="6">
-        <div>
-          <div class="icon">⚔️</div>
-          <h3>Κεφάλαιο 6</h3>
-          <p>Ο Πελοποννησιακός πόλεμος</p>
-          <span class="tag">Πόλεμος</span>
-        </div>
-        <a href="chapter6.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="7">
-        <div>
-          <div class="icon">🦁</div>
-          <h3>Κεφάλαιο 7</h3>
-          <p>Η Μακεδονία και ο Μέγας Αλέξανδρος</p>
-          <span class="tag">Εκστρατεία</span>
-        </div>
-        <a href="chapter7.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="8">
-        <div>
-          <div class="icon">🌍</div>
-          <h3>Κεφάλαιο 8</h3>
-          <p>Τα ελληνιστικά χρόνια</p>
-          <span class="tag">Πολιτισμοί</span>
-        </div>
-        <a href="chapter8.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="9">
-        <div>
-          <div class="icon">🛡️</div>
-          <h3>Κεφάλαιο 9</h3>
-          <p>Η Ρώμη και ο ελληνικός κόσμος</p>
-          <span class="tag">Ρώμη</span>
-        </div>
-        <a href="chapter9.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" data-chapter="10">
-        <div>
-          <div class="icon">🏟️</div>
-          <h3>Κεφάλαιο 10</h3>
-          <p>Η Ρωμαϊκή αυτοκρατορία</p>
-          <span class="tag">Αυτοκρατορία</span>
-        </div>
-        <a href="chapter10.html">Άνοιγμα</a>
-      </div>
-
-      <div class="card" style="border:3px solid var(--gold);">
-        <div>
-          <div class="icon">🏆</div>
-          <h3>Γενική Επανάληψη</h3>
-          <p>Όλα τα κεφάλαια σε ένα μεγάλο παιχνίδι επανάληψης.</p>
-          <span class="tag">Mega Quiz</span>
-          <span class="tag">Timeline</span>
-        </div>
-        <a class="gold" href="revision.html">Άνοιγμα</a>
-      </div>
-
-    </div>
-
-  </section>
-
-  <details class="secondary-tools-panel">
-    <summary>Περισσότερα εργαλεία</summary>
-    <div class="secondary-link-grid">
-      <a href="revision.html">Γενική Επανάληψη</a>
-      <a href="narration.html">Αφήγηση</a>
-      <a href="mentor.html">Mentor</a>
-      <a href="historical-campaign.html">Campaign</a>
-      <a href="teacher.html">Teacher</a>
-      <a href="teacher-notes.html">Σημειώσεις</a>
-    </div>
-  </details>
+<body>
+<div class="container">
+<div class="hero">
+<h1>Συνέχισε τη μάθησή σου</h1>
+<p>Απλή και ξεκούραστη μελέτη για την Ιστορία Α' Γυμνασίου.</p>
+<a class="main-btn" href="chapter1.html">Συνέχεια μάθησης</a>
 </div>
 
-<details class="secondary-tools-panel secondary-tools-panel-wide">
-  <summary>Προχωρημένα / παλιά εργαλεία αρχικής</summary>
+<div class="chapters">
+<h2>Κεφάλαια</h2>
 
-  <section class="smart-timeline" id="smart-timeline-v6">
-    <h2>🗺️ Smart Timeline V6</h2>
-    <p>Η εφαρμογή κρατά την πρόοδό σου και σου προτείνει επανάληψη στα κεφάλαια που χρειάζονται περισσότερη δουλειά.</p>
-    <div class="smart-track" id="smartTimelineTrack"></div>
-    <div class="smart-note" id="smartTimelineNote">Άνοιξε ένα κεφάλαιο ή τη Γενική Επανάληψη για να ξεκινήσει η καταγραφή προόδου.</div>
-    <div style="margin-top:16px">
-      <a class="secondary" href="revision.html">Άνοιγμα Smart Revision</a>
-    </div>
-  </section>
+<div class="chapter"><span>1. Προϊστορία</span><span>→</span></div>
+<div class="chapter"><span>2. Πρώτοι Πολιτισμοί</span><span>→</span></div>
+<div class="chapter"><span>3. Αρχαία Ελλάδα</span><span>→</span></div>
+<div class="chapter"><span>4. Σπάρτη και Αθήνα</span><span>→</span></div>
+<div class="chapter"><span>5. Περσικοί Πόλεμοι</span><span>→</span></div>
+<div class="chapter"><span>6. Χρυσός Αιώνας</span><span>→</span></div>
+<div class="chapter"><span>7. Μακεδονία</span><span>→</span></div>
+<div class="chapter"><span>8. Αλέξανδρος</span><span>→</span></div>
+<div class="chapter"><span>9. Ελληνιστικά Χρόνια</span><span>→</span></div>
+<div class="chapter"><span>10. Ρωμαϊκά Χρόνια</span><span>→</span></div>
+</div>
 
-
-  <section class="daily-panel" id="daily-challenge-v7">
-    <h2>🔥 Daily Challenge V7</h2>
-    <p>Κάθε μέρα 5 γρήγορες ερωτήσεις από όλη την ύλη. Κράτα streak και γύρνα ξανά αύριο!</p>
-    <div class="daily-grid">
-      <div class="daily-stat">📅 Σημερινή αποστολή: <span id="dailyStatus">έτοιμη</span></div>
-      <div class="daily-stat">🔥 Streak: <span id="dailyStreak">0</span> μέρες</div>
-      <div class="daily-stat">⭐ Καλύτερο daily score: <span id="dailyBest">0</span>/5</div>
-    </div>
-    <div id="dailyQuizBox"></div>
-    <div style="margin-top:16px">
-      <button class="gold" onclick="startDailyChallenge()">Ξεκίνα Daily Challenge</button>
-    </div>
-  </section>
-
-
-<section class="mg-panel" id="v8-minigames">
-  <h2>🎮 V8 Mini Games Expansion</h2>
-  <p>Μικρά ιστορικά παιχνίδια για να μαθαίνεις παίζοντας.</p>
-
-  <div class="mg-grid">
-    <div class="mg-card">
-      <h3>⚔️ Battle Strategy</h3>
-      <p>Διάλεξε τη σωστή στρατηγική και κέρδισε τη μάχη.</p>
-      <button class="gold mg-btn" onclick="startBattleGame()">Παίξε</button>
-    </div>
-
-    <div class="mg-card">
-      <h3>🏛️ Δήμος της Αθήνας</h3>
-      <p>Ψήφισε σαν Αθηναίος πολίτης και δες τις συνέπειες.</p>
-      <button class="gold mg-btn" onclick="startAssemblyGame()">Παίξε</button>
-    </div>
-
-    <div class="mg-card">
-      <h3>📜 Timeline Puzzle</h3>
-      <p>Βάλε τα γεγονότα στη σωστή χρονική σειρά.</p>
-      <button class="gold mg-btn" onclick="startTimelineGame()">Παίξε</button>
-    </div>
-
-    <div class="mg-card">
-      <h3>🦁 Μέγας Αλέξανδρος</h3>
-      <p>Πάρε αποφάσεις πριν από μια μεγάλη μάχη.</p>
-      <button class="gold mg-btn" onclick="startAlexanderGame()">Παίξε</button>
-    </div>
-  </div>
-
-  <div id="minigameArea" class="mg-area">
-    <strong>🎯 Επίλεξε ένα mini game για να ξεκινήσεις.</strong>
-  </div>
-</section>
-
-  <section id="adaptivePanel"></section>
-</details>
-
-<footer>Ιστορία Α΄ Γυμνασίου — Κεντρική εφαρμογή</footer>
-
-
-<script src="core/storageEngine.js"></script>
-<script src="core/soundEngine.js"></script>
-<script src="core/uiEngine.js"></script>
-<script>
-const APP_PROGRESS_KEY = 'istoriaAGymnasiouProgress';
-function loadAppProgress(){try{return JSON.parse(localStorage.getItem(APP_PROGRESS_KEY)) || {chapters:{}};}catch(e){return {chapters:{}};}}
-
-const CHAPTER_TITLES = {
-  1:'Η Εποχή του Λίθου', 2:'Η Εποχή του Χαλκού', 3:'Ο ελληνικός κόσμος 1100-800 π.Χ.', 4:'Αρχαϊκή εποχή', 5:'Η ηγεμονία της Αθήνας',
-  6:'Ο Πελοποννησιακός πόλεμος', 7:'Η Μακεδονία και ο Μέγας Αλέξανδρος', 8:'Τα ελληνιστικά χρόνια', 9:'Η Ρώμη και ο ελληνικός κόσμος', 10:'Η Ρωμαϊκή αυτοκρατορία'
-};
-function getCompletedCount(chapters){return Object.values(chapters || {}).filter(ch => ch.completed).length;}
-function getUnlockedAchievementCount(progress){
-  const chapters = progress.chapters || {};
-  const completed = getCompletedCount(chapters);
-  return [completed>=1, completed>=3, completed>=5, completed>=8, completed>=10, !!progress.finalMission].filter(Boolean).length;
-}
-function getQuizScores(chapters){
-  return Object.values(chapters || {}).map(ch => Number(ch.bestScore ?? ch.score ?? ch.quizScore)).filter(n => !Number.isNaN(n));
-}
-function renderStudentDashboard(){
-  const progress = loadAppProgress();
-  const chapters = progress.chapters || {};
-  const completed = getCompletedCount(chapters);
-  const scores = getQuizScores(chapters);
-  const avg = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) + '%' : '—';
-  const next = Array.from({length:10},(_,i)=>i+1).find(i => !(chapters[i] && chapters[i].completed));
-  const statCompleted = document.getElementById('statCompleted');
-  const statAverage = document.getElementById('statAverage');
-  const statBadges = document.getElementById('statBadges');
-  if(statCompleted) statCompleted.textContent = completed + '/10';
-  if(statAverage) statAverage.textContent = avg;
-  if(statBadges) statBadges.textContent = getUnlockedAchievementCount(progress) + '/6';
-  const nextText = document.getElementById('nextMissionText');
-  const nextLink = document.getElementById('nextMissionLink');
-  if(next){
-    if(nextText) nextText.textContent = 'Συνέχισε με Κεφάλαιο ' + next + ': ' + CHAPTER_TITLES[next];
-    if(nextLink) nextLink.href = 'chapter' + next + '.html';
-  } else {
-    if(nextText) nextText.textContent = 'Όλα τα κεφάλαια ολοκληρώθηκαν. Ώρα για την τελική αποστολή!';
-    if(nextLink) nextLink.href = 'revision.html';
-  }
-  const road = document.getElementById('chapterRoad');
-  if(road){
-    road.innerHTML = '';
-    for(let i=1;i<=10;i++){
-      const done = chapters[i] && chapters[i].completed;
-      const div = document.createElement('div');
-      div.className = 'road-step ' + (done?'done':(i===next?'next':''));
-      div.innerHTML = (done?'✅':'Κεφ. '+i) + '<small>' + (done?'έγινε':(i===next?'επόμενο':'σε αναμονή')) + '</small>';
-      road.appendChild(div);
-    }
-  }
-  renderChapterCardStatus(progress, next);
-  renderProgressReport(progress, next, avg);
-}
-function renderChapterCardStatus(progress, next){
-  const chapters = progress.chapters || {};
-  document.querySelectorAll('[data-chapter]').forEach(card => {
-    const n = Number(card.getAttribute('data-chapter'));
-    const done = chapters[n] && chapters[n].completed;
-    card.classList.toggle('chapter-done', !!done);
-    card.classList.toggle('chapter-next', !done && n === next);
-    let status = card.querySelector('.chapter-status');
-    if(!status){ status = document.createElement('span'); status.className='chapter-status'; const first = card.querySelector('div'); if(first) first.appendChild(status); }
-    status.className = 'chapter-status ' + (done?'done':(!done && n===next?'next':''));
-    status.textContent = done ? 'Ολοκληρώθηκε' : (n===next ? 'Επόμενο βήμα' : 'Σε αναμονή');
-  });
-}
-function renderProgressReport(progress, next, avg){
-  const chapters = progress.chapters || {};
-  const completed = getCompletedCount(chapters);
-  const missing = Array.from({length:10},(_,i)=>i+1).filter(i => !(chapters[i] && chapters[i].completed));
-  const lines = [];
-  lines.push('Αναφορά προόδου - Ιστορία Α΄ Γυμνασίου');
-  lines.push('Ολοκληρωμένα κεφάλαια: ' + completed + '/10');
-  lines.push('Μέσο σκορ quiz: ' + avg);
-  lines.push('Badges: ' + getUnlockedAchievementCount(progress) + '/6');
-  lines.push('Επόμενη πρόταση: ' + (next ? ('Κεφάλαιο ' + next + ' - ' + CHAPTER_TITLES[next]) : 'Τελική αποστολή / γενική επανάληψη'));
-  lines.push('Κεφάλαια που μένουν: ' + (missing.length ? missing.join(', ') : 'κανένα'));
-  if(progress.finalMission){lines.push('Τελική αποστολή: παίχτηκε');}
-  const area = document.getElementById('progressReport');
-  if(area) area.value = lines.join('\n');
-}
-function copyProgressReport(){
-  const area = document.getElementById('progressReport');
-  if(!area) return;
-  area.select(); area.setSelectionRange(0, 99999);
-  navigator.clipboard?.writeText(area.value).then(()=>alert('Η αναφορά αντιγράφηκε.')).catch(()=>document.execCommand('copy'));
-}
-
-function renderOverallProgress(){
-  const progress = loadAppProgress();
-  const chapters = progress.chapters || {};
-  const completed = Object.values(chapters).filter(ch => ch.completed).length;
-  const percent = Math.round((completed / 10) * 100);
-  const fill = document.getElementById('overallProgressFill');
-  const text = document.getElementById('overallProgressText');
-  const badges = document.getElementById('overallBadges');
-  if(fill) fill.style.width = percent + '%';
-  if(text) text.textContent = 'Ολοκληρώθηκαν ' + completed + ' από τα 10 κεφάλαια (' + percent + '%).';
-  if(badges){badges.innerHTML=''; for(let i=1;i<=10;i++){const ch=chapters[i]||{}; const chip=document.createElement('span'); chip.className='progress-badge-chip'; chip.textContent=ch.completed?('✅ Κεφ. '+i):('○ Κεφ. '+i); badges.appendChild(chip);}}
-}
-
-function renderAchievementGallery(){
-  const grid = document.getElementById('achievementGrid');
-  if(!grid) return;
-  const progress = loadAppProgress();
-  const chapters = progress.chapters || {};
-  const completed = Object.values(chapters).filter(ch => ch.completed).length;
-  const achievements = [
-    {icon:'🏺', title:'Πρώτα βήματα', desc:'Ολοκλήρωσε 1 κεφάλαιο.', unlocked: completed >= 1},
-    {icon:'🧭', title:'Ταξιδιώτης χρόνου', desc:'Ολοκλήρωσε 3 κεφάλαια.', unlocked: completed >= 3},
-    {icon:'🏛️', title:'Μικρός Ιστορικός', desc:'Ολοκλήρωσε 5 κεφάλαια.', unlocked: completed >= 5},
-    {icon:'🦁', title:'Στρατηγός γνώσης', desc:'Ολοκλήρωσε 8 κεφάλαια.', unlocked: completed >= 8},
-    {icon:'👑', title:'Μέγας Ιστορικός', desc:'Ολοκλήρωσε όλα τα κεφάλαια.', unlocked: completed >= 10},
-    {icon:'🚀', title:'Τελική αποστολή', desc:'Παίξε το Campaign Mode.', unlocked: !!progress.finalMission}
-  ];
-  grid.innerHTML = achievements.map(a => '<div class="achievement-card '+(a.unlocked?'unlocked':'locked')+'"><div class="achievement-icon">'+(a.unlocked?a.icon:'🔒')+'</div><h3>'+a.title+'</h3><p>'+a.desc+'</p></div>').join('');
-}
-
-function resetAllProgress(){if(confirm('Θέλεις σίγουρα να μηδενιστεί η πρόοδος;')){localStorage.removeItem(APP_PROGRESS_KEY);renderOverallProgress();renderAchievementGallery();renderStudentDashboard();}}
-renderOverallProgress();
-renderAchievementGallery();
-renderStudentDashboard();
-
-/* === V4 polish: lightweight sound feedback === */
-</script>
-
-
-<script>
-(function(){
-  const eras = [
-    ['chapter1.html','Προϊστορία'],['chapter2.html','Χαλκός'],['chapter3.html','1100-800'],
-    ['chapter4.html','Αρχαϊκή'],['chapter5.html','Αθήνα'],['chapter6.html','Πόλεμος'],
-    ['chapter7.html','Μακεδονία'],['chapter8.html','Κλασική/Ελληνιστική'],
-    ['chapter9.html','Ρώμη'],['chapter10.html','Βυζάντιο']
-  ];
-  function getProgress(){
-    try{return JSON.parse(localStorage.getItem('istoriaProgress')||'{}')}catch(e){return{}}
-  }
-  function renderSmartTimeline(){
-    const box=document.getElementById('smartTimelineTrack');
-    if(!box) return;
-    const data=getProgress();
-    box.innerHTML='';
-    let weak=[];
-    eras.forEach(function(e,i){
-      const key='chapter'+(i+1);
-      const item=data[key]||{};
-      const el=document.createElement('a');
-      el.href=e[0];
-      el.className='smart-era';
-      if(item.completed) el.classList.add('done');
-      if(typeof item.bestScore==='number' && item.bestScore<70){el.classList.add('weak'); weak.push(e[1]);}
-      el.innerHTML='<div>'+(i+1)+'</div><div>'+e[1]+'</div><small>'+(item.bestScore!=null?item.bestScore+'%':'νέο')+'</small>';
-      box.appendChild(el);
-    });
-    const note=document.getElementById('smartTimelineNote');
-    if(note){
-      note.textContent = weak.length ? 'Πρόταση επανάληψης: '+weak.join(', ') : 'Καλή πορεία! Συνέχισε τα quiz για πιο ακριβείς προτάσεις.';
-    }
-  }
-  renderSmartTimeline();
-})();
-</script>
-
-
-<script>
-(function(){
-  const dailyQuestions = [
-    {q:'Τι χαρακτηρίζει κυρίως τη Νεολιθική εποχή;', o:['Γεωργία, κτηνοτροφία και μόνιμοι οικισμοί','Ρωμαϊκή ειρήνη','Περσικοί πόλεμοι'], a:0},
-    {q:'Ποιος πολιτισμός συνδέεται με την Κνωσό;', o:['Μινωικός','Ρωμαϊκός','Ελληνιστικός'], a:0},
-    {q:'Ποιοι χρησιμοποίησαν τη Γραμμική Β΄;', o:['Μυκηναίοι','Σουμέριοι','Σπαρτιάτες'], a:0},
-    {q:'Τι ήταν η πόλη-κράτος;', o:['Ανεξάρτητη κοινότητα με δικούς της νόμους','Ρωμαϊκός δρόμος','Μινωικό ανάκτορο'], a:0},
-    {q:'Με ποια μάχη συνδέεται ο Μαραθώνας;', o:['Περσικοί πόλεμοι','Πελοποννησιακός πόλεμος','Κατάκτηση της Ρώμης'], a:0},
-    {q:'Ποιος συνδέεται με την αθηναϊκή δημοκρατία του 5ου αιώνα;', o:['Περικλής','Χαμουραμπί','Αύγουστος'], a:0},
-    {q:'Ποιοι συγκρούστηκαν στον Πελοποννησιακό πόλεμο;', o:['Αθήνα και Σπάρτη','Μινωίτες και Κυκλαδίτες','Ρωμαίοι και Αιγύπτιοι'], a:0},
-    {q:'Ποιος ήταν ο πατέρας του Μεγάλου Αλεξάνδρου;', o:['Φίλιππος Β΄','Περικλής','Κλεισθένης'], a:0},
-    {q:'Τι βοήθησε να εξαπλωθεί μετά τον Αλέξανδρο;', o:['Η ελληνική γλώσσα και ο πολιτισμός','Η σφηνοειδής γραφή','Η Pax Romana'], a:0},
-    {q:'Τι σημαίνει Pax Romana;', o:['Περίοδος σχετικής ειρήνης στη Ρωμαϊκή αυτοκρατορία','Μινωική θαλασσοκρατία','Αθηναϊκή συμμαχία'], a:0}
-  ];
-
-  function todayKey(){
-    const d = new Date();
-    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-  }
-  function yesterdayKey(){
-    const d = new Date();
-    d.setDate(d.getDate()-1);
-    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-  }
-  function loadDaily(){
-    try{return JSON.parse(localStorage.getItem('istoriaDaily')||'{}')}catch(e){return{}}
-  }
-  function saveDaily(data){
-    localStorage.setItem('istoriaDaily', JSON.stringify(data));
-  }
-  function shuffle(arr){
-    return arr.map(function(x){return {v:x,r:Math.random()};}).sort(function(a,b){return a.r-b.r;}).map(function(x){return x.v;});
-  }
-  function pickDailyQuestions(){
-    const seed = todayKey().split('').reduce(function(a,c){return a+c.charCodeAt(0);},0);
-    const rotated = dailyQuestions.slice(seed % dailyQuestions.length).concat(dailyQuestions.slice(0, seed % dailyQuestions.length));
-    return rotated.slice(0,5);
-  }
-  function renderDailyStats(){
-    const data = loadDaily();
-    const today = todayKey();
-    const done = data.lastDate === today;
-    const st = document.getElementById('dailyStatus');
-    const streak = document.getElementById('dailyStreak');
-    const best = document.getElementById('dailyBest');
-    if(st) st.textContent = done ? 'ολοκληρώθηκε' : 'διαθέσιμη';
-    if(streak) streak.textContent = data.streak || 0;
-    if(best) best.textContent = data.best || 0;
-  }
-
-  window.startDailyChallenge = function(){
-    const box = document.getElementById('dailyQuizBox');
-    if(!box) return;
-    const chosen = pickDailyQuestions();
-    let score = 0;
-    let answered = 0;
-    box.innerHTML = '';
-    chosen.forEach(function(q, idx){
-      const wrap = document.createElement('div');
-      wrap.className = 'daily-question';
-      wrap.innerHTML = '<h3>'+(idx+1)+'. '+q.q+'</h3>';
-      const choices = shuffle(q.o.map(function(text,i){return {text:text, original:i};}));
-      choices.forEach(function(choice){
-        const btn = document.createElement('button');
-        btn.className = 'daily-answer';
-        btn.textContent = choice.text;
-        btn.onclick = function(){
-          if(wrap.getAttribute('data-answered')) return;
-          wrap.setAttribute('data-answered','1');
-          answered++;
-          if(choice.original === q.a){
-            score++;
-            btn.classList.add('correct');
-          }else{
-            btn.classList.add('wrong');
-            Array.from(wrap.querySelectorAll('.daily-answer')).forEach(function(b){
-              if(b.textContent === q.o[q.a]) b.classList.add('correct');
-            });
-          }
-          if(answered === chosen.length){
-            finishDaily(score);
-          }
-        };
-        wrap.appendChild(btn);
-      });
-      box.appendChild(wrap);
-    });
-  }
-
-  function finishDaily(score){
-    const data = loadDaily();
-    const today = todayKey();
-    if(data.lastDate !== today){
-      data.streak = data.lastDate === yesterdayKey() ? (data.streak || 0) + 1 : 1;
-    }
-    data.lastDate = today;
-    data.best = Math.max(data.best || 0, score);
-    data.lastScore = score;
-    saveDaily(data);
-
-    let all = {};
-    try{all = JSON.parse(localStorage.getItem('istoriaProgress')||'{}')}catch(e){all={}}
-    all.dailyChallenge = {completed:true,lastScore:score,lastDate:today,streak:data.streak};
-    localStorage.setItem('istoriaProgress', JSON.stringify(all));
-
-    const box = document.getElementById('dailyQuizBox');
-    const result = document.createElement('div');
-    result.className = 'daily-result';
-    result.innerHTML = score >= 4 ? '🏆 Εξαιρετικά! Σκορ '+score+'/5. Το streak σου ενημερώθηκε.' : '💪 Σκορ '+score+'/5. Κάνε λίγη επανάληψη και ξαναδοκίμασε αύριο!';
-    box.appendChild(result);
-    renderDailyStats();
-  }
-
-  renderDailyStats();
-})();
-</script>
-
-
-<script>
-function saveMiniGame(name, score){
-  let data = {};
-  try{data = JSON.parse(localStorage.getItem('istoriaProgress')||'{}')}catch(e){}
-  data.minigames = data.minigames || {};
-  data.minigames[name] = {
-    score: score,
-    playedAt: new Date().toISOString()
-  };
-  localStorage.setItem('istoriaProgress', JSON.stringify(data));
-}
-
-function showMiniGame(html){
-  document.getElementById('minigameArea').innerHTML = html;
-}
-
-function startBattleGame(){
-  showMiniGame(`
-    <h3>⚔️ Μάχη του Μαραθώνα</h3>
-    <p>Οι Πέρσες έχουν μεγάλο στρατό. Ποια στρατηγική θα διάλεγες;</p>
-
-    <button class="choice-btn" onclick="battleAnswer(this,false)">
-      Ανοιχτή μάχη σε μεγάλη πεδιάδα
-    </button>
-
-    <button class="choice-btn" onclick="battleAnswer(this,true)">
-      Γρήγορη επίθεση και εκμετάλλευση του εδάφους
-    </button>
-
-    <button class="choice-btn" onclick="battleAnswer(this,false)">
-      Υποχώρηση χωρίς μάχη
-    </button>
-
-    <div id="battleResult"></div>
-  `);
-}
-
-function battleAnswer(btn, correct){
-  document.querySelectorAll('#minigameArea .choice-btn').forEach(b => b.disabled = true);
-
-  if(correct){
-    btn.classList.add('correct');
-    document.getElementById('battleResult').innerHTML =
-      '<div class="mg-result">🏆 Σωστά! Οι Έλληνες χρησιμοποίησαν έξυπνη τακτική και γνώση του εδάφους.</div>';
-    saveMiniGame('battleStrategy',100);
-  }else{
-    btn.classList.add('wrong');
-    document.getElementById('battleResult').innerHTML =
-      '<div class="mg-result">📚 Η στρατηγική αυτή θα έδινε πλεονέκτημα στους Πέρσες.</div>';
-    saveMiniGame('battleStrategy',40);
-  }
-}
-
-function startAssemblyGame(){
-  showMiniGame(`
-    <h3>🏛️ Εκκλησία του Δήμου</h3>
-    <p>Η Αθήνα σκέφτεται να ενισχύσει τον στόλο της. Τι ψηφίζεις;</p>
-
-    <button class="choice-btn" onclick="assemblyAnswer(this,true)">
-      Ενίσχυση του στόλου για προστασία και εμπόριο
-    </button>
-
-    <button class="choice-btn" onclick="assemblyAnswer(this,false)">
-      Καμία προετοιμασία
-    </button>
-
-    <button class="choice-btn" onclick="assemblyAnswer(this,false)">
-      Καταστροφή όλων των πλοίων
-    </button>
-
-    <div id="assemblyResult"></div>
-  `);
-}
-
-function assemblyAnswer(btn, correct){
-  document.querySelectorAll('#minigameArea .choice-btn').forEach(b => b.disabled = true);
-
-  if(correct){
-    btn.classList.add('correct');
-    document.getElementById('assemblyResult').innerHTML =
-      '<div class="mg-result">🏛️ Καλή επιλογή! Ο αθηναϊκός στόλος βοήθησε πολύ την πόλη.</div>';
-    saveMiniGame('assembly',100);
-  }else{
-    btn.classList.add('wrong');
-    document.getElementById('assemblyResult').innerHTML =
-      '<div class="mg-result">📚 Η Αθήνα βασίστηκε πολύ στη ναυτική της δύναμη.</div>';
-    saveMiniGame('assembly',40);
-  }
-}
-
-function startTimelineGame(){
-  showMiniGame(`
-    <h3>📜 Timeline Puzzle</h3>
-    <p>Πάτησε τα γεγονότα με τη σωστή χρονική σειρά.</p>
-
-    <div class="timeline-drop">
-      <button class="timeline-item" onclick="timelinePick(this,'minoan')">Μινωικός πολιτισμός</button>
-      <button class="timeline-item" onclick="timelinePick(this,'alexander')">Εκστρατεία Αλεξάνδρου</button>
-      <button class="timeline-item" onclick="timelinePick(this,'roman')">Ρωμαϊκή αυτοκρατορία</button>
-    </div>
-
-    <div id="timelineState" class="mg-result">Σειρά: —</div>
-  `);
-
-  window.timelineProgress = [];
-}
-
-function timelinePick(btn,id){
-  if(btn.disabled) return;
-  btn.disabled = true;
-  window.timelineProgress.push(id);
-
-  const names = {
-    minoan:'Μινωικός',
-    alexander:'Αλέξανδρος',
-    roman:'Ρώμη'
-  };
-
-  document.getElementById('timelineState').innerHTML =
-    'Σειρά: ' + window.timelineProgress.map(x => names[x]).join(' → ');
-
-  if(window.timelineProgress.length === 3){
-    const correct = ['minoan','alexander','roman'].join(',') === window.timelineProgress.join(',');
-
-    if(correct){
-      document.getElementById('timelineState').innerHTML +=
-        '<br><br>🏆 Σωστή σειρά!';
-      saveMiniGame('timeline',100);
-    }else{
-      document.getElementById('timelineState').innerHTML +=
-        '<br><br>📚 Η σωστή σειρά ήταν: Μινωικός → Αλέξανδρος → Ρώμη';
-      saveMiniGame('timeline',50);
-    }
-  }
-}
-
-function startAlexanderGame(){
-  showMiniGame(`
-    <h3>🦁 Στρατόπεδο του Αλέξανδρου</h3>
-    <p>Πριν από τη μάχη, τι θα έκανες πρώτο;</p>
-
-    <button class="choice-btn" onclick="alexanderAnswer(this,true)">
-      Οργάνωση στρατού και σχέδιο επίθεσης
-    </button>
-
-    <button class="choice-btn" onclick="alexanderAnswer(this,false)">
-      Άμεση επίθεση χωρίς σχέδιο
-    </button>
-
-    <button class="choice-btn" onclick="alexanderAnswer(this,false)">
-      Επιστροφή στη Μακεδονία
-    </button>
-
-    <div id="alexanderResult"></div>
-  `);
-}
-
-function alexanderAnswer(btn, correct){
-  document.querySelectorAll('#minigameArea .choice-btn').forEach(b => b.disabled = true);
-
-  if(correct){
-    btn.classList.add('correct');
-    document.getElementById('alexanderResult').innerHTML =
-      '<div class="mg-result">🦁 Ο Αλέξανδρος σχεδίαζε προσεκτικά πριν από κάθε μάχη.</div>';
-    saveMiniGame('alexander',100);
-  }else{
-    btn.classList.add('wrong');
-    document.getElementById('alexanderResult').innerHTML =
-      '<div class="mg-result">📚 Οι μεγάλες εκστρατείες χρειάζονταν καλή οργάνωση.</div>';
-    saveMiniGame('alexander',45);
-  }
-}
-</script>
-
-<script src="core/v26-polish.js"></script>
-<script src="core/mobile-menu.js"></script>
+<div class="footer">
+Ultra Clean Home v28
+</div>
+</div>
 </body>
 </html>
