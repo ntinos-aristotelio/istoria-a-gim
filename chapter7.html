@@ -1,503 +1,463 @@
 <!DOCTYPE html>
+
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Κεφάλαιο 7 - Η Μακεδονία και ο Μέγας Αλέξανδρος</title>
-
-<link rel="stylesheet" href="core/chapter-core.css">
-<link rel="stylesheet" href="core/v26-polish.css">
-<link rel="stylesheet" href="core/mobile-menu.css">
+<link href="core/chapter-core.css" rel="stylesheet"/>
+<link href="core/v26-polish.css" rel="stylesheet"/>
+<link href="core/mobile-menu.css" rel="stylesheet"/>
 </head>
-
 <body>
-
 <header>
-  <div class="bar">
-    <div class="logo">🦁 Κεφάλαιο 7: Η Μακεδονία και ο Μέγας Αλέξανδρος</div>
-    <div class="nav">
-      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
-      <button onclick="showPage('home')">Αρχή</button>
-      <button onclick="openLesson()">Μάθημα</button>
-      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-      <button onclick="showPage('review')">Επανάληψη</button>
-      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
-      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
-    </div>
-  </div>
+<div class="bar">
+<div class="logo">🦁 Κεφάλαιο 7: Η Μακεδονία και ο Μέγας Αλέξανδρος</div>
+<div class="nav"><a href="index.html">Αρχική</a>
+<a href="chapters.html">Κεφάλαια</a>
+<a class="secondary" href="revision.html">Επανάληψη</a>
+<a class="gold" href="smart-study.html">Smart Study</a>
+<a class="blue" href="intelligent-revision.html">Revision</a>
+<a class="btn secondary" href="world-map.html">Άτλαντας</a>
+<a class="btn gold" href="tools.html">Εργαλεία</a>
+</div>
+</div>
 </header>
-
 <template id="draw-macedonia">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<circle cx="750" cy="95" r="65" fill="#ffd56d"/>
-<path d="M0 500 C220 420 420 520 900 435 L900 620 L0 620Z" fill="#8abc69"/>
-<path d="M115 430 C220 300 320 300 420 430Z" fill="#7d8f5f" stroke="#246b63" stroke-width="8"/>
-<path d="M375 430 C500 250 645 285 760 430Z" fill="#6f8552" stroke="#246b63" stroke-width="8"/>
-<circle cx="260" cy="360" r="34" fill="#c3834b"/><rect x="230" y="395" width="60" height="90" rx="20" fill="#7b421f"/>
-<path d="M555 210 L620 210 L600 490 L535 490Z" fill="#6a6a66" stroke="#333" stroke-width="8"/>
-<path d="M525 210 L635 210 L600 145Z" fill="#4d4d49" stroke="#333" stroke-width="8"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Η Μακεδονία</text>
-<text x="62" y="138" font-size="28" fill="#246b63">βόρεια δύναμη που ενώνει τον ελληνικό κόσμο</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<circle cx="750" cy="95" fill="#ffd56d" r="65"></circle>
+<path d="M0 500 C220 420 420 520 900 435 L900 620 L0 620Z" fill="#8abc69"></path>
+<path d="M115 430 C220 300 320 300 420 430Z" fill="#7d8f5f" stroke="#246b63" stroke-width="8"></path>
+<path d="M375 430 C500 250 645 285 760 430Z" fill="#6f8552" stroke="#246b63" stroke-width="8"></path>
+<circle cx="260" cy="360" fill="#c3834b" r="34"></circle><rect fill="#7b421f" height="90" rx="20" width="60" x="230" y="395"></rect>
+<path d="M555 210 L620 210 L600 490 L535 490Z" fill="#6a6a66" stroke="#333" stroke-width="8"></path>
+<path d="M525 210 L635 210 L600 145Z" fill="#4d4d49" stroke="#333" stroke-width="8"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Η Μακεδονία</text>
+<text fill="#246b63" font-size="28" x="62" y="138">βόρεια δύναμη που ενώνει τον ελληνικό κόσμο</text>
 </svg>
 </template>
-
 <template id="draw-philip">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
-<circle cx="450" cy="230" r="68" fill="#c3834b"/>
-<path d="M385 175 q68-90 140 0" fill="#3b2a1b"/>
-<path d="M370 150 h160 l-38 -48 l-42 38 l-42 -38z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="375" y="310" width="150" height="190" rx="30" fill="#7b421f"/>
-<path d="M235 430 H700" stroke="#6a6a66" stroke-width="16" stroke-linecap="round"/>
-<path d="M705 430 l-55 -35 v70z" fill="#6a6a66"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Φίλιππος Β΄</text>
-<text x="62" y="138" font-size="28" fill="#246b63">οργάνωση στρατού και ισχυρό μακεδονικό κράτος</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
+<circle cx="450" cy="230" fill="#c3834b" r="68"></circle>
+<path d="M385 175 q68-90 140 0" fill="#3b2a1b"></path>
+<path d="M370 150 h160 l-38 -48 l-42 38 l-42 -38z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"></path>
+<rect fill="#7b421f" height="190" rx="30" width="150" x="375" y="310"></rect>
+<path d="M235 430 H700" stroke="#6a6a66" stroke-linecap="round" stroke-width="16"></path>
+<path d="M705 430 l-55 -35 v70z" fill="#6a6a66"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Φίλιππος Β΄</text>
+<text fill="#246b63" font-size="28" x="62" y="138">οργάνωση στρατού και ισχυρό μακεδονικό κράτος</text>
 </svg>
 </template>
-
 <template id="draw-phalanx">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8eef5"/>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"/>
-<g stroke="#5b351c" stroke-width="9" stroke-linecap="round">
-<line x1="210" y1="440" x2="520" y2="230"/><line x1="270" y1="450" x2="580" y2="240"/><line x1="330" y1="460" x2="640" y2="250"/><line x1="390" y1="470" x2="700" y2="260"/>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8eef5" height="620" rx="35" width="900"></rect>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"></path>
+<g stroke="#5b351c" stroke-linecap="round" stroke-width="9">
+<line x1="210" x2="520" y1="440" y2="230"></line><line x1="270" x2="580" y1="450" y2="240"></line><line x1="330" x2="640" y1="460" y2="250"></line><line x1="390" x2="700" y1="470" y2="260"></line>
 </g>
 <g>
-<circle cx="210" cy="360" r="28" fill="#c3834b"/><rect x="185" y="390" width="50" height="75" rx="18" fill="#7b421f"/>
-<circle cx="300" cy="380" r="28" fill="#c3834b"/><rect x="275" y="410" width="50" height="75" rx="18" fill="#7b421f"/>
-<circle cx="390" cy="400" r="28" fill="#c3834b"/><rect x="365" y="430" width="50" height="75" rx="18" fill="#7b421f"/>
-<circle cx="480" cy="420" r="28" fill="#c3834b"/><rect x="455" y="450" width="50" height="75" rx="18" fill="#7b421f"/>
+<circle cx="210" cy="360" fill="#c3834b" r="28"></circle><rect fill="#7b421f" height="75" rx="18" width="50" x="185" y="390"></rect>
+<circle cx="300" cy="380" fill="#c3834b" r="28"></circle><rect fill="#7b421f" height="75" rx="18" width="50" x="275" y="410"></rect>
+<circle cx="390" cy="400" fill="#c3834b" r="28"></circle><rect fill="#7b421f" height="75" rx="18" width="50" x="365" y="430"></rect>
+<circle cx="480" cy="420" fill="#c3834b" r="28"></circle><rect fill="#7b421f" height="75" rx="18" width="50" x="455" y="450"></rect>
 </g>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Μακεδονική φάλαγγα</text>
-<text x="62" y="138" font-size="28" fill="#246b63">πειθαρχία, σάρισες και οργανωμένη δύναμη</text>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Μακεδονική φάλαγγα</text>
+<text fill="#246b63" font-size="28" x="62" y="138">πειθαρχία, σάρισες και οργανωμένη δύναμη</text>
 </svg>
 </template>
-
 <template id="draw-alexander">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<circle cx="450" cy="230" r="68" fill="#c3834b"/>
-<path d="M385 175 q68-90 140 0" fill="#3b2a1b"/>
-<path d="M365 150 h170 l-40 -55 l-45 45 l-45 -45z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="375" y="310" width="150" height="185" rx="32" fill="#246b63"/>
-<path d="M535 355 C650 300 710 260 775 185" stroke="#7b421f" stroke-width="14" stroke-linecap="round"/>
-<path d="M775 185 l-18 62 l-42 -42z" fill="#7b421f"/>
-<circle cx="285" cy="410" r="70" fill="#b9422f" stroke="#5b351c" stroke-width="10"/>
-<path d="M285 350 v120 M225 410 h120" stroke="#ffd56d" stroke-width="10"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Μέγας Αλέξανδρος</text>
-<text x="62" y="138" font-size="28" fill="#246b63">νεαρός βασιλιάς με τεράστια εκστρατεία</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<circle cx="450" cy="230" fill="#c3834b" r="68"></circle>
+<path d="M385 175 q68-90 140 0" fill="#3b2a1b"></path>
+<path d="M365 150 h170 l-40 -55 l-45 45 l-45 -45z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"></path>
+<rect fill="#246b63" height="185" rx="32" width="150" x="375" y="310"></rect>
+<path d="M535 355 C650 300 710 260 775 185" stroke="#7b421f" stroke-linecap="round" stroke-width="14"></path>
+<path d="M775 185 l-18 62 l-42 -42z" fill="#7b421f"></path>
+<circle cx="285" cy="410" fill="#b9422f" r="70" stroke="#5b351c" stroke-width="10"></circle>
+<path d="M285 350 v120 M225 410 h120" stroke="#ffd56d" stroke-width="10"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Μέγας Αλέξανδρος</text>
+<text fill="#246b63" font-size="28" x="62" y="138">νεαρός βασιλιάς με τεράστια εκστρατεία</text>
 </svg>
 </template>
-
 <template id="draw-campaign">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#dff3ff"/>
-<path d="M0 470 C170 390 340 450 520 375 C680 315 780 340 900 300 L900 620 L0 620Z" fill="#4d9ab0"/>
-<path d="M120 330 q80-70 160 0 q-80 50-160 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
-<path d="M520 350 q120-95 240 0 q-120 70-240 0z" fill="#d6bd8b" stroke="#7b421f" stroke-width="8"/>
-<path d="M260 420 C380 320 500 300 650 330" fill="none" stroke="#fff8ec" stroke-width="13" stroke-dasharray="18 16" stroke-linecap="round"/>
-<path d="M650 330 l-45 -22 l15 48z" fill="#fff8ec"/>
-<path d="M310 450 q100 60 200 0 l-50 70 h-100z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
-<path d="M410 450 L410 290" stroke="#7b421f" stroke-width="8"/>
-<path d="M410 295 q90 50 0 100Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Η εκστρατεία</text>
-<text x="62" y="138" font-size="28" fill="#246b63">από την Ελλάδα ως την Ασία και την Αίγυπτο</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
+<path d="M0 470 C170 390 340 450 520 375 C680 315 780 340 900 300 L900 620 L0 620Z" fill="#4d9ab0"></path>
+<path d="M120 330 q80-70 160 0 q-80 50-160 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"></path>
+<path d="M520 350 q120-95 240 0 q-120 70-240 0z" fill="#d6bd8b" stroke="#7b421f" stroke-width="8"></path>
+<path d="M260 420 C380 320 500 300 650 330" fill="none" stroke="#fff8ec" stroke-dasharray="18 16" stroke-linecap="round" stroke-width="13"></path>
+<path d="M650 330 l-45 -22 l15 48z" fill="#fff8ec"></path>
+<path d="M310 450 q100 60 200 0 l-50 70 h-100z" fill="#7b421f" stroke="#5b351c" stroke-width="8"></path>
+<path d="M410 450 L410 290" stroke="#7b421f" stroke-width="8"></path>
+<path d="M410 295 q90 50 0 100Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Η εκστρατεία</text>
+<text fill="#246b63" font-size="28" x="62" y="138">από την Ελλάδα ως την Ασία και την Αίγυπτο</text>
 </svg>
 </template>
-
 <template id="draw-gaugamela">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
-<path d="M0 505 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#d6bd8b"/>
-<circle cx="250" cy="360" r="70" fill="#b9422f" stroke="#5b351c" stroke-width="10"/>
-<path d="M250 300 v120 M190 360 h120" stroke="#ffd56d" stroke-width="10"/>
-<circle cx="650" cy="360" r="70" fill="#246b63" stroke="#5b351c" stroke-width="10"/>
-<path d="M610 330 q40 40 80 0" fill="none" stroke="#fff8ec" stroke-width="10"/>
-<path d="M340 360 H560" stroke="#7b421f" stroke-width="16" stroke-linecap="round"/>
-<path d="M555 360 l-50 -30 v60z" fill="#7b421f"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Μεγάλες μάχες</text>
-<text x="62" y="138" font-size="28" fill="#246b63">ο Αλέξανδρος νικά την περσική δύναμη</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
+<path d="M0 505 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#d6bd8b"></path>
+<circle cx="250" cy="360" fill="#b9422f" r="70" stroke="#5b351c" stroke-width="10"></circle>
+<path d="M250 300 v120 M190 360 h120" stroke="#ffd56d" stroke-width="10"></path>
+<circle cx="650" cy="360" fill="#246b63" r="70" stroke="#5b351c" stroke-width="10"></circle>
+<path d="M610 330 q40 40 80 0" fill="none" stroke="#fff8ec" stroke-width="10"></path>
+<path d="M340 360 H560" stroke="#7b421f" stroke-linecap="round" stroke-width="16"></path>
+<path d="M555 360 l-50 -30 v60z" fill="#7b421f"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Μεγάλες μάχες</text>
+<text fill="#246b63" font-size="28" x="62" y="138">ο Αλέξανδρος νικά την περσική δύναμη</text>
 </svg>
 </template>
-
 <template id="draw-city">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
-<rect x="135" y="365" width="100" height="115" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="315" y="325" width="100" height="155" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="495" y="365" width="100" height="115" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<path d="M100 365 L365 220 L630 365Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<rect x="675" y="330" width="90" height="150" fill="#fff8ec" stroke="#246b63" stroke-width="8"/>
-<path d="M675 330 l45-85 l45 85z" fill="#d8a24b" stroke="#246b63" stroke-width="8"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Αλεξάνδρειες</text>
-<text x="62" y="138" font-size="28" fill="#246b63">νέες πόλεις, εμπόριο και ελληνικός πολιτισμός</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<circle cx="745" cy="95" fill="#ffd56d" r="65"></circle>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"></path>
+<rect fill="#d8a24b" height="115" stroke="#7b421f" stroke-width="8" width="100" x="135" y="365"></rect>
+<rect fill="#d8a24b" height="155" stroke="#7b421f" stroke-width="8" width="100" x="315" y="325"></rect>
+<rect fill="#d8a24b" height="115" stroke="#7b421f" stroke-width="8" width="100" x="495" y="365"></rect>
+<path d="M100 365 L365 220 L630 365Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"></path>
+<rect fill="#fff8ec" height="150" stroke="#246b63" stroke-width="8" width="90" x="675" y="330"></rect>
+<path d="M675 330 l45-85 l45 85z" fill="#d8a24b" stroke="#246b63" stroke-width="8"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Αλεξάνδρειες</text>
+<text fill="#246b63" font-size="28" x="62" y="138">νέες πόλεις, εμπόριο και ελληνικός πολιτισμός</text>
 </svg>
 </template>
-
 <template id="draw-hellenistic">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
-<circle cx="260" cy="270" r="85" fill="#dff3ff" stroke="#246b63" stroke-width="10"/>
-<text x="205" y="285" font-size="40" font-weight="900" fill="#246b63">Ελλάδα</text>
-<circle cx="475" cy="330" r="85" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<text x="420" y="345" font-size="40" font-weight="900" fill="#7b421f">Ασία</text>
-<circle cx="690" cy="270" r="85" fill="#d6bd8b" stroke="#a7652d" stroke-width="10"/>
-<text x="625" y="285" font-size="40" font-weight="900" fill="#a7652d">Αίγυπτος</text>
-<path d="M345 290 H390 M560 310 H610" stroke="#7b421f" stroke-width="14" stroke-linecap="round"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ελληνιστικός κόσμος</text>
-<text x="62" y="138" font-size="28" fill="#246b63">συνάντηση λαών, γλωσσών και πολιτισμών</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
+<circle cx="260" cy="270" fill="#dff3ff" r="85" stroke="#246b63" stroke-width="10"></circle>
+<text fill="#246b63" font-size="40" font-weight="900" x="205" y="285">Ελλάδα</text>
+<circle cx="475" cy="330" fill="#fff8ec" r="85" stroke="#7b421f" stroke-width="10"></circle>
+<text fill="#7b421f" font-size="40" font-weight="900" x="420" y="345">Ασία</text>
+<circle cx="690" cy="270" fill="#d6bd8b" r="85" stroke="#a7652d" stroke-width="10"></circle>
+<text fill="#a7652d" font-size="40" font-weight="900" x="625" y="285">Αίγυπτος</text>
+<path d="M345 290 H390 M560 310 H610" stroke="#7b421f" stroke-linecap="round" stroke-width="14"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ελληνιστικός κόσμος</text>
+<text fill="#246b63" font-size="28" x="62" y="138">συνάντηση λαών, γλωσσών και πολιτισμών</text>
 </svg>
 </template>
-
-<section id="home" class="page active">
-  <div class="wrap">
-    <div class="hero">
-      <div class="panel text">
-        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
-        <h1>Κεφάλαιο 7<br>Η Μακεδονία και ο Μέγας Αλέξανδρος</h1>
-        <p>Στόχος του κεφαλαίου είναι να δούμε πώς η Μακεδονία γίνεται ισχυρή και πώς ο Αλέξανδρος δημιουργεί έναν τεράστιο κόσμο επαφών.</p>
-        <div class="box">Κεντρική ιδέα: η μακεδονική δύναμη ενώνει τους Έλληνες και οδηγεί σε μεγάλη εκστρατεία στην Ανατολή.</div>
-        <p>
-          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
-          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-        </p>
-      </div>
-      <div class="panel drawing" data-draw="draw-macedonia"></div>
-    </div>
-  </div>
+<section class="page active" id="home">
+<div class="wrap">
+<div class="hero">
+<div class="panel text">
+<div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+<h1>Κεφάλαιο 7<br/>Η Μακεδονία και ο Μέγας Αλέξανδρος</h1>
+<p>Στόχος του κεφαλαίου είναι να δούμε πώς η Μακεδονία γίνεται ισχυρή και πώς ο Αλέξανδρος δημιουργεί έναν τεράστιο κόσμο επαφών.</p>
+<div class="box">Κεντρική ιδέα: η μακεδονική δύναμη ενώνει τους Έλληνες και οδηγεί σε μεγάλη εκστρατεία στην Ανατολή.</div>
+<p>
+<button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+<button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+</p>
+</div>
+<div class="panel drawing" data-draw="draw-macedonia"></div>
+</div>
+</div>
 </section>
-
-  <section class="wrap">
-    <div class="panel text progress-card">
-      <div class="eyebrow">Η πρόοδός μου</div>
-      <h2>Πρόοδος κεφαλαίου</h2>
-      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
-      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
-      <div id="chapterBadgeList" class="progress-badges"></div>
-    </div>
-  </section>
-
-
-<section id="chapter7" class="page">
-  <div class="wrap">
-    <div class="lesson-top">
-      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
-      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
-      <div id="counter">1 / 10</div>
-    </div>
-
-    <div class="panel">
-
-      <div class="lesson-slide active">
-        <div class="text">
-          <div class="eyebrow">1. Εισαγωγή</div>
-          <h2>Η άνοδος της Μακεδονίας</h2>
-          <p>Μετά την αποδυνάμωση των ελληνικών πόλεων, η Μακεδονία αναδεικνύεται σε ισχυρή δύναμη.</p>
-          <div class="box">Βασική ιδέα: η Μακεδονία εκμεταλλεύεται την αδυναμία των πόλεων και οργανώνεται σε ισχυρό κράτος.</div>
-        </div>
-        <div class="drawing" data-draw="draw-macedonia"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">2. Ο Φίλιππος Β΄</div>
-          <h2>Οργάνωση και δύναμη</h2>
-          <p>Ο Φίλιππος Β΄ οργανώνει το μακεδονικό κράτος και δημιουργεί ισχυρό στρατό.</p>
-          <ul>
-            <li>ισχυρή βασιλική εξουσία</li>
-            <li>οργάνωση στρατού</li>
-            <li>διπλωματία</li>
-            <li>επέκταση της μακεδονικής επιρροής</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί ένας οργανωμένος στρατός αλλάζει την ισορροπία δύναμης;</div>
-        </div>
-        <div class="drawing" data-draw="draw-philip"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">3. Η μακεδονική φάλαγγα</div>
-          <h2>Σάρισες και πειθαρχία</h2>
-          <p>Η μακεδονική φάλαγγα ήταν οργανωμένος στρατιωτικός σχηματισμός με μακριά δόρατα, τις σάρισες.</p>
-          <ul>
-            <li>πειθαρχία</li>
-            <li>συντονισμένη κίνηση</li>
-            <li>μακριά δόρατα</li>
-            <li>ισχυρή επίθεση</li>
-          </ul>
-          <div class="box">Κλειδί: η οργάνωση μπορεί να κάνει έναν στρατό πολύ αποτελεσματικό.</div>
-        </div>
-        <div class="drawing" data-draw="draw-phalanx"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">4. Η ένωση των Ελλήνων</div>
-          <h2>Πορεία προς κοινή εκστρατεία</h2>
-          <p>Ο Φίλιππος επιδιώκει να ενώσει τις ελληνικές πόλεις κάτω από τη μακεδονική ηγεσία για εκστρατεία εναντίον των Περσών.</p>
-          <ul>
-            <li>συνέδριο ελληνικών πόλεων</li>
-            <li>μακεδονική ηγεσία</li>
-            <li>κοινός στόχος</li>
-            <li>εκστρατεία στην Ανατολή</li>
-          </ul>
-          <div class="box">Ερώτηση: είναι εύκολο να ενωθούν πόλεις που πριν ανταγωνίζονταν;</div>
-        </div>
-        <div class="drawing" data-draw="draw-hellenistic"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">5. Ο Αλέξανδρος βασιλιάς</div>
-          <h2>Νεαρός ηγέτης</h2>
-          <p>Μετά τον θάνατο του Φιλίππου, ο Αλέξανδρος γίνεται βασιλιάς και συνεχίζει το σχέδιο της εκστρατείας.</p>
-          <ul>
-            <li>νεαρή ηλικία</li>
-            <li>ισχυρή παιδεία</li>
-            <li>στρατιωτική ικανότητα</li>
-            <li>φιλοδοξία και τόλμη</li>
-          </ul>
-          <div class="box">Συζήτηση: ποια στοιχεία χρειάζεται ένας ηγέτης σε δύσκολες συνθήκες;</div>
-        </div>
-        <div class="drawing" data-draw="draw-alexander"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">6. Η εκστρατεία στην Ανατολή</div>
-          <h2>Από την Ελλάδα στην Ασία</h2>
-          <p>Ο Αλέξανδρος ξεκινά μεγάλη εκστρατεία εναντίον της περσικής αυτοκρατορίας.</p>
-          <ul>
-            <li>πέρασμα στην Ασία</li>
-            <li>μεγάλες μάχες</li>
-            <li>κατάκτηση περιοχών</li>
-            <li>συνέχιση προς την Αίγυπτο και την Ανατολή</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί μια τόσο μεγάλη εκστρατεία ήταν δύσκολη;</div>
-        </div>
-        <div class="drawing" data-draw="draw-campaign"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">7. Οι μεγάλες νίκες</div>
-          <h2>Απέναντι στους Πέρσες</h2>
-          <p>Ο Αλέξανδρος νικά τους Πέρσες σε σημαντικές μάχες και προχωρά βαθιά στην Ανατολή.</p>
-          <ul>
-            <li>Γρανικός</li>
-            <li>Ισσός</li>
-            <li>Γαυγάμηλα</li>
-            <li>κατάλυση της περσικής δύναμης</li>
-          </ul>
-          <div class="box">Κλειδί: οι νίκες του Αλεξάνδρου άνοιξαν τον δρόμο για έναν νέο κόσμο.</div>
-        </div>
-        <div class="drawing" data-draw="draw-gaugamela"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">8. Νέες πόλεις</div>
-          <h2>Οι Αλεξάνδρειες</h2>
-          <p>Ο Αλέξανδρος ιδρύει πόλεις σε πολλές περιοχές. Οι πόλεις αυτές βοηθούν τη διοίκηση, το εμπόριο και τη διάδοση του ελληνικού πολιτισμού.</p>
-          <ul>
-            <li>νέες πόλεις</li>
-            <li>εμπόριο</li>
-            <li>επαφές λαών</li>
-            <li>διάδοση ελληνικής γλώσσας και παιδείας</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί μια πόλη μπορεί να γίνει κέντρο πολιτισμού;</div>
-        </div>
-        <div class="drawing" data-draw="draw-city"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">9. Ο ελληνιστικός κόσμος</div>
-          <h2>Συνάντηση πολιτισμών</h2>
-          <p>Μετά τις κατακτήσεις του Αλεξάνδρου, ο ελληνικός πολιτισμός συναντά λαούς και παραδόσεις της Ανατολής.</p>
-          <ul>
-            <li>κοινή ελληνική γλώσσα</li>
-            <li>νέες πόλεις</li>
-            <li>εμπόριο και επικοινωνία</li>
-            <li>ανάμειξη πολιτισμών</li>
-          </ul>
-          <div class="box">Κλειδί: ο ελληνιστικός κόσμος δεν είναι μόνο ελληνικός· είναι κόσμος επαφών και συνδυασμών.</div>
-        </div>
-        <div class="drawing" data-draw="draw-hellenistic"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
-          <h2>Σύνοψη Κεφαλαίου 7</h2>
-          <ul>
-            <li>Η Μακεδονία γίνεται ισχυρή με τον Φίλιππο Β΄.</li>
-            <li>Η μακεδονική φάλαγγα δίνει μεγάλη στρατιωτική δύναμη.</li>
-            <li>Ο Αλέξανδρος εκστρατεύει εναντίον των Περσών και κατακτά τεράστιες περιοχές.</li>
-            <li>Ιδρύονται νέες πόλεις και διαδίδεται η ελληνική γλώσσα και παιδεία.</li>
-            <li>Δημιουργείται ο ελληνιστικός κόσμος.</li>
-          </ul>
-          <p>
-            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
-            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
-          </p>
-        </div>
-        <div class="drawing" data-draw="draw-macedonia"></div>
-      </div>
-
-    </div>
-
-    <div class="lesson-nav">
-      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-      <button onclick="nextSlide()">Επόμενο ➡</button>
-    </div>
-  </div>
+<section class="wrap">
+<div class="panel text progress-card">
+<div class="eyebrow">Η πρόοδός μου</div>
+<h2>Πρόοδος κεφαλαίου</h2>
+<div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
+<div class="progress-small" id="chapterProgressText">Φόρτωση προόδου...</div>
+<div class="progress-badges" id="chapterBadgeList"></div>
+</div>
 </section>
-
-<section id="extras" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Extra για τα παιδιά</div>
-      <h2>Δραστηριότητες Κεφαλαίου 7</h2>
-      <p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε τη Μακεδονία, την εκστρατεία και τον ελληνιστικό κόσμο.</p>
-
-      <div class="cards">
-        <div class="card" onclick="showPage('missions')">
-          <div><div class="icon">🎯</div><h3>Αποστολή εκστρατείας</h3><p>Βρες γιατί πέτυχε ο Αλέξανδρος.</p></div>
-          <span class="tag">δραστηριότητα</span>
-        </div>
-        <div class="card" onclick="showPage('detective')">
-          <div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
-          <span class="tag">παιχνίδι σκέψης</span>
-        </div>
-        <div class="card" onclick="showPage('concepts')">
-          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
-          <span class="tag">επανάληψη</span>
-        </div>
-        <div class="card" onclick="showPage('today')">
-          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
-          <span class="tag">ολοκλήρωση</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="page" id="chapter7">
+<div class="wrap">
+<div class="lesson-top">
+<button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<div id="counter">1 / 10</div>
+</div>
+<div class="panel">
+<div class="lesson-slide active">
+<div class="text">
+<div class="eyebrow">1. Εισαγωγή</div>
+<h2>Η άνοδος της Μακεδονίας</h2>
+<p>Μετά την αποδυνάμωση των ελληνικών πόλεων, η Μακεδονία αναδεικνύεται σε ισχυρή δύναμη.</p>
+<div class="box">Βασική ιδέα: η Μακεδονία εκμεταλλεύεται την αδυναμία των πόλεων και οργανώνεται σε ισχυρό κράτος.</div>
+</div>
+<div class="drawing" data-draw="draw-macedonia"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">2. Ο Φίλιππος Β΄</div>
+<h2>Οργάνωση και δύναμη</h2>
+<p>Ο Φίλιππος Β΄ οργανώνει το μακεδονικό κράτος και δημιουργεί ισχυρό στρατό.</p>
+<ul>
+<li>ισχυρή βασιλική εξουσία</li>
+<li>οργάνωση στρατού</li>
+<li>διπλωματία</li>
+<li>επέκταση της μακεδονικής επιρροής</li>
+</ul>
+<div class="box">Ερώτηση: γιατί ένας οργανωμένος στρατός αλλάζει την ισορροπία δύναμης;</div>
+</div>
+<div class="drawing" data-draw="draw-philip"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">3. Η μακεδονική φάλαγγα</div>
+<h2>Σάρισες και πειθαρχία</h2>
+<p>Η μακεδονική φάλαγγα ήταν οργανωμένος στρατιωτικός σχηματισμός με μακριά δόρατα, τις σάρισες.</p>
+<ul>
+<li>πειθαρχία</li>
+<li>συντονισμένη κίνηση</li>
+<li>μακριά δόρατα</li>
+<li>ισχυρή επίθεση</li>
+</ul>
+<div class="box">Κλειδί: η οργάνωση μπορεί να κάνει έναν στρατό πολύ αποτελεσματικό.</div>
+</div>
+<div class="drawing" data-draw="draw-phalanx"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">4. Η ένωση των Ελλήνων</div>
+<h2>Πορεία προς κοινή εκστρατεία</h2>
+<p>Ο Φίλιππος επιδιώκει να ενώσει τις ελληνικές πόλεις κάτω από τη μακεδονική ηγεσία για εκστρατεία εναντίον των Περσών.</p>
+<ul>
+<li>συνέδριο ελληνικών πόλεων</li>
+<li>μακεδονική ηγεσία</li>
+<li>κοινός στόχος</li>
+<li>εκστρατεία στην Ανατολή</li>
+</ul>
+<div class="box">Ερώτηση: είναι εύκολο να ενωθούν πόλεις που πριν ανταγωνίζονταν;</div>
+</div>
+<div class="drawing" data-draw="draw-hellenistic"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">5. Ο Αλέξανδρος βασιλιάς</div>
+<h2>Νεαρός ηγέτης</h2>
+<p>Μετά τον θάνατο του Φιλίππου, ο Αλέξανδρος γίνεται βασιλιάς και συνεχίζει το σχέδιο της εκστρατείας.</p>
+<ul>
+<li>νεαρή ηλικία</li>
+<li>ισχυρή παιδεία</li>
+<li>στρατιωτική ικανότητα</li>
+<li>φιλοδοξία και τόλμη</li>
+</ul>
+<div class="box">Συζήτηση: ποια στοιχεία χρειάζεται ένας ηγέτης σε δύσκολες συνθήκες;</div>
+</div>
+<div class="drawing" data-draw="draw-alexander"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">6. Η εκστρατεία στην Ανατολή</div>
+<h2>Από την Ελλάδα στην Ασία</h2>
+<p>Ο Αλέξανδρος ξεκινά μεγάλη εκστρατεία εναντίον της περσικής αυτοκρατορίας.</p>
+<ul>
+<li>πέρασμα στην Ασία</li>
+<li>μεγάλες μάχες</li>
+<li>κατάκτηση περιοχών</li>
+<li>συνέχιση προς την Αίγυπτο και την Ανατολή</li>
+</ul>
+<div class="box">Ερώτηση: γιατί μια τόσο μεγάλη εκστρατεία ήταν δύσκολη;</div>
+</div>
+<div class="drawing" data-draw="draw-campaign"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">7. Οι μεγάλες νίκες</div>
+<h2>Απέναντι στους Πέρσες</h2>
+<p>Ο Αλέξανδρος νικά τους Πέρσες σε σημαντικές μάχες και προχωρά βαθιά στην Ανατολή.</p>
+<ul>
+<li>Γρανικός</li>
+<li>Ισσός</li>
+<li>Γαυγάμηλα</li>
+<li>κατάλυση της περσικής δύναμης</li>
+</ul>
+<div class="box">Κλειδί: οι νίκες του Αλεξάνδρου άνοιξαν τον δρόμο για έναν νέο κόσμο.</div>
+</div>
+<div class="drawing" data-draw="draw-gaugamela"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">8. Νέες πόλεις</div>
+<h2>Οι Αλεξάνδρειες</h2>
+<p>Ο Αλέξανδρος ιδρύει πόλεις σε πολλές περιοχές. Οι πόλεις αυτές βοηθούν τη διοίκηση, το εμπόριο και τη διάδοση του ελληνικού πολιτισμού.</p>
+<ul>
+<li>νέες πόλεις</li>
+<li>εμπόριο</li>
+<li>επαφές λαών</li>
+<li>διάδοση ελληνικής γλώσσας και παιδείας</li>
+</ul>
+<div class="box">Ερώτηση: γιατί μια πόλη μπορεί να γίνει κέντρο πολιτισμού;</div>
+</div>
+<div class="drawing" data-draw="draw-city"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">9. Ο ελληνιστικός κόσμος</div>
+<h2>Συνάντηση πολιτισμών</h2>
+<p>Μετά τις κατακτήσεις του Αλεξάνδρου, ο ελληνικός πολιτισμός συναντά λαούς και παραδόσεις της Ανατολής.</p>
+<ul>
+<li>κοινή ελληνική γλώσσα</li>
+<li>νέες πόλεις</li>
+<li>εμπόριο και επικοινωνία</li>
+<li>ανάμειξη πολιτισμών</li>
+</ul>
+<div class="box">Κλειδί: ο ελληνιστικός κόσμος δεν είναι μόνο ελληνικός· είναι κόσμος επαφών και συνδυασμών.</div>
+</div>
+<div class="drawing" data-draw="draw-hellenistic"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
+<h2>Σύνοψη Κεφαλαίου 7</h2>
+<ul>
+<li>Η Μακεδονία γίνεται ισχυρή με τον Φίλιππο Β΄.</li>
+<li>Η μακεδονική φάλαγγα δίνει μεγάλη στρατιωτική δύναμη.</li>
+<li>Ο Αλέξανδρος εκστρατεύει εναντίον των Περσών και κατακτά τεράστιες περιοχές.</li>
+<li>Ιδρύονται νέες πόλεις και διαδίδεται η ελληνική γλώσσα και παιδεία.</li>
+<li>Δημιουργείται ο ελληνιστικός κόσμος.</li>
+</ul>
+<p>
+<button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+<button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+</p>
+</div>
+<div class="drawing" data-draw="draw-macedonia"></div>
+</div>
+</div>
+<div class="lesson-nav">
+<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+<button onclick="nextSlide()">Επόμενο ➡</button>
+</div>
+</div>
 </section>
-
-<section id="missions" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🎯 Αποστολή εκστρατείας</div>
-      <h2>Γιατί πέτυχε ο Αλέξανδρος;</h2>
-      <div class="grid2">
-        <div class="mini"><h3>Στρατός</h3><p>Γράψε ένα στοιχείο που έκανε τον μακεδονικό στρατό ισχυρό.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Ηγεσία</h3><p>Γράψε 2 χαρακτηριστικά του Αλεξάνδρου ως ηγέτη.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Πόλεις</h3><p>Γράψε γιατί ίδρυε νέες πόλεις.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Πολιτισμός</h3><p>Γράψε τι σημαίνει “συνάντηση πολιτισμών”.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-      </div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="extras">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Extra για τα παιδιά</div>
+<h2>Δραστηριότητες Κεφαλαίου 7</h2>
+<p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε τη Μακεδονία, την εκστρατεία και τον ελληνιστικό κόσμο.</p>
+<div class="cards">
+<div class="card" onclick="showPage('missions')">
+<div><div class="icon">🎯</div><h3>Αποστολή εκστρατείας</h3><p>Βρες γιατί πέτυχε ο Αλέξανδρος.</p></div>
+<span class="tag">δραστηριότητα</span>
+</div>
+<div class="card" onclick="showPage('detective')">
+<div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
+<span class="tag">παιχνίδι σκέψης</span>
+</div>
+<div class="card" onclick="showPage('concepts')">
+<div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+<span class="tag">επανάληψη</span>
+</div>
+<div class="card" onclick="showPage('today')">
+<div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+<span class="tag">ολοκλήρωση</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section id="detective" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🕵️ Βρες την έννοια</div>
-      <h2>Στοιχείο: μακριά δόρατα και οργανωμένος σχηματισμός στρατιωτών</h2>
-      <p>Ποια έννοια περιγράφει;</p>
-      <button class="answer detect-answer" onclick="selectDetect(true,this)">Μακεδονική φάλαγγα</button>
-      <button class="answer detect-answer" onclick="selectDetect(false,this)">Σικελική εκστρατεία</button>
-      <button class="answer detect-answer" onclick="selectDetect(false,this)">Αθηναϊκή Συμμαχία</button>
-      <div id="detectResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
-      <p>
-        <button onclick="checkDetect()">Έλεγχος</button>
-        <button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
-        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
-      </p>
-    </div>
-  </div>
+<section class="page" id="missions">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🎯 Αποστολή εκστρατείας</div>
+<h2>Γιατί πέτυχε ο Αλέξανδρος;</h2>
+<div class="grid2">
+<div class="mini"><h3>Στρατός</h3><p>Γράψε ένα στοιχείο που έκανε τον μακεδονικό στρατό ισχυρό.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Ηγεσία</h3><p>Γράψε 2 χαρακτηριστικά του Αλεξάνδρου ως ηγέτη.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Πόλεις</h3><p>Γράψε γιατί ίδρυε νέες πόλεις.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Πολιτισμός</h3><p>Γράψε τι σημαίνει “συνάντηση πολιτισμών”.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+</div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="concepts" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
-      <h2>Πώς συνδέονται οι λέξεις;</h2>
-      <div class="concept-map">
-        <div class="bubble main" onclick="concept('Η Μακεδονία γίνεται μεγάλη δύναμη στον ελληνικό κόσμο.')">Μακεδονία</div>
-        <div class="bubble" onclick="concept('Ο Φίλιππος Β΄ οργανώνει κράτος και στρατό.')">Φίλιππος</div>
-        <div class="bubble" onclick="concept('Η φάλαγγα είναι οργανωμένος στρατιωτικός σχηματισμός με σάρισες.')">φάλαγγα</div>
-        <div class="bubble" onclick="concept('Ο Αλέξανδρος συνεχίζει το σχέδιο εκστρατείας στην Ανατολή.')">Αλέξανδρος</div>
-        <div class="bubble" onclick="concept('Οι Αλεξάνδρειες γίνονται κέντρα εμπορίου και πολιτισμού.')">πόλεις</div>
-        <div class="bubble" onclick="concept('Ο ελληνιστικός κόσμος είναι αποτέλεσμα επαφών Ελλήνων και Ανατολής.')">ελληνιστικός κόσμος</div>
-      </div>
-      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="detective">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🕵️ Βρες την έννοια</div>
+<h2>Στοιχείο: μακριά δόρατα και οργανωμένος σχηματισμός στρατιωτών</h2>
+<p>Ποια έννοια περιγράφει;</p>
+<button class="answer detect-answer" onclick="selectDetect(true,this)">Μακεδονική φάλαγγα</button>
+<button class="answer detect-answer" onclick="selectDetect(false,this)">Σικελική εκστρατεία</button>
+<button class="answer detect-answer" onclick="selectDetect(false,this)">Αθηναϊκή Συμμαχία</button>
+<div class="box" id="detectResult">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+<p>
+<button onclick="checkDetect()">Έλεγχος</button>
+<button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
+<button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+</p>
+</div>
+</div>
 </section>
-
-<section id="today" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
-      <h2>Checklist Κεφαλαίου 7</h2>
-      <div class="checklist">
-        <label><input type="checkbox"> Έμαθα πώς δυνάμωσε η Μακεδονία.</label>
-        <label><input type="checkbox"> Κατάλαβα τον ρόλο του Φιλίππου Β΄.</label>
-        <label><input type="checkbox"> Ξέρω τι ήταν η μακεδονική φάλαγγα.</label>
-        <label><input type="checkbox"> Θυμάμαι βασικά στοιχεία της εκστρατείας του Αλεξάνδρου.</label>
-        <label><input type="checkbox"> Κατάλαβα τι είναι ο ελληνιστικός κόσμος.</label>
-      </div>
-      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
-      <div id="badgeBox"></div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="concepts">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🧠 Χάρτης εννοιών</div>
+<h2>Πώς συνδέονται οι λέξεις;</h2>
+<div class="concept-map">
+<div class="bubble main" onclick="concept('Η Μακεδονία γίνεται μεγάλη δύναμη στον ελληνικό κόσμο.')">Μακεδονία</div>
+<div class="bubble" onclick="concept('Ο Φίλιππος Β΄ οργανώνει κράτος και στρατό.')">Φίλιππος</div>
+<div class="bubble" onclick="concept('Η φάλαγγα είναι οργανωμένος στρατιωτικός σχηματισμός με σάρισες.')">φάλαγγα</div>
+<div class="bubble" onclick="concept('Ο Αλέξανδρος συνεχίζει το σχέδιο εκστρατείας στην Ανατολή.')">Αλέξανδρος</div>
+<div class="bubble" onclick="concept('Οι Αλεξάνδρειες γίνονται κέντρα εμπορίου και πολιτισμού.')">πόλεις</div>
+<div class="bubble" onclick="concept('Ο ελληνιστικός κόσμος είναι αποτέλεσμα επαφών Ελλήνων και Ανατολής.')">ελληνιστικός κόσμος</div>
+</div>
+<div class="box" id="conceptResult">Πάτησε έναν κύκλο.</div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="review" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Επανάληψη</div>
-      <h2>Ασκήσεις για το Κεφάλαιο 7</h2>
-      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
-      <div id="quizArea"></div>
-      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
-      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
-      <div id="scoreBox"></div>
-    </div>
-  </div>
+<section class="page" id="today">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+<h2>Checklist Κεφαλαίου 7</h2>
+<div class="checklist">
+<label><input type="checkbox"/> Έμαθα πώς δυνάμωσε η Μακεδονία.</label>
+<label><input type="checkbox"/> Κατάλαβα τον ρόλο του Φιλίππου Β΄.</label>
+<label><input type="checkbox"/> Ξέρω τι ήταν η μακεδονική φάλαγγα.</label>
+<label><input type="checkbox"/> Θυμάμαι βασικά στοιχεία της εκστρατείας του Αλεξάνδρου.</label>
+<label><input type="checkbox"/> Κατάλαβα τι είναι ο ελληνιστικός κόσμος.</label>
+</div>
+<button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+<div id="badgeBox"></div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="glossary" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Μικρό λεξικό</div>
-      <h2>Λέξεις που πρέπει να ξέρω</h2>
-      <div class="grid2">
-        <div class="mini"><h3>Μακεδονία</h3><p>Περιοχή στη βόρεια Ελλάδα που έγινε ισχυρό βασίλειο.</p></div>
-        <div class="mini"><h3>Φίλιππος Β΄</h3><p>Βασιλιάς της Μακεδονίας που οργάνωσε το κράτος και τον στρατό.</p></div>
-        <div class="mini"><h3>Μακεδονική φάλαγγα</h3><p>Στρατιωτικός σχηματισμός με μακριά δόρατα, τις σάρισες.</p></div>
-        <div class="mini"><h3>Μέγας Αλέξανδρος</h3><p>Βασιλιάς της Μακεδονίας που εκστράτευσε στην Ανατολή.</p></div>
-        <div class="mini"><h3>Αλεξάνδρεια</h3><p>Πόλη που ιδρύθηκε από τον Αλέξανδρο ή προς τιμήν του.</p></div>
-        <div class="mini"><h3>Ελληνιστικός κόσμος</h3><p>Ο κόσμος που δημιουργήθηκε από τη διάδοση και ανάμειξη του ελληνικού πολιτισμού με άλλους πολιτισμούς.</p></div>
-      </div>
-    </div>
-  </div>
+<section class="page" id="review">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Επανάληψη</div>
+<h2>Ασκήσεις για το Κεφάλαιο 7</h2>
+<p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+<div id="quizArea"></div>
+<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+<button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+<div id="scoreBox"></div>
+</div>
+</div>
 </section>
-
+<section class="page" id="glossary">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Μικρό λεξικό</div>
+<h2>Λέξεις που πρέπει να ξέρω</h2>
+<div class="grid2">
+<div class="mini"><h3>Μακεδονία</h3><p>Περιοχή στη βόρεια Ελλάδα που έγινε ισχυρό βασίλειο.</p></div>
+<div class="mini"><h3>Φίλιππος Β΄</h3><p>Βασιλιάς της Μακεδονίας που οργάνωσε το κράτος και τον στρατό.</p></div>
+<div class="mini"><h3>Μακεδονική φάλαγγα</h3><p>Στρατιωτικός σχηματισμός με μακριά δόρατα, τις σάρισες.</p></div>
+<div class="mini"><h3>Μέγας Αλέξανδρος</h3><p>Βασιλιάς της Μακεδονίας που εκστράτευσε στην Ανατολή.</p></div>
+<div class="mini"><h3>Αλεξάνδρεια</h3><p>Πόλη που ιδρύθηκε από τον Αλέξανδρο ή προς τιμήν του.</p></div>
+<div class="mini"><h3>Ελληνιστικός κόσμος</h3><p>Ο κόσμος που δημιουργήθηκε από τη διάδοση και ανάμειξη του ελληνικού πολιτισμού με άλλους πολιτισμούς.</p></div>
+</div>
+</div>
+</div>
+</section>
 <footer>Κεφάλαιο 7 — Η Μακεδονία και ο Μέγας Αλέξανδρος</footer>
-
-
 <script>
 window.CHAPTER_ID = "7";
 window.CHAPTER_TITLE = "🦁 Κεφάλαιο 7: Η Μακεδονία και ο Μέγας Αλέξανδρος";
 </script>
-
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -579,12 +539,9 @@ window.questions = [
 
 IstoriaChapter.init();
 </script>
-
-
 <script>
 try{saveChapterProgress({visited:true});}catch(e){}
 </script>
-
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
 </body>

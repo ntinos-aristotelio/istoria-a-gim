@@ -1,467 +1,429 @@
 <!DOCTYPE html>
+
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Κεφάλαιο 3 - Ο ελληνικός κόσμος από το 1100 έως το 800 π.Χ.</title>
-
-<link rel="stylesheet" href="core/chapter-core.css">
-<link rel="stylesheet" href="core/v26-polish.css">
-<link rel="stylesheet" href="core/mobile-menu.css">
+<link href="core/chapter-core.css" rel="stylesheet"/>
+<link href="core/v26-polish.css" rel="stylesheet"/>
+<link href="core/mobile-menu.css" rel="stylesheet"/>
 </head>
-
 <body>
-
 <header>
-  <div class="bar">
-    <div class="logo">📜 Κεφάλαιο 3: Ο ελληνικός κόσμος 1100-800 π.Χ.</div>
-    <div class="nav">
-      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
-      <button onclick="showPage('home')">Αρχή</button>
-      <button onclick="openLesson()">Μάθημα</button>
-      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-      <button onclick="showPage('review')">Επανάληψη</button>
-      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
-      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
-    </div>
-  </div>
+<div class="bar">
+<div class="logo">📜 Κεφάλαιο 3: Ο ελληνικός κόσμος 1100-800 π.Χ.</div>
+<div class="nav"><a href="index.html">Αρχική</a>
+<a href="chapters.html">Κεφάλαια</a>
+<a class="secondary" href="revision.html">Επανάληψη</a>
+<a class="gold" href="smart-study.html">Smart Study</a>
+<a class="blue" href="intelligent-revision.html">Revision</a>
+<a class="btn secondary" href="world-map.html">Άτλαντας</a>
+<a class="btn gold" href="tools.html">Εργαλεία</a>
+</div>
+</div>
 </header>
-
 <!-- Σχέδια SVG -->
 <template id="draw-darkage">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8eef5"/>
-<path d="M0 500 C200 430 410 520 900 435 L900 620 L0 620Z" fill="#8d806c"/>
-<path d="M120 420 l70-130 l70 130 z" fill="#8d5b35"/>
-<rect x="145" y="420" width="90" height="70" fill="#8d5b35"/>
-<path d="M410 420 l70-130 l70 130 z" fill="#a7652d"/>
-<rect x="435" y="420" width="90" height="70" fill="#a7652d"/>
-<path d="M660 420 l70-130 l70 130 z" fill="#8d5b35"/>
-<rect x="685" y="420" width="90" height="70" fill="#8d5b35"/>
-<path d="M180 250 C300 180 520 180 720 250" fill="none" stroke="#7b421f" stroke-width="12" stroke-dasharray="18 18" stroke-linecap="round"/>
-<text x="60" y="90" font-size="46" font-weight="900" fill="#7b421f">Ο ελληνικός κόσμος</text>
-<text x="62" y="138" font-size="28" fill="#246b63">από το 1100 έως το 800 π.Χ.</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8eef5" height="620" rx="35" width="900"></rect>
+<path d="M0 500 C200 430 410 520 900 435 L900 620 L0 620Z" fill="#8d806c"></path>
+<path d="M120 420 l70-130 l70 130 z" fill="#8d5b35"></path>
+<rect fill="#8d5b35" height="70" width="90" x="145" y="420"></rect>
+<path d="M410 420 l70-130 l70 130 z" fill="#a7652d"></path>
+<rect fill="#a7652d" height="70" width="90" x="435" y="420"></rect>
+<path d="M660 420 l70-130 l70 130 z" fill="#8d5b35"></path>
+<rect fill="#8d5b35" height="70" width="90" x="685" y="420"></rect>
+<path d="M180 250 C300 180 520 180 720 250" fill="none" stroke="#7b421f" stroke-dasharray="18 18" stroke-linecap="round" stroke-width="12"></path>
+<text fill="#7b421f" font-size="46" font-weight="900" x="60" y="90">Ο ελληνικός κόσμος</text>
+<text fill="#246b63" font-size="28" x="62" y="138">από το 1100 έως το 800 π.Χ.</text>
 </svg>
 </template>
-
 <template id="draw-migration">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#dff3ff"/>
-<path d="M0 450 C160 390 340 450 520 375 C680 315 780 340 900 300 L900 620 L0 620Z" fill="#4d9ab0"/>
-<path d="M130 350 q70-70 140 0 q-70 48-140 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
-<path d="M470 300 q80-75 160 0 q-80 52-160 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
-<path d="M230 410 C350 330 455 340 570 270" fill="none" stroke="#fff8ec" stroke-width="14" stroke-dasharray="18 16" stroke-linecap="round"/>
-<path d="M575 270 l-45 -5 l28 36z" fill="#fff8ec"/>
-<path d="M560 460 L700 460 L630 320Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
-<path d="M630 320 L630 220" stroke="#7b421f" stroke-width="8"/>
-<path d="M630 225 q90 50 0 100Z" fill="#fff" stroke="#7b421f" stroke-width="6"/>
-<text x="60" y="90" font-size="46" font-weight="900" fill="#7b421f">Μετακινήσεις</text>
-<text x="62" y="138" font-size="28" fill="#246b63">νέες εγκαταστάσεις και νέες επαφές</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
+<path d="M0 450 C160 390 340 450 520 375 C680 315 780 340 900 300 L900 620 L0 620Z" fill="#4d9ab0"></path>
+<path d="M130 350 q70-70 140 0 q-70 48-140 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"></path>
+<path d="M470 300 q80-75 160 0 q-80 52-160 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"></path>
+<path d="M230 410 C350 330 455 340 570 270" fill="none" stroke="#fff8ec" stroke-dasharray="18 16" stroke-linecap="round" stroke-width="14"></path>
+<path d="M575 270 l-45 -5 l28 36z" fill="#fff8ec"></path>
+<path d="M560 460 L700 460 L630 320Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"></path>
+<path d="M630 320 L630 220" stroke="#7b421f" stroke-width="8"></path>
+<path d="M630 225 q90 50 0 100Z" fill="#fff" stroke="#7b421f" stroke-width="6"></path>
+<text fill="#7b421f" font-size="46" font-weight="900" x="60" y="90">Μετακινήσεις</text>
+<text fill="#246b63" font-size="28" x="62" y="138">νέες εγκαταστάσεις και νέες επαφές</text>
 </svg>
 </template>
-
 <template id="draw-iron">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f3dfc0"/>
-<path d="M0 520 C220 445 410 530 900 455 L900 620 L0 620Z" fill="#d0b083"/>
-<path d="M220 160 L305 160 L280 500 L190 500Z" fill="#6a6a66" stroke="#333" stroke-width="8"/>
-<path d="M180 160 L320 160 L280 90Z" fill="#4d4d49" stroke="#333" stroke-width="8"/>
-<path d="M480 150 L560 150 L535 500 L455 500Z" fill="#7a5337"/>
-<path d="M445 150 L575 150 L535 90Z" fill="#3f3f3c"/>
-<path d="M690 180 q85 85 15 290 q-85-115 -15-290Z" fill="#555" stroke="#333" stroke-width="8"/>
-<text x="60" y="90" font-size="46" font-weight="900" fill="#7b421f">Η χρήση του σιδήρου</text>
-<text x="62" y="138" font-size="28" fill="#246b63">νέα εργαλεία και όπλα</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f3dfc0" height="620" rx="35" width="900"></rect>
+<path d="M0 520 C220 445 410 530 900 455 L900 620 L0 620Z" fill="#d0b083"></path>
+<path d="M220 160 L305 160 L280 500 L190 500Z" fill="#6a6a66" stroke="#333" stroke-width="8"></path>
+<path d="M180 160 L320 160 L280 90Z" fill="#4d4d49" stroke="#333" stroke-width="8"></path>
+<path d="M480 150 L560 150 L535 500 L455 500Z" fill="#7a5337"></path>
+<path d="M445 150 L575 150 L535 90Z" fill="#3f3f3c"></path>
+<path d="M690 180 q85 85 15 290 q-85-115 -15-290Z" fill="#555" stroke="#333" stroke-width="8"></path>
+<text fill="#7b421f" font-size="46" font-weight="900" x="60" y="90">Η χρήση του σιδήρου</text>
+<text fill="#246b63" font-size="28" x="62" y="138">νέα εργαλεία και όπλα</text>
 </svg>
 </template>
-
 <template id="draw-alphabet">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
-<rect x="150" y="150" width="600" height="330" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<text x="210" y="260" font-size="90" font-weight="900" fill="#7b421f">Α Β Γ Δ</text>
-<text x="210" y="380" font-size="90" font-weight="900" fill="#246b63">Ε Ζ Η Θ</text>
-<path d="M190 430 H710" stroke="#d8a24b" stroke-width="10" stroke-linecap="round"/>
-<text x="60" y="90" font-size="46" font-weight="900" fill="#7b421f">Το ελληνικό αλφάβητο</text>
-<text x="62" y="138" font-size="28" fill="#246b63">γραφή που βοηθά τη μνήμη και την επικοινωνία</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
+<rect fill="#fff8ec" height="330" rx="25" stroke="#7b421f" stroke-width="10" width="600" x="150" y="150"></rect>
+<text fill="#7b421f" font-size="90" font-weight="900" x="210" y="260">Α Β Γ Δ</text>
+<text fill="#246b63" font-size="90" font-weight="900" x="210" y="380">Ε Ζ Η Θ</text>
+<path d="M190 430 H710" stroke="#d8a24b" stroke-linecap="round" stroke-width="10"></path>
+<text fill="#7b421f" font-size="46" font-weight="900" x="60" y="90">Το ελληνικό αλφάβητο</text>
+<text fill="#246b63" font-size="28" x="62" y="138">γραφή που βοηθά τη μνήμη και την επικοινωνία</text>
 </svg>
 </template>
-
 <template id="draw-homer">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<path d="M0 505 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
-<circle cx="270" cy="290" r="55" fill="#c3834b"/>
-<path d="M215 245 q55-75 120 0" fill="#3b2a1b"/>
-<rect x="230" y="345" width="85" height="130" rx="30" fill="#7b421f"/>
-<path d="M430 210 h280 v230 h-280z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<path d="M465 255 h200 M465 305 h200 M465 355 h140" stroke="#246b63" stroke-width="10" stroke-linecap="round"/>
-<path d="M325 375 C390 320 420 300 455 275" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
-<text x="60" y="90" font-size="46" font-weight="900" fill="#7b421f">Τα ομηρικά έπη</text>
-<text x="62" y="138" font-size="28" fill="#246b63">Ιλιάδα και Οδύσσεια</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<path d="M0 505 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"></path>
+<circle cx="270" cy="290" fill="#c3834b" r="55"></circle>
+<path d="M215 245 q55-75 120 0" fill="#3b2a1b"></path>
+<rect fill="#7b421f" height="130" rx="30" width="85" x="230" y="345"></rect>
+<path d="M430 210 h280 v230 h-280z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"></path>
+<path d="M465 255 h200 M465 305 h200 M465 355 h140" stroke="#246b63" stroke-linecap="round" stroke-width="10"></path>
+<path d="M325 375 C390 320 420 300 455 275" stroke="#7b421f" stroke-linecap="round" stroke-width="12"></path>
+<text fill="#7b421f" font-size="46" font-weight="900" x="60" y="90">Τα ομηρικά έπη</text>
+<text fill="#246b63" font-size="28" x="62" y="138">Ιλιάδα και Οδύσσεια</text>
 </svg>
 </template>
-
 <template id="draw-geometric">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
-<path d="M260 180 C220 270 230 455 350 520 C470 455 480 270 440 180 C400 145 300 145 260 180Z" fill="#b6753e" stroke="#3b2a1b" stroke-width="10"/>
-<path d="M250 260 h200 M245 350 h210 M270 440 h160" stroke="#fff2dc" stroke-width="12"/>
-<path d="M290 300 l30 -30 l30 30 l30 -30 l30 30" fill="none" stroke="#3b2a1b" stroke-width="9"/>
-<path d="M290 390 l30 -30 l30 30 l30 -30 l30 30" fill="none" stroke="#3b2a1b" stroke-width="9"/>
-<circle cx="630" cy="330" r="90" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<path d="M580 330 h100 M630 280 v100" stroke="#246b63" stroke-width="10"/>
-<text x="60" y="90" font-size="46" font-weight="900" fill="#7b421f">Γεωμετρική τέχνη</text>
-<text x="62" y="138" font-size="28" fill="#246b63">γραμμές, σχήματα, ρυθμός και τάξη</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
+<path d="M260 180 C220 270 230 455 350 520 C470 455 480 270 440 180 C400 145 300 145 260 180Z" fill="#b6753e" stroke="#3b2a1b" stroke-width="10"></path>
+<path d="M250 260 h200 M245 350 h210 M270 440 h160" stroke="#fff2dc" stroke-width="12"></path>
+<path d="M290 300 l30 -30 l30 30 l30 -30 l30 30" fill="none" stroke="#3b2a1b" stroke-width="9"></path>
+<path d="M290 390 l30 -30 l30 30 l30 -30 l30 30" fill="none" stroke="#3b2a1b" stroke-width="9"></path>
+<circle cx="630" cy="330" fill="#fff8ec" r="90" stroke="#7b421f" stroke-width="10"></circle>
+<path d="M580 330 h100 M630 280 v100" stroke="#246b63" stroke-width="10"></path>
+<text fill="#7b421f" font-size="46" font-weight="900" x="60" y="90">Γεωμετρική τέχνη</text>
+<text fill="#246b63" font-size="28" x="62" y="138">γραμμές, σχήματα, ρυθμός και τάξη</text>
 </svg>
 </template>
-
 <template id="draw-community">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#dff3ff"/>
-<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
-<path d="M0 455 C160 390 340 455 520 380 C690 310 780 350 900 300 L900 620 L0 620Z" fill="#8abc69"/>
-<rect x="145" y="340" width="120" height="105" fill="#9b6b3f"/>
-<path d="M125 342 l80-95 l80 95 z" fill="#c08a4c"/>
-<rect x="390" y="315" width="140" height="130" fill="#a8794d"/>
-<path d="M365 318 l95-110 l95 110 z" fill="#d09a55"/>
-<rect x="640" y="350" width="115" height="95" fill="#9b6b3f"/>
-<path d="M620 352 l78-85 l78 85 z" fill="#c08a4c"/>
-<circle cx="270" cy="485" r="25" fill="#c3834b"/><rect x="250" y="510" width="40" height="55" rx="16" fill="#7b421f"/>
-<circle cx="460" cy="485" r="25" fill="#c3834b"/><rect x="440" y="510" width="40" height="55" rx="16" fill="#246b63"/>
-<circle cx="650" cy="485" r="25" fill="#c3834b"/><rect x="630" y="510" width="40" height="55" rx="16" fill="#a7652d"/>
-<text x="60" y="90" font-size="46" font-weight="900" fill="#7b421f">Νέες κοινότητες</text>
-<text x="62" y="138" font-size="28" fill="#246b63">ο ελληνικός κόσμος οργανώνεται ξανά</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
+<circle cx="745" cy="95" fill="#ffd56d" r="65"></circle>
+<path d="M0 455 C160 390 340 455 520 380 C690 310 780 350 900 300 L900 620 L0 620Z" fill="#8abc69"></path>
+<rect fill="#9b6b3f" height="105" width="120" x="145" y="340"></rect>
+<path d="M125 342 l80-95 l80 95 z" fill="#c08a4c"></path>
+<rect fill="#a8794d" height="130" width="140" x="390" y="315"></rect>
+<path d="M365 318 l95-110 l95 110 z" fill="#d09a55"></path>
+<rect fill="#9b6b3f" height="95" width="115" x="640" y="350"></rect>
+<path d="M620 352 l78-85 l78 85 z" fill="#c08a4c"></path>
+<circle cx="270" cy="485" fill="#c3834b" r="25"></circle><rect fill="#7b421f" height="55" rx="16" width="40" x="250" y="510"></rect>
+<circle cx="460" cy="485" fill="#c3834b" r="25"></circle><rect fill="#246b63" height="55" rx="16" width="40" x="440" y="510"></rect>
+<circle cx="650" cy="485" fill="#c3834b" r="25"></circle><rect fill="#a7652d" height="55" rx="16" width="40" x="630" y="510"></rect>
+<text fill="#7b421f" font-size="46" font-weight="900" x="60" y="90">Νέες κοινότητες</text>
+<text fill="#246b63" font-size="28" x="62" y="138">ο ελληνικός κόσμος οργανώνεται ξανά</text>
 </svg>
 </template>
-
-<section id="home" class="page active">
-  <div class="wrap">
-    <div class="hero">
-      <div class="panel text">
-        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
-        <h1>Κεφάλαιο 3<br>Ο ελληνικός κόσμος 1100-800 π.Χ.</h1>
-        <p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς ο ελληνικός κόσμος αλλάζει μετά την παρακμή των μυκηναϊκών κέντρων.</p>
-        <div class="box">Κεντρική ιδέα: μετά από δυσκολίες και μετακινήσεις, οι Έλληνες οργανώνονται ξανά και αποκτούν νέα στοιχεία πολιτισμού.</div>
-        <p>
-          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
-          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-        </p>
-      </div>
-      <div class="panel drawing" data-draw="draw-darkage"></div>
-    </div>
-  </div>
+<section class="page active" id="home">
+<div class="wrap">
+<div class="hero">
+<div class="panel text">
+<div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+<h1>Κεφάλαιο 3<br/>Ο ελληνικός κόσμος 1100-800 π.Χ.</h1>
+<p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς ο ελληνικός κόσμος αλλάζει μετά την παρακμή των μυκηναϊκών κέντρων.</p>
+<div class="box">Κεντρική ιδέα: μετά από δυσκολίες και μετακινήσεις, οι Έλληνες οργανώνονται ξανά και αποκτούν νέα στοιχεία πολιτισμού.</div>
+<p>
+<button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+<button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+</p>
+</div>
+<div class="panel drawing" data-draw="draw-darkage"></div>
+</div>
+</div>
 </section>
-
-  <section class="wrap">
-    <div class="panel text progress-card">
-      <div class="eyebrow">Η πρόοδός μου</div>
-      <h2>Πρόοδος κεφαλαίου</h2>
-      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
-      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
-      <div id="chapterBadgeList" class="progress-badges"></div>
-    </div>
-  </section>
-
-
-<section id="chapter3" class="page">
-  <div class="wrap">
-    <div class="lesson-top">
-      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
-      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
-      <div id="counter">1 / 9</div>
-    </div>
-
-    <div class="panel">
-
-      <div class="lesson-slide active">
-        <div class="text">
-          <div class="eyebrow">1. Εισαγωγή</div>
-          <h2>Μετά τον Μυκηναϊκό κόσμο</h2>
-          <p>Μετά την παρακμή των μυκηναϊκών ανακτόρων, ο ελληνικός κόσμος περνά μια δύσκολη μεταβατική περίοδο.</p>
-          <div class="box">Βασική ιδέα: οι παλιές δομές χάνονται, αλλά σταδιακά δημιουργούνται νέες μορφές ζωής και οργάνωσης.</div>
-        </div>
-        <div class="drawing" data-draw="draw-darkage"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">2. Μετακινήσεις πληθυσμών</div>
-          <h2>Νέες εγκαταστάσεις</h2>
-          <p>Πληθυσμοί μετακινούνται και εγκαθίστανται σε νέες περιοχές του ελληνικού κόσμου.</p>
-          <ul>
-            <li>αλλαγές στους τόπους κατοίκησης</li>
-            <li>νέες επαφές</li>
-            <li>νέες κοινότητες</li>
-            <li>σταδιακή αναδιοργάνωση</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί οι μετακινήσεις μπορούν να αλλάξουν έναν πολιτισμό;</div>
-        </div>
-        <div class="drawing" data-draw="draw-migration"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">3. Η χρήση του σιδήρου</div>
-          <h2>Νέο υλικό, νέες δυνατότητες</h2>
-          <p>Η χρήση του σιδήρου εξαπλώνεται και επηρεάζει την καθημερινή ζωή.</p>
-          <ul>
-            <li>νέα εργαλεία</li>
-            <li>νέα όπλα</li>
-            <li>πιο ανθεκτικά αντικείμενα</li>
-            <li>αλλαγές στην παραγωγή</li>
-          </ul>
-          <div class="box">Κλειδί: τα υλικά που χρησιμοποιεί ο άνθρωπος αλλάζουν τον τρόπο ζωής του.</div>
-        </div>
-        <div class="drawing" data-draw="draw-iron"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">4. Νέες κοινότητες</div>
-          <h2>Ο ελληνικός κόσμος οργανώνεται ξανά</h2>
-          <p>Οι άνθρωποι ζουν σε μικρότερες κοινότητες και σιγά σιγά δημιουργούνται νέες μορφές κοινωνικής οργάνωσης.</p>
-          <ul>
-            <li>οικισμοί</li>
-            <li>αρχηγοί και ισχυρές οικογένειες</li>
-            <li>κοινή ζωή</li>
-            <li>νέα ταυτότητα</li>
-          </ul>
-          <div class="box">Ερώτηση: τι χρειάζεται μια κοινότητα για να λειτουργεί;</div>
-        </div>
-        <div class="drawing" data-draw="draw-community"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">5. Το ελληνικό αλφάβητο</div>
-          <h2>Η γραφή επιστρέφει</h2>
-          <p>Οι Έλληνες υιοθετούν το φοινικικό αλφάβητο και το προσαρμόζουν στις ανάγκες τους.</p>
-          <ul>
-            <li>πιο απλή γραφή</li>
-            <li>χρήση φωνηέντων</li>
-            <li>ευκολότερη επικοινωνία</li>
-            <li>νέα αρχή για τον γραπτό λόγο</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί το αλφάβητο είναι τόσο μεγάλη αλλαγή;</div>
-        </div>
-        <div class="drawing" data-draw="draw-alphabet"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">6. Τα ομηρικά έπη</div>
-          <h2>Ιλιάδα και Οδύσσεια</h2>
-          <p>Τα ομηρικά έπη διασώζουν μνήμες, αξίες και ιδανικά του ελληνικού κόσμου.</p>
-          <ul>
-            <li>ήρωες</li>
-            <li>πόλεμος και ταξίδι</li>
-            <li>τιμή και ανδρεία</li>
-            <li>προφορική παράδοση</li>
-          </ul>
-          <div class="box">Αποστολή: ποια αξία θεωρείς πιο σημαντική σε έναν ήρωα;</div>
-        </div>
-        <div class="drawing" data-draw="draw-homer"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">7. Γεωμετρική τέχνη</div>
-          <h2>Σχήματα και τάξη</h2>
-          <p>Στην τέχνη της εποχής κυριαρχούν γραμμές, κύκλοι, τρίγωνα, ζώνες και γεωμετρικά μοτίβα.</p>
-          <ul>
-            <li>αγγεία</li>
-            <li>γεωμετρικά σχήματα</li>
-            <li>ρυθμός και συμμετρία</li>
-            <li>σταδιακή εμφάνιση ανθρώπινων μορφών</li>
-          </ul>
-          <div class="box">Δραστηριότητα: σχεδίασε ένα αγγείο με γεωμετρικά μοτίβα.</div>
-        </div>
-        <div class="drawing" data-draw="draw-geometric"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">8. Σύγκριση</div>
-          <h2>Τι άλλαξε;</h2>
-          <div class="grid2">
-            <div class="mini"><h3>Πριν</h3><p>Μυκηναϊκά ανάκτορα, Γραμμική Β, ισχυρά κέντρα.</p></div>
-            <div class="mini"><h3>Μετά</h3><p>Μικρότερες κοινότητες, μετακινήσεις, νέα οργάνωση.</p></div>
-            <div class="mini"><h3>Νέα στοιχεία</h3><p>Σίδηρος, αλφάβητο, ομηρική παράδοση.</p></div>
-            <div class="mini"><h3>Τέχνη</h3><p>Γεωμετρικά σχήματα και αγγεία.</p></div>
-          </div>
-        </div>
-        <div class="drawing" data-draw="draw-community"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">9. Τι πρέπει να θυμάμαι</div>
-          <h2>Σύνοψη Κεφαλαίου 3</h2>
-          <ul>
-            <li>Μετά τον Μυκηναϊκό κόσμο ακολουθεί μια μεταβατική περίοδος.</li>
-            <li>Υπάρχουν μετακινήσεις και νέες εγκαταστάσεις.</li>
-            <li>Εξαπλώνεται η χρήση του σιδήρου.</li>
-            <li>Οι Έλληνες υιοθετούν και προσαρμόζουν το αλφάβητο.</li>
-            <li>Τα ομηρικά έπη και η γεωμετρική τέχνη είναι σημαντικά στοιχεία της εποχής.</li>
-          </ul>
-          <p>
-            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
-            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
-          </p>
-        </div>
-        <div class="drawing" data-draw="draw-darkage"></div>
-      </div>
-
-    </div>
-
-    <div class="lesson-nav">
-      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-      <button onclick="nextSlide()">Επόμενο ➡</button>
-    </div>
-  </div>
+<section class="wrap">
+<div class="panel text progress-card">
+<div class="eyebrow">Η πρόοδός μου</div>
+<h2>Πρόοδος κεφαλαίου</h2>
+<div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
+<div class="progress-small" id="chapterProgressText">Φόρτωση προόδου...</div>
+<div class="progress-badges" id="chapterBadgeList"></div>
+</div>
 </section>
-
-<section id="extras" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Extra για τα παιδιά</div>
-      <h2>Δραστηριότητες Κεφαλαίου 3</h2>
-      <p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε τη μετάβαση από τον μυκηναϊκό κόσμο στον νέο ελληνικό κόσμο.</p>
-
-      <div class="cards">
-        <div class="card" onclick="showPage('missions')">
-          <div><div class="icon">🎯</div><h3>Αποστολή αλλαγών</h3><p>Βρες τι άλλαξε μετά τον Μυκηναϊκό κόσμο.</p></div>
-          <span class="tag">δραστηριότητα</span>
-        </div>
-        <div class="card" onclick="showPage('detective')">
-          <div><div class="icon">🕵️</div><h3>Βρες το στοιχείο</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
-          <span class="tag">παιχνίδι σκέψης</span>
-        </div>
-        <div class="card" onclick="showPage('concepts')">
-          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
-          <span class="tag">επανάληψη</span>
-        </div>
-        <div class="card" onclick="showPage('today')">
-          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
-          <span class="tag">ολοκλήρωση</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="page" id="chapter3">
+<div class="wrap">
+<div class="lesson-top">
+<button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<div id="counter">1 / 9</div>
+</div>
+<div class="panel">
+<div class="lesson-slide active">
+<div class="text">
+<div class="eyebrow">1. Εισαγωγή</div>
+<h2>Μετά τον Μυκηναϊκό κόσμο</h2>
+<p>Μετά την παρακμή των μυκηναϊκών ανακτόρων, ο ελληνικός κόσμος περνά μια δύσκολη μεταβατική περίοδο.</p>
+<div class="box">Βασική ιδέα: οι παλιές δομές χάνονται, αλλά σταδιακά δημιουργούνται νέες μορφές ζωής και οργάνωσης.</div>
+</div>
+<div class="drawing" data-draw="draw-darkage"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">2. Μετακινήσεις πληθυσμών</div>
+<h2>Νέες εγκαταστάσεις</h2>
+<p>Πληθυσμοί μετακινούνται και εγκαθίστανται σε νέες περιοχές του ελληνικού κόσμου.</p>
+<ul>
+<li>αλλαγές στους τόπους κατοίκησης</li>
+<li>νέες επαφές</li>
+<li>νέες κοινότητες</li>
+<li>σταδιακή αναδιοργάνωση</li>
+</ul>
+<div class="box">Ερώτηση: γιατί οι μετακινήσεις μπορούν να αλλάξουν έναν πολιτισμό;</div>
+</div>
+<div class="drawing" data-draw="draw-migration"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">3. Η χρήση του σιδήρου</div>
+<h2>Νέο υλικό, νέες δυνατότητες</h2>
+<p>Η χρήση του σιδήρου εξαπλώνεται και επηρεάζει την καθημερινή ζωή.</p>
+<ul>
+<li>νέα εργαλεία</li>
+<li>νέα όπλα</li>
+<li>πιο ανθεκτικά αντικείμενα</li>
+<li>αλλαγές στην παραγωγή</li>
+</ul>
+<div class="box">Κλειδί: τα υλικά που χρησιμοποιεί ο άνθρωπος αλλάζουν τον τρόπο ζωής του.</div>
+</div>
+<div class="drawing" data-draw="draw-iron"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">4. Νέες κοινότητες</div>
+<h2>Ο ελληνικός κόσμος οργανώνεται ξανά</h2>
+<p>Οι άνθρωποι ζουν σε μικρότερες κοινότητες και σιγά σιγά δημιουργούνται νέες μορφές κοινωνικής οργάνωσης.</p>
+<ul>
+<li>οικισμοί</li>
+<li>αρχηγοί και ισχυρές οικογένειες</li>
+<li>κοινή ζωή</li>
+<li>νέα ταυτότητα</li>
+</ul>
+<div class="box">Ερώτηση: τι χρειάζεται μια κοινότητα για να λειτουργεί;</div>
+</div>
+<div class="drawing" data-draw="draw-community"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">5. Το ελληνικό αλφάβητο</div>
+<h2>Η γραφή επιστρέφει</h2>
+<p>Οι Έλληνες υιοθετούν το φοινικικό αλφάβητο και το προσαρμόζουν στις ανάγκες τους.</p>
+<ul>
+<li>πιο απλή γραφή</li>
+<li>χρήση φωνηέντων</li>
+<li>ευκολότερη επικοινωνία</li>
+<li>νέα αρχή για τον γραπτό λόγο</li>
+</ul>
+<div class="box">Ερώτηση: γιατί το αλφάβητο είναι τόσο μεγάλη αλλαγή;</div>
+</div>
+<div class="drawing" data-draw="draw-alphabet"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">6. Τα ομηρικά έπη</div>
+<h2>Ιλιάδα και Οδύσσεια</h2>
+<p>Τα ομηρικά έπη διασώζουν μνήμες, αξίες και ιδανικά του ελληνικού κόσμου.</p>
+<ul>
+<li>ήρωες</li>
+<li>πόλεμος και ταξίδι</li>
+<li>τιμή και ανδρεία</li>
+<li>προφορική παράδοση</li>
+</ul>
+<div class="box">Αποστολή: ποια αξία θεωρείς πιο σημαντική σε έναν ήρωα;</div>
+</div>
+<div class="drawing" data-draw="draw-homer"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">7. Γεωμετρική τέχνη</div>
+<h2>Σχήματα και τάξη</h2>
+<p>Στην τέχνη της εποχής κυριαρχούν γραμμές, κύκλοι, τρίγωνα, ζώνες και γεωμετρικά μοτίβα.</p>
+<ul>
+<li>αγγεία</li>
+<li>γεωμετρικά σχήματα</li>
+<li>ρυθμός και συμμετρία</li>
+<li>σταδιακή εμφάνιση ανθρώπινων μορφών</li>
+</ul>
+<div class="box">Δραστηριότητα: σχεδίασε ένα αγγείο με γεωμετρικά μοτίβα.</div>
+</div>
+<div class="drawing" data-draw="draw-geometric"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">8. Σύγκριση</div>
+<h2>Τι άλλαξε;</h2>
+<div class="grid2">
+<div class="mini"><h3>Πριν</h3><p>Μυκηναϊκά ανάκτορα, Γραμμική Β, ισχυρά κέντρα.</p></div>
+<div class="mini"><h3>Μετά</h3><p>Μικρότερες κοινότητες, μετακινήσεις, νέα οργάνωση.</p></div>
+<div class="mini"><h3>Νέα στοιχεία</h3><p>Σίδηρος, αλφάβητο, ομηρική παράδοση.</p></div>
+<div class="mini"><h3>Τέχνη</h3><p>Γεωμετρικά σχήματα και αγγεία.</p></div>
+</div>
+</div>
+<div class="drawing" data-draw="draw-community"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">9. Τι πρέπει να θυμάμαι</div>
+<h2>Σύνοψη Κεφαλαίου 3</h2>
+<ul>
+<li>Μετά τον Μυκηναϊκό κόσμο ακολουθεί μια μεταβατική περίοδος.</li>
+<li>Υπάρχουν μετακινήσεις και νέες εγκαταστάσεις.</li>
+<li>Εξαπλώνεται η χρήση του σιδήρου.</li>
+<li>Οι Έλληνες υιοθετούν και προσαρμόζουν το αλφάβητο.</li>
+<li>Τα ομηρικά έπη και η γεωμετρική τέχνη είναι σημαντικά στοιχεία της εποχής.</li>
+</ul>
+<p>
+<button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+<button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+</p>
+</div>
+<div class="drawing" data-draw="draw-darkage"></div>
+</div>
+</div>
+<div class="lesson-nav">
+<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+<button onclick="nextSlide()">Επόμενο ➡</button>
+</div>
+</div>
 </section>
-
-<section id="missions" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🎯 Αποστολή αλλαγών</div>
-      <h2>Βρες τι άλλαξε</h2>
-      <div class="grid2">
-        <div class="mini"><h3>Αλλαγή 1</h3><p>Γράψε μία αλλαγή στην κατοίκηση ή στην κοινωνία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Αλλαγή 2</h3><p>Γράψε τι έφερε η χρήση του σιδήρου.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Αλλαγή 3</h3><p>Γράψε γιατί ήταν σημαντικό το αλφάβητο.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Τέχνη</h3><p>Σχεδίασε ένα αγγείο με γεωμετρικά μοτίβα.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-      </div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="extras">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Extra για τα παιδιά</div>
+<h2>Δραστηριότητες Κεφαλαίου 3</h2>
+<p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε τη μετάβαση από τον μυκηναϊκό κόσμο στον νέο ελληνικό κόσμο.</p>
+<div class="cards">
+<div class="card" onclick="showPage('missions')">
+<div><div class="icon">🎯</div><h3>Αποστολή αλλαγών</h3><p>Βρες τι άλλαξε μετά τον Μυκηναϊκό κόσμο.</p></div>
+<span class="tag">δραστηριότητα</span>
+</div>
+<div class="card" onclick="showPage('detective')">
+<div><div class="icon">🕵️</div><h3>Βρες το στοιχείο</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
+<span class="tag">παιχνίδι σκέψης</span>
+</div>
+<div class="card" onclick="showPage('concepts')">
+<div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+<span class="tag">επανάληψη</span>
+</div>
+<div class="card" onclick="showPage('today')">
+<div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+<span class="tag">ολοκλήρωση</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section id="detective" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🕵️ Βρες το στοιχείο</div>
-      <h2>Στοιχείο: χρήση φωνηέντων στη γραφή</h2>
-      <p>Με ποιο θέμα συνδέεται περισσότερο;</p>
-      <button class="answer detect-answer" onclick="selectDetect(false,this)">Γεωμετρική τέχνη</button>
-      <button class="answer detect-answer" onclick="selectDetect(true,this)">Ελληνικό αλφάβητο</button>
-      <button class="answer detect-answer" onclick="selectDetect(false,this)">Κυκλώπεια τείχη</button>
-      <div id="detectResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
-      <p>
-        <button onclick="checkDetect()">Έλεγχος</button>
-        <button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
-        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
-      </p>
-    </div>
-  </div>
+<section class="page" id="missions">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🎯 Αποστολή αλλαγών</div>
+<h2>Βρες τι άλλαξε</h2>
+<div class="grid2">
+<div class="mini"><h3>Αλλαγή 1</h3><p>Γράψε μία αλλαγή στην κατοίκηση ή στην κοινωνία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Αλλαγή 2</h3><p>Γράψε τι έφερε η χρήση του σιδήρου.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Αλλαγή 3</h3><p>Γράψε γιατί ήταν σημαντικό το αλφάβητο.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Τέχνη</h3><p>Σχεδίασε ένα αγγείο με γεωμετρικά μοτίβα.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+</div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="concepts" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
-      <h2>Πώς συνδέονται οι λέξεις;</h2>
-      <div class="concept-map">
-        <div class="bubble main" onclick="concept('Η περίοδος 1100-800 π.Χ. είναι μια μεταβατική περίοδος για τον ελληνικό κόσμο.')">1100-800 π.Χ.</div>
-        <div class="bubble" onclick="concept('Οι μετακινήσεις οδηγούν σε νέες εγκαταστάσεις και νέες κοινότητες.')">μετακινήσεις</div>
-        <div class="bubble" onclick="concept('Ο σίδηρος αλλάζει εργαλεία, όπλα και παραγωγή.')">σίδηρος</div>
-        <div class="bubble" onclick="concept('Το αλφάβητο κάνει τη γραφή πιο εύχρηστη.')">αλφάβητο</div>
-        <div class="bubble" onclick="concept('Τα ομηρικά έπη διασώζουν μνήμες και αξίες.')">Όμηρος</div>
-        <div class="bubble" onclick="concept('Η γεωμετρική τέχνη χαρακτηρίζεται από σχήματα και μοτίβα.')">γεωμετρική τέχνη</div>
-      </div>
-      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="detective">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🕵️ Βρες το στοιχείο</div>
+<h2>Στοιχείο: χρήση φωνηέντων στη γραφή</h2>
+<p>Με ποιο θέμα συνδέεται περισσότερο;</p>
+<button class="answer detect-answer" onclick="selectDetect(false,this)">Γεωμετρική τέχνη</button>
+<button class="answer detect-answer" onclick="selectDetect(true,this)">Ελληνικό αλφάβητο</button>
+<button class="answer detect-answer" onclick="selectDetect(false,this)">Κυκλώπεια τείχη</button>
+<div class="box" id="detectResult">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+<p>
+<button onclick="checkDetect()">Έλεγχος</button>
+<button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
+<button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+</p>
+</div>
+</div>
 </section>
-
-<section id="today" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
-      <h2>Checklist Κεφαλαίου 3</h2>
-      <div class="checklist">
-        <label><input type="checkbox"> Κατάλαβα τι συμβαίνει μετά τον Μυκηναϊκό κόσμο.</label>
-        <label><input type="checkbox"> Ξέρω ότι υπήρχαν μετακινήσεις και νέες εγκαταστάσεις.</label>
-        <label><input type="checkbox"> Κατάλαβα τη σημασία του σιδήρου.</label>
-        <label><input type="checkbox"> Ξέρω γιατί είναι σημαντικό το ελληνικό αλφάβητο.</label>
-        <label><input type="checkbox"> Θυμάμαι τα ομηρικά έπη και τη γεωμετρική τέχνη.</label>
-      </div>
-      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
-      <div id="badgeBox"></div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="concepts">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🧠 Χάρτης εννοιών</div>
+<h2>Πώς συνδέονται οι λέξεις;</h2>
+<div class="concept-map">
+<div class="bubble main" onclick="concept('Η περίοδος 1100-800 π.Χ. είναι μια μεταβατική περίοδος για τον ελληνικό κόσμο.')">1100-800 π.Χ.</div>
+<div class="bubble" onclick="concept('Οι μετακινήσεις οδηγούν σε νέες εγκαταστάσεις και νέες κοινότητες.')">μετακινήσεις</div>
+<div class="bubble" onclick="concept('Ο σίδηρος αλλάζει εργαλεία, όπλα και παραγωγή.')">σίδηρος</div>
+<div class="bubble" onclick="concept('Το αλφάβητο κάνει τη γραφή πιο εύχρηστη.')">αλφάβητο</div>
+<div class="bubble" onclick="concept('Τα ομηρικά έπη διασώζουν μνήμες και αξίες.')">Όμηρος</div>
+<div class="bubble" onclick="concept('Η γεωμετρική τέχνη χαρακτηρίζεται από σχήματα και μοτίβα.')">γεωμετρική τέχνη</div>
+</div>
+<div class="box" id="conceptResult">Πάτησε έναν κύκλο.</div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="review" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Επανάληψη</div>
-      <h2>Ασκήσεις για το Κεφάλαιο 3</h2>
-      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
-      <div id="quizArea"></div>
-      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
-      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
-      <div id="scoreBox"></div>
-    </div>
-  </div>
+<section class="page" id="today">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+<h2>Checklist Κεφαλαίου 3</h2>
+<div class="checklist">
+<label><input type="checkbox"/> Κατάλαβα τι συμβαίνει μετά τον Μυκηναϊκό κόσμο.</label>
+<label><input type="checkbox"/> Ξέρω ότι υπήρχαν μετακινήσεις και νέες εγκαταστάσεις.</label>
+<label><input type="checkbox"/> Κατάλαβα τη σημασία του σιδήρου.</label>
+<label><input type="checkbox"/> Ξέρω γιατί είναι σημαντικό το ελληνικό αλφάβητο.</label>
+<label><input type="checkbox"/> Θυμάμαι τα ομηρικά έπη και τη γεωμετρική τέχνη.</label>
+</div>
+<button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+<div id="badgeBox"></div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="glossary" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Μικρό λεξικό</div>
-      <h2>Λέξεις που πρέπει να ξέρω</h2>
-      <div class="grid2">
-        <div class="mini"><h3>Μεταβατική περίοδος</h3><p>Περίοδος αλλαγών από μια παλαιότερη μορφή οργάνωσης σε μια νέα.</p></div>
-        <div class="mini"><h3>Μετακινήσεις</h3><p>Μεταφορά πληθυσμών σε νέες περιοχές.</p></div>
-        <div class="mini"><h3>Σίδηρος</h3><p>Μέταλλο που χρησιμοποιήθηκε για εργαλεία και όπλα.</p></div>
-        <div class="mini"><h3>Αλφάβητο</h3><p>Σύστημα γραφής με γράμματα που αποδίδουν ήχους.</p></div>
-        <div class="mini"><h3>Ομηρικά έπη</h3><p>Η Ιλιάδα και η Οδύσσεια, σημαντικά έργα της ελληνικής παράδοσης.</p></div>
-        <div class="mini"><h3>Γεωμετρική τέχνη</h3><p>Τέχνη με γραμμές, σχήματα και γεωμετρικά μοτίβα.</p></div>
-      </div>
-    </div>
-  </div>
+<section class="page" id="review">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Επανάληψη</div>
+<h2>Ασκήσεις για το Κεφάλαιο 3</h2>
+<p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+<div id="quizArea"></div>
+<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+<button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+<div id="scoreBox"></div>
+</div>
+</div>
 </section>
-
+<section class="page" id="glossary">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Μικρό λεξικό</div>
+<h2>Λέξεις που πρέπει να ξέρω</h2>
+<div class="grid2">
+<div class="mini"><h3>Μεταβατική περίοδος</h3><p>Περίοδος αλλαγών από μια παλαιότερη μορφή οργάνωσης σε μια νέα.</p></div>
+<div class="mini"><h3>Μετακινήσεις</h3><p>Μεταφορά πληθυσμών σε νέες περιοχές.</p></div>
+<div class="mini"><h3>Σίδηρος</h3><p>Μέταλλο που χρησιμοποιήθηκε για εργαλεία και όπλα.</p></div>
+<div class="mini"><h3>Αλφάβητο</h3><p>Σύστημα γραφής με γράμματα που αποδίδουν ήχους.</p></div>
+<div class="mini"><h3>Ομηρικά έπη</h3><p>Η Ιλιάδα και η Οδύσσεια, σημαντικά έργα της ελληνικής παράδοσης.</p></div>
+<div class="mini"><h3>Γεωμετρική τέχνη</h3><p>Τέχνη με γραμμές, σχήματα και γεωμετρικά μοτίβα.</p></div>
+</div>
+</div>
+</div>
+</section>
 <footer>Κεφάλαιο 3 — Ο ελληνικός κόσμος από το 1100 έως το 800 π.Χ.</footer>
-
-
 <script>
 window.CHAPTER_ID = "3";
 window.CHAPTER_TITLE = "📜 Κεφάλαιο 3: Ο ελληνικός κόσμος 1100-800 π.Χ.";
 </script>
-
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -543,12 +505,9 @@ window.questions = [
 
 IstoriaChapter.init();
 </script>
-
-
 <script>
 try{saveChapterProgress({visited:true});}catch(e){}
 </script>
-
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
 </body>

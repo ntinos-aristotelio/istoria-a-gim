@@ -1,37 +1,39 @@
 <!DOCTYPE html>
+
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Σημειώσεις Καθηγητή</title>
-<link rel="stylesheet" href="teacher-notes-module/teacher-notes.css">
-<link rel="stylesheet" href="core/mobile-menu.css">
+<link href="teacher-notes-module/teacher-notes.css" rel="stylesheet"/>
+<link href="core/mobile-menu.css" rel="stylesheet"/>
 </head>
 <body>
 <header class="tn-header">
-  <div class="tn-bar bar">
-    <div class="tn-logo logo">📘 Σημειώσεις Καθηγητή</div>
-    <nav class="tn-nav nav">
-      <a href="index.html">Αρχική</a>
-      <a href="revision.html">Επανάληψη</a>
-      <a href="world-map.html">Άτλαντας</a>
-      <a href="mentor.html">AI Mentor</a>
-      <button onclick="window.print()">🖨️ Εκτύπωση</button>
-    </nav>
-  </div>
+<div class="tn-bar bar">
+<div class="tn-logo logo">📘 Σημειώσεις Καθηγητή</div>
+<nav class="tn-nav nav"><a href="index.html">Αρχική</a>
+<a href="chapters.html">Κεφάλαια</a>
+<a class="secondary" href="revision.html">Επανάληψη</a>
+<a class="gold" href="smart-study.html">Smart Study</a>
+<a class="blue" href="intelligent-revision.html">Revision</a>
+<a class="btn secondary" href="world-map.html">Άτλαντας</a>
+<a class="btn gold" href="tools.html">Εργαλεία</a>
+</nav>
+</div>
 </header>
 <main class="tn-wrap">
-  <section class="tn-hero">
-    <h1>Ψηφιακή Βιβλιοθήκη Σημειώσεων</h1>
-    <p>Υλικό καθηγητή ανά ενότητα: σχολικό βιβλίο, σχεδιαγράμματα και ερωτήσεις/απαντήσεις.</p>
-  </section>
-  <section class="tn-layout">
-    <aside class="tn-sidebar">
-      <h2>Κεφάλαια</h2>
-      <div id="tnMenu"></div>
-    </aside>
-    <section class="tn-card" id="tnContent">Φόρτωση...</section>
-  </section>
+<section class="tn-hero">
+<h1>Ψηφιακή Βιβλιοθήκη Σημειώσεων</h1>
+<p>Υλικό καθηγητή ανά ενότητα: σχολικό βιβλίο, σχεδιαγράμματα και ερωτήσεις/απαντήσεις.</p>
+</section>
+<section class="tn-layout">
+<aside class="tn-sidebar">
+<h2>Κεφάλαια</h2>
+<div id="tnMenu"></div>
+</aside>
+<section class="tn-card" id="tnContent">Φόρτωση...</section>
+</section>
 </main>
 <script src="teacher-notes-module/teacher-notes.js"></script>
 <script src="core/mobile-menu.js"></script>

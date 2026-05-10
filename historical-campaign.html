@@ -1,67 +1,62 @@
 <!DOCTYPE html>
+
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>History Campaign Mode - Ιστορία Α΄ Γυμνασίου</title>
-<link rel="stylesheet" href="core/chapter-core.css">
-<link rel="stylesheet" href="core/simulation.css">
-<link rel="stylesheet" href="core/v26-polish.css">
-<link rel="stylesheet" href="core/mobile-menu.css">
+<link href="core/chapter-core.css" rel="stylesheet"/>
+<link href="core/simulation.css" rel="stylesheet"/>
+<link href="core/v26-polish.css" rel="stylesheet"/>
+<link href="core/mobile-menu.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="bar">
-    <div class="logo">⚔️ History Campaign Mode</div>
-    <div class="nav">
-      <a class="btn" href="index.html">Αρχική</a>
-      <a class="btn secondary" href="narration.html">Ιστορική Αφήγηση</a>
-      <a class="btn secondary" href="smart-study.html">Smart Study</a>
-      <a class="btn gold" href="intelligent-revision.html">Revision</a>
-      <button id="resetCampaign" class="blue">Reset Campaign</button>
-          <a class="btn gold" href="mentor.html">Mentor</a>
-          <a class="btn secondary" href="world-map.html">Άτλαντας</a>
-      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-  <section class="sim-hero">
-    <div class="sim-panel">
-      <div class="eyebrow">Interactive history adventure</div>
-      <h1 class="sim-title">Ζήσε την Ιστορία</h1>
-      <p class="sim-sub">Πάρε αποφάσεις, δες συνέπειες και ξεκλείδωσε ιστορικές αποστολές από όλο το βιβλίο.</p>
-      <div id="campaignStats" class="sim-stats"></div>
-    </div>
-    <div class="sim-panel">
-      <h2>Χάρτης Campaign</h2>
-      <p>Κάθε κεφάλαιο έχει αποστολές. Όσο παίζεις, κερδίζεις XP και ολοκληρώνεις την ιστορική διαδρομή.</p>
-    </div>
-  </section>
-
-  <section id="campaignMap" class="sim-map"></section>
-  <section id="missions"></section>
-</main>
-
-<div id="missionModal" class="sim-modal" aria-hidden="true">
-  <div class="sim-modal-card">
-    <div class="sim-modal-top">
-      <div>
-        <h2 id="missionTitle"></h2>
-        <p id="missionMeta" class="sim-meta"></p>
-      </div>
-      <button id="closeMission" class="sim-close">Κλείσιμο</button>
-    </div>
-    <p><strong>Ρόλος:</strong> <span id="missionRole"></span></p>
-    <p><strong>Στόχος:</strong> <span id="missionGoal"></span></p>
-    <div id="missionFact" class="sim-fact"></div>
-    <h3>Τι αποφασίζεις;</h3>
-    <div id="missionChoices"></div>
-    <div id="missionResult"></div>
-  </div>
+<div class="bar">
+<div class="logo">⚔️ History Campaign Mode</div>
+<div class="nav"><a href="index.html">Αρχική</a>
+<a href="chapters.html">Κεφάλαια</a>
+<a class="secondary" href="revision.html">Επανάληψη</a>
+<a class="gold" href="smart-study.html">Smart Study</a>
+<a class="blue" href="intelligent-revision.html">Revision</a>
+<a class="btn secondary" href="world-map.html">Άτλαντας</a>
+<a class="btn gold" href="tools.html">Εργαλεία</a>
 </div>
-
+</div>
+</header>
+<main class="wrap">
+<section class="sim-hero">
+<div class="sim-panel">
+<div class="eyebrow">Interactive history adventure</div>
+<h1 class="sim-title">Ζήσε την Ιστορία</h1>
+<p class="sim-sub">Πάρε αποφάσεις, δες συνέπειες και ξεκλείδωσε ιστορικές αποστολές από όλο το βιβλίο.</p>
+<div class="sim-stats" id="campaignStats"></div>
+</div>
+<div class="sim-panel">
+<h2>Χάρτης Campaign</h2>
+<p>Κάθε κεφάλαιο έχει αποστολές. Όσο παίζεις, κερδίζεις XP και ολοκληρώνεις την ιστορική διαδρομή.</p>
+</div>
+</section>
+<section class="sim-map" id="campaignMap"></section>
+<section id="missions"></section>
+</main>
+<div aria-hidden="true" class="sim-modal" id="missionModal">
+<div class="sim-modal-card">
+<div class="sim-modal-top">
+<div>
+<h2 id="missionTitle"></h2>
+<p class="sim-meta" id="missionMeta"></p>
+</div>
+<button class="sim-close" id="closeMission">Κλείσιμο</button>
+</div>
+<p><strong>Ρόλος:</strong> <span id="missionRole"></span></p>
+<p><strong>Στόχος:</strong> <span id="missionGoal"></span></p>
+<div class="sim-fact" id="missionFact"></div>
+<h3>Τι αποφασίζεις;</h3>
+<div id="missionChoices"></div>
+<div id="missionResult"></div>
+</div>
+</div>
 <script src="core/storageEngine.js"></script>
 <script src="core/simulationEngine.js"></script>
 <script src="core/v26-polish.js"></script>

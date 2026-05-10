@@ -1,43 +1,44 @@
 <!DOCTYPE html>
+
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ιστορική Αφήγηση - Ιστορία Α΄ Γυμνασίου</title>
-<link rel="stylesheet" href="core/index.css">
-<link rel="stylesheet" href="core/narration.css">
-<link rel="stylesheet" href="core/v26-polish.css">
-<link rel="stylesheet" href="core/mobile-menu.css">
+<link href="core/index.css" rel="stylesheet"/>
+<link href="core/narration.css" rel="stylesheet"/>
+<link href="core/v26-polish.css" rel="stylesheet"/>
+<link href="core/mobile-menu.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="bar">
-    <div class="logo">🎙️ Ιστορική Αφήγηση</div>
-    <div class="nav">
-      <a href="index.html">Αρχική</a>
-      <a class="secondary" href="world-map.html">Ιστορικός Άτλαντας</a>
-      <a class="blue" href="historical-campaign.html">History Campaign</a>
-      <a class="gold" href="smart-study.html">Smart Study</a>
-          <a class="btn gold" href="mentor.html">Mentor</a>
-      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
-    </div>
-  </div>
+<div class="bar">
+<div class="logo">🎙️ Ιστορική Αφήγηση</div>
+<div class="nav"><a href="index.html">Αρχική</a>
+<a href="chapters.html">Κεφάλαια</a>
+<a class="secondary" href="revision.html">Επανάληψη</a>
+<a class="gold" href="smart-study.html">Smart Study</a>
+<a class="blue" href="intelligent-revision.html">Revision</a>
+<a class="btn secondary" href="world-map.html">Άτλαντας</a>
+<a class="btn gold" href="tools.html">Εργαλεία</a>
+</div>
+</div>
 </header>
 <main class="narration-shell">
-  <section class="narration-hero">
-    <div class="eyebrow">V11 Storytelling System</div>
-    <h1>Άκου την Ιστορία σαν αφήγηση</h1>
-    <p>Σύντομες ιστορικές σκηνές με καθαρό κείμενο, φωνητική ανάγνωση από τον browser και βασικά σημεία μνήμης.</p>
-    <p><strong>Στόχος:</strong> να βοηθά τον μαθητή να καταλαβαίνει τη ροή των γεγονότων πριν μπει σε quiz, χάρτη ή campaign.</p>
-  </section>
-  <section class="narration-grid">
-    <aside class="scene-list">
-      <h3>Σκηνές αφήγησης</h3>
-      <div id="sceneFilters" class="scene-filter"></div>
-      <div id="sceneList"></div>
-    </aside>
-    <section id="storyStage" class="story-stage"></section>
-  </section>
+<section class="narration-hero">
+<div class="eyebrow">V11 Storytelling System</div>
+<h1>Άκου την Ιστορία σαν αφήγηση</h1>
+<p>Σύντομες ιστορικές σκηνές με καθαρό κείμενο, φωνητική ανάγνωση από τον browser και βασικά σημεία μνήμης.</p>
+<p><strong>Στόχος:</strong> να βοηθά τον μαθητή να καταλαβαίνει τη ροή των γεγονότων πριν μπει σε quiz, χάρτη ή campaign.</p>
+</section>
+<section class="narration-grid">
+<aside class="scene-list">
+<h3>Σκηνές αφήγησης</h3>
+<div class="scene-filter" id="sceneFilters"></div>
+<div id="sceneList"></div>
+</aside>
+<section class="story-stage" id="storyStage"></section>
+</section>
 </main>
 <script src="core/storageEngine.js"></script>
 <script src="core/narrationEngine.js"></script>

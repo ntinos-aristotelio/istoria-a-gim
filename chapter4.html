@@ -1,501 +1,461 @@
 <!DOCTYPE html>
+
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Κεφάλαιο 4 - Αρχαϊκή εποχή</title>
-
-<link rel="stylesheet" href="core/chapter-core.css">
-<link rel="stylesheet" href="core/v26-polish.css">
-<link rel="stylesheet" href="core/mobile-menu.css">
+<link href="core/chapter-core.css" rel="stylesheet"/>
+<link href="core/v26-polish.css" rel="stylesheet"/>
+<link href="core/mobile-menu.css" rel="stylesheet"/>
 </head>
-
 <body>
-
 <header>
-  <div class="bar">
-    <div class="logo">🏛️ Κεφάλαιο 4: Αρχαϊκή εποχή</div>
-    <div class="nav">
-      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
-      <button onclick="showPage('home')">Αρχή</button>
-      <button onclick="openLesson()">Μάθημα</button>
-      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-      <button onclick="showPage('review')">Επανάληψη</button>
-      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
-      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
-    </div>
-  </div>
+<div class="bar">
+<div class="logo">🏛️ Κεφάλαιο 4: Αρχαϊκή εποχή</div>
+<div class="nav"><a href="index.html">Αρχική</a>
+<a href="chapters.html">Κεφάλαια</a>
+<a class="secondary" href="revision.html">Επανάληψη</a>
+<a class="gold" href="smart-study.html">Smart Study</a>
+<a class="blue" href="intelligent-revision.html">Revision</a>
+<a class="btn secondary" href="world-map.html">Άτλαντας</a>
+<a class="btn gold" href="tools.html">Εργαλεία</a>
+</div>
+</div>
 </header>
-
 <!-- Σχέδια SVG -->
 <template id="draw-archaic">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
-<path d="M0 490 C200 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
-<rect x="160" y="330" width="90" height="150" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="360" y="300" width="90" height="180" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="560" y="330" width="90" height="150" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<path d="M120 330 L450 190 L690 330Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<path d="M110 490 H700" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
-<text x="60" y="90" font-size="50" font-weight="900" fill="#7b421f">Αρχαϊκή εποχή</text>
-<text x="62" y="138" font-size="28" fill="#246b63">πόλη-κράτος, αποικισμός, νόμοι και τέχνη</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<circle cx="745" cy="95" fill="#ffd56d" r="65"></circle>
+<path d="M0 490 C200 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"></path>
+<rect fill="#d8a24b" height="150" stroke="#7b421f" stroke-width="8" width="90" x="160" y="330"></rect>
+<rect fill="#d8a24b" height="180" stroke="#7b421f" stroke-width="8" width="90" x="360" y="300"></rect>
+<rect fill="#d8a24b" height="150" stroke="#7b421f" stroke-width="8" width="90" x="560" y="330"></rect>
+<path d="M120 330 L450 190 L690 330Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"></path>
+<path d="M110 490 H700" stroke="#7b421f" stroke-linecap="round" stroke-width="12"></path>
+<text fill="#7b421f" font-size="50" font-weight="900" x="60" y="90">Αρχαϊκή εποχή</text>
+<text fill="#246b63" font-size="28" x="62" y="138">πόλη-κράτος, αποικισμός, νόμοι και τέχνη</text>
 </svg>
 </template>
-
 <template id="draw-polis">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#dff3ff"/>
-<path d="M0 480 C170 410 350 490 900 410 L900 620 L0 620Z" fill="#8abc69"/>
-<path d="M180 420 l70-120 l70 120 z" fill="#c08a4c"/>
-<rect x="205" y="420" width="90" height="70" fill="#8d5b35"/>
-<path d="M420 360 l80-140 l80 140 z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="445" y="360" width="110" height="120" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
-<circle cx="660" cy="430" r="35" fill="#c3834b"/>
-<rect x="630" y="465" width="60" height="80" rx="22" fill="#246b63"/>
-<circle cx="735" cy="430" r="35" fill="#c3834b"/>
-<rect x="705" y="465" width="60" height="80" rx="22" fill="#a7652d"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Πόλη-κράτος</text>
-<text x="62" y="138" font-size="28" fill="#246b63">κοινότητα πολιτών με δικούς της νόμους</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
+<path d="M0 480 C170 410 350 490 900 410 L900 620 L0 620Z" fill="#8abc69"></path>
+<path d="M180 420 l70-120 l70 120 z" fill="#c08a4c"></path>
+<rect fill="#8d5b35" height="70" width="90" x="205" y="420"></rect>
+<path d="M420 360 l80-140 l80 140 z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"></path>
+<rect fill="#fff8ec" height="120" stroke="#7b421f" stroke-width="8" width="110" x="445" y="360"></rect>
+<circle cx="660" cy="430" fill="#c3834b" r="35"></circle>
+<rect fill="#246b63" height="80" rx="22" width="60" x="630" y="465"></rect>
+<circle cx="735" cy="430" fill="#c3834b" r="35"></circle>
+<rect fill="#a7652d" height="80" rx="22" width="60" x="705" y="465"></rect>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Πόλη-κράτος</text>
+<text fill="#246b63" font-size="28" x="62" y="138">κοινότητα πολιτών με δικούς της νόμους</text>
 </svg>
 </template>
-
 <template id="draw-colony">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#dff3ff"/>
-<path d="M0 445 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
-<path d="M0 515 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"/>
-<path d="M130 300 q65-55 130 0 q-65 42-130 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
-<path d="M580 335 q80-70 160 0 q-80 52-160 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
-<path d="M250 440 C380 350 505 350 635 300" fill="none" stroke="#fff8ec" stroke-width="13" stroke-dasharray="18 18" stroke-linecap="round"/>
-<path d="M630 300 l-45 -8 l28 38z" fill="#fff8ec"/>
-<path d="M390 450 L540 450 L465 305Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
-<path d="M465 305 L465 210" stroke="#7b421f" stroke-width="8"/>
-<path d="M465 215 q90 50 0 100Z" fill="#fff" stroke="#7b421f" stroke-width="6"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Β΄ Αποικισμός</text>
-<text x="62" y="138" font-size="28" fill="#246b63">οι Έλληνες ταξιδεύουν και ιδρύουν αποικίες</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
+<path d="M0 445 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"></path>
+<path d="M0 515 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"></path>
+<path d="M130 300 q65-55 130 0 q-65 42-130 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"></path>
+<path d="M580 335 q80-70 160 0 q-80 52-160 0z" fill="#8abc69" stroke="#246b63" stroke-width="8"></path>
+<path d="M250 440 C380 350 505 350 635 300" fill="none" stroke="#fff8ec" stroke-dasharray="18 18" stroke-linecap="round" stroke-width="13"></path>
+<path d="M630 300 l-45 -8 l28 38z" fill="#fff8ec"></path>
+<path d="M390 450 L540 450 L465 305Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"></path>
+<path d="M465 305 L465 210" stroke="#7b421f" stroke-width="8"></path>
+<path d="M465 215 q90 50 0 100Z" fill="#fff" stroke="#7b421f" stroke-width="6"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Β΄ Αποικισμός</text>
+<text fill="#246b63" font-size="28" x="62" y="138">οι Έλληνες ταξιδεύουν και ιδρύουν αποικίες</text>
 </svg>
 </template>
-
 <template id="draw-sparta">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8eef5"/>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"/>
-<circle cx="310" cy="260" r="60" fill="#c3834b"/>
-<path d="M250 210 q60-80 125 0" fill="#3b2a1b"/>
-<rect x="250" y="330" width="120" height="165" rx="25" fill="#7b421f"/>
-<circle cx="470" cy="370" r="82" fill="#b9422f" stroke="#5b351c" stroke-width="10"/>
-<path d="M470 295 v150 M395 370 h150" stroke="#ffd56d" stroke-width="12"/>
-<path d="M620 220 L680 220 L665 495 L600 495Z" fill="#6a6a66" stroke="#333" stroke-width="8"/>
-<path d="M590 220 L695 220 L660 160Z" fill="#4d4d49" stroke="#333" stroke-width="8"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Σπάρτη</text>
-<text x="62" y="138" font-size="28" fill="#246b63">πειθαρχία, στρατιωτική αγωγή και ολιγαρχία</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8eef5" height="620" rx="35" width="900"></rect>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"></path>
+<circle cx="310" cy="260" fill="#c3834b" r="60"></circle>
+<path d="M250 210 q60-80 125 0" fill="#3b2a1b"></path>
+<rect fill="#7b421f" height="165" rx="25" width="120" x="250" y="330"></rect>
+<circle cx="470" cy="370" fill="#b9422f" r="82" stroke="#5b351c" stroke-width="10"></circle>
+<path d="M470 295 v150 M395 370 h150" stroke="#ffd56d" stroke-width="12"></path>
+<path d="M620 220 L680 220 L665 495 L600 495Z" fill="#6a6a66" stroke="#333" stroke-width="8"></path>
+<path d="M590 220 L695 220 L660 160Z" fill="#4d4d49" stroke="#333" stroke-width="8"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Σπάρτη</text>
+<text fill="#246b63" font-size="28" x="62" y="138">πειθαρχία, στρατιωτική αγωγή και ολιγαρχία</text>
 </svg>
 </template>
-
 <template id="draw-athens">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
-<rect x="180" y="345" width="75" height="135" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
-<rect x="325" y="315" width="75" height="165" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
-<rect x="470" y="345" width="75" height="135" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
-<path d="M150 345 L365 230 L575 345Z" fill="#fff8ec" stroke="#7b421f" stroke-width="9"/>
-<circle cx="665" cy="405" r="34" fill="#c3834b"/><rect x="635" y="440" width="60" height="80" rx="22" fill="#246b63"/>
-<circle cx="735" cy="405" r="34" fill="#c3834b"/><rect x="705" y="440" width="60" height="80" rx="22" fill="#a7652d"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Αθήνα</text>
-<text x="62" y="138" font-size="28" fill="#246b63">από τους νόμους στη δημοκρατική πορεία</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<circle cx="745" cy="95" fill="#ffd56d" r="65"></circle>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"></path>
+<rect fill="#d8a24b" height="135" stroke="#7b421f" stroke-width="7" width="75" x="180" y="345"></rect>
+<rect fill="#d8a24b" height="165" stroke="#7b421f" stroke-width="7" width="75" x="325" y="315"></rect>
+<rect fill="#d8a24b" height="135" stroke="#7b421f" stroke-width="7" width="75" x="470" y="345"></rect>
+<path d="M150 345 L365 230 L575 345Z" fill="#fff8ec" stroke="#7b421f" stroke-width="9"></path>
+<circle cx="665" cy="405" fill="#c3834b" r="34"></circle><rect fill="#246b63" height="80" rx="22" width="60" x="635" y="440"></rect>
+<circle cx="735" cy="405" fill="#c3834b" r="34"></circle><rect fill="#a7652d" height="80" rx="22" width="60" x="705" y="440"></rect>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Αθήνα</text>
+<text fill="#246b63" font-size="28" x="62" y="138">από τους νόμους στη δημοκρατική πορεία</text>
 </svg>
 </template>
-
 <template id="draw-laws">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
-<rect x="160" y="150" width="250" height="350" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<rect x="490" y="150" width="250" height="350" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<path d="M205 220 h160 M205 275 h130 M205 330 h150 M205 385 h120" stroke="#246b63" stroke-width="10" stroke-linecap="round"/>
-<path d="M535 220 h160 M535 275 h130 M535 330 h150 M535 385 h120" stroke="#a7652d" stroke-width="10" stroke-linecap="round"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Νόμοι και πολίτευμα</text>
-<text x="62" y="138" font-size="28" fill="#246b63">οι κανόνες οργανώνουν την πόλη</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
+<rect fill="#fff8ec" height="350" rx="25" stroke="#7b421f" stroke-width="10" width="250" x="160" y="150"></rect>
+<rect fill="#fff8ec" height="350" rx="25" stroke="#7b421f" stroke-width="10" width="250" x="490" y="150"></rect>
+<path d="M205 220 h160 M205 275 h130 M205 330 h150 M205 385 h120" stroke="#246b63" stroke-linecap="round" stroke-width="10"></path>
+<path d="M535 220 h160 M535 275 h130 M535 330 h150 M535 385 h120" stroke="#a7652d" stroke-linecap="round" stroke-width="10"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Νόμοι και πολίτευμα</text>
+<text fill="#246b63" font-size="28" x="62" y="138">οι κανόνες οργανώνουν την πόλη</text>
 </svg>
 </template>
-
 <template id="draw-tyrant">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"/>
-<circle cx="450" cy="240" r="58" fill="#c3834b"/>
-<path d="M390 190 q60-80 125 0" fill="#3b2a1b"/>
-<path d="M390 165 h120 l-25 -45 l-35 35 l-35 -35z" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
-<rect x="385" y="305" width="130" height="170" rx="25" fill="#7b421f"/>
-<circle cx="270" cy="420" r="35" fill="#c3834b"/><rect x="240" y="455" width="60" height="75" rx="20" fill="#246b63"/>
-<circle cx="640" cy="420" r="35" fill="#c3834b"/><rect x="610" y="455" width="60" height="75" rx="20" fill="#a7652d"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Τυραννίδα</text>
-<text x="62" y="138" font-size="28" fill="#246b63">ισχυρός άρχοντας παίρνει την εξουσία</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8d806c"></path>
+<circle cx="450" cy="240" fill="#c3834b" r="58"></circle>
+<path d="M390 190 q60-80 125 0" fill="#3b2a1b"></path>
+<path d="M390 165 h120 l-25 -45 l-35 35 l-35 -35z" fill="#d8a24b" stroke="#7b421f" stroke-width="7"></path>
+<rect fill="#7b421f" height="170" rx="25" width="130" x="385" y="305"></rect>
+<circle cx="270" cy="420" fill="#c3834b" r="35"></circle><rect fill="#246b63" height="75" rx="20" width="60" x="240" y="455"></rect>
+<circle cx="640" cy="420" fill="#c3834b" r="35"></circle><rect fill="#a7652d" height="75" rx="20" width="60" x="610" y="455"></rect>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Τυραννίδα</text>
+<text fill="#246b63" font-size="28" x="62" y="138">ισχυρός άρχοντας παίρνει την εξουσία</text>
 </svg>
 </template>
-
 <template id="draw-art">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
-<path d="M190 180 C150 285 170 470 300 520 C430 470 450 285 410 180 C360 145 240 145 190 180Z" fill="#b6753e" stroke="#3b2a1b" stroke-width="10"/>
-<path d="M185 260 h230 M185 360 h230 M215 445 h170" stroke="#fff2dc" stroke-width="12"/>
-<circle cx="610" cy="245" r="55" fill="#c3834b"/>
-<path d="M555 200 q60-80 125 0" fill="#3b2a1b"/>
-<rect x="565" y="305" width="90" height="170" rx="25" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
-<path d="M565 360 h90 M565 410 h90" stroke="#d8a24b" stroke-width="9"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Αρχαϊκή τέχνη</text>
-<text x="62" y="138" font-size="28" fill="#246b63">κούροι, κόρες, αγγεία και ναοί</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
+<path d="M190 180 C150 285 170 470 300 520 C430 470 450 285 410 180 C360 145 240 145 190 180Z" fill="#b6753e" stroke="#3b2a1b" stroke-width="10"></path>
+<path d="M185 260 h230 M185 360 h230 M215 445 h170" stroke="#fff2dc" stroke-width="12"></path>
+<circle cx="610" cy="245" fill="#c3834b" r="55"></circle>
+<path d="M555 200 q60-80 125 0" fill="#3b2a1b"></path>
+<rect fill="#fff8ec" height="170" rx="25" stroke="#7b421f" stroke-width="8" width="90" x="565" y="305"></rect>
+<path d="M565 360 h90 M565 410 h90" stroke="#d8a24b" stroke-width="9"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Αρχαϊκή τέχνη</text>
+<text fill="#246b63" font-size="28" x="62" y="138">κούροι, κόρες, αγγεία και ναοί</text>
 </svg>
 </template>
-
-<section id="home" class="page active">
-  <div class="wrap">
-    <div class="hero">
-      <div class="panel text">
-        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
-        <h1>Κεφάλαιο 4<br>Αρχαϊκή εποχή</h1>
-        <p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς οι ελληνικές πόλεις οργανώνονται, αποικίζουν, νομοθετούν και δημιουργούν πολιτισμό.</p>
-        <div class="box">Κεντρική ιδέα: η πόλη-κράτος γίνεται η βασική μορφή οργάνωσης του ελληνικού κόσμου.</div>
-        <p>
-          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
-          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-        </p>
-      </div>
-      <div class="panel drawing" data-draw="draw-archaic"></div>
-    </div>
-  </div>
+<section class="page active" id="home">
+<div class="wrap">
+<div class="hero">
+<div class="panel text">
+<div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+<h1>Κεφάλαιο 4<br/>Αρχαϊκή εποχή</h1>
+<p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς οι ελληνικές πόλεις οργανώνονται, αποικίζουν, νομοθετούν και δημιουργούν πολιτισμό.</p>
+<div class="box">Κεντρική ιδέα: η πόλη-κράτος γίνεται η βασική μορφή οργάνωσης του ελληνικού κόσμου.</div>
+<p>
+<button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+<button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+</p>
+</div>
+<div class="panel drawing" data-draw="draw-archaic"></div>
+</div>
+</div>
 </section>
-
-  <section class="wrap">
-    <div class="panel text progress-card">
-      <div class="eyebrow">Η πρόοδός μου</div>
-      <h2>Πρόοδος κεφαλαίου</h2>
-      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
-      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
-      <div id="chapterBadgeList" class="progress-badges"></div>
-    </div>
-  </section>
-
-
-<section id="chapter4" class="page">
-  <div class="wrap">
-    <div class="lesson-top">
-      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
-      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
-      <div id="counter">1 / 10</div>
-    </div>
-
-    <div class="panel">
-
-      <div class="lesson-slide active">
-        <div class="text">
-          <div class="eyebrow">1. Εισαγωγή</div>
-          <h2>Η Αρχαϊκή εποχή</h2>
-          <p>Η Αρχαϊκή εποχή είναι περίοδος μεγάλης ανάπτυξης για τον ελληνικό κόσμο.</p>
-          <div class="box">Βασική ιδέα: οι Έλληνες οργανώνονται σε πόλεις-κράτη, ταξιδεύουν, ιδρύουν αποικίες και δημιουργούν νέους θεσμούς.</div>
-        </div>
-        <div class="drawing" data-draw="draw-archaic"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">2. Η πόλη-κράτος</div>
-          <h2>Η βασική οργάνωση</h2>
-          <p>Η πόλη-κράτος είναι μια ανεξάρτητη κοινότητα πολιτών με δικούς της νόμους, θεσμούς και πολίτευμα.</p>
-          <ul>
-            <li>πόλη και γύρω περιοχή</li>
-            <li>πολίτες</li>
-            <li>νόμοι</li>
-            <li>κοινή ταυτότητα</li>
-          </ul>
-          <div class="box">Ερώτηση: τι χρειάζεται μια πόλη για να λειτουργεί οργανωμένα;</div>
-        </div>
-        <div class="drawing" data-draw="draw-polis"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">3. Ο Β΄ ελληνικός αποικισμός</div>
-          <h2>Οι Έλληνες ιδρύουν αποικίες</h2>
-          <p>Πολλοί Έλληνες φεύγουν από τις πατρίδες τους και ιδρύουν νέες πόλεις σε παράλια της Μεσογείου και του Εύξεινου Πόντου.</p>
-          <ul>
-            <li>ανάγκη για γη</li>
-            <li>εμπόριο</li>
-            <li>αναζήτηση πρώτων υλών</li>
-            <li>νέες επαφές</li>
-          </ul>
-          <div class="box">Κλειδί: οι αποικίες μεταδίδουν τον ελληνικό πολιτισμό σε πολλές περιοχές.</div>
-        </div>
-        <div class="drawing" data-draw="draw-colony"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">4. Συνέπειες του αποικισμού</div>
-          <h2>Εμπόριο και ανταλλαγές</h2>
-          <p>Ο αποικισμός ενισχύει το εμπόριο, τις επαφές με άλλους λαούς και την κυκλοφορία ιδεών.</p>
-          <ul>
-            <li>νέες αγορές</li>
-            <li>επικοινωνία με άλλους πολιτισμούς</li>
-            <li>ανάπτυξη ναυτιλίας</li>
-            <li>διάδοση ελληνικών στοιχείων</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί το εμπόριο αλλάζει μια κοινωνία;</div>
-        </div>
-        <div class="drawing" data-draw="draw-colony"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">5. Η Σπάρτη</div>
-          <h2>Στρατιωτική οργάνωση</h2>
-          <p>Η Σπάρτη οργανώνεται με αυστηρή πειθαρχία και στρατιωτική αγωγή.</p>
-          <ul>
-            <li>ολιγαρχικό πολίτευμα</li>
-            <li>πειθαρχία</li>
-            <li>στρατιωτική εκπαίδευση</li>
-            <li>λιτός τρόπος ζωής</li>
-          </ul>
-          <div class="box">Συζήτηση: ποια είναι τα πλεονεκτήματα και τα μειονεκτήματα μιας τόσο αυστηρής κοινωνίας;</div>
-        </div>
-        <div class="drawing" data-draw="draw-sparta"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">6. Η Αθήνα</div>
-          <h2>Από την αριστοκρατία στις μεταρρυθμίσεις</h2>
-          <p>Στην Αθήνα οι κοινωνικές εντάσεις οδηγούν σε προσπάθειες οργάνωσης των νόμων και του πολιτεύματος.</p>
-          <ul>
-            <li>αριστοκρατία</li>
-            <li>κοινωνικές συγκρούσεις</li>
-            <li>νόμοι</li>
-            <li>μεταρρυθμίσεις</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί οι γραπτοί νόμοι βοηθούν μια κοινωνία;</div>
-        </div>
-        <div class="drawing" data-draw="draw-athens"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">7. Νόμοι και πολιτεύματα</div>
-          <h2>Πώς κυβερνιέται μια πόλη;</h2>
-          <p>Στην Αρχαϊκή εποχή εμφανίζονται διαφορετικοί τρόποι διακυβέρνησης στις πόλεις-κράτη.</p>
-          <ul>
-            <li>αριστοκρατία</li>
-            <li>ολιγαρχία</li>
-            <li>τυραννίδα</li>
-            <li>σταδιακή πορεία προς δημοκρατικές μορφές</li>
-          </ul>
-          <div class="box">Κλειδί: το πολίτευμα δείχνει ποιος έχει την εξουσία.</div>
-        </div>
-        <div class="drawing" data-draw="draw-laws"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">8. Η τυραννίδα</div>
-          <h2>Ένας ισχυρός άρχοντας</h2>
-          <p>Σε αρκετές πόλεις εμφανίζονται τύραννοι, δηλαδή ισχυροί άρχοντες που παίρνουν την εξουσία.</p>
-          <ul>
-            <li>προσωπική εξουσία</li>
-            <li>στήριξη από ομάδες πολιτών</li>
-            <li>έργα και αλλαγές</li>
-            <li>περιορισμός της αριστοκρατίας</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί κάποιοι πολίτες μπορεί να στήριζαν έναν τύραννο;</div>
-        </div>
-        <div class="drawing" data-draw="draw-tyrant"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">9. Αρχαϊκή τέχνη</div>
-          <h2>Ναοί, αγάλματα και αγγεία</h2>
-          <p>Η τέχνη της Αρχαϊκής εποχής αναπτύσσεται σημαντικά. Εμφανίζονται μεγάλοι ναοί, κούροι, κόρες και διακοσμημένα αγγεία.</p>
-          <ul>
-            <li>ναοί</li>
-            <li>κούροι και κόρες</li>
-            <li>αγγειογραφία</li>
-            <li>αναζήτηση αρμονίας</li>
-          </ul>
-          <div class="box">Δραστηριότητα: σχεδίασε ένα αγγείο ή έναν ναό της Αρχαϊκής εποχής.</div>
-        </div>
-        <div class="drawing" data-draw="draw-art"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
-          <h2>Σύνοψη Κεφαλαίου 4</h2>
-          <ul>
-            <li>Η πόλη-κράτος είναι η βασική μορφή οργάνωσης.</li>
-            <li>Ο Β΄ αποικισμός εξαπλώνει τον ελληνικό κόσμο.</li>
-            <li>Η Σπάρτη οργανώνεται στρατιωτικά.</li>
-            <li>Η Αθήνα περνά από κοινωνικές εντάσεις σε νόμους και μεταρρυθμίσεις.</li>
-            <li>Η Αρχαϊκή εποχή γνωρίζει μεγάλη καλλιτεχνική ανάπτυξη.</li>
-          </ul>
-          <p>
-            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
-            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
-          </p>
-        </div>
-        <div class="drawing" data-draw="draw-archaic"></div>
-      </div>
-
-    </div>
-
-    <div class="lesson-nav">
-      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-      <button onclick="nextSlide()">Επόμενο ➡</button>
-    </div>
-  </div>
+<section class="wrap">
+<div class="panel text progress-card">
+<div class="eyebrow">Η πρόοδός μου</div>
+<h2>Πρόοδος κεφαλαίου</h2>
+<div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
+<div class="progress-small" id="chapterProgressText">Φόρτωση προόδου...</div>
+<div class="progress-badges" id="chapterBadgeList"></div>
+</div>
 </section>
-
-<section id="extras" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Extra για τα παιδιά</div>
-      <h2>Δραστηριότητες Κεφαλαίου 4</h2>
-      <p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε την πόλη-κράτος, τον αποικισμό και τα πολιτεύματα.</p>
-
-      <div class="cards">
-        <div class="card" onclick="showPage('missions')">
-          <div><div class="icon">🎯</div><h3>Αποστολή πόλης-κράτους</h3><p>Φτιάξε τη δική σου πόλη-κράτος.</p></div>
-          <span class="tag">δραστηριότητα</span>
-        </div>
-        <div class="card" onclick="showPage('detective')">
-          <div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
-          <span class="tag">παιχνίδι σκέψης</span>
-        </div>
-        <div class="card" onclick="showPage('concepts')">
-          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
-          <span class="tag">επανάληψη</span>
-        </div>
-        <div class="card" onclick="showPage('today')">
-          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
-          <span class="tag">ολοκλήρωση</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="page" id="chapter4">
+<div class="wrap">
+<div class="lesson-top">
+<button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<div id="counter">1 / 10</div>
+</div>
+<div class="panel">
+<div class="lesson-slide active">
+<div class="text">
+<div class="eyebrow">1. Εισαγωγή</div>
+<h2>Η Αρχαϊκή εποχή</h2>
+<p>Η Αρχαϊκή εποχή είναι περίοδος μεγάλης ανάπτυξης για τον ελληνικό κόσμο.</p>
+<div class="box">Βασική ιδέα: οι Έλληνες οργανώνονται σε πόλεις-κράτη, ταξιδεύουν, ιδρύουν αποικίες και δημιουργούν νέους θεσμούς.</div>
+</div>
+<div class="drawing" data-draw="draw-archaic"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">2. Η πόλη-κράτος</div>
+<h2>Η βασική οργάνωση</h2>
+<p>Η πόλη-κράτος είναι μια ανεξάρτητη κοινότητα πολιτών με δικούς της νόμους, θεσμούς και πολίτευμα.</p>
+<ul>
+<li>πόλη και γύρω περιοχή</li>
+<li>πολίτες</li>
+<li>νόμοι</li>
+<li>κοινή ταυτότητα</li>
+</ul>
+<div class="box">Ερώτηση: τι χρειάζεται μια πόλη για να λειτουργεί οργανωμένα;</div>
+</div>
+<div class="drawing" data-draw="draw-polis"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">3. Ο Β΄ ελληνικός αποικισμός</div>
+<h2>Οι Έλληνες ιδρύουν αποικίες</h2>
+<p>Πολλοί Έλληνες φεύγουν από τις πατρίδες τους και ιδρύουν νέες πόλεις σε παράλια της Μεσογείου και του Εύξεινου Πόντου.</p>
+<ul>
+<li>ανάγκη για γη</li>
+<li>εμπόριο</li>
+<li>αναζήτηση πρώτων υλών</li>
+<li>νέες επαφές</li>
+</ul>
+<div class="box">Κλειδί: οι αποικίες μεταδίδουν τον ελληνικό πολιτισμό σε πολλές περιοχές.</div>
+</div>
+<div class="drawing" data-draw="draw-colony"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">4. Συνέπειες του αποικισμού</div>
+<h2>Εμπόριο και ανταλλαγές</h2>
+<p>Ο αποικισμός ενισχύει το εμπόριο, τις επαφές με άλλους λαούς και την κυκλοφορία ιδεών.</p>
+<ul>
+<li>νέες αγορές</li>
+<li>επικοινωνία με άλλους πολιτισμούς</li>
+<li>ανάπτυξη ναυτιλίας</li>
+<li>διάδοση ελληνικών στοιχείων</li>
+</ul>
+<div class="box">Ερώτηση: γιατί το εμπόριο αλλάζει μια κοινωνία;</div>
+</div>
+<div class="drawing" data-draw="draw-colony"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">5. Η Σπάρτη</div>
+<h2>Στρατιωτική οργάνωση</h2>
+<p>Η Σπάρτη οργανώνεται με αυστηρή πειθαρχία και στρατιωτική αγωγή.</p>
+<ul>
+<li>ολιγαρχικό πολίτευμα</li>
+<li>πειθαρχία</li>
+<li>στρατιωτική εκπαίδευση</li>
+<li>λιτός τρόπος ζωής</li>
+</ul>
+<div class="box">Συζήτηση: ποια είναι τα πλεονεκτήματα και τα μειονεκτήματα μιας τόσο αυστηρής κοινωνίας;</div>
+</div>
+<div class="drawing" data-draw="draw-sparta"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">6. Η Αθήνα</div>
+<h2>Από την αριστοκρατία στις μεταρρυθμίσεις</h2>
+<p>Στην Αθήνα οι κοινωνικές εντάσεις οδηγούν σε προσπάθειες οργάνωσης των νόμων και του πολιτεύματος.</p>
+<ul>
+<li>αριστοκρατία</li>
+<li>κοινωνικές συγκρούσεις</li>
+<li>νόμοι</li>
+<li>μεταρρυθμίσεις</li>
+</ul>
+<div class="box">Ερώτηση: γιατί οι γραπτοί νόμοι βοηθούν μια κοινωνία;</div>
+</div>
+<div class="drawing" data-draw="draw-athens"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">7. Νόμοι και πολιτεύματα</div>
+<h2>Πώς κυβερνιέται μια πόλη;</h2>
+<p>Στην Αρχαϊκή εποχή εμφανίζονται διαφορετικοί τρόποι διακυβέρνησης στις πόλεις-κράτη.</p>
+<ul>
+<li>αριστοκρατία</li>
+<li>ολιγαρχία</li>
+<li>τυραννίδα</li>
+<li>σταδιακή πορεία προς δημοκρατικές μορφές</li>
+</ul>
+<div class="box">Κλειδί: το πολίτευμα δείχνει ποιος έχει την εξουσία.</div>
+</div>
+<div class="drawing" data-draw="draw-laws"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">8. Η τυραννίδα</div>
+<h2>Ένας ισχυρός άρχοντας</h2>
+<p>Σε αρκετές πόλεις εμφανίζονται τύραννοι, δηλαδή ισχυροί άρχοντες που παίρνουν την εξουσία.</p>
+<ul>
+<li>προσωπική εξουσία</li>
+<li>στήριξη από ομάδες πολιτών</li>
+<li>έργα και αλλαγές</li>
+<li>περιορισμός της αριστοκρατίας</li>
+</ul>
+<div class="box">Ερώτηση: γιατί κάποιοι πολίτες μπορεί να στήριζαν έναν τύραννο;</div>
+</div>
+<div class="drawing" data-draw="draw-tyrant"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">9. Αρχαϊκή τέχνη</div>
+<h2>Ναοί, αγάλματα και αγγεία</h2>
+<p>Η τέχνη της Αρχαϊκής εποχής αναπτύσσεται σημαντικά. Εμφανίζονται μεγάλοι ναοί, κούροι, κόρες και διακοσμημένα αγγεία.</p>
+<ul>
+<li>ναοί</li>
+<li>κούροι και κόρες</li>
+<li>αγγειογραφία</li>
+<li>αναζήτηση αρμονίας</li>
+</ul>
+<div class="box">Δραστηριότητα: σχεδίασε ένα αγγείο ή έναν ναό της Αρχαϊκής εποχής.</div>
+</div>
+<div class="drawing" data-draw="draw-art"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
+<h2>Σύνοψη Κεφαλαίου 4</h2>
+<ul>
+<li>Η πόλη-κράτος είναι η βασική μορφή οργάνωσης.</li>
+<li>Ο Β΄ αποικισμός εξαπλώνει τον ελληνικό κόσμο.</li>
+<li>Η Σπάρτη οργανώνεται στρατιωτικά.</li>
+<li>Η Αθήνα περνά από κοινωνικές εντάσεις σε νόμους και μεταρρυθμίσεις.</li>
+<li>Η Αρχαϊκή εποχή γνωρίζει μεγάλη καλλιτεχνική ανάπτυξη.</li>
+</ul>
+<p>
+<button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+<button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+</p>
+</div>
+<div class="drawing" data-draw="draw-archaic"></div>
+</div>
+</div>
+<div class="lesson-nav">
+<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+<button onclick="nextSlide()">Επόμενο ➡</button>
+</div>
+</div>
 </section>
-
-<section id="missions" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🎯 Αποστολή πόλης-κράτους</div>
-      <h2>Φτιάξε τη δική σου πόλη-κράτος</h2>
-      <div class="grid2">
-        <div class="mini"><h3>Όνομα</h3><p>Δώσε όνομα στην πόλη-κράτος σου.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Νόμοι</h3><p>Γράψε 2 νόμους που θα είχε.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Πολίτευμα</h3><p>Ποιος θα παίρνει τις αποφάσεις;</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Αποικία</h3><p>Πού θα ίδρυες αποικία και γιατί;</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-      </div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="extras">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Extra για τα παιδιά</div>
+<h2>Δραστηριότητες Κεφαλαίου 4</h2>
+<p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε την πόλη-κράτος, τον αποικισμό και τα πολιτεύματα.</p>
+<div class="cards">
+<div class="card" onclick="showPage('missions')">
+<div><div class="icon">🎯</div><h3>Αποστολή πόλης-κράτους</h3><p>Φτιάξε τη δική σου πόλη-κράτος.</p></div>
+<span class="tag">δραστηριότητα</span>
+</div>
+<div class="card" onclick="showPage('detective')">
+<div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
+<span class="tag">παιχνίδι σκέψης</span>
+</div>
+<div class="card" onclick="showPage('concepts')">
+<div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+<span class="tag">επανάληψη</span>
+</div>
+<div class="card" onclick="showPage('today')">
+<div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+<span class="tag">ολοκλήρωση</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section id="detective" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🕵️ Βρες την έννοια</div>
-      <h2>Στοιχείο: ανεξάρτητη κοινότητα πολιτών με δικούς της νόμους</h2>
-      <p>Ποια έννοια περιγράφει;</p>
-      <button class="answer detect-answer" onclick="selectDetect(true,this)">Πόλη-κράτος</button>
-      <button class="answer detect-answer" onclick="selectDetect(false,this)">Αποικία</button>
-      <button class="answer detect-answer" onclick="selectDetect(false,this)">Τυραννίδα</button>
-      <div id="detectResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
-      <p>
-        <button onclick="checkDetect()">Έλεγχος</button>
-        <button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
-        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
-      </p>
-    </div>
-  </div>
+<section class="page" id="missions">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🎯 Αποστολή πόλης-κράτους</div>
+<h2>Φτιάξε τη δική σου πόλη-κράτος</h2>
+<div class="grid2">
+<div class="mini"><h3>Όνομα</h3><p>Δώσε όνομα στην πόλη-κράτος σου.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Νόμοι</h3><p>Γράψε 2 νόμους που θα είχε.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Πολίτευμα</h3><p>Ποιος θα παίρνει τις αποφάσεις;</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Αποικία</h3><p>Πού θα ίδρυες αποικία και γιατί;</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+</div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="concepts" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
-      <h2>Πώς συνδέονται οι λέξεις;</h2>
-      <div class="concept-map">
-        <div class="bubble main" onclick="concept('Η Αρχαϊκή εποχή είναι περίοδος οργάνωσης, αποικισμού και πολιτιστικής ανάπτυξης.')">Αρχαϊκή εποχή</div>
-        <div class="bubble" onclick="concept('Η πόλη-κράτος είναι ανεξάρτητη κοινότητα πολιτών με δικούς της νόμους.')">πόλη-κράτος</div>
-        <div class="bubble" onclick="concept('Ο Β΄ αποικισμός εξαπλώνει τον ελληνικό κόσμο στη Μεσόγειο και τον Εύξεινο Πόντο.')">αποικισμός</div>
-        <div class="bubble" onclick="concept('Η Σπάρτη δίνει έμφαση στην πειθαρχία και στη στρατιωτική αγωγή.')">Σπάρτη</div>
-        <div class="bubble" onclick="concept('Η Αθήνα αναζητά λύσεις μέσα από νόμους και μεταρρυθμίσεις.')">Αθήνα</div>
-        <div class="bubble" onclick="concept('Η αρχαϊκή τέχνη περιλαμβάνει ναούς, κούρους, κόρες και αγγεία.')">τέχνη</div>
-      </div>
-      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="detective">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🕵️ Βρες την έννοια</div>
+<h2>Στοιχείο: ανεξάρτητη κοινότητα πολιτών με δικούς της νόμους</h2>
+<p>Ποια έννοια περιγράφει;</p>
+<button class="answer detect-answer" onclick="selectDetect(true,this)">Πόλη-κράτος</button>
+<button class="answer detect-answer" onclick="selectDetect(false,this)">Αποικία</button>
+<button class="answer detect-answer" onclick="selectDetect(false,this)">Τυραννίδα</button>
+<div class="box" id="detectResult">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+<p>
+<button onclick="checkDetect()">Έλεγχος</button>
+<button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
+<button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+</p>
+</div>
+</div>
 </section>
-
-<section id="today" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
-      <h2>Checklist Κεφαλαίου 4</h2>
-      <div class="checklist">
-        <label><input type="checkbox"> Έμαθα τι είναι η πόλη-κράτος.</label>
-        <label><input type="checkbox"> Κατάλαβα γιατί έγινε ο Β΄ αποικισμός.</label>
-        <label><input type="checkbox"> Ξεχωρίζω βασικά στοιχεία της Σπάρτης και της Αθήνας.</label>
-        <label><input type="checkbox"> Ξέρω τι σημαίνουν νόμοι, πολίτευμα και τυραννίδα.</label>
-        <label><input type="checkbox"> Θυμάμαι βασικά στοιχεία της αρχαϊκής τέχνης.</label>
-      </div>
-      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
-      <div id="badgeBox"></div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="concepts">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🧠 Χάρτης εννοιών</div>
+<h2>Πώς συνδέονται οι λέξεις;</h2>
+<div class="concept-map">
+<div class="bubble main" onclick="concept('Η Αρχαϊκή εποχή είναι περίοδος οργάνωσης, αποικισμού και πολιτιστικής ανάπτυξης.')">Αρχαϊκή εποχή</div>
+<div class="bubble" onclick="concept('Η πόλη-κράτος είναι ανεξάρτητη κοινότητα πολιτών με δικούς της νόμους.')">πόλη-κράτος</div>
+<div class="bubble" onclick="concept('Ο Β΄ αποικισμός εξαπλώνει τον ελληνικό κόσμο στη Μεσόγειο και τον Εύξεινο Πόντο.')">αποικισμός</div>
+<div class="bubble" onclick="concept('Η Σπάρτη δίνει έμφαση στην πειθαρχία και στη στρατιωτική αγωγή.')">Σπάρτη</div>
+<div class="bubble" onclick="concept('Η Αθήνα αναζητά λύσεις μέσα από νόμους και μεταρρυθμίσεις.')">Αθήνα</div>
+<div class="bubble" onclick="concept('Η αρχαϊκή τέχνη περιλαμβάνει ναούς, κούρους, κόρες και αγγεία.')">τέχνη</div>
+</div>
+<div class="box" id="conceptResult">Πάτησε έναν κύκλο.</div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="review" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Επανάληψη</div>
-      <h2>Ασκήσεις για το Κεφάλαιο 4</h2>
-      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
-      <div id="quizArea"></div>
-      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
-      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
-      <div id="scoreBox"></div>
-    </div>
-  </div>
+<section class="page" id="today">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+<h2>Checklist Κεφαλαίου 4</h2>
+<div class="checklist">
+<label><input type="checkbox"/> Έμαθα τι είναι η πόλη-κράτος.</label>
+<label><input type="checkbox"/> Κατάλαβα γιατί έγινε ο Β΄ αποικισμός.</label>
+<label><input type="checkbox"/> Ξεχωρίζω βασικά στοιχεία της Σπάρτης και της Αθήνας.</label>
+<label><input type="checkbox"/> Ξέρω τι σημαίνουν νόμοι, πολίτευμα και τυραννίδα.</label>
+<label><input type="checkbox"/> Θυμάμαι βασικά στοιχεία της αρχαϊκής τέχνης.</label>
+</div>
+<button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+<div id="badgeBox"></div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="glossary" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Μικρό λεξικό</div>
-      <h2>Λέξεις που πρέπει να ξέρω</h2>
-      <div class="grid2">
-        <div class="mini"><h3>Πόλη-κράτος</h3><p>Ανεξάρτητη κοινότητα πολιτών με δικούς της νόμους και θεσμούς.</p></div>
-        <div class="mini"><h3>Αποικισμός</h3><p>Ίδρυση νέων πόλεων από ανθρώπους που μετακινούνται από τη μητρόπολη.</p></div>
-        <div class="mini"><h3>Μητρόπολη</h3><p>Η πόλη από την οποία ξεκινούν οι άποικοι.</p></div>
-        <div class="mini"><h3>Πολίτευμα</h3><p>Ο τρόπος με τον οποίο κυβερνιέται μια πόλη ή κράτος.</p></div>
-        <div class="mini"><h3>Ολιγαρχία</h3><p>Πολίτευμα στο οποίο η εξουσία ανήκει σε λίγους.</p></div>
-        <div class="mini"><h3>Τυραννίδα</h3><p>Εξουσία ενός ισχυρού άρχοντα που την παίρνει με τη δύναμή του.</p></div>
-      </div>
-    </div>
-  </div>
+<section class="page" id="review">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Επανάληψη</div>
+<h2>Ασκήσεις για το Κεφάλαιο 4</h2>
+<p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+<div id="quizArea"></div>
+<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+<button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+<div id="scoreBox"></div>
+</div>
+</div>
 </section>
-
+<section class="page" id="glossary">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Μικρό λεξικό</div>
+<h2>Λέξεις που πρέπει να ξέρω</h2>
+<div class="grid2">
+<div class="mini"><h3>Πόλη-κράτος</h3><p>Ανεξάρτητη κοινότητα πολιτών με δικούς της νόμους και θεσμούς.</p></div>
+<div class="mini"><h3>Αποικισμός</h3><p>Ίδρυση νέων πόλεων από ανθρώπους που μετακινούνται από τη μητρόπολη.</p></div>
+<div class="mini"><h3>Μητρόπολη</h3><p>Η πόλη από την οποία ξεκινούν οι άποικοι.</p></div>
+<div class="mini"><h3>Πολίτευμα</h3><p>Ο τρόπος με τον οποίο κυβερνιέται μια πόλη ή κράτος.</p></div>
+<div class="mini"><h3>Ολιγαρχία</h3><p>Πολίτευμα στο οποίο η εξουσία ανήκει σε λίγους.</p></div>
+<div class="mini"><h3>Τυραννίδα</h3><p>Εξουσία ενός ισχυρού άρχοντα που την παίρνει με τη δύναμή του.</p></div>
+</div>
+</div>
+</div>
+</section>
 <footer>Κεφάλαιο 4 — Αρχαϊκή εποχή</footer>
-
-
 <script>
 window.CHAPTER_ID = "4";
 window.CHAPTER_TITLE = "🏛️ Κεφάλαιο 4: Αρχαϊκή εποχή";
 </script>
-
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -577,12 +537,9 @@ window.questions = [
 
 IstoriaChapter.init();
 </script>
-
-
 <script>
 try{saveChapterProgress({visited:true});}catch(e){}
 </script>
-
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
 </body>

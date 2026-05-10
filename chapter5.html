@@ -1,507 +1,467 @@
 <!DOCTYPE html>
+
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Κεφάλαιο 5 - Η ηγεμονία της Αθήνας</title>
-
-<link rel="stylesheet" href="core/chapter-core.css">
-<link rel="stylesheet" href="core/v26-polish.css">
-<link rel="stylesheet" href="core/mobile-menu.css">
+<link href="core/chapter-core.css" rel="stylesheet"/>
+<link href="core/v26-polish.css" rel="stylesheet"/>
+<link href="core/mobile-menu.css" rel="stylesheet"/>
 </head>
-
 <body>
-
 <header>
-  <div class="bar">
-    <div class="logo">🗳️ Κεφάλαιο 5: Η ηγεμονία της Αθήνας</div>
-    <div class="nav">
-      <button class="sound-toggle" onclick="toggleIstoriaSound(this)">🔊 Ήχοι: ON</button>
-      <button onclick="showPage('home')">Αρχή</button>
-      <button onclick="openLesson()">Μάθημα</button>
-      <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-      <button onclick="showPage('review')">Επανάληψη</button>
-      <button class="gold" onclick="showPage('glossary')">Λεξικό</button>
-      <a class="btn gold" href="teacher-notes.html">Σημειώσεις Καθηγητή</a>
-    </div>
-  </div>
+<div class="bar">
+<div class="logo">🗳️ Κεφάλαιο 5: Η ηγεμονία της Αθήνας</div>
+<div class="nav"><a href="index.html">Αρχική</a>
+<a href="chapters.html">Κεφάλαια</a>
+<a class="secondary" href="revision.html">Επανάληψη</a>
+<a class="gold" href="smart-study.html">Smart Study</a>
+<a class="blue" href="intelligent-revision.html">Revision</a>
+<a class="btn secondary" href="world-map.html">Άτλαντας</a>
+<a class="btn gold" href="tools.html">Εργαλεία</a>
+</div>
+</div>
 </header>
-
 <!-- Σχέδια SVG -->
 <template id="draw-athens">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
-<rect x="150" y="350" width="80" height="130" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="310" y="320" width="80" height="160" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="470" y="350" width="80" height="130" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<path d="M120 350 L350 230 L585 350Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"/>
-<path d="M110 490 H610" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
-<circle cx="690" cy="405" r="34" fill="#c3834b"/>
-<rect x="660" y="440" width="60" height="82" rx="22" fill="#246b63"/>
-<circle cx="760" cy="405" r="34" fill="#c3834b"/>
-<rect x="730" y="440" width="60" height="82" rx="22" fill="#a7652d"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ηγεμονία της Αθήνας</text>
-<text x="62" y="138" font-size="28" fill="#246b63">δύναμη, συμμαχία, δημοκρατία και πολιτισμός</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<circle cx="745" cy="95" fill="#ffd56d" r="65"></circle>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"></path>
+<rect fill="#d8a24b" height="130" stroke="#7b421f" stroke-width="8" width="80" x="150" y="350"></rect>
+<rect fill="#d8a24b" height="160" stroke="#7b421f" stroke-width="8" width="80" x="310" y="320"></rect>
+<rect fill="#d8a24b" height="130" stroke="#7b421f" stroke-width="8" width="80" x="470" y="350"></rect>
+<path d="M120 350 L350 230 L585 350Z" fill="#fff8ec" stroke="#7b421f" stroke-width="10"></path>
+<path d="M110 490 H610" stroke="#7b421f" stroke-linecap="round" stroke-width="12"></path>
+<circle cx="690" cy="405" fill="#c3834b" r="34"></circle>
+<rect fill="#246b63" height="82" rx="22" width="60" x="660" y="440"></rect>
+<circle cx="760" cy="405" fill="#c3834b" r="34"></circle>
+<rect fill="#a7652d" height="82" rx="22" width="60" x="730" y="440"></rect>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ηγεμονία της Αθήνας</text>
+<text fill="#246b63" font-size="28" x="62" y="138">δύναμη, συμμαχία, δημοκρατία και πολιτισμός</text>
 </svg>
 </template>
-
 <template id="draw-delos">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#dff3ff"/>
-<path d="M0 445 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"/>
-<path d="M0 515 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"/>
-<circle cx="450" cy="315" r="85" fill="#8abc69" stroke="#246b63" stroke-width="8"/>
-<path d="M450 315 C310 250 230 245 145 300" fill="none" stroke="#fff8ec" stroke-width="12" stroke-dasharray="16 14"/>
-<path d="M450 315 C590 250 690 260 770 330" fill="none" stroke="#fff8ec" stroke-width="12" stroke-dasharray="16 14"/>
-<path d="M450 315 C420 430 330 475 220 455" fill="none" stroke="#fff8ec" stroke-width="12" stroke-dasharray="16 14"/>
-<path d="M450 315 C520 435 630 465 765 445" fill="none" stroke="#fff8ec" stroke-width="12" stroke-dasharray="16 14"/>
-<path d="M390 360 L510 360 L450 245Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
-<path d="M450 245 L450 165" stroke="#7b421f" stroke-width="8"/>
-<path d="M450 170 q80 45 0 88Z" fill="#fff" stroke="#7b421f" stroke-width="6"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Α΄ Αθηναϊκή Συμμαχία</text>
-<text x="62" y="138" font-size="28" fill="#246b63">η Δήλος, το ταμείο και οι σύμμαχοι</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
+<path d="M0 445 C160 395 300 425 455 360 C610 295 745 340 900 285 L900 620 L0 620Z" fill="#5fa9bd"></path>
+<path d="M0 515 C210 455 380 520 900 435 L900 620 L0 620Z" fill="#43879a"></path>
+<circle cx="450" cy="315" fill="#8abc69" r="85" stroke="#246b63" stroke-width="8"></circle>
+<path d="M450 315 C310 250 230 245 145 300" fill="none" stroke="#fff8ec" stroke-dasharray="16 14" stroke-width="12"></path>
+<path d="M450 315 C590 250 690 260 770 330" fill="none" stroke="#fff8ec" stroke-dasharray="16 14" stroke-width="12"></path>
+<path d="M450 315 C420 430 330 475 220 455" fill="none" stroke="#fff8ec" stroke-dasharray="16 14" stroke-width="12"></path>
+<path d="M450 315 C520 435 630 465 765 445" fill="none" stroke="#fff8ec" stroke-dasharray="16 14" stroke-width="12"></path>
+<path d="M390 360 L510 360 L450 245Z" fill="#fff8ec" stroke="#7b421f" stroke-width="8"></path>
+<path d="M450 245 L450 165" stroke="#7b421f" stroke-width="8"></path>
+<path d="M450 170 q80 45 0 88Z" fill="#fff" stroke="#7b421f" stroke-width="6"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Α΄ Αθηναϊκή Συμμαχία</text>
+<text fill="#246b63" font-size="28" x="62" y="138">η Δήλος, το ταμείο και οι σύμμαχοι</text>
 </svg>
 </template>
-
 <template id="draw-navy">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#dff3ff"/>
-<path d="M0 450 C180 400 360 455 540 390 C700 330 810 360 900 320 L900 620 L0 620Z" fill="#4d9ab0"/>
-<path d="M150 410 q170 90 340 0 l-55 85 h-230z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
-<path d="M520 425 q120 65 240 0 l-40 60 h-165z" fill="#a7652d" stroke="#5b351c" stroke-width="8"/>
-<path d="M280 410 L280 230" stroke="#7b421f" stroke-width="9"/>
-<path d="M280 240 q120 70 0 135Z" fill="#fff8ec" stroke="#7b421f" stroke-width="7"/>
-<path d="M620 420 L620 275" stroke="#7b421f" stroke-width="8"/>
-<path d="M620 285 q90 50 0 105Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ναυτική δύναμη</text>
-<text x="62" y="138" font-size="28" fill="#246b63">ο στόλος κάνει την Αθήνα ισχυρή</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#dff3ff" height="620" rx="35" width="900"></rect>
+<path d="M0 450 C180 400 360 455 540 390 C700 330 810 360 900 320 L900 620 L0 620Z" fill="#4d9ab0"></path>
+<path d="M150 410 q170 90 340 0 l-55 85 h-230z" fill="#7b421f" stroke="#5b351c" stroke-width="8"></path>
+<path d="M520 425 q120 65 240 0 l-40 60 h-165z" fill="#a7652d" stroke="#5b351c" stroke-width="8"></path>
+<path d="M280 410 L280 230" stroke="#7b421f" stroke-width="9"></path>
+<path d="M280 240 q120 70 0 135Z" fill="#fff8ec" stroke="#7b421f" stroke-width="7"></path>
+<path d="M620 420 L620 275" stroke="#7b421f" stroke-width="8"></path>
+<path d="M620 285 q90 50 0 105Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ναυτική δύναμη</text>
+<text fill="#246b63" font-size="28" x="62" y="138">ο στόλος κάνει την Αθήνα ισχυρή</text>
 </svg>
 </template>
-
 <template id="draw-pericles">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
-<circle cx="450" cy="230" r="72" fill="#c3834b"/>
-<path d="M380 175 q70-90 145 0" fill="#3b2a1b"/>
-<path d="M365 150 h170 l-40 -50 l-45 40 l-45 -40z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"/>
-<rect x="375" y="310" width="150" height="190" rx="32" fill="#7b421f"/>
-<path d="M305 380 C250 330 210 320 170 350" stroke="#7b421f" stroke-width="13" stroke-linecap="round"/>
-<path d="M595 380 C660 320 710 315 760 345" stroke="#7b421f" stroke-width="13" stroke-linecap="round"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ο Περικλής</text>
-<text x="62" y="138" font-size="28" fill="#246b63">ηγεσία, ρητορεία και δημοκρατική Αθήνα</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
+<circle cx="450" cy="230" fill="#c3834b" r="72"></circle>
+<path d="M380 175 q70-90 145 0" fill="#3b2a1b"></path>
+<path d="M365 150 h170 l-40 -50 l-45 40 l-45 -40z" fill="#d8a24b" stroke="#7b421f" stroke-width="8"></path>
+<rect fill="#7b421f" height="190" rx="32" width="150" x="375" y="310"></rect>
+<path d="M305 380 C250 330 210 320 170 350" stroke="#7b421f" stroke-linecap="round" stroke-width="13"></path>
+<path d="M595 380 C660 320 710 315 760 345" stroke="#7b421f" stroke-linecap="round" stroke-width="13"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ο Περικλής</text>
+<text fill="#246b63" font-size="28" x="62" y="138">ηγεσία, ρητορεία και δημοκρατική Αθήνα</text>
 </svg>
 </template>
-
 <template id="draw-democracy">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<circle cx="240" cy="360" r="38" fill="#c3834b"/><rect x="205" y="400" width="70" height="90" rx="24" fill="#246b63"/>
-<circle cx="380" cy="325" r="38" fill="#c3834b"/><rect x="345" y="365" width="70" height="105" rx="24" fill="#a7652d"/>
-<circle cx="520" cy="325" r="38" fill="#c3834b"/><rect x="485" y="365" width="70" height="105" rx="24" fill="#7b421f"/>
-<circle cx="660" cy="360" r="38" fill="#c3834b"/><rect x="625" y="400" width="70" height="90" rx="24" fill="#246b63"/>
-<path d="M190 520 H710" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
-<rect x="330" y="160" width="240" height="90" rx="18" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
-<text x="365" y="220" font-size="48" font-weight="900" fill="#7b421f">Εκκλησία</text>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Αθηναϊκή δημοκρατία</text>
-<text x="62" y="138" font-size="28" fill="#246b63">συμμετοχή των πολιτών στις αποφάσεις</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<circle cx="240" cy="360" fill="#c3834b" r="38"></circle><rect fill="#246b63" height="90" rx="24" width="70" x="205" y="400"></rect>
+<circle cx="380" cy="325" fill="#c3834b" r="38"></circle><rect fill="#a7652d" height="105" rx="24" width="70" x="345" y="365"></rect>
+<circle cx="520" cy="325" fill="#c3834b" r="38"></circle><rect fill="#7b421f" height="105" rx="24" width="70" x="485" y="365"></rect>
+<circle cx="660" cy="360" fill="#c3834b" r="38"></circle><rect fill="#246b63" height="90" rx="24" width="70" x="625" y="400"></rect>
+<path d="M190 520 H710" stroke="#7b421f" stroke-linecap="round" stroke-width="12"></path>
+<rect fill="#fff8ec" height="90" rx="18" stroke="#7b421f" stroke-width="8" width="240" x="330" y="160"></rect>
+<text fill="#7b421f" font-size="48" font-weight="900" x="365" y="220">Εκκλησία</text>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Αθηναϊκή δημοκρατία</text>
+<text fill="#246b63" font-size="28" x="62" y="138">συμμετοχή των πολιτών στις αποφάσεις</text>
 </svg>
 </template>
-
 <template id="draw-acropolis">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#e8f5ff"/>
-<circle cx="745" cy="95" r="65" fill="#ffd56d"/>
-<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"/>
-<rect x="160" y="335" width="75" height="145" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
-<rect x="300" y="305" width="75" height="175" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
-<rect x="440" y="305" width="75" height="175" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
-<rect x="580" y="335" width="75" height="145" fill="#d8a24b" stroke="#7b421f" stroke-width="7"/>
-<path d="M130 335 L410 210 L690 335Z" fill="#fff8ec" stroke="#7b421f" stroke-width="9"/>
-<path d="M120 490 H700" stroke="#7b421f" stroke-width="12" stroke-linecap="round"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Ακρόπολη</text>
-<text x="62" y="138" font-size="28" fill="#246b63">έργα, ναοί και λαμπρότητα της Αθήνας</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#e8f5ff" height="620" rx="35" width="900"></rect>
+<circle cx="745" cy="95" fill="#ffd56d" r="65"></circle>
+<path d="M0 500 C220 430 390 510 900 440 L900 620 L0 620Z" fill="#8abc69"></path>
+<rect fill="#d8a24b" height="145" stroke="#7b421f" stroke-width="7" width="75" x="160" y="335"></rect>
+<rect fill="#d8a24b" height="175" stroke="#7b421f" stroke-width="7" width="75" x="300" y="305"></rect>
+<rect fill="#d8a24b" height="175" stroke="#7b421f" stroke-width="7" width="75" x="440" y="305"></rect>
+<rect fill="#d8a24b" height="145" stroke="#7b421f" stroke-width="7" width="75" x="580" y="335"></rect>
+<path d="M130 335 L410 210 L690 335Z" fill="#fff8ec" stroke="#7b421f" stroke-width="9"></path>
+<path d="M120 490 H700" stroke="#7b421f" stroke-linecap="round" stroke-width="12"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Ακρόπολη</text>
+<text fill="#246b63" font-size="28" x="62" y="138">έργα, ναοί και λαμπρότητα της Αθήνας</text>
 </svg>
 </template>
-
 <template id="draw-economy">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f2dfc2"/>
-<circle cx="230" cy="310" r="95" fill="#d8a24b" stroke="#7b421f" stroke-width="10"/>
-<text x="180" y="335" font-size="70" font-weight="900" fill="#7b421f">₯</text>
-<path d="M500 420 q100 60 200 0 l-45 70 h-110z" fill="#7b421f" stroke="#5b351c" stroke-width="8"/>
-<path d="M600 420 L600 250" stroke="#7b421f" stroke-width="8"/>
-<path d="M600 255 q90 48 0 100Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"/>
-<path d="M280 420 C380 330 460 335 580 295" fill="none" stroke="#246b63" stroke-width="12" stroke-dasharray="18 15" stroke-linecap="round"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Οικονομία και εμπόριο</text>
-<text x="62" y="138" font-size="28" fill="#246b63">πλούτος, λιμάνι, νόμισμα και εργασία</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f2dfc2" height="620" rx="35" width="900"></rect>
+<circle cx="230" cy="310" fill="#d8a24b" r="95" stroke="#7b421f" stroke-width="10"></circle>
+<text fill="#7b421f" font-size="70" font-weight="900" x="180" y="335">₯</text>
+<path d="M500 420 q100 60 200 0 l-45 70 h-110z" fill="#7b421f" stroke="#5b351c" stroke-width="8"></path>
+<path d="M600 420 L600 250" stroke="#7b421f" stroke-width="8"></path>
+<path d="M600 255 q90 48 0 100Z" fill="#fff8ec" stroke="#7b421f" stroke-width="6"></path>
+<path d="M280 420 C380 330 460 335 580 295" fill="none" stroke="#246b63" stroke-dasharray="18 15" stroke-linecap="round" stroke-width="12"></path>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Οικονομία και εμπόριο</text>
+<text fill="#246b63" font-size="28" x="62" y="138">πλούτος, λιμάνι, νόμισμα και εργασία</text>
 </svg>
 </template>
-
 <template id="draw-theater">
-<svg viewBox="0 0 900 620">
-<rect width="900" height="620" rx="35" fill="#f4e2c6"/>
-<path d="M160 480 C250 350 650 350 740 480" fill="none" stroke="#7b421f" stroke-width="18" stroke-linecap="round"/>
-<path d="M220 440 C300 350 600 350 680 440" fill="none" stroke="#a7652d" stroke-width="14" stroke-linecap="round"/>
-<path d="M290 400 C350 345 550 345 610 400" fill="none" stroke="#d8a24b" stroke-width="12" stroke-linecap="round"/>
-<circle cx="360" cy="230" r="70" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
-<path d="M325 220 q35 35 70 0" fill="none" stroke="#7b421f" stroke-width="9"/>
-<circle cx="335" cy="205" r="8" fill="#7b421f"/><circle cx="385" cy="205" r="8" fill="#7b421f"/>
-<circle cx="540" cy="230" r="70" fill="#fff8ec" stroke="#7b421f" stroke-width="8"/>
-<path d="M505 245 q35-30 70 0" fill="none" stroke="#7b421f" stroke-width="9"/>
-<circle cx="515" cy="205" r="8" fill="#7b421f"/><circle cx="565" cy="205" r="8" fill="#7b421f"/>
-<text x="60" y="90" font-size="48" font-weight="900" fill="#7b421f">Πολιτισμός</text>
-<text x="62" y="138" font-size="28" fill="#246b63">θέατρο, φιλοσοφία, τέχνες και γράμματα</text>
+<svg viewbox="0 0 900 620">
+<rect fill="#f4e2c6" height="620" rx="35" width="900"></rect>
+<path d="M160 480 C250 350 650 350 740 480" fill="none" stroke="#7b421f" stroke-linecap="round" stroke-width="18"></path>
+<path d="M220 440 C300 350 600 350 680 440" fill="none" stroke="#a7652d" stroke-linecap="round" stroke-width="14"></path>
+<path d="M290 400 C350 345 550 345 610 400" fill="none" stroke="#d8a24b" stroke-linecap="round" stroke-width="12"></path>
+<circle cx="360" cy="230" fill="#fff8ec" r="70" stroke="#7b421f" stroke-width="8"></circle>
+<path d="M325 220 q35 35 70 0" fill="none" stroke="#7b421f" stroke-width="9"></path>
+<circle cx="335" cy="205" fill="#7b421f" r="8"></circle><circle cx="385" cy="205" fill="#7b421f" r="8"></circle>
+<circle cx="540" cy="230" fill="#fff8ec" r="70" stroke="#7b421f" stroke-width="8"></circle>
+<path d="M505 245 q35-30 70 0" fill="none" stroke="#7b421f" stroke-width="9"></path>
+<circle cx="515" cy="205" fill="#7b421f" r="8"></circle><circle cx="565" cy="205" fill="#7b421f" r="8"></circle>
+<text fill="#7b421f" font-size="48" font-weight="900" x="60" y="90">Πολιτισμός</text>
+<text fill="#246b63" font-size="28" x="62" y="138">θέατρο, φιλοσοφία, τέχνες και γράμματα</text>
 </svg>
 </template>
-
-<section id="home" class="page active">
-  <div class="wrap">
-    <div class="hero">
-      <div class="panel text">
-        <div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
-        <h1>Κεφάλαιο 5<br>Η ηγεμονία της Αθήνας</h1>
-        <p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς η Αθήνα γίνεται ισχυρή δύναμη μετά τους Περσικούς πολέμους.</p>
-        <div class="box">Κεντρική ιδέα: η Αθήνα συνδυάζει ναυτική δύναμη, δημοκρατία, συμμαχία, οικονομία και πολιτισμό.</div>
-        <p>
-          <button onclick="openLesson()">Ξεκίνα το μάθημα</button>
-          <button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
-        </p>
-      </div>
-      <div class="panel drawing" data-draw="draw-athens"></div>
-    </div>
-  </div>
+<section class="page active" id="home">
+<div class="wrap">
+<div class="hero">
+<div class="panel text">
+<div class="eyebrow">Ιστορία Α΄ Γυμνασίου</div>
+<h1>Κεφάλαιο 5<br/>Η ηγεμονία της Αθήνας</h1>
+<p>Στόχος του κεφαλαίου είναι να καταλάβουμε πώς η Αθήνα γίνεται ισχυρή δύναμη μετά τους Περσικούς πολέμους.</p>
+<div class="box">Κεντρική ιδέα: η Αθήνα συνδυάζει ναυτική δύναμη, δημοκρατία, συμμαχία, οικονομία και πολιτισμό.</div>
+<p>
+<button onclick="openLesson()">Ξεκίνα το μάθημα</button>
+<button class="secondary" onclick="showPage('extras')">Δραστηριότητες</button>
+</p>
+</div>
+<div class="panel drawing" data-draw="draw-athens"></div>
+</div>
+</div>
 </section>
-
-  <section class="wrap">
-    <div class="panel text progress-card">
-      <div class="eyebrow">Η πρόοδός μου</div>
-      <h2>Πρόοδος κεφαλαίου</h2>
-      <div class="progress-line"><div id="chapterProgressFill" class="progress-fill"></div></div>
-      <div id="chapterProgressText" class="progress-small">Φόρτωση προόδου...</div>
-      <div id="chapterBadgeList" class="progress-badges"></div>
-    </div>
-  </section>
-
-
-<section id="chapter5" class="page">
-  <div class="wrap">
-    <div class="lesson-top">
-      <button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
-      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
-      <div id="counter">1 / 10</div>
-    </div>
-
-    <div class="panel">
-
-      <div class="lesson-slide active">
-        <div class="text">
-          <div class="eyebrow">1. Εισαγωγή</div>
-          <h2>Μετά τους Περσικούς πολέμους</h2>
-          <p>Μετά τη νίκη εναντίον των Περσών, η Αθήνα αποκτά μεγάλη δύναμη και κύρος στον ελληνικό κόσμο.</p>
-          <div class="box">Βασική ιδέα: η Αθήνα γίνεται ηγεμονική δύναμη, αλλά αυτό δημιουργεί και αντιδράσεις.</div>
-        </div>
-        <div class="drawing" data-draw="draw-athens"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">2. Η Α΄ Αθηναϊκή Συμμαχία</div>
-          <h2>Η συμμαχία της Δήλου</h2>
-          <p>Πολλές ελληνικές πόλεις ενώνονται σε συμμαχία με αρχικό σκοπό την προστασία από τους Πέρσες.</p>
-          <ul>
-            <li>κέντρο η Δήλος</li>
-            <li>κοινό ταμείο</li>
-            <li>ναυτική προστασία</li>
-            <li>η Αθήνα αποκτά ηγετικό ρόλο</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί μια συμμαχία μπορεί να κάνει μια πόλη πολύ ισχυρή;</div>
-        </div>
-        <div class="drawing" data-draw="draw-delos"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">3. Από συμμαχία σε ηγεμονία</div>
-          <h2>Η Αθήνα ελέγχει τους συμμάχους</h2>
-          <p>Σταδιακά η Αθήνα αποκτά όλο και μεγαλύτερο έλεγχο πάνω στους συμμάχους της.</p>
-          <ul>
-            <li>οι σύμμαχοι πληρώνουν εισφορές</li>
-            <li>η Αθήνα αποφασίζει όλο και περισσότερο</li>
-            <li>το ταμείο μεταφέρεται στην Αθήνα</li>
-            <li>οι σύμμαχοι δυσανασχετούν</li>
-          </ul>
-          <div class="box">Κλειδί: η συμμαχία μπορεί να μετατραπεί σε ηγεμονία.</div>
-        </div>
-        <div class="drawing" data-draw="draw-delos"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">4. Η ναυτική δύναμη</div>
-          <h2>Ο στόλος της Αθήνας</h2>
-          <p>Η Αθήνα στηρίζεται πολύ στον στόλο της. Η ναυτική δύναμη της δίνει ασφάλεια, πλούτο και επιρροή.</p>
-          <ul>
-            <li>πλοία</li>
-            <li>λιμάνι Πειραιά</li>
-            <li>εμπόριο</li>
-            <li>έλεγχος θαλάσσιων δρόμων</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί η θάλασσα έκανε την Αθήνα ισχυρή;</div>
-        </div>
-        <div class="drawing" data-draw="draw-navy"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">5. Ο Περικλής</div>
-          <h2>Η Αθήνα στην ακμή της</h2>
-          <p>Ο Περικλής είναι ηγετική μορφή της Αθήνας. Συνδέεται με την ενίσχυση της δημοκρατίας και τη μεγάλη ανάπτυξη της πόλης.</p>
-          <ul>
-            <li>ισχυρή πολιτική ηγεσία</li>
-            <li>ρητορική ικανότητα</li>
-            <li>δημοκρατικοί θεσμοί</li>
-            <li>έργα στην πόλη</li>
-          </ul>
-          <div class="box">Συζήτηση: τι χαρακτηριστικά πρέπει να έχει ένας καλός ηγέτης;</div>
-        </div>
-        <div class="drawing" data-draw="draw-pericles"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">6. Η δημοκρατία στην Αθήνα</div>
-          <h2>Συμμετοχή των πολιτών</h2>
-          <p>Η αθηναϊκή δημοκρατία βασίζεται στη συμμετοχή των πολιτών στις αποφάσεις της πόλης.</p>
-          <ul>
-            <li>Εκκλησία του Δήμου</li>
-            <li>Βουλή</li>
-            <li>δικαστήρια</li>
-            <li>δημόσιος λόγος</li>
-          </ul>
-          <div class="box">Κλειδί: πολίτης σημαίνει συμμετοχή και ευθύνη.</div>
-        </div>
-        <div class="drawing" data-draw="draw-democracy"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">7. Οικονομία και εμπόριο</div>
-          <h2>Πλούτος και εργασία</h2>
-          <p>Η Αθήνα γίνεται οικονομικό κέντρο χάρη στο εμπόριο, το λιμάνι και τη δύναμή της στη θάλασσα.</p>
-          <ul>
-            <li>Πειραιάς</li>
-            <li>εμπόριο</li>
-            <li>νόμισμα</li>
-            <li>εργαστήρια και τεχνίτες</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί το λιμάνι είναι σημαντικό για μια πόλη;</div>
-        </div>
-        <div class="drawing" data-draw="draw-economy"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">8. Τα έργα της Ακρόπολης</div>
-          <h2>Η πόλη ομορφαίνει</h2>
-          <p>Στην εποχή του Περικλή γίνονται μεγάλα οικοδομικά έργα στην Αθήνα, ιδιαίτερα στην Ακρόπολη.</p>
-          <ul>
-            <li>ναοί</li>
-            <li>μνημεία</li>
-            <li>εργασία για πολλούς ανθρώπους</li>
-            <li>προβολή της δύναμης της πόλης</li>
-          </ul>
-          <div class="box">Δραστηριότητα: γιατί ένα μεγάλο μνημείο δείχνει δύναμη και κύρος;</div>
-        </div>
-        <div class="drawing" data-draw="draw-acropolis"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">9. Πολιτισμός</div>
-          <h2>Θέατρο, τέχνες και γράμματα</h2>
-          <p>Η Αθήνα γίνεται κέντρο πολιτισμού. Αναπτύσσονται το θέατρο, η φιλοσοφία, η ιστορία, οι τέχνες και τα γράμματα.</p>
-          <ul>
-            <li>τραγωδία και κωμωδία</li>
-            <li>φιλοσοφία</li>
-            <li>ιστοριογραφία</li>
-            <li>τέχνη και αρχιτεκτονική</li>
-          </ul>
-          <div class="box">Ερώτηση: γιατί η πολιτιστική ανάπτυξη κάνει μια πόλη σπουδαία;</div>
-        </div>
-        <div class="drawing" data-draw="draw-theater"></div>
-      </div>
-
-      <div class="lesson-slide">
-        <div class="text">
-          <div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
-          <h2>Σύνοψη Κεφαλαίου 5</h2>
-          <ul>
-            <li>Η Αθήνα γίνεται ισχυρή μετά τους Περσικούς πολέμους.</li>
-            <li>Η Α΄ Αθηναϊκή Συμμαχία μετατρέπεται σταδιακά σε αθηναϊκή ηγεμονία.</li>
-            <li>Ο στόλος και το εμπόριο ενισχύουν την πόλη.</li>
-            <li>Ο Περικλής συνδέεται με την ακμή της δημοκρατικής Αθήνας.</li>
-            <li>Η Αθήνα γίνεται μεγάλο πολιτιστικό κέντρο.</li>
-          </ul>
-          <p>
-            <button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
-            <button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
-          </p>
-        </div>
-        <div class="drawing" data-draw="draw-athens"></div>
-      </div>
-
-    </div>
-
-    <div class="lesson-nav">
-      <button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
-      <button onclick="nextSlide()">Επόμενο ➡</button>
-    </div>
-  </div>
+<section class="wrap">
+<div class="panel text progress-card">
+<div class="eyebrow">Η πρόοδός μου</div>
+<h2>Πρόοδος κεφαλαίου</h2>
+<div class="progress-line"><div class="progress-fill" id="chapterProgressFill"></div></div>
+<div class="progress-small" id="chapterProgressText">Φόρτωση προόδου...</div>
+<div class="progress-badges" id="chapterBadgeList"></div>
+</div>
 </section>
-
-<section id="extras" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Extra για τα παιδιά</div>
-      <h2>Δραστηριότητες Κεφαλαίου 5</h2>
-      <p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε πώς η Αθήνα έγινε τόσο ισχυρή.</p>
-
-      <div class="cards">
-        <div class="card" onclick="showPage('missions')">
-          <div><div class="icon">🎯</div><h3>Αποστολή ηγεμονίας</h3><p>Βρες τους λόγους που δυνάμωσαν την Αθήνα.</p></div>
-          <span class="tag">δραστηριότητα</span>
-        </div>
-        <div class="card" onclick="showPage('detective')">
-          <div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
-          <span class="tag">παιχνίδι σκέψης</span>
-        </div>
-        <div class="card" onclick="showPage('concepts')">
-          <div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
-          <span class="tag">επανάληψη</span>
-        </div>
-        <div class="card" onclick="showPage('today')">
-          <div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
-          <span class="tag">ολοκλήρωση</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="page" id="chapter5">
+<div class="wrap">
+<div class="lesson-top">
+<button class="secondary" onclick="showPage('home')">← Αρχή κεφαλαίου</button>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<div id="counter">1 / 10</div>
+</div>
+<div class="panel">
+<div class="lesson-slide active">
+<div class="text">
+<div class="eyebrow">1. Εισαγωγή</div>
+<h2>Μετά τους Περσικούς πολέμους</h2>
+<p>Μετά τη νίκη εναντίον των Περσών, η Αθήνα αποκτά μεγάλη δύναμη και κύρος στον ελληνικό κόσμο.</p>
+<div class="box">Βασική ιδέα: η Αθήνα γίνεται ηγεμονική δύναμη, αλλά αυτό δημιουργεί και αντιδράσεις.</div>
+</div>
+<div class="drawing" data-draw="draw-athens"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">2. Η Α΄ Αθηναϊκή Συμμαχία</div>
+<h2>Η συμμαχία της Δήλου</h2>
+<p>Πολλές ελληνικές πόλεις ενώνονται σε συμμαχία με αρχικό σκοπό την προστασία από τους Πέρσες.</p>
+<ul>
+<li>κέντρο η Δήλος</li>
+<li>κοινό ταμείο</li>
+<li>ναυτική προστασία</li>
+<li>η Αθήνα αποκτά ηγετικό ρόλο</li>
+</ul>
+<div class="box">Ερώτηση: γιατί μια συμμαχία μπορεί να κάνει μια πόλη πολύ ισχυρή;</div>
+</div>
+<div class="drawing" data-draw="draw-delos"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">3. Από συμμαχία σε ηγεμονία</div>
+<h2>Η Αθήνα ελέγχει τους συμμάχους</h2>
+<p>Σταδιακά η Αθήνα αποκτά όλο και μεγαλύτερο έλεγχο πάνω στους συμμάχους της.</p>
+<ul>
+<li>οι σύμμαχοι πληρώνουν εισφορές</li>
+<li>η Αθήνα αποφασίζει όλο και περισσότερο</li>
+<li>το ταμείο μεταφέρεται στην Αθήνα</li>
+<li>οι σύμμαχοι δυσανασχετούν</li>
+</ul>
+<div class="box">Κλειδί: η συμμαχία μπορεί να μετατραπεί σε ηγεμονία.</div>
+</div>
+<div class="drawing" data-draw="draw-delos"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">4. Η ναυτική δύναμη</div>
+<h2>Ο στόλος της Αθήνας</h2>
+<p>Η Αθήνα στηρίζεται πολύ στον στόλο της. Η ναυτική δύναμη της δίνει ασφάλεια, πλούτο και επιρροή.</p>
+<ul>
+<li>πλοία</li>
+<li>λιμάνι Πειραιά</li>
+<li>εμπόριο</li>
+<li>έλεγχος θαλάσσιων δρόμων</li>
+</ul>
+<div class="box">Ερώτηση: γιατί η θάλασσα έκανε την Αθήνα ισχυρή;</div>
+</div>
+<div class="drawing" data-draw="draw-navy"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">5. Ο Περικλής</div>
+<h2>Η Αθήνα στην ακμή της</h2>
+<p>Ο Περικλής είναι ηγετική μορφή της Αθήνας. Συνδέεται με την ενίσχυση της δημοκρατίας και τη μεγάλη ανάπτυξη της πόλης.</p>
+<ul>
+<li>ισχυρή πολιτική ηγεσία</li>
+<li>ρητορική ικανότητα</li>
+<li>δημοκρατικοί θεσμοί</li>
+<li>έργα στην πόλη</li>
+</ul>
+<div class="box">Συζήτηση: τι χαρακτηριστικά πρέπει να έχει ένας καλός ηγέτης;</div>
+</div>
+<div class="drawing" data-draw="draw-pericles"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">6. Η δημοκρατία στην Αθήνα</div>
+<h2>Συμμετοχή των πολιτών</h2>
+<p>Η αθηναϊκή δημοκρατία βασίζεται στη συμμετοχή των πολιτών στις αποφάσεις της πόλης.</p>
+<ul>
+<li>Εκκλησία του Δήμου</li>
+<li>Βουλή</li>
+<li>δικαστήρια</li>
+<li>δημόσιος λόγος</li>
+</ul>
+<div class="box">Κλειδί: πολίτης σημαίνει συμμετοχή και ευθύνη.</div>
+</div>
+<div class="drawing" data-draw="draw-democracy"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">7. Οικονομία και εμπόριο</div>
+<h2>Πλούτος και εργασία</h2>
+<p>Η Αθήνα γίνεται οικονομικό κέντρο χάρη στο εμπόριο, το λιμάνι και τη δύναμή της στη θάλασσα.</p>
+<ul>
+<li>Πειραιάς</li>
+<li>εμπόριο</li>
+<li>νόμισμα</li>
+<li>εργαστήρια και τεχνίτες</li>
+</ul>
+<div class="box">Ερώτηση: γιατί το λιμάνι είναι σημαντικό για μια πόλη;</div>
+</div>
+<div class="drawing" data-draw="draw-economy"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">8. Τα έργα της Ακρόπολης</div>
+<h2>Η πόλη ομορφαίνει</h2>
+<p>Στην εποχή του Περικλή γίνονται μεγάλα οικοδομικά έργα στην Αθήνα, ιδιαίτερα στην Ακρόπολη.</p>
+<ul>
+<li>ναοί</li>
+<li>μνημεία</li>
+<li>εργασία για πολλούς ανθρώπους</li>
+<li>προβολή της δύναμης της πόλης</li>
+</ul>
+<div class="box">Δραστηριότητα: γιατί ένα μεγάλο μνημείο δείχνει δύναμη και κύρος;</div>
+</div>
+<div class="drawing" data-draw="draw-acropolis"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">9. Πολιτισμός</div>
+<h2>Θέατρο, τέχνες και γράμματα</h2>
+<p>Η Αθήνα γίνεται κέντρο πολιτισμού. Αναπτύσσονται το θέατρο, η φιλοσοφία, η ιστορία, οι τέχνες και τα γράμματα.</p>
+<ul>
+<li>τραγωδία και κωμωδία</li>
+<li>φιλοσοφία</li>
+<li>ιστοριογραφία</li>
+<li>τέχνη και αρχιτεκτονική</li>
+</ul>
+<div class="box">Ερώτηση: γιατί η πολιτιστική ανάπτυξη κάνει μια πόλη σπουδαία;</div>
+</div>
+<div class="drawing" data-draw="draw-theater"></div>
+</div>
+<div class="lesson-slide">
+<div class="text">
+<div class="eyebrow">10. Τι πρέπει να θυμάμαι</div>
+<h2>Σύνοψη Κεφαλαίου 5</h2>
+<ul>
+<li>Η Αθήνα γίνεται ισχυρή μετά τους Περσικούς πολέμους.</li>
+<li>Η Α΄ Αθηναϊκή Συμμαχία μετατρέπεται σταδιακά σε αθηναϊκή ηγεμονία.</li>
+<li>Ο στόλος και το εμπόριο ενισχύουν την πόλη.</li>
+<li>Ο Περικλής συνδέεται με την ακμή της δημοκρατικής Αθήνας.</li>
+<li>Η Αθήνα γίνεται μεγάλο πολιτιστικό κέντρο.</li>
+</ul>
+<p>
+<button onclick="showPage('extras')">Πήγαινε στις δραστηριότητες</button>
+<button class="secondary" onclick="showPage('review')">Πήγαινε στις ασκήσεις</button>
+</p>
+</div>
+<div class="drawing" data-draw="draw-athens"></div>
+</div>
+</div>
+<div class="lesson-nav">
+<button class="secondary" onclick="prevSlide()">⬅ Πίσω</button>
+<button onclick="nextSlide()">Επόμενο ➡</button>
+</div>
+</div>
 </section>
-
-<section id="missions" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🎯 Αποστολή ηγεμονίας</div>
-      <h2>Γιατί δυνάμωσε η Αθήνα;</h2>
-      <div class="grid2">
-        <div class="mini"><h3>Συμμαχία</h3><p>Γράψε πώς βοήθησε την Αθήνα η Α΄ Αθηναϊκή Συμμαχία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Στόλος</h3><p>Γράψε γιατί ο στόλος ήταν τόσο σημαντικός.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Περικλής</h3><p>Γράψε 2 χαρακτηριστικά ενός καλού ηγέτη.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-        <div class="mini"><h3>Πολιτισμός</h3><p>Γράψε ένα πολιτιστικό στοιχείο που έκανε την Αθήνα σπουδαία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
-      </div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="extras">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Extra για τα παιδιά</div>
+<h2>Δραστηριότητες Κεφαλαίου 5</h2>
+<p>Αυτές οι δραστηριότητες βοηθούν να καταλάβουμε πώς η Αθήνα έγινε τόσο ισχυρή.</p>
+<div class="cards">
+<div class="card" onclick="showPage('missions')">
+<div><div class="icon">🎯</div><h3>Αποστολή ηγεμονίας</h3><p>Βρες τους λόγους που δυνάμωσαν την Αθήνα.</p></div>
+<span class="tag">δραστηριότητα</span>
+</div>
+<div class="card" onclick="showPage('detective')">
+<div><div class="icon">🕵️</div><h3>Βρες την έννοια</h3><p>Διάβασε το στοιχείο και διάλεξε απάντηση.</p></div>
+<span class="tag">παιχνίδι σκέψης</span>
+</div>
+<div class="card" onclick="showPage('concepts')">
+<div><div class="icon">🧠</div><h3>Χάρτης εννοιών</h3><p>Πάτησε τις έννοιες και δες πώς συνδέονται.</p></div>
+<span class="tag">επανάληψη</span>
+</div>
+<div class="card" onclick="showPage('today')">
+<div><div class="icon">✅</div><h3>Τι έμαθα σήμερα</h3><p>Checklist και badge ολοκλήρωσης.</p></div>
+<span class="tag">ολοκλήρωση</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section id="detective" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🕵️ Βρες την έννοια</div>
-      <h2>Στοιχείο: κοινό ταμείο, σύμμαχοι και αρχικό κέντρο η Δήλος</h2>
-      <p>Ποια έννοια περιγράφει;</p>
-      <button class="answer detect-answer" onclick="selectDetect(true,this)">Α΄ Αθηναϊκή Συμμαχία</button>
-      <button class="answer detect-answer" onclick="selectDetect(false,this)">Β΄ Αποικισμός</button>
-      <button class="answer detect-answer" onclick="selectDetect(false,this)">Γεωμετρική τέχνη</button>
-      <div id="detectResult" class="box">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
-      <p>
-        <button onclick="checkDetect()">Έλεγχος</button>
-        <button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
-        <button class="secondary" onclick="showPage('extras')">← Πίσω</button>
-      </p>
-    </div>
-  </div>
+<section class="page" id="missions">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🎯 Αποστολή ηγεμονίας</div>
+<h2>Γιατί δυνάμωσε η Αθήνα;</h2>
+<div class="grid2">
+<div class="mini"><h3>Συμμαχία</h3><p>Γράψε πώς βοήθησε την Αθήνα η Α΄ Αθηναϊκή Συμμαχία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Στόλος</h3><p>Γράψε γιατί ο στόλος ήταν τόσο σημαντικός.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Περικλής</h3><p>Γράψε 2 χαρακτηριστικά ενός καλού ηγέτη.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+<div class="mini"><h3>Πολιτισμός</h3><p>Γράψε ένα πολιτιστικό στοιχείο που έκανε την Αθήνα σπουδαία.</p><button onclick="doneMsg(this)">Το ολοκλήρωσα</button></div>
+</div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="concepts" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">🧠 Χάρτης εννοιών</div>
-      <h2>Πώς συνδέονται οι λέξεις;</h2>
-      <div class="concept-map">
-        <div class="bubble main" onclick="concept('Η Αθήνα γίνεται ηγεμονική δύναμη μετά τους Περσικούς πολέμους.')">Αθήνα</div>
-        <div class="bubble" onclick="concept('Η συμμαχία δίνει στην Αθήνα ηγετικό ρόλο στο Αιγαίο.')">συμμαχία</div>
-        <div class="bubble" onclick="concept('Ο στόλος κάνει την Αθήνα ισχυρή στη θάλασσα.')">στόλος</div>
-        <div class="bubble" onclick="concept('Η δημοκρατία βασίζεται στη συμμετοχή των πολιτών.')">δημοκρατία</div>
-        <div class="bubble" onclick="concept('Ο Περικλής συνδέεται με την ακμή της Αθήνας.')">Περικλής</div>
-        <div class="bubble" onclick="concept('Η Ακρόπολη και το θέατρο δείχνουν την πολιτιστική δύναμη της Αθήνας.')">πολιτισμός</div>
-      </div>
-      <div id="conceptResult" class="box">Πάτησε έναν κύκλο.</div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="detective">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🕵️ Βρες την έννοια</div>
+<h2>Στοιχείο: κοινό ταμείο, σύμμαχοι και αρχικό κέντρο η Δήλος</h2>
+<p>Ποια έννοια περιγράφει;</p>
+<button class="answer detect-answer" onclick="selectDetect(true,this)">Α΄ Αθηναϊκή Συμμαχία</button>
+<button class="answer detect-answer" onclick="selectDetect(false,this)">Β΄ Αποικισμός</button>
+<button class="answer detect-answer" onclick="selectDetect(false,this)">Γεωμετρική τέχνη</button>
+<div class="box" id="detectResult">Διάλεξε απάντηση. Μπορείς να αλλάξεις πριν πατήσεις έλεγχο.</div>
+<p>
+<button onclick="checkDetect()">Έλεγχος</button>
+<button class="secondary" onclick="resetDetect()">Ξαναδοκίμασε</button>
+<button class="secondary" onclick="showPage('extras')">← Πίσω</button>
+</p>
+</div>
+</div>
 </section>
-
-<section id="today" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">✅ Τι έμαθα σήμερα</div>
-      <h2>Checklist Κεφαλαίου 5</h2>
-      <div class="checklist">
-        <label><input type="checkbox"> Έμαθα γιατί δυνάμωσε η Αθήνα μετά τους Περσικούς πολέμους.</label>
-        <label><input type="checkbox"> Κατάλαβα τι ήταν η Α΄ Αθηναϊκή Συμμαχία.</label>
-        <label><input type="checkbox"> Ξέρω γιατί ο στόλος και το εμπόριο ήταν σημαντικά.</label>
-        <label><input type="checkbox"> Κατάλαβα τον ρόλο του Περικλή.</label>
-        <label><input type="checkbox"> Θυμάμαι γιατί η Αθήνα έγινε πολιτιστικό κέντρο.</label>
-      </div>
-      <button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
-      <div id="badgeBox"></div>
-      <p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
-    </div>
-  </div>
+<section class="page" id="concepts">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">🧠 Χάρτης εννοιών</div>
+<h2>Πώς συνδέονται οι λέξεις;</h2>
+<div class="concept-map">
+<div class="bubble main" onclick="concept('Η Αθήνα γίνεται ηγεμονική δύναμη μετά τους Περσικούς πολέμους.')">Αθήνα</div>
+<div class="bubble" onclick="concept('Η συμμαχία δίνει στην Αθήνα ηγετικό ρόλο στο Αιγαίο.')">συμμαχία</div>
+<div class="bubble" onclick="concept('Ο στόλος κάνει την Αθήνα ισχυρή στη θάλασσα.')">στόλος</div>
+<div class="bubble" onclick="concept('Η δημοκρατία βασίζεται στη συμμετοχή των πολιτών.')">δημοκρατία</div>
+<div class="bubble" onclick="concept('Ο Περικλής συνδέεται με την ακμή της Αθήνας.')">Περικλής</div>
+<div class="bubble" onclick="concept('Η Ακρόπολη και το θέατρο δείχνουν την πολιτιστική δύναμη της Αθήνας.')">πολιτισμός</div>
+</div>
+<div class="box" id="conceptResult">Πάτησε έναν κύκλο.</div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="review" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Επανάληψη</div>
-      <h2>Ασκήσεις για το Κεφάλαιο 5</h2>
-      <p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
-      <div id="quizArea"></div>
-      <button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
-      <button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
-      <div id="scoreBox"></div>
-    </div>
-  </div>
+<section class="page" id="today">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">✅ Τι έμαθα σήμερα</div>
+<h2>Checklist Κεφαλαίου 5</h2>
+<div class="checklist">
+<label><input type="checkbox"/> Έμαθα γιατί δυνάμωσε η Αθήνα μετά τους Περσικούς πολέμους.</label>
+<label><input type="checkbox"/> Κατάλαβα τι ήταν η Α΄ Αθηναϊκή Συμμαχία.</label>
+<label><input type="checkbox"/> Ξέρω γιατί ο στόλος και το εμπόριο ήταν σημαντικά.</label>
+<label><input type="checkbox"/> Κατάλαβα τον ρόλο του Περικλή.</label>
+<label><input type="checkbox"/> Θυμάμαι γιατί η Αθήνα έγινε πολιτιστικό κέντρο.</label>
+</div>
+<button onclick="badge()">Ολοκλήρωσα το κεφάλαιο</button>
+<div id="badgeBox"></div>
+<p><button class="secondary" onclick="showPage('extras')">← Πίσω στις δραστηριότητες</button></p>
+</div>
+</div>
 </section>
-
-<section id="glossary" class="page">
-  <div class="wrap">
-    <div class="panel text">
-      <div class="eyebrow">Μικρό λεξικό</div>
-      <h2>Λέξεις που πρέπει να ξέρω</h2>
-      <div class="grid2">
-        <div class="mini"><h3>Ηγεμονία</h3><p>Η κυριαρχική επιρροή μιας πόλης ή δύναμης πάνω σε άλλες.</p></div>
-        <div class="mini"><h3>Α΄ Αθηναϊκή Συμμαχία</h3><p>Συμμαχία ελληνικών πόλεων με ηγετικό ρόλο της Αθήνας.</p></div>
-        <div class="mini"><h3>Σύμμαχος</h3><p>Πόλη ή κράτος που συνεργάζεται με άλλο για κοινό σκοπό.</p></div>
-        <div class="mini"><h3>Δημοκρατία</h3><p>Πολίτευμα όπου οι πολίτες συμμετέχουν στη λήψη αποφάσεων.</p></div>
-        <div class="mini"><h3>Περικλής</h3><p>Σπουδαίος πολιτικός ηγέτης της Αθήνας στην περίοδο της ακμής της.</p></div>
-        <div class="mini"><h3>Ακρόπολη</h3><p>Ιερός βράχος της Αθήνας με σημαντικά μνημεία και ναούς.</p></div>
-      </div>
-    </div>
-  </div>
+<section class="page" id="review">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Επανάληψη</div>
+<h2>Ασκήσεις για το Κεφάλαιο 5</h2>
+<p>Απάντησε στις ερωτήσεις. Μπορείς να αλλάζεις απαντήσεις μέχρι να πατήσεις «Έλεγχος απαντήσεων».</p>
+<div id="quizArea"></div>
+<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+<button class="secondary" onclick="resetReview()">Ξανά από την αρχή</button>
+<div id="scoreBox"></div>
+</div>
+</div>
 </section>
-
+<section class="page" id="glossary">
+<div class="wrap">
+<div class="panel text">
+<div class="eyebrow">Μικρό λεξικό</div>
+<h2>Λέξεις που πρέπει να ξέρω</h2>
+<div class="grid2">
+<div class="mini"><h3>Ηγεμονία</h3><p>Η κυριαρχική επιρροή μιας πόλης ή δύναμης πάνω σε άλλες.</p></div>
+<div class="mini"><h3>Α΄ Αθηναϊκή Συμμαχία</h3><p>Συμμαχία ελληνικών πόλεων με ηγετικό ρόλο της Αθήνας.</p></div>
+<div class="mini"><h3>Σύμμαχος</h3><p>Πόλη ή κράτος που συνεργάζεται με άλλο για κοινό σκοπό.</p></div>
+<div class="mini"><h3>Δημοκρατία</h3><p>Πολίτευμα όπου οι πολίτες συμμετέχουν στη λήψη αποφάσεων.</p></div>
+<div class="mini"><h3>Περικλής</h3><p>Σπουδαίος πολιτικός ηγέτης της Αθήνας στην περίοδο της ακμής της.</p></div>
+<div class="mini"><h3>Ακρόπολη</h3><p>Ιερός βράχος της Αθήνας με σημαντικά μνημεία και ναούς.</p></div>
+</div>
+</div>
+</div>
+</section>
 <footer>Κεφάλαιο 5 — Η ηγεμονία της Αθήνας</footer>
-
-
 <script>
 window.CHAPTER_ID = "5";
 window.CHAPTER_TITLE = "🗳️ Κεφάλαιο 5: Η ηγεμονία της Αθήνας";
 </script>
-
 <script src="core/storageEngine.js"></script>
 <script src="core/soundEngine.js"></script>
 <script src="core/uiEngine.js"></script>
@@ -583,12 +543,9 @@ window.questions = [
 
 IstoriaChapter.init();
 </script>
-
-
 <script>
 try{saveChapterProgress({visited:true});}catch(e){}
 </script>
-
 <script src="core/v26-polish.js"></script>
 <script src="core/mobile-menu.js"></script>
 </body>
