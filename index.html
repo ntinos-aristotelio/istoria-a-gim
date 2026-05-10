@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -7,89 +6,221 @@
 <title>Ιστορία Α' Γυμνασίου</title>
 <style>
 body{
-font-family: Arial, sans-serif;
-background:#f5f7fb;
 margin:0;
+font-family:Inter,Arial,sans-serif;
+background:#f4f7fb;
 color:#1f2937;
 }
 .container{
-max-width:900px;
+max-width:1100px;
 margin:auto;
-padding:40px 20px;
+padding:32px 20px 60px;
 }
 .hero{
-background:white;
-border-radius:20px;
-padding:50px 30px;
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-margin-bottom:40px;
-}
-.hero h1{
-font-size:2.2rem;
-margin-bottom:10px;
-}
-.hero p{
-color:#6b7280;
+background:linear-gradient(135deg,#2563eb,#4f46e5);
+border-radius:28px;
+padding:60px 40px;
+color:white;
+box-shadow:0 20px 40px rgba(37,99,235,.18);
 margin-bottom:30px;
 }
-.main-btn{
+.hero h1{
+font-size:3rem;
+margin:0 0 12px;
+}
+.hero p{
+font-size:1.1rem;
+opacity:.92;
+max-width:650px;
+}
+.hero-btn{
 display:inline-block;
+margin-top:25px;
 padding:16px 28px;
-background:#2563eb;
-color:white;
+border-radius:16px;
+background:white;
+color:#2563eb;
+font-weight:700;
 text-decoration:none;
-border-radius:14px;
-font-weight:bold;
+}
+.stats{
+display:flex;
+gap:18px;
+margin-top:24px;
+flex-wrap:wrap;
+}
+.stat{
+background:rgba(255,255,255,.18);
+padding:14px 18px;
+border-radius:16px;
+backdrop-filter:blur(10px);
+}
+.section{
+margin-top:34px;
+}
+.section h2{
+margin-bottom:18px;
+}
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+}
+.card{
+background:white;
+border-radius:22px;
+padding:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+.card h3{
+margin-top:0;
+}
+.card p{
+color:#6b7280;
+line-height:1.5;
+}
+.card a{
+display:inline-block;
+margin-top:14px;
+text-decoration:none;
+font-weight:700;
+color:#2563eb;
 }
 .chapters{
-background:white;
-border-radius:20px;
-padding:30px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:14px;
 }
 .chapter{
-display:flex;
-justify-content:space-between;
-padding:14px 0;
-border-bottom:1px solid #e5e7eb;
+background:white;
+border-radius:18px;
+padding:18px;
+box-shadow:0 8px 24px rgba(0,0,0,.05);
 }
-.chapter:last-child{
-border-bottom:none;
+.progress{
+height:8px;
+background:#e5e7eb;
+border-radius:999px;
+margin-top:12px;
+overflow:hidden;
 }
-.footer{
+.progress span{
+display:block;
+height:100%;
+width:35%;
+background:#2563eb;
+}
+.more{
 margin-top:30px;
 text-align:center;
 color:#6b7280;
-font-size:0.9rem;
+font-size:.95rem;
 }
 </style>
 </head>
 <body>
 <div class="container">
+
 <div class="hero">
 <h1>Συνέχισε τη μάθησή σου</h1>
-<p>Απλή και ξεκούραστη μελέτη για την Ιστορία Α' Γυμνασίου.</p>
-<a class="main-btn" href="chapter1.html">Συνέχεια μάθησης</a>
+<p>Μοντέρνα και οργανωμένη μελέτη για την Ιστορία Α' Γυμνασίου.</p>
+
+<a class="hero-btn" href="chapter1.html">Συνέχεια μάθησης</a>
+
+<div class="stats">
+<div class="stat">📚 3/10 κεφάλαια</div>
+<div class="stat">⭐ 82% μέσο σκορ</div>
+<div class="stat">🔥 5 day streak</div>
+</div>
 </div>
 
-<div class="chapters">
+<div class="section">
+<h2>Βασικά εργαλεία</h2>
+
+<div class="tools">
+
+<div class="card">
+<h3>🧠 Smart Study</h3>
+<p>Προσωποποιημένη μελέτη και προτάσεις επανάληψης.</p>
+<a href="#">Άνοιγμα</a>
+</div>
+
+<div class="card">
+<h3>📝 Revision</h3>
+<p>Γρήγορη επανάληψη πριν από διαγώνισμα ή quiz.</p>
+<a href="#">Επανάληψη</a>
+</div>
+
+<div class="card">
+<h3>🗺️ Άτλαντας</h3>
+<p>Κατανόησε τους αρχαίους πολιτισμούς μέσα από χάρτες.</p>
+<a href="#">Άνοιγμα</a>
+</div>
+
+</div>
+</div>
+
+<div class="section">
 <h2>Κεφάλαια</h2>
 
-<div class="chapter"><span>1. Προϊστορία</span><span>→</span></div>
-<div class="chapter"><span>2. Πρώτοι Πολιτισμοί</span><span>→</span></div>
-<div class="chapter"><span>3. Αρχαία Ελλάδα</span><span>→</span></div>
-<div class="chapter"><span>4. Σπάρτη και Αθήνα</span><span>→</span></div>
-<div class="chapter"><span>5. Περσικοί Πόλεμοι</span><span>→</span></div>
-<div class="chapter"><span>6. Χρυσός Αιώνας</span><span>→</span></div>
-<div class="chapter"><span>7. Μακεδονία</span><span>→</span></div>
-<div class="chapter"><span>8. Αλέξανδρος</span><span>→</span></div>
-<div class="chapter"><span>9. Ελληνιστικά Χρόνια</span><span>→</span></div>
-<div class="chapter"><span>10. Ρωμαϊκά Χρόνια</span><span>→</span></div>
+<div class="chapters">
+
+<div class="chapter">
+<strong>Κεφάλαιο 1</strong>
+<div class="progress"><span></span></div>
 </div>
 
-<div class="footer">
-Ultra Clean Home v28
+<div class="chapter">
+<strong>Κεφάλαιο 2</strong>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="chapter">
+<strong>Κεφάλαιο 3</strong>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="chapter">
+<strong>Κεφάλαιο 4</strong>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="chapter">
+<strong>Κεφάλαιο 5</strong>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="chapter">
+<strong>Κεφάλαιο 6</strong>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="chapter">
+<strong>Κεφάλαιο 7</strong>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="chapter">
+<strong>Κεφάλαιο 8</strong>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="chapter">
+<strong>Κεφάλαιο 9</strong>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="chapter">
+<strong>Κεφάλαιο 10</strong>
+<div class="progress"><span></span></div>
+</div>
+
+</div>
+
+<div class="more">
+Περισσότερα εργαλεία διαθέσιμα μέσα στην εφαρμογή.
+</div>
+
 </div>
 </div>
 </body>
